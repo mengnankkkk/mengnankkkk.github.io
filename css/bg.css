@@ -8,3 +8,12 @@
     background: url(https://gcore.jsdelivr.net/gh/rigodlee/BLOGCDN/img/20200530181856.gif);
   }
   
+  body {
+    cursor: url(https://gcore.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/default.cur),
+        default;
+}
+a,
+img {
+    cursor: url(https://gcore.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur),
+        default;
+}
