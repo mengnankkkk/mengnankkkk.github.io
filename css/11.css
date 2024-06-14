@@ -14,6 +14,19 @@
     color: var(--font-color)
 }
 
-#footer #footer-wrap a {
-    color: var(--font-color)
-}
+.footer-links {
+    display: flex;
+    justify-content: center; /* 居中对齐 */
+    gap: 250px; /* 图标之间的间距 */
+    padding: 100px 0; /* 上下内边距 */
+  }
+  
+  .footer-link {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  .footer-link i {
+    font-size: 10em; /* 调整图标大小 */
+  }
+  
