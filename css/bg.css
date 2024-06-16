@@ -259,3 +259,13 @@ body {
       color: #28b4c8;
       box-shadow: 0 0 5px rgba(28, 69, 218, 0.71);
   }
+  #nav-right{
+    flex:1 1 auto;
+    justify-content: flex-end;
+    margin-left: auto;
+    display: flex;
+    flex-wrap:nowrap;
+  }
+  #nav *::after{
+    background-color: transparent!important;
+}

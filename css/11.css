@@ -54,3 +54,10 @@
   font-size: 14px;
   color: var(--font-color);
 }
+#nav-right{
+  flex:1 1 auto;
+  justify-content: flex-end;
+  margin-left: auto;
+  display: flex;
+  flex-wrap:nowrap;
+}
