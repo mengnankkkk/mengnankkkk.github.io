@@ -269,3 +269,46 @@ body {
   #nav *::after{
     background-color: transparent!important;
 }
+.menus_item_child li:not(#sidebar-menus li){
+  float: left;
+  border-radius: 6px!important;
+  -webkit-border-radius: 6px!important;
+  -moz-border-radius: 6px!important;
+  -ms-border-radius: 6px!important;
+  -o-border-radius: 6px!important;
+}
+.menus_item_child:not(#sidebar-menus ul){
+/*
+  left:calc(-150%)!important;这是估算值，为了保持元素居中的，如果不合适可以自己调
+改为：*/
+left:50%;
+translate:-50%;
+}
+#web_bg {
+  /* 背景图像的地址（url括号里）  */
+  background: url(https://img.mengnankk.asia/img/115443925_p0_square1200.jpg);
+  /* 背景图像不重复 */
+  background-repeat: no-repeat;
+  /* 背景图像大小 */
+  background-size: cover;
+}
+/* 文章页背景 */
+.layout_post>#post {
+  /* 以下代表透明度为0.7 可以自行修改*/
+  background: rgba(255,255,255,.7);
+}
+
+/* 所有页面背景 */
+#aside_content .card-widget, #recent-posts>.recent-post-item, .layout_page>div:first-child:not(.recent-posts), .layout_post>#page, .layout_post>#post, .read-mode .layout_post>#post{
+  /* 以下代表透明度为0.7 */
+  background: rgba(255,255,255,.7);
+}
+/*侧边卡片的透明度 */
+:root {
+--card-bg: rgba(255, 255, 255, .7);
+}
+/* 页脚透明 */
+#footer {
+/* 以下代表透明度为0.7 */
+background: rgba(255,255,255, .0);
+}
