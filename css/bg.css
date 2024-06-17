@@ -312,3 +312,12 @@ translate:-50%;
 /* 以下代表透明度为0.7 */
 background: rgba(255,255,255, .0);
 }
+.icon img {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s;
+}
+
+.icon:hover img {
+  transform: scale(1.1); /* 鼠标悬停时图片稍微放大 */
+}
