@@ -285,10 +285,10 @@ left:50%;
 translate:-50%;
 }
 #web_bg {
-  background: url(https://pixabay.com/zh/photos/water-fresh-clear-summer-drops-2559064/);
+  background: url(https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221811725.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center top 10%; /* 调整背景图片的垂直位置 */
+  background-position: center top 50%; /* 调整背景图片的垂直位置 */
 }
 
 /* 文章页背景 */
