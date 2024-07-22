@@ -1,0 +1,990 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Mysql BASIC | mengnankkのblog</title><meta name="author" content="mengnankkzhou"><meta name="copyright" content="mengnankkzhou"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数据库 认识数据库 数据库（Database）是按照数据结构来组织、存储和管理数据的仓库。 每个数据库都有一个或多个不同的 API 用于创建，访问，管理，搜索和复制所保存的数据。 我们也可以将数据存储在文件中，但是在文件中读写数据速度相对较慢。 所以，现在我们使用关系型数据库管理系统（RDBMS）来存储和管理大数据量。所谓的关系型数据库，是建立在关系模型基础上的数据库，借助于集合代数等数学概念和方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mysql BASIC">
+<meta property="og:url" content="https://mengnankk.asia/2024/07/04/mysql1/index.html">
+<meta property="og:site_name" content="mengnankkのblog">
+<meta property="og:description" content="数据库 认识数据库 数据库（Database）是按照数据结构来组织、存储和管理数据的仓库。 每个数据库都有一个或多个不同的 API 用于创建，访问，管理，搜索和复制所保存的数据。 我们也可以将数据存储在文件中，但是在文件中读写数据速度相对较慢。 所以，现在我们使用关系型数据库管理系统（RDBMS）来存储和管理大数据量。所谓的关系型数据库，是建立在关系模型基础上的数据库，借助于集合代数等数学概念和方">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cy-pic.kuaizhan.com/g3/09/b9/f747-adcd-42f2-a29f-fdf2fda9ef6631?cysign=37c3da8b4f235b6c826993f1ecf01497&cyt=1721627383">
+<meta property="article:published_time" content="2024-07-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-07-22T05:51:57.288Z">
+<meta property="article:author" content="mengnankkzhou">
+<meta property="article:tag" content="mysql">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cy-pic.kuaizhan.com/g3/09/b9/f747-adcd-42f2-a29f-fdf2fda9ef6631?cysign=37c3da8b4f235b6c826993f1ecf01497&cyt=1721627383"><link rel="shortcut icon" href="https://imgbed.mengnankk.asia/202407091737883.jpg"><link rel="canonical" href="https://mengnankk.asia/2024/07/04/mysql1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-MTE5DMDG9Y"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-MTE5DMDG9Y');
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: mengnankkzhou","link":"链接: ","source":"来源: mengnankkのblog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Mysql BASIC',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-22 13:51:57'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/11.css"><style>#article-container.post-content h1:before, h2:before, h3:before, h4:before, h5:before, h6:before { -webkit-animation: avatar_turn_around 1s linear infinite; -moz-animation: avatar_turn_around 1s linear infinite; -o-animation: avatar_turn_around 1s linear infinite; -ms-animation: avatar_turn_around 1s linear infinite; animation: avatar_turn_around 1s linear infinite; }</style><link rel="stylesheet" href="/css/bg.css"><link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/butterfly/css/macblack.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMgy6YNuuBO2zU5xR4yQma8iwv11j00Cp6Z3gU5" crossorigin="anonymous"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head><body><div id="loading-box"><div class="gear-loader"><div class="gear-loader_overlay"></div><div class="gear-loader_cogs"><div class="gear-loader_cogs__top"><div class="gear-top_part"></div><div class="gear-top_part"></div><div class="gear-top_part"></div><div class="gear-top_hole"></div></div><div class="gear-loader_cogs__left"><div class="gear-left_part"></div><div class="gear-left_part"></div><div class="gear-left_part"></div><div class="gear-left_hole"></div></div><div class="gear-loader_cogs__bottom"><div class="gear-bottom_part"></div><div class="gear-bottom_part"></div><div class="gear-bottom_part"></div><div class="gear-bottom_hole"></div></div></div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://imgbed.mengnankk.asia/202407091737880.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fas fa-share-alt"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://music.mengnankk.asia/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-handshake"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-info-circle"></i><span> 关于博主</span></a></div><div class="menus_item"><a class="site-page" href="/Message/"><i class="fa-fw fas fa-comments"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-compass"></i><span> 随便逛逛</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://home.mengnankk.asia/"><i class="fa-fw fas fa-home"></i><span> home</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://nav.mengnankk.asia/"><i class="fa-fw fas fa-search"></i><span> nav搜索引擎</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://status.mengnankk.asia/"><i class="fa-fw fas fa-check"></i><span> 站点检测</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://blog.mengnankk.asia/"><i class="fa-fw fas fa-gamepad"></i><span> 心里话</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cy-pic.kuaizhan.com/g3/09/b9/f747-adcd-42f2-a29f-fdf2fda9ef6631?cysign=37c3da8b4f235b6c826993f1ecf01497&amp;cyt=1721627383')"><nav id="nav"><span id="blog-info"><a href="/" title="mengnankkのblog"><img class="site-icon" src="https://raw.githubusercontent.com/mengnankkkk/img/main/202407061424771.jpg"/><span class="site-name">mengnankkのblog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fas fa-share-alt"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://music.mengnankk.asia/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-handshake"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-info-circle"></i><span> 关于博主</span></a></div><div class="menus_item"><a class="site-page" href="/Message/"><i class="fa-fw fas fa-comments"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-compass"></i><span> 随便逛逛</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://home.mengnankk.asia/"><i class="fa-fw fas fa-home"></i><span> home</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://nav.mengnankk.asia/"><i class="fa-fw fas fa-search"></i><span> nav搜索引擎</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://status.mengnankk.asia/"><i class="fa-fw fas fa-check"></i><span> 站点检测</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://blog.mengnankk.asia/"><i class="fa-fw fas fa-gamepad"></i><span> 心里话</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div><div id="nav-right"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div></div></nav><div id="post-info"><h1 class="post-title">Mysql BASIC</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-03T16:00:00.000Z" title="发表于 2024-07-04 00:00:00">2024-07-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-22T05:51:57.288Z" title="更新于 2024-07-22 13:51:57">2024-07-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/sql/">sql</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">7.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>28分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Mysql BASIC"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2024/07/04/mysql1/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2024/07/04/mysql1/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>数据库</h1>
+<h2 id="认识数据库">认识数据库</h2>
+<p>数据库（Database）是按照数据结构来组织、存储和管理数据的仓库。</p>
+<p>每个数据库都有一个或多个不同的 API 用于创建，访问，管理，搜索和复制所保存的数据。</p>
+<p>我们也可以将数据存储在文件中，但是在文件中读写数据速度相对较慢。</p>
+<p>所以，现在我们使用关系型数据库管理系统（RDBMS）来存储和管理大数据量。所谓的关系型数据库，是建立在关系模型基础上的数据库，借助于集合代数等数学概念和方法来处理数据库中的数据。</p>
+<p>RDBMS 即关系数据库管理系统(Relational Database Management System)的特点：</p>
+<ul>
+<li>1.数据以表格的形式出现</li>
+<li>2.每行为各种记录名称</li>
+<li>3.每列为记录名称所对应的数据域</li>
+<li>4.许多的行和列组成一张表单</li>
+<li>5.若干的表单组成database</li>
+</ul>
+<p>RDBMS术语</p>
+<ul>
+<li><strong>数据库:</strong> 数据库是一些关联表的集合。</li>
+<li><strong>数据表:</strong> 表是数据的矩阵。在一个数据库中的表看起来像一个简单的电子表格。</li>
+<li><strong>列:</strong> 一列(数据元素) 包含了相同类型的数据, 例如邮政编码的数据。</li>
+<li>**行：**一行（元组，或记录）是一组相关的数据，例如一条用户订阅的数据。</li>
+<li><strong>冗余</strong>：存储两倍数据，冗余降低了性能，但提高了数据的安全性。</li>
+<li><strong>主键</strong>：主键是唯一的。一个数据表中只能包含一个主键。你可以使用主键来查询数据。</li>
+<li>**外键：**外键用于关联两个表。</li>
+<li><strong>复合键</strong>：复合键（组合键）将多个列作为一个索引键，一般用于复合索引。</li>
+<li>**索引：**使用索引可快速访问数据库表中的特定信息。索引是对数据库表中一列或多列的值进行排序的一种结构。类似于书籍的目录。</li>
+<li><strong>参照完整性:</strong> 参照的完整性要求关系中不允许引用不存在的实体。与实体完整性是关系模型必须满足的完整性约束条件，目的是保证数据的一致性。</li>
+</ul>
+<p>Mysql为关系型数据库，关系型数据库可以理解为表格的概念，一个关系型数据库由一个或数个表格构成</p>
+<ul>
+<li>表头(header): 每一列的名称;</li>
+<li>列(col): 具有相同数据类型的数据的集合;</li>
+<li>行(row): 每一行用来描述某条记录的具体信息;</li>
+<li>值(value): 行的具体信息, 每个值必须与该列的数据类型相同;</li>
+<li><strong>键(key)</strong>: 键的值在当前列中具有唯一性。</li>
+</ul>
+<h2 id="MySQL数据库">MySQL数据库</h2>
+<p>MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发，目前属于 Oracle 公司。MySQL 是一种关联数据库管理系统，关联数据库将数据保存在不同的表中，而不是将所有数据放在一个大仓库内，这样就增加了速度并提高了灵活性。</p>
+<ul>
+<li>MySQL 是开源的，目前隶属于 Oracle 旗下产品。</li>
+<li>MySQL 支持大型的数据库。可以处理拥有上千万条记录的大型数据库。</li>
+<li>MySQL 使用标准的 SQL 数据语言形式。</li>
+<li>MySQL 可以运行于多个系统上，并且支持多种语言。这些编程语言包括 C、C++、Python、Java、Perl、PHP、Eiffel、Ruby 和 Tcl 等。</li>
+<li>MySQL 对 PHP 有很好的支持，PHP 是很适合用于 Web 程序开发。</li>
+<li>MySQL 支持大型数据库，支持 5000 万条记录的数据仓库，32 位系统表文件最大可支持 4GB，64 位系统支持最大的表文件为8TB。</li>
+<li>MySQL 是可以定制的，采用了 GPL 协议，你可以修改源码来开发自己的 MySQL 系统。</li>
+</ul>
+<h2 id="安装mysql">安装mysql</h2>
+<p>安装的前面就不多说了直接去官网下载即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqladmin --version</span><br></pre></td></tr></table></figure>
+<p>验证mysql的安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqladmin  Ver 8.0.37 for Win64 on x86_64 (MySQL Community Server - GPL)</span><br></pre></td></tr></table></figure>
+<p>我的回显</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net start mysql</span><br></pre></td></tr></table></figure>
+<p>启动mysql服务器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net stop mysql</span><br></pre></td></tr></table></figure>
+<p>关闭mysql</p>
+<p>在 MySQL 中，mysql.user 表存储了关于用户账户的信息，包括权限和身份验证方式，以下是 <strong>mysql.user</strong> 表中的常见字段列表及其含义：</p>
+<ul>
+<li><code>Host</code>: 用户连接的来源主机。</li>
+<li><code>User</code>: 用户名。</li>
+<li><code>Password</code>: 加密后的密码。</li>
+<li><code>Select_priv</code>: 是否允许用户执行 SELECT 操作。</li>
+<li><code>Insert_priv</code>: 是否允许用户执行 INSERT 操作。</li>
+<li><code>Update_priv</code>: 是否允许用户执行 UPDATE 操作。</li>
+<li><code>Delete_priv</code>: 是否允许用户执行 DELETE 操作。</li>
+<li><code>Create_priv</code>: 是否允许用户创建新表或数据库。</li>
+<li><code>Drop_priv</code>: 是否允许用户删除表或数据库。</li>
+<li><code>Reload_priv</code>: 是否允许用户执行 FLUSH 操作。</li>
+<li><code>Shutdown_priv</code>: 是否允许用户执行 SHUTDOWN 操作。</li>
+<li><code>Process_priv</code>: 是否允许用户查看其他用户的进程。</li>
+<li><code>File_priv</code>: 是否允许用户执行文件操作（如 LOAD DATA INFILE）。</li>
+<li><code>Grant_priv</code>: 是否允许用户授予或撤销其他用户的权限。</li>
+<li><code>References_priv</code>: 是否允许用户创建外键约束。</li>
+<li><code>Index_priv</code>: 是否允许用户创建或删除索引。</li>
+<li><code>Alter_priv</code>: 是否允许用户执行 ALTER TABLE 操作。</li>
+<li><code>Show_db_priv</code>: 是否允许用户执行 SHOW DATABASES 操作。</li>
+<li><code>Super_priv</code>: 是否允许用户执行超级权限的操作。</li>
+<li><code>Create_tmp_table_priv</code>: 是否允许用户创建临时表。</li>
+<li><code>Lock_tables_priv</code>: 是否允许用户锁定表。</li>
+<li><code>Execute_priv</code>: 是否允许用户执行存储过程和函数。</li>
+<li><code>Repl_slave_priv</code>: 是否允许用户作为复制从库。</li>
+<li><code>Repl_client_priv</code>: 是否允许用户作为复制客户端。</li>
+<li><code>Create_view_priv</code>: 是否允许用户创建视图。</li>
+<li><code>Show_view_priv</code>: 是否允许用户执行 SHOW CREATE VIEW 操作。</li>
+<li><code>Create_routine_priv</code>: 是否允许用户创建存储过程和函数。</li>
+<li><code>Alter_routine_priv</code>: 是否允许用户修改存储过程和函数。</li>
+<li><code>Create_user_priv</code>: 是否允许用户创建、删除和重命名用户。</li>
+<li><code>Event_priv</code>: 是否允许用户创建、修改、删除事件。</li>
+<li><code>Trigger_priv</code>: 是否允许用户创建、修改、删除触发器。</li>
+<li><code>Create_tablespace_priv</code>: 是否允许用户创建和删除表空间。</li>
+<li><code>ssl_type</code>: SSL 类型。</li>
+<li><code>ssl_cipher</code>: SSL 密码。</li>
+<li><code>x509_issuer</code>: X.509 证书颁发者。</li>
+<li><code>x509_subject</code>: X.509 证书主题。</li>
+<li><code>max_questions</code>: 用户可以执行的最大查询数量。</li>
+<li><code>max_updates</code>: 用户可以执行的最大更新数量。</li>
+<li><code>max_connections</code>: 用户可以同时打开的最大连接数。</li>
+<li><code>max_user_connections</code>: 用户可以同时打开的最大用户连接数。</li>
+</ul>
+<h2 id="etc-my-cnf-文件配置">/etc/my.cnf 文件配置</h2>
+<p>/etc/my.cnf 文件是 MySQL 配置文件，用于配置 MySQL 服务器的各种参数和选项。</p>
+<p>一般情况下，你不需要修改该配置文件，该文件默认配置如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">datadir=/var/lib/mysql</span><br><span class="line">socket=/var/lib/mysql/mysql.sock</span><br><span class="line"></span><br><span class="line">[mysql.server]</span><br><span class="line">user=mysql</span><br><span class="line">basedir=/var/lib</span><br><span class="line"></span><br><span class="line">[safe_mysqld]</span><br><span class="line">err-log=/var/log/mysqld.log</span><br><span class="line">pid-file=/var/run/mysqld/mysqld.pid</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="1-基本设置">1. 基本设置</h3>
+<ul>
+<li><code>basedir</code>: MySQL 服务器的基本安装目录。</li>
+<li><code>datadir</code>: 存储 MySQL 数据文件的位置。</li>
+<li><code>socket</code>: MySQL 服务器的 Unix 套接字文件路径。</li>
+<li><code>pid-file</code>: 存储当前运行的 MySQL 服务器进程 ID 的文件路径。</li>
+<li><code>port</code>: MySQL 服务器监听的端口号，默认是 3306。</li>
+</ul>
+<h3 id="2-服务器选项">2. 服务器选项</h3>
+<ul>
+<li><code>bind-address</code>: 指定 MySQL 服务器监听的 IP 地址，可以是 IP 地址或主机名。</li>
+<li><code>server-id</code>: 在复制配置中，为每个 MySQL 服务器设置一个唯一的标识符。</li>
+<li><code>default-storage-engine</code>: 默认的存储引擎，例如 InnoDB 或 MyISAM。</li>
+<li><code>max_connections</code>: 服务器可以同时维持的最大连接数。</li>
+<li><code>thread_cache_size</code>: 线程缓存的大小，用于提高新连接的启动速度。</li>
+<li><code>query_cache_size</code>: 查询缓存的大小，用于提高相同查询的效率。</li>
+<li><code>default-character-set</code>: 默认的字符集。</li>
+<li><code>collation-server</code>: 服务器的默认排序规则。</li>
+</ul>
+<h3 id="3-性能调优">3. 性能调优</h3>
+<ul>
+<li><code>innodb_buffer_pool_size</code>: InnoDB 存储引擎的缓冲池大小，这是 InnoDB 性能调优中最重要的参数之一。</li>
+<li><code>key_buffer_size</code>: MyISAM 存储引擎的键缓冲区大小。</li>
+<li><code>table_open_cache</code>: 可以同时打开的表的缓存数量。</li>
+<li><code>thread_concurrency</code>: 允许同时运行的线程数。</li>
+</ul>
+<h3 id="4-安全设置">4. 安全设置</h3>
+<ul>
+<li><code>skip-networking</code>: 禁止 MySQL 服务器监听网络连接，仅允许本地连接。</li>
+<li><code>skip-grant-tables</code>: 以无需密码的方式启动 MySQL 服务器，通常用于恢复忘记的 root 密码，但这是一个安全风险。</li>
+<li><code>auth_native_password=1</code>: 启用 MySQL 5.7 及以上版本的原生密码认证。</li>
+</ul>
+<h3 id="5-日志设置">5. 日志设置</h3>
+<ul>
+<li><code>log_error</code>: 错误日志文件的路径。</li>
+<li><code>general_log</code>: 记录所有客户端连接和查询的日志。</li>
+<li><code>slow_query_log</code>: 记录执行时间超过特定阈值的慢查询。</li>
+<li><code>log_queries_not_using_indexes</code>: 记录未使用索引的查询。</li>
+</ul>
+<h3 id="6-复制设置">6. 复制设置</h3>
+<ul>
+<li><code>master_host</code> 和 <code>master_user</code>: 主服务器的地址和复制用户。</li>
+<li><code>master_password</code>: 复制用户的密码。</li>
+<li><code>master_log_file</code> 和 <code>master_log_pos</code>: 用于复制的日志文件和位置。</li>
+</ul>
+<h3 id="7-管理MySQL的命令">7.管理MySQL的命令</h3>
+<p><strong>USE *数据库名*</strong></p>
+<p>选择要操作的Mysql数据库，使用该命令后所有Mysql命令都只针对该数据库。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use RUNOOB</span><br></pre></td></tr></table></figure>
+<p><strong>SHOW DATABASES:</strong></p>
+<p>列出 MySQL 数据库管理系统的数据库列表。</p>
+<p><strong>SHOW TABLES:</strong></p>
+<p>显示指定数据库的所有表，使用该命令前需要使用 use 命令来选择要操作的数据库。</p>
+<p><strong>SHOW COLUMNS FROM *数据表*:</strong></p>
+<p>显示数据表的属性，属性类型，主键信息 ，是否为 NULL，默认值等其他信息。</p>
+<p><strong>SHOW INDEX FROM *数据表*</strong></p>
+<p>显示数据表的详细索引信息，包括PRIMARY KEY（主键）。</p>
+<p><strong>SHOW TABLE STATUS [FROM db_name] [LIKE ‘pattern’] \G:</strong></p>
+<h3 id="8-PHP脚本连接数据库">8.PHP脚本连接数据库</h3>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$dbhost</span> = <span class="string">&#x27;localhost&#x27;</span>;  <span class="comment">// mysql服务器主机地址</span></span><br><span class="line"><span class="variable">$dbuser</span> = <span class="string">&#x27;root&#x27;</span>;            <span class="comment">// mysql用户名</span></span><br><span class="line"><span class="variable">$dbpass</span> = <span class="string">&#x27;123456&#x27;</span>;          <span class="comment">// mysql用户名密码</span></span><br><span class="line"><span class="variable">$conn</span> = <span class="title function_ invoke__">mysqli_connect</span>(<span class="variable">$dbhost</span>, <span class="variable">$dbuser</span>, <span class="variable">$dbpass</span>);</span><br><span class="line"><span class="keyword">if</span>(! <span class="variable">$conn</span> )</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&#x27;Could not connect: &#x27;</span> . <span class="title function_ invoke__">mysqli_error</span>());</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;数据库连接成功！&#x27;</span>;</span><br><span class="line"><span class="title function_ invoke__">mysqli_close</span>(<span class="variable">$conn</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="数据库的应用（基于命令）">数据库的应用（基于命令）</h2>
+<h3 id="数据库基本操作">数据库基本操作</h3>
+<h4 id="创建数据库">创建数据库</h4>
+<p>我们可以在登陆 MySQL 服务后，使用 <strong>create</strong> 命令创建数据库，语法如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE 数据库名;</span><br></pre></td></tr></table></figure>
+<p>如果你希望在创建数据库时指定一些选项，可以使用 CREATE DATABASE 语句的其他参数，例如，你可以指定字符集和排序规则：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE mydatabase</span><br><span class="line">  CHARACTER SET utf8mb4</span><br><span class="line">  COLLATE utf8mb4_general_ci;</span><br></pre></td></tr></table></figure>
+<p>如果数据库已经存在，执行 CREATE DATABASE 将导致错误。</p>
+<p>为了避免这种情况，你可以在 CREATE DATABASE 语句中添加 IF NOT EXISTS 子句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE IF NOT EXISTS mydatabase;</span><br></pre></td></tr></table></figure>
+<p>以下是使用 mysqladmin 创建数据库的基本语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqladmin -u your_username -p create your_database</span><br></pre></td></tr></table></figure>
+<p>在navicat中直接通过ui界面进行创建链接创建数据库</p>
+<p>或者是在在 Navicat 中执行 SQL 命令：</p>
+<ol>
+<li>打开 Navicat 并连接到你的 MySQL 服务器。</li>
+<li>在左侧的连接列表中找到你的 MySQL 服务器，右键点击连接，然后选择“新建查询”。</li>
+<li>在查询编辑器中输入以下 SQL 命令来创建数据库：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE your_database;</span><br></pre></td></tr></table></figure>
+<p>如果你希望在创建数据库时指定字符集和排序规则，可以使用 <strong>-default-character-set</strong> 和 <strong>-default-collation</strong> 参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysqladmin -u your_username -p create your_database \</span><br><span class="line">  --default-character-set=utf8mb4 \</span><br><span class="line">  --default-collation=utf8mb4_general_ci</span><br></pre></td></tr></table></figure>
+<p>php脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$dbhost = &#x27;localhost&#x27;;  // mysql服务器主机地址</span><br><span class="line">$dbuser = &#x27;root&#x27;;            // mysql用户名</span><br><span class="line">$dbpass = &#x27;123456&#x27;;          // mysql用户名密码</span><br><span class="line">$conn = mysqli_connect($dbhost, $dbuser, $dbpass);</span><br><span class="line">if(! $conn )</span><br><span class="line">&#123;</span><br><span class="line">  die(&#x27;连接错误: &#x27; . mysqli_error($conn));</span><br><span class="line">&#125;</span><br><span class="line">echo &#x27;连接成功&lt;br /&gt;&#x27;;</span><br><span class="line">$sql = &#x27;CREATE DATABASE RUNOOB&#x27;;</span><br><span class="line">$retval = mysqli_query($conn,$sql );</span><br><span class="line">if(! $retval )</span><br><span class="line">&#123;</span><br><span class="line">    die(&#x27;创建数据库失败: &#x27; . mysqli_error($conn));</span><br><span class="line">&#125;</span><br><span class="line">echo &quot;数据库 RUNOOB 创建成功\n&quot;;</span><br><span class="line">mysqli_close($conn);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="删除数据库">删除数据库</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DROP DATABASE &lt;database_name&gt;;        -- 直接删除数据库，不检查是否存在</span><br><span class="line">或</span><br><span class="line">DROP DATABASE [IF EXISTS] &lt;database_name&gt;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>IF EXISTS</code> 是一个可选的子句，表示如果数据库存在才执行删除操作，避免因为数据库不存在而引发错误。</li>
+</ul>
+<p>以下是使用 mysqladmin 删除数据库的命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqladmin -u your_username -p drop your_database</span><br></pre></td></tr></table></figure>
+<h5 id="使用-PHP-脚本删除数据库">使用 PHP 脚本删除数据库</h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$dbhost = &#x27;localhost&#x27;;  // mysql服务器主机地址</span><br><span class="line">$dbuser = &#x27;root&#x27;;            // mysql用户名</span><br><span class="line">$dbpass = &#x27;123456&#x27;;          // mysql用户名密码</span><br><span class="line">$conn = mysqli_connect($dbhost, $dbuser, $dbpass);</span><br><span class="line">if(! $conn )</span><br><span class="line">&#123;</span><br><span class="line">    die(&#x27;连接失败: &#x27; . mysqli_error($conn));</span><br><span class="line">&#125;</span><br><span class="line">echo &#x27;连接成功&lt;br /&gt;&#x27;;</span><br><span class="line">$sql = &#x27;DROP DATABASE RUNOOB&#x27;;</span><br><span class="line">$retval = mysqli_query( $conn, $sql );</span><br><span class="line">if(! $retval )</span><br><span class="line">&#123;</span><br><span class="line">    die(&#x27;删除数据库失败: &#x27; . mysqli_error($conn));</span><br><span class="line">&#125;</span><br><span class="line">echo &quot;数据库 RUNOOB 删除成功\n&quot;;</span><br><span class="line">mysqli_close($conn);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="选择数据库">选择数据库</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USE database_name;</span><br></pre></td></tr></table></figure>
+<p>mysqlamin:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u your_username -p -D your_database</span><br></pre></td></tr></table></figure>
+<p>php脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$dbhost = &#x27;localhost&#x27;;  // mysql服务器主机地址</span><br><span class="line">$dbuser = &#x27;root&#x27;;            // mysql用户名</span><br><span class="line">$dbpass = &#x27;123456&#x27;;          // mysql用户名密码</span><br><span class="line">$conn = mysqli_connect($dbhost, $dbuser, $dbpass);</span><br><span class="line">if(! $conn )</span><br><span class="line">&#123;</span><br><span class="line">    die(&#x27;连接失败: &#x27; . mysqli_error($conn));</span><br><span class="line">&#125;</span><br><span class="line">echo &#x27;连接成功&#x27;;</span><br><span class="line">mysqli_select_db($conn, &#x27;RUNOOB&#x27; );</span><br><span class="line">mysqli_close($conn);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="数据类型">数据类型</h2>
+<p>MySQL 支持所有标准 SQL 数值数据类型。</p>
+<p>这些类型包括严格数值数据类型(INTEGER、SMALLINT、DECIMAL 和 NUMERIC)，以及近似数值数据类型(FLOAT、REAL 和 DOUBLE PRECISION)。</p>
+<p>关键字INT是INTEGER的同义词，关键字DEC是DECIMAL的同义词。</p>
+<p>BIT数据类型保存位字段值，并且支持 MyISAM、MEMORY、InnoDB 和 BDB表。</p>
+<p>作为 SQL 标准的扩展，MySQL 也支持整数类型 TINYINT、MEDIUMINT 和 BIGINT。下面的表显示了需要的每个整数类型的存储和范围。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">大小</th>
+<th style="text-align:center">范围（有符号）</th>
+<th style="text-align:left">范围（无符号）</th>
+<th style="text-align:left">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">TINYINT</td>
+<td style="text-align:left">1 Bytes</td>
+<td style="text-align:center">(-128，127)</td>
+<td style="text-align:left">(0，255)</td>
+<td style="text-align:left">小整数值</td>
+</tr>
+<tr>
+<td style="text-align:left">SMALLINT</td>
+<td style="text-align:left">2 Bytes</td>
+<td style="text-align:center">(-32 768，32 767)</td>
+<td style="text-align:left">(0，65 535)</td>
+<td style="text-align:left">大整数值</td>
+</tr>
+<tr>
+<td style="text-align:left">MEDIUMINT</td>
+<td style="text-align:left">3 Bytes</td>
+<td style="text-align:center">(-8 388 608，8 388 607)</td>
+<td style="text-align:left">(0，16 777 215)</td>
+<td style="text-align:left">大整数值</td>
+</tr>
+<tr>
+<td style="text-align:left">INT或INTEGER</td>
+<td style="text-align:left">4 Bytes</td>
+<td style="text-align:center">(-2 147 483 648，2 147 483 647)</td>
+<td style="text-align:left">(0，4 294 967 295)</td>
+<td style="text-align:left">大整数值</td>
+</tr>
+<tr>
+<td style="text-align:left">BIGINT</td>
+<td style="text-align:left">8 Bytes</td>
+<td style="text-align:center">(-9,223,372,036,854,775,808，9 223 372 036 854 775 807)</td>
+<td style="text-align:left">(0，18 446 744 073 709 551 615)</td>
+<td style="text-align:left">极大整数值</td>
+</tr>
+<tr>
+<td style="text-align:left">FLOAT</td>
+<td style="text-align:left">4 Bytes</td>
+<td style="text-align:center">(-3.402 823 466 E+38，-1.175 494 351 E-38)，0，(1.175 494 351 E-38，3.402 823 466 351 E+38)</td>
+<td style="text-align:left">0，(1.175 494 351 E-38，3.402 823 466 E+38)</td>
+<td style="text-align:left">单精度 浮点数值</td>
+</tr>
+<tr>
+<td style="text-align:left">DOUBLE</td>
+<td style="text-align:left">8 Bytes</td>
+<td style="text-align:center">(-1.797 693 134 862 315 7 E+308，-2.225 073 858 507 201 4 E-308)，0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308)</td>
+<td style="text-align:left">0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308)</td>
+<td style="text-align:left">双精度 浮点数值</td>
+</tr>
+<tr>
+<td style="text-align:left">DECIMAL</td>
+<td style="text-align:left">对DECIMAL(M,D) ，如果M&gt;D，为M+2否则为D+2</td>
+<td style="text-align:center">依赖于M和D的值</td>
+<td style="text-align:left">依赖于M和D的值</td>
+<td style="text-align:left">小数值</td>
+</tr>
+</tbody>
+</table>
+<p>表示时间值的日期和时间类型为DATETIME、DATE、TIMESTAMP、TIME和YEAR。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">大小 ( bytes)</th>
+<th style="text-align:left">范围</th>
+<th style="text-align:left">格式</th>
+<th style="text-align:left">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">DATE</td>
+<td style="text-align:left">3</td>
+<td style="text-align:left">1000-01-01/9999-12-31</td>
+<td style="text-align:left">YYYY-MM-DD</td>
+<td style="text-align:left">日期值</td>
+</tr>
+<tr>
+<td style="text-align:left">TIME</td>
+<td style="text-align:left">3</td>
+<td style="text-align:left">‘-838:59:59’/‘838:59:59’</td>
+<td style="text-align:left">HH:MM:SS</td>
+<td style="text-align:left">时间值或持续时间</td>
+</tr>
+<tr>
+<td style="text-align:left">YEAR</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1901/2155</td>
+<td style="text-align:left">YYYY</td>
+<td style="text-align:left">年份值</td>
+</tr>
+<tr>
+<td style="text-align:left">DATETIME</td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">‘1000-01-01 00:00:00’ 到 ‘9999-12-31 23:59:59’</td>
+<td style="text-align:left">YYYY-MM-DD hh:mm:ss</td>
+<td style="text-align:left">混合日期和时间值</td>
+</tr>
+<tr>
+<td style="text-align:left">TIMESTAMP</td>
+<td style="text-align:left">4</td>
+<td style="text-align:left">‘1970-01-01 00:00:01’ UTC 到 ‘2038-01-19 03:14:07’ UTC结束时间是第 <strong>2147483647</strong> 秒，北京时间 <strong>2038-1-19 11:14:07</strong>，格林尼治时间 2038年1月19日 凌晨 03:14:07</td>
+<td style="text-align:left">YYYY-MM-DD hh:mm:ss</td>
+<td style="text-align:left">混合日期和时间值，时间戳</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">大小</th>
+<th style="text-align:left">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">CHAR</td>
+<td style="text-align:left">0-255 bytes</td>
+<td style="text-align:left">定长字符串</td>
+</tr>
+<tr>
+<td style="text-align:left">VARCHAR</td>
+<td style="text-align:left">0-65535 bytes</td>
+<td style="text-align:left">变长字符串</td>
+</tr>
+<tr>
+<td style="text-align:left">TINYBLOB</td>
+<td style="text-align:left">0-255 bytes</td>
+<td style="text-align:left">不超过 255 个字符的二进制字符串</td>
+</tr>
+<tr>
+<td style="text-align:left">TINYTEXT</td>
+<td style="text-align:left">0-255 bytes</td>
+<td style="text-align:left">短文本字符串</td>
+</tr>
+<tr>
+<td style="text-align:left">BLOB</td>
+<td style="text-align:left">0-65 535 bytes</td>
+<td style="text-align:left">二进制形式的长文本数据</td>
+</tr>
+<tr>
+<td style="text-align:left">TEXT</td>
+<td style="text-align:left">0-65 535 bytes</td>
+<td style="text-align:left">长文本数据</td>
+</tr>
+<tr>
+<td style="text-align:left">MEDIUMBLOB</td>
+<td style="text-align:left">0-16 777 215 bytes</td>
+<td style="text-align:left">二进制形式的中等长度文本数据</td>
+</tr>
+<tr>
+<td style="text-align:left">MEDIUMTEXT</td>
+<td style="text-align:left">0-16 777 215 bytes</td>
+<td style="text-align:left">中等长度文本数据</td>
+</tr>
+<tr>
+<td style="text-align:left">LONGBLOB</td>
+<td style="text-align:left">0-4 294 967 295 bytes</td>
+<td style="text-align:left">二进制形式的极大文本数据</td>
+</tr>
+<tr>
+<td style="text-align:left">LONGTEXT</td>
+<td style="text-align:left">0-4 294 967 295 bytes</td>
+<td style="text-align:left">极大文本数据</td>
+</tr>
+</tbody>
+</table>
+<p>字符串类型指CHAR、VARCHAR、BINARY、VARBINARY、BLOB、TEXT、ENUM和SET。该节描述了这些类型如何工作以及如何在查询中使用这些类型。</p>
+<p>枚举与集合类型（Enumeration and Set Types）</p>
+<ul>
+<li>
+<p><strong>ENUM</strong>: 枚举类型，用于存储单一值，可以选择一个预定义的集合。</p>
+</li>
+<li>
+<p><strong>SET</strong>: 集合类型，用于存储多个值，可以选择多个预定义的集合。</p>
+</li>
+</ul>
+<h2 id="数据表">数据表</h2>
+<h3 id="创建数据表">创建数据表</h3>
+<p>创建 MySQL 数据表需要以下信息：</p>
+<ul>
+<li>表名</li>
+<li>表字段名</li>
+<li>定义每个表字段的数据类型</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE table_name (</span><br><span class="line">    column1 datatype,</span><br><span class="line">    column2 datatype,</span><br><span class="line">    ...</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><strong>参数说明：</strong></p>
+<ul>
+<li>
+<p><code>table_name</code> 是你要创建的表的名称。</p>
+</li>
+<li>
+<p><code>column1</code>, <code>column2</code>, … 是表中的列名。</p>
+</li>
+<li>
+<p><code>datatype</code> 是每个列的数据类型。</p>
+<p>实例：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE users (</span><br><span class="line">    id INT AUTO_INCREMENT PRIMARY KEY,</span><br><span class="line">    username VARCHAR(50) NOT NULL,</span><br><span class="line">    email VARCHAR(100) NOT NULL,</span><br><span class="line">    birthdate DATE,</span><br><span class="line">    is_active BOOLEAN DEFAULT TRUE</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>实例解析：</p>
+<ul>
+<li><code>id</code>: 用户 id，整数类型，自增长，作为主键。</li>
+<li><code>username</code>: 用户名，变长字符串，不允许为空。</li>
+<li><code>email</code>: 用户邮箱，变长字符串，不允许为空。</li>
+<li><code>birthdate</code>: 用户的生日，日期类型。</li>
+<li><code>is_active</code>: 用户是否已经激活，布尔类型，默认值为 true。</li>
+</ul>
+<p>如果你希望在创建表时指定数据引擎，字符集和排序规则等，可以使用 <strong>CHARACTER SET</strong> 和 <strong>COLLATE</strong> 子句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE mytable (</span><br><span class="line">    id INT PRIMARY KEY,</span><br><span class="line">    name VARCHAR(50)</span><br><span class="line">) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE IF NOT EXISTS `runoob_tbl`(</span><br><span class="line">   `runoob_id` INT UNSIGNED AUTO_INCREMENT,</span><br><span class="line">   `runoob_title` VARCHAR(100) NOT NULL,</span><br><span class="line">   `runoob_author` VARCHAR(40) NOT NULL,</span><br><span class="line">   `submission_date` DATE,</span><br><span class="line">   PRIMARY KEY ( `runoob_id` )</span><br><span class="line">)ENGINE=InnoDB DEFAULT CHARSET=utf8;</span><br></pre></td></tr></table></figure>
+<p>实例解析：</p>
+<ul>
+<li>如果你不想字段为<strong>空</strong>可以设置字段的属性为 <strong>NOT NULL</strong>，如上实例中的 runoob_title 与 runoob_author 字段， 在操作数据库时如果输入该字段的数据为空，就会报错。</li>
+<li><strong>AUTO_INCREMENT</strong> 定义列为自增的属性，一般用于主键，数值会自动加 1。</li>
+<li><strong>PRIMARY KEY</strong> 关键字用于定义列为主键。 您可以使用多列来定义主键，列间以逗号 <strong>,</strong> 分隔。</li>
+<li><strong>ENGINE</strong> 设置存储引擎，<strong>CHARSET</strong> 设置编码。</li>
+</ul>
+<h3 id="删除数据表">删除数据表</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE table_name ;    -- 直接删除表，不检查是否存在</span><br><span class="line">或</span><br><span class="line">DROP TABLE [IF EXISTS] table_name;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqladmin -u your_username -p drop your_table</span><br></pre></td></tr></table></figure>
+<p>mysqladmin命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$dbhost = &#x27;localhost&#x27;;  // mysql服务器主机地址</span><br><span class="line">$dbuser = &#x27;root&#x27;;            // mysql用户名</span><br><span class="line">$dbpass = &#x27;123456&#x27;;          // mysql用户名密码</span><br><span class="line">$conn = mysqli_connect($dbhost, $dbuser, $dbpass);</span><br><span class="line">if(! $conn )</span><br><span class="line">&#123;</span><br><span class="line">  die(&#x27;连接失败: &#x27; . mysqli_error($conn));</span><br><span class="line">&#125;</span><br><span class="line">echo &#x27;连接成功&lt;br /&gt;&#x27;;</span><br><span class="line">$sql = &quot;DROP TABLE runoob_tbl&quot;;</span><br><span class="line">mysqli_select_db( $conn, &#x27;RUNOOB&#x27; );</span><br><span class="line">$retval = mysqli_query( $conn, $sql );</span><br><span class="line">if(! $retval )</span><br><span class="line">&#123;</span><br><span class="line">  die(&#x27;数据表删除失败: &#x27; . mysqli_error($conn));</span><br><span class="line">&#125;</span><br><span class="line">echo &quot;数据表删除成功\n&quot;;</span><br><span class="line">mysqli_close($conn);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>php脚本命令</p>
+<h2 id="数据操作">数据操作</h2>
+<h3 id="插入数据">插入数据</h3>
+<p>MySQL 表中使用 <strong>INSERT INTO</strong> 语句来插入数据。</p>
+<p>你可以通过 <strong>mysql&gt;</strong> 命令提示窗口中向数据表中插入数据，或者通过PHP脚本来插入数据。</p>
+<p>以下为向MySQL数据表插入数据通用的 <strong>INSERT INTO</strong> SQL语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO table_name (column1, column2, column3, ...)</span><br><span class="line">VALUES (value1, value2, value3, ...);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>table_name</code> 是你要插入数据的表的名称。</li>
+<li><code>column1</code>, <code>column2</code>, <code>column3</code>, … 是表中的列名。</li>
+<li><code>value1</code>, <code>value2</code>, <code>value3</code>, … 是要插入的具体数值。</li>
+</ul>
+<p>如果数据是字符型，必须使用单引号 <strong>’</strong> 或者双引号 <strong>&quot;</strong>，如： ‘value1’, “value1”。</p>
+<p>如果你要插入所有列的数据，可以省略列名：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO users</span><br><span class="line">VALUES (NULL,&#x27;test&#x27;, &#x27;test@runoob.com&#x27;, &#x27;1990-01-01&#x27;, true);</span><br></pre></td></tr></table></figure>
+<p>这里，<strong>NULL</strong> 是用于自增长列的占位符，表示系统将为 <strong>id</strong> 列生成一个唯一的值。</p>
+<p>如果你要插入多行数据，可以在 VALUES 子句中指定多组数值：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO users (username, email, birthdate, is_active)</span><br><span class="line">VALUES</span><br><span class="line">    (&#x27;test1&#x27;, &#x27;test1@runoob.com&#x27;, &#x27;1985-07-10&#x27;, true),</span><br><span class="line">    (&#x27;test2&#x27;, &#x27;test2@runoob.com&#x27;, &#x27;1988-11-25&#x27;, false),</span><br><span class="line">    (&#x27;test3&#x27;, &#x27;test3@runoob.com&#x27;, &#x27;1993-05-03&#x27;, true);</span><br></pre></td></tr></table></figure>
+<p>cmd窗口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">root@host# mysql -u root -p password;</span><br><span class="line">Enter password:*******</span><br><span class="line">mysql&gt; USE RUNOOB;</span><br><span class="line">DATABASE changed</span><br><span class="line">mysql&gt; INSERT INTO runoob_tbl </span><br><span class="line">    -&gt; (runoob_title, runoob_author, submission_date)</span><br><span class="line">    -&gt; VALUES</span><br><span class="line">    -&gt; (&quot;学习 PHP&quot;, &quot;菜鸟教程&quot;, NOW());</span><br><span class="line">Query OK, 1 ROWS affected, 1 warnings (0.01 sec)</span><br><span class="line">mysql&gt; INSERT INTO runoob_tbl</span><br><span class="line">    -&gt; (runoob_title, runoob_author, submission_date)</span><br><span class="line">    -&gt; VALUES</span><br><span class="line">    -&gt; (&quot;学习 MySQL&quot;, &quot;菜鸟教程&quot;, NOW());</span><br><span class="line">Query OK, 1 ROWS affected, 1 warnings (0.01 sec)</span><br><span class="line">mysql&gt; INSERT INTO runoob_tbl</span><br><span class="line">    -&gt; (runoob_title, runoob_author, submission_date)</span><br><span class="line">    -&gt; VALUES</span><br><span class="line">    -&gt; (&quot;JAVA 教程&quot;, &quot;RUNOOB.COM&quot;, &#x27;2016-05-06&#x27;);</span><br><span class="line">Query OK, 1 ROWS affected (0.00 sec)</span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
+<p>php脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$dbhost = &#x27;localhost&#x27;;  // mysql服务器主机地址</span><br><span class="line">$dbuser = &#x27;root&#x27;;            // mysql用户名</span><br><span class="line">$dbpass = &#x27;123456&#x27;;          // mysql用户名密码</span><br><span class="line">$conn = mysqli_connect($dbhost, $dbuser, $dbpass);</span><br><span class="line">if(! $conn )</span><br><span class="line">&#123;</span><br><span class="line">  die(&#x27;连接失败: &#x27; . mysqli_error($conn));</span><br><span class="line">&#125;</span><br><span class="line">echo &#x27;连接成功&lt;br /&gt;&#x27;;</span><br><span class="line">// 设置编码，防止中文乱码</span><br><span class="line">mysqli_query($conn , &quot;set names utf8&quot;);</span><br><span class="line"> </span><br><span class="line">$runoob_title = &#x27;学习 Python&#x27;;</span><br><span class="line">$runoob_author = &#x27;RUNOOB.COM&#x27;;</span><br><span class="line">$submission_date = &#x27;2016-03-06&#x27;;</span><br><span class="line"> </span><br><span class="line">$sql = &quot;INSERT INTO runoob_tbl &quot;.</span><br><span class="line">        &quot;(runoob_title,runoob_author, submission_date) &quot;.</span><br><span class="line">        &quot;VALUES &quot;.</span><br><span class="line">        &quot;(&#x27;$runoob_title&#x27;,&#x27;$runoob_author&#x27;,&#x27;$submission_date&#x27;)&quot;;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">mysqli_select_db( $conn, &#x27;RUNOOB&#x27; );</span><br><span class="line">$retval = mysqli_query( $conn, $sql );</span><br><span class="line">if(! $retval )</span><br><span class="line">&#123;</span><br><span class="line">  die(&#x27;无法插入数据: &#x27; . mysqli_error($conn));</span><br><span class="line">&#125;</span><br><span class="line">echo &quot;数据插入成功\n&quot;;</span><br><span class="line">mysqli_close($conn);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="查询数据">查询数据</h3>
+<p>MySQL 数据库使用 <strong>SELECT</strong> 语句来查询数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2, ...</span><br><span class="line">FROM table_name</span><br><span class="line">[WHERE condition]</span><br><span class="line">[ORDER BY column_name [ASC | DESC]]</span><br><span class="line">[LIMIT number];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>olumn1</code>, <code>column2</code>, … 是你想要选择的列的名称，如果使用 <code>*</code> 表示选择所有列。</li>
+<li><code>table_name</code> 是你要从中查询数据的表的名称。</li>
+<li><code>WHERE condition</code> 是一个可选的子句，用于指定过滤条件，只返回符合条件的行。</li>
+<li><code>ORDER BY column_name [ASC | DESC]</code> 是一个可选的子句，用于指定结果集的排序顺序，默认是升序（ASC）。</li>
+<li><code>LIMIT number</code> 是一个可选的子句，用于限制返回的行数。</li>
+</ul>
+<p>实例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">-- 选择所有列的所有行</span><br><span class="line">SELECT * FROM users;</span><br><span class="line"></span><br><span class="line">-- 选择特定列的所有行</span><br><span class="line">SELECT username, email FROM users;</span><br><span class="line"></span><br><span class="line">-- 添加 WHERE 子句，选择满足条件的行</span><br><span class="line">SELECT * FROM users WHERE is_active = TRUE;</span><br><span class="line"></span><br><span class="line">-- 添加 ORDER BY 子句，按照某列的升序排序</span><br><span class="line">SELECT * FROM users ORDER BY birthdate;</span><br><span class="line"></span><br><span class="line">-- 添加 ORDER BY 子句，按照某列的降序排序</span><br><span class="line">SELECT * FROM users ORDER BY birthdate DESC;</span><br><span class="line"></span><br><span class="line">-- 添加 LIMIT 子句，限制返回的行数</span><br><span class="line">SELECT * FROM users LIMIT 10;</span><br></pre></td></tr></table></figure>
+<p>在 <code>WHERE</code> 子句中，你可以使用各种条件运算符（如 <code>=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>!=</code>），逻辑运算符（如 <code>AND</code>, <code>OR</code>, <code>NOT</code>），以及通配符（如 <code>%</code>）等。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-- 使用 AND 运算符和通配符</span><br><span class="line">SELECT * FROM users WHERE username LIKE &#x27;j%&#x27; AND is_active = TRUE;</span><br><span class="line"></span><br><span class="line">-- 使用 OR 运算符</span><br><span class="line">SELECT * FROM users WHERE is_active = TRUE OR birthdate &lt; &#x27;1990-01-01&#x27;;</span><br><span class="line"></span><br><span class="line">-- 使用 IN 子句</span><br><span class="line">SELECT * FROM users WHERE birthdate IN (&#x27;1990-01-01&#x27;, &#x27;1992-03-15&#x27;, &#x27;1993-05-03&#x27;);</span><br></pre></td></tr></table></figure>
+<p>[^]: 这里的 <code>LIKE 'j%'</code> 使用了通配符 <code>%</code>，表示任意数量的字符</p>
+<p>通配符 <code>%</code> 的作用是匹配零个或多个字符。例如：</p>
+<ul>
+<li><code>'j%'</code>：匹配以 ‘j’ 开头的所有字符串。</li>
+<li><code>'%j'</code>：匹配以 ‘j’ 结尾的所有字符串。</li>
+<li><code>'%j%'</code>：匹配包含 ‘j’ 的所有字符串。</li>
+</ul>
+<p>php脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$dbhost = &#x27;localhost&#x27;;  // mysql服务器主机地址</span><br><span class="line">$dbuser = &#x27;root&#x27;;            // mysql用户名</span><br><span class="line">$dbpass = &#x27;123456&#x27;;          // mysql用户名密码</span><br><span class="line">$conn = mysqli_connect($dbhost, $dbuser, $dbpass);</span><br><span class="line">if(! $conn )</span><br><span class="line">&#123;</span><br><span class="line">    die(&#x27;连接失败: &#x27; . mysqli_error($conn));</span><br><span class="line">&#125;</span><br><span class="line">// 设置编码，防止中文乱码</span><br><span class="line">mysqli_query($conn , &quot;set names utf8&quot;);</span><br><span class="line"> </span><br><span class="line">$sql = &#x27;SELECT runoob_id, runoob_title, </span><br><span class="line">        runoob_author, submission_date</span><br><span class="line">        FROM runoob_tbl&#x27;;</span><br><span class="line"> </span><br><span class="line">mysqli_select_db( $conn, &#x27;RUNOOB&#x27; );</span><br><span class="line">$retval = mysqli_query( $conn, $sql );</span><br><span class="line">if(! $retval )</span><br><span class="line">&#123;</span><br><span class="line">    die(&#x27;无法读取数据: &#x27; . mysqli_error($conn));</span><br><span class="line">&#125;</span><br><span class="line">echo &#x27;&lt;h2&gt;菜鸟教程 mysqli_fetch_array 测试&lt;/h2&gt;&#x27;;</span><br><span class="line">echo &#x27;&lt;table border=&quot;1&quot;&gt;&lt;tr&gt;&lt;td&gt;教程 ID&lt;/td&gt;&lt;td&gt;标题&lt;/td&gt;&lt;td&gt;作者&lt;/td&gt;&lt;td&gt;提交日期&lt;/td&gt;&lt;/tr&gt;&#x27;;</span><br><span class="line">while($row = mysqli_fetch_array($retval, MYSQLI_ASSOC))</span><br><span class="line">&#123;</span><br><span class="line">    echo &quot;&lt;tr&gt;&lt;td&gt; &#123;$row[&#x27;runoob_id&#x27;]&#125;&lt;/td&gt; &quot;.</span><br><span class="line">         &quot;&lt;td&gt;&#123;$row[&#x27;runoob_title&#x27;]&#125; &lt;/td&gt; &quot;.</span><br><span class="line">         &quot;&lt;td&gt;&#123;$row[&#x27;runoob_author&#x27;]&#125; &lt;/td&gt; &quot;.</span><br><span class="line">         &quot;&lt;td&gt;&#123;$row[&#x27;submission_date&#x27;]&#125; &lt;/td&gt; &quot;.</span><br><span class="line">         &quot;&lt;/tr&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">echo &#x27;&lt;/table&gt;&#x27;;</span><br><span class="line">mysqli_close($conn);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="WHERE-子句">WHERE 子句</h3>
+<p>我们知道从 MySQL 表中使用 <strong>SELECT</strong> 语句来读取数据。</p>
+<p>如需有条件地从表中选取数据，可将 WHERE 子句添加到 SELECT 语句中。</p>
+<p>WHERE 子句用于在 MySQL 中过滤查询结果，只返回满足特定条件的行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2, ...</span><br><span class="line">FROM table_name</span><br><span class="line">WHERE condition;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>查询语句中你可以使用一个或者多个表，表之间使用逗号**,** 分割，并使用WHERE语句来设定查询条件。</li>
+<li>你可以在 WHERE 子句中指定任何条件。</li>
+<li>你可以使用 AND 或者 OR 指定一个或多个条件。</li>
+<li>WHERE 子句也可以运用于 SQL 的 DELETE 或者 UPDATE 命令。</li>
+<li>WHERE 子句类似于程序语言中的 if 条件，根据 MySQL 表中的字段值来读取指定的数据。</li>
+</ul>
+<p>下表中实例假定 A 为 10, B 为 20</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">操作符</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">=</td>
+<td style="text-align:left">等号，检测两个值是否相等，如果相等返回true</td>
+<td style="text-align:left">(A = B) 返回false。</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;&gt;, !=</td>
+<td style="text-align:left">不等于，检测两个值是否相等，如果不相等返回true</td>
+<td style="text-align:left">(A != B) 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align:left">&gt;</td>
+<td style="text-align:left">大于号，检测左边的值是否大于右边的值, 如果左边的值大于右边的值返回true</td>
+<td style="text-align:left">(A &gt; B) 返回false。</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;</td>
+<td style="text-align:left">小于号，检测左边的值是否小于右边的值, 如果左边的值小于右边的值返回true</td>
+<td style="text-align:left">(A &lt; B) 返回 true。</td>
+</tr>
+<tr>
+<td style="text-align:left">&gt;=</td>
+<td style="text-align:left">大于等于号，检测左边的值是否大于或等于右边的值, 如果左边的值大于或等于右边的值返回true</td>
+<td style="text-align:left">(A &gt;= B) 返回false。</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;=</td>
+<td style="text-align:left">小于等于号，检测左边的值是否小于或等于右边的值, 如果左边的值小于或等于右边的值返回true</td>
+<td style="text-align:left">(A &lt;= B) 返回 true。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="简单实例">简单实例</h4>
+<ol>
+<li>等于条件：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users WHERE username = &#x27;test&#x27;;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>不等于条件：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users WHERE username != &#x27;runoob&#x27;;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>大于条件:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM products WHERE price &gt; 50.00;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>小于条件:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM orders WHERE order_date &lt; &#x27;2023-01-01&#x27;;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>大于等于条件:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM employees WHERE salary &gt;= 50000;</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>小于等于条件:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM students WHERE age &lt;= 21;</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>组合条件（AND、OR）:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM products WHERE category = &#x27;Electronics&#x27; AND price &gt; 100.00;</span><br><span class="line"></span><br><span class="line">SELECT * FROM orders WHERE order_date &gt;= &#x27;2023-01-01&#x27; OR total_amount &gt; 1000.00;</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>模糊匹配条件（LIKE）:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM customers WHERE first_name LIKE &#x27;J%&#x27;;</span><br></pre></td></tr></table></figure>
+<ol start="9">
+<li>IN 条件:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM countries WHERE country_code IN (&#x27;US&#x27;, &#x27;CA&#x27;, &#x27;MX&#x27;);</span><br></pre></td></tr></table></figure>
+<ol start="10">
+<li>NOT 条件:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM products WHERE NOT category = &#x27;Clothing&#x27;;</span><br></pre></td></tr></table></figure>
+<ol start="11">
+<li>BETWEEN 条件:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM orders WHERE order_date BETWEEN &#x27;2023-01-01&#x27; AND &#x27;2023-12-31&#x27;;</span><br></pre></td></tr></table></figure>
+<ol start="12">
+<li>IS NULL 条件</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM employees WHERE department IS NULL;</span><br></pre></td></tr></table></figure>
+<ol start="13">
+<li>IS NOT NULL 条件:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM customers WHERE email IS NOT NULL;</span><br></pre></td></tr></table></figure>
+<p>php脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$dbhost = &#x27;localhost&#x27;;  // mysql服务器主机地址</span><br><span class="line">$dbuser = &#x27;root&#x27;;            // mysql用户名</span><br><span class="line">$dbpass = &#x27;123456&#x27;;          // mysql用户名密码</span><br><span class="line">$conn = mysqli_connect($dbhost, $dbuser, $dbpass);</span><br><span class="line">if(! $conn )</span><br><span class="line">&#123;</span><br><span class="line">    die(&#x27;连接失败: &#x27; . mysqli_error($conn));</span><br><span class="line">&#125;</span><br><span class="line">// 设置编码，防止中文乱码</span><br><span class="line">mysqli_query($conn , &quot;set names utf8&quot;);</span><br><span class="line"> </span><br><span class="line">// 读取 runoob_author 为 RUNOOB.COM 的数据</span><br><span class="line">$sql = &#x27;SELECT runoob_id, runoob_title, </span><br><span class="line">        runoob_author, submission_date</span><br><span class="line">        FROM runoob_tbl</span><br><span class="line">        WHERE runoob_author=&quot;RUNOOB.COM&quot;&#x27;;</span><br><span class="line"> </span><br><span class="line">mysqli_select_db( $conn, &#x27;RUNOOB&#x27; );</span><br><span class="line">$retval = mysqli_query( $conn, $sql );</span><br><span class="line">if(! $retval )</span><br><span class="line">&#123;</span><br><span class="line">    die(&#x27;无法读取数据: &#x27; . mysqli_error($conn));</span><br><span class="line">&#125;</span><br><span class="line">echo &#x27;&lt;h2&gt;菜鸟教程 MySQL WHERE 子句测试&lt;h2&gt;&#x27;;</span><br><span class="line">echo &#x27;&lt;table border=&quot;1&quot;&gt;&lt;tr&gt;&lt;td&gt;教程 ID&lt;/td&gt;&lt;td&gt;标题&lt;/td&gt;&lt;td&gt;作者&lt;/td&gt;&lt;td&gt;提交日期&lt;/td&gt;&lt;/tr&gt;&#x27;;</span><br><span class="line">while($row = mysqli_fetch_array($retval, MYSQLI_ASSOC))</span><br><span class="line">&#123;</span><br><span class="line">    echo &quot;&lt;tr&gt;&lt;td&gt; &#123;$row[&#x27;runoob_id&#x27;]&#125;&lt;/td&gt; &quot;.</span><br><span class="line">         &quot;&lt;td&gt;&#123;$row[&#x27;runoob_title&#x27;]&#125; &lt;/td&gt; &quot;.</span><br><span class="line">         &quot;&lt;td&gt;&#123;$row[&#x27;runoob_author&#x27;]&#125; &lt;/td&gt; &quot;.</span><br><span class="line">         &quot;&lt;td&gt;&#123;$row[&#x27;submission_date&#x27;]&#125; &lt;/td&gt; &quot;.</span><br><span class="line">         &quot;&lt;/tr&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">echo &#x27;&lt;/table&gt;&#x27;;</span><br><span class="line">// 释放内存</span><br><span class="line">mysqli_free_result($retval);</span><br><span class="line">mysqli_close($conn);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="UPDATE-更新">UPDATE 更新</h3>
+<p>如果我们需要修改或更新 MySQL 中的数据，我们可以使用 <strong>UPDATE</strong> 命令来操作。</p>
+<p>以下是 UPDATE 命令修改 MySQL 数据表数据的通用 SQL 语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UPDATE table_name</span><br><span class="line">SET column1 = value1, column2 = value2, ...</span><br><span class="line">WHERE condition;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><code>table_name</code> 是你要更新数据的表的名称。</p>
+</li>
+<li>
+<p><code>column1</code>, <code>column2</code>, … 是你要更新的列的名称。</p>
+</li>
+<li>
+<p><code>value1</code>, <code>value2</code>, … 是新的值，用于替换旧的值。</p>
+</li>
+<li>
+<p><code>WHERE condition</code> 是一个可选的子句，用于指定更新的行。如果省略 <code>WHERE</code> 子句，将更新表中的所有行。</p>
+</li>
+<li>
+<p>你可以同时更新一个或多个字段。</p>
+</li>
+<li>
+<p>你可以在 WHERE 子句中指定任何条件。</p>
+</li>
+<li>
+<p>你可以在一个单独表中同时更新数据。</p>
+</li>
+</ul>
+<p>实例</p>
+<ol>
+<li>更新单个列的值：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UPDATE employees</span><br><span class="line">SET salary = 60000</span><br><span class="line">WHERE employee_id = 101;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>更新多个列的值：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UPDATE orders</span><br><span class="line">SET status = &#x27;Shipped&#x27;, ship_date = &#x27;2023-03-01&#x27;</span><br><span class="line">WHERE order_id = 1001;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>使用表达式更新值：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UPDATE products</span><br><span class="line">SET price = price * 1.1</span><br><span class="line">WHERE category = &#x27;Electronics&#x27;;</span><br></pre></td></tr></table></figure>
+<p>以上 SQL 语句将每个属于 ‘Electronics’ 类别的产品的价格都增加了 10%。</p>
+<ol start="4">
+<li>更新符合条件的所有行：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UPDATE students</span><br><span class="line">SET status = &#x27;Graduated&#x27;;</span><br></pre></td></tr></table></figure>
+<p>以上 SQL 语句将所有学生的状态更新为 ‘Graduated’。</p>
+<ol start="5">
+<li>更新使用子查询的值：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">UPDATE customers</span><br><span class="line">SET total_purchases = (</span><br><span class="line">    SELECT SUM(amount)</span><br><span class="line">    FROM orders</span><br><span class="line">    WHERE orders.customer_id = customers.customer_id</span><br><span class="line">)</span><br><span class="line">WHERE customer_type = &#x27;Premium&#x27;;</span><br></pre></td></tr></table></figure>
+<p>以上 SQL 语句通过子查询计算每个 ‘Premium’ 类型客户的总购买金额，并将该值更新到 total_purchases 列中。</p>
+<p>PHP脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$dbhost = &#x27;localhost&#x27;;  // mysql服务器主机地址</span><br><span class="line">$dbuser = &#x27;root&#x27;;            // mysql用户名</span><br><span class="line">$dbpass = &#x27;123456&#x27;;          // mysql用户名密码</span><br><span class="line">$conn = mysqli_connect($dbhost, $dbuser, $dbpass);</span><br><span class="line">if(! $conn )</span><br><span class="line">&#123;</span><br><span class="line">    die(&#x27;连接失败: &#x27; . mysqli_error($conn));</span><br><span class="line">&#125;</span><br><span class="line">// 设置编码，防止中文乱码</span><br><span class="line">mysqli_query($conn , &quot;set names utf8&quot;);</span><br><span class="line"> </span><br><span class="line">$sql = &#x27;UPDATE runoob_tbl</span><br><span class="line">        SET runoob_title=&quot;学习 Python&quot;</span><br><span class="line">        WHERE runoob_id=3&#x27;;</span><br><span class="line"> </span><br><span class="line">mysqli_select_db( $conn, &#x27;RUNOOB&#x27; );</span><br><span class="line">$retval = mysqli_query( $conn, $sql );</span><br><span class="line">if(! $retval )</span><br><span class="line">&#123;</span><br><span class="line">    die(&#x27;无法更新数据: &#x27; . mysqli_error($conn));</span><br><span class="line">&#125;</span><br><span class="line">echo &#x27;数据更新成功！&#x27;;</span><br><span class="line">mysqli_close($conn);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://mengnankk.asia">mengnankkzhou</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://mengnankk.asia/2024/07/04/mysql1/">https://mengnankk.asia/2024/07/04/mysql1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://mengnankk.asia" target="_blank">mengnankkのblog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/mysql/">mysql</a></div><div class="post_share"><div class="social-share" data-image="https://cy-pic.kuaizhan.com/g3/09/b9/f747-adcd-42f2-a29f-fdf2fda9ef6631?cysign=37c3da8b4f235b6c826993f1ecf01497&amp;cyt=1721627383" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://imgbed.mengnankk.asia/202407021650088.jpg" target="_blank"><img class="post-qr-code-img" src="https://imgbed.mengnankk.asia/202407021650088.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/07/08/mysql2/" title="Mysql DQL"><img class="cover" src="https://cy-pic.kuaizhan.com/g3/59/1c/6400-684b-4e96-a17b-5bbe68be306790?cysign=f82a66c0805208124a5916ec7bc297d0&amp;cyt=1721627383" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Mysql DQL</div></div></a></div><div class="next-post pull-right"><a href="/2024/07/04/springboot/" title="Spring boot(2)"><img class="cover" src="https://cy-pic.kuaizhan.com/g3/0c/70/a2ce-70bd-4844-b3d1-cbf41b5a863092?cysign=f2b7dafd50e270c82e6241da24405c93&amp;cyt=1721627574" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Spring boot(2)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/07/09/mysql3/" title="Mysql DCL"><img class="cover" src="https://cy-pic.kuaizhan.com/g3/f4/00/9c74-a049-44fa-bd11-dcdaeba66dc940?cysign=331ef3588faaab136e3295f0f6d8472f&cyt=1721627383" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-09</div><div class="title">Mysql DCL</div></div></a></div><div><a href="/2024/07/08/mysql2/" title="Mysql DQL"><img class="cover" src="https://cy-pic.kuaizhan.com/g3/59/1c/6400-684b-4e96-a17b-5bbe68be306790?cysign=f82a66c0805208124a5916ec7bc297d0&cyt=1721627383" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-08</div><div class="title">Mysql DQL</div></div></a></div><div><a href="/2024/07/11/mysql4/" title="Mysql 函数"><img class="cover" src="https://cy-pic.kuaizhan.com/g3/3d/5a/f029-7677-483b-a16c-d7d5bf3f132502?cysign=a0b488644934acf04cb1b03c575ae047&cyt=1721627383" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-11</div><div class="title">Mysql 函数</div></div></a></div><div><a href="/2024/07/22/mysql6/" title="Mysql 事务"><img class="cover" src="https://cy-pic.kuaizhan.com/g3/89/59/e320-0c11-437e-b6a3-0143fc27cf7234?cysign=0b88cc9a9852b45f2476188b211f5366&cyt=1721627373" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-22</div><div class="title">Mysql 事务</div></div></a></div><div><a href="/2024/07/19/mysql5/" title="Mysql 多表查询"><img class="cover" src="https://cy-pic.kuaizhan.com/g3/4a/db/8e48-809c-4536-9e0a-1ed33f3fb38861?cysign=25de3647ac090b8b92d885c204837314&cyt=1721627383" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-19</div><div class="title">Mysql 多表查询</div></div></a></div><div><a href="/2024/07/22/sqltest/" title="Mysql练习"><img class="cover" src="https://cy-pic.kuaizhan.com/g3/a1/b8/73f1-f312-4abb-8956-7c371693970062?cysign=05e68cc29cd7b0e376c2b30f243696aa&cyt=1721627574" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-22</div><div class="title">Mysql练习</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div class="comment-switch"><span class="first-comment">Valine</span><span id="switch-btn"></span><span class="second-comment">Livere</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div><div><div id="lv-container" data-id="city" data-uid="MTAyMC81OTkyOC8zNjM5MQ"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://imgbed.mengnankk.asia/202407091737880.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">mengnankkzhou</div><div class="author-info__description">清风拂柳影，碧水映花香。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/mengnankkkk"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/mengnankkkk" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:mengnankkzhou@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://space.bilibili.com/440831872?spm_id_from=333.1007.0.0" target="_blank" title="Bilibili"><i class="fab fa-bilibili" style="color: #00a1d6;"></i></a><a class="social-icon" href="https://www.instagram.com/mengnankkzhou" target="_blank" title="Instagram"><i class="fab fa-instagram" style="color: #e4405f;"></i></a><a class="social-icon" href="weixin://contacts/profile/zykmengnankk123" target="_blank" title="WeChat"><i class="fab fa-weixin" style="color: #09b83e;"></i></a><a class="social-icon" href="tencent://message/?uin=2215290444" target="_blank" title="QQ"><i class="fab fa-qq" style="color: #12b7f5;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">喜欢中国队德意志战车山东鲁能阿森纳，混迹历史圈的我的世界pvp菜鸡</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.1.</span> <span class="toc-text">认识数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.2.</span> <span class="toc-text">MySQL数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85mysql"><span class="toc-number">1.3.</span> <span class="toc-text">安装mysql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#etc-my-cnf-%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.</span> <span class="toc-text">&#x2F;etc&#x2F;my.cnf 文件配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. 基本设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%89%E9%A1%B9"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. 服务器选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98"><span class="toc-number">1.4.3.</span> <span class="toc-text">3. 性能调优</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%AE%89%E5%85%A8%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.4.4.</span> <span class="toc-text">4. 安全设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%97%A5%E5%BF%97%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.4.5.</span> <span class="toc-text">5. 日志设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%A4%8D%E5%88%B6%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.4.6.</span> <span class="toc-text">6. 复制设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E7%AE%A1%E7%90%86MySQL%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">1.4.7.</span> <span class="toc-text">7.管理MySQL的命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-PHP%E8%84%9A%E6%9C%AC%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.4.8.</span> <span class="toc-text">8.PHP脚本连接数据库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%BA%94%E7%94%A8%EF%BC%88%E5%9F%BA%E4%BA%8E%E5%91%BD%E4%BB%A4%EF%BC%89"><span class="toc-number">1.5.</span> <span class="toc-text">数据库的应用（基于命令）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">1.5.1.</span> <span class="toc-text">数据库基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.5.1.1.</span> <span class="toc-text">创建数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.5.1.2.</span> <span class="toc-text">删除数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-PHP-%E8%84%9A%E6%9C%AC%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.5.1.2.1.</span> <span class="toc-text">使用 PHP 脚本删除数据库</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.5.1.3.</span> <span class="toc-text">选择数据库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.6.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="toc-number">1.7.</span> <span class="toc-text">数据表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="toc-number">1.7.1.</span> <span class="toc-text">创建数据表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="toc-number">1.7.2.</span> <span class="toc-text">删除数据表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C"><span class="toc-number">1.8.</span> <span class="toc-text">数据操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">1.8.1.</span> <span class="toc-text">插入数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE"><span class="toc-number">1.8.2.</span> <span class="toc-text">查询数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WHERE-%E5%AD%90%E5%8F%A5"><span class="toc-number">1.8.3.</span> <span class="toc-text">WHERE 子句</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.8.3.1.</span> <span class="toc-text">简单实例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UPDATE-%E6%9B%B4%E6%96%B0"><span class="toc-number">1.8.4.</span> <span class="toc-text">UPDATE 更新</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/07/22/mysql6/" title="Mysql 事务"><img src="https://cy-pic.kuaizhan.com/g3/89/59/e320-0c11-437e-b6a3-0143fc27cf7234?cysign=0b88cc9a9852b45f2476188b211f5366&amp;cyt=1721627373" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mysql 事务"/></a><div class="content"><a class="title" href="/2024/07/22/mysql6/" title="Mysql 事务">Mysql 事务</a><time datetime="2024-07-21T16:00:00.000Z" title="发表于 2024-07-22 00:00:00">2024-07-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/22/sqltest/" title="Mysql练习"><img src="https://cy-pic.kuaizhan.com/g3/a1/b8/73f1-f312-4abb-8956-7c371693970062?cysign=05e68cc29cd7b0e376c2b30f243696aa&amp;cyt=1721627574" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mysql练习"/></a><div class="content"><a class="title" href="/2024/07/22/sqltest/" title="Mysql练习">Mysql练习</a><time datetime="2024-07-21T16:00:00.000Z" title="发表于 2024-07-22 00:00:00">2024-07-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/19/mysql5/" title="Mysql 多表查询"><img src="https://cy-pic.kuaizhan.com/g3/4a/db/8e48-809c-4536-9e0a-1ed33f3fb38861?cysign=25de3647ac090b8b92d885c204837314&amp;cyt=1721627383" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mysql 多表查询"/></a><div class="content"><a class="title" href="/2024/07/19/mysql5/" title="Mysql 多表查询">Mysql 多表查询</a><time datetime="2024-07-18T16:00:00.000Z" title="发表于 2024-07-19 00:00:00">2024-07-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/11/css1/" title="CSS BASIC"><img src="https://cy-pic.kuaizhan.com/g3/ca/f3/422f-c814-49a5-a74a-f9c11a26eb8d46?cysign=04f0d59f698986a0130555f4d61d22de&amp;cyt=1721626929" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CSS BASIC"/></a><div class="content"><a class="title" href="/2024/07/11/css1/" title="CSS BASIC">CSS BASIC</a><time datetime="2024-07-10T16:00:00.000Z" title="发表于 2024-07-11 00:00:00">2024-07-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/11/html1/" title="HTML basic"><img src="https://cy-pic.kuaizhan.com/g3/0c/74/0118-c7d9-403d-938d-dcd5ecfba74395?cysign=f71d763cf0800ded67505c4fa258e42d&amp;cyt=1721627373" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HTML basic"/></a><div class="content"><a class="title" href="/2024/07/11/html1/" title="HTML basic">HTML basic</a><time datetime="2024-07-10T16:00:00.000Z" title="发表于 2024-07-11 00:00:00">2024-07-11</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By mengnankkzhou</div><div class="footer_custom_text"><p><a style="margin-inline:5px"target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"></a><a style="margin-inline:5px"target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"></a><a style="margin-inline:5px"target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用 Jsdelivr 为静态资源提供CDN加速" alt="Jsdelivr"></a><a style="margin-inline:5px"target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"></a><a style="margin-inline:5px"target="_blank"href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p><a style="margin-inline:5px" target="_blank" href="https://nodejs.org/"><img src="https://img.shields.io/badge/Node.js-v14.17.0-green?style=flat&logo=node.js" title="使用 Node.js v14.17.0" alt="Node.js"></a><a style="margin-inline:5px" target="_blank" href="https://git-scm.com/"><img src="https://img.shields.io/badge/Version%20Control-Git-f34f29?style=flat&logo=git" title="使用 Git 版本控制" alt="Git"></a><a style="margin-inline:5px" target="_blank" href="https://www.qiniu.com/"><img src="https://img.shields.io/badge/CDN-七牛云-009ad6?style=flat&logo=qiniu" title="使用七牛云作为 CDN" alt="七牛云"></a><a style="margin-inline:5px" target="_blank" href="https://cloud.tencent.com/"><img src="https://img.shields.io/badge/Cloud-腾讯云-0a73b8?style=flat&logo=tencent-cloud" title="使用腾讯云服务" alt="腾讯云"></a><a style="margin-inline:5px" target="_blank" href="https://www.aliyun.com/"><img src="https://img.shields.io/badge/Cloud-阿里云-ff6a00?style=flat&logo=aliyun" title="使用阿里云服务" alt="阿里云"></a><a style="margin-inline:5px" target="_blank" href="https://www.qlu.edu.cn/"><img src="https://img.shields.io/badge/University-齐鲁工业大学-0056a2?style=flat&logo=university" title="齐鲁工业大学" alt="齐鲁工业大学"></a><div id="runtime"></div></div></div><div id="footer_button"><ul class="buttons"><li class="icon Email"><span class="bubble">Email</span><a href="mailto:mengnankkzhou@gmail.com"><i class="fa-solid fa-envelope"></i></a></li><li class="icon QQ"><span class="bubble">QQ</span><a href="tencent://Message/?Uin=2215290444&amp;websiteName=q-zone.qq.com&amp;Menu=yes"><i class="fa-brands fa-qq"></i></a></li><li class="icon top"><span class="bubble">top</span><a href="#"><img src="/img/118623712_p0_square1200.jpg" alt="Top" style="width: 32px; height: 32px;"/></a></li><li class="icon github"><span class="bubble">Github</span><a target="_blank" rel="noopener" href="https://github.com/mengnankkkk"><i class="fab fa-github"></i></a></li><li class="icon CSDN"><span class="bubble">Instagram</span><a target="_blank" rel="noopener" href="https://www.instagram.com/mengnankkzhou"><i class="fab fa-instagram"></i></a></li></ul></div><div id="Hsu-foot"><div class="footer-group"><h3 class="footer-title">直达</h3><div class="footer-links"><a class="footer-item" href="/" target="_blank">我的主页</a><a class="footer-item" href="/Message">留言区</a><a class="footer-item" target="_blank" rel="noopener" href="https://home.mengnankk.asia/">我的home</a></div></div><div class="footer-group"><h3 class="footer-title">分类</h3><div class="footer-links"><a class="footer-item" href="/categories/学习笔记/">学习笔记</a><a class="footer-item" href="/categories/算法教程/">算法教程</a><a class="footer-item" href="/categories/刷题笔记/">刷题笔记</a><a class="footer-item" href="/categories/语法教程/">语法教程</a><a class="footer-item" href="/categories/工具分享/">工具分享</a></div></div><div class="footer-group"><h3 class="footer-title">关于</h3><div class="footer-links"><a class="footer-item" href="/about">关于我</a><a class="footer-item" target="_blank" rel="noopener" href="https://nav.mengnankk.asia/">导航栏</a><a class="footer-item" href="/archives">文章归档</a></div></div><div class="footer-group"><h3 class="footer-title">友链</h3><div class="footer-links"><a class="footer-item" href="/link">在这里 ✨</a><a class="footer-item" href="mailto:charles_hsu@qq.com">广告位招租啦</a></div></div><div class="footer-group"><h3 class="footer-title">协议</h3><div class="footer-links"><a class="footer-item" target="_blank" rel="noopener" href="https://status.mengnankk.asia/">站点检测</a><a class="footer-item" target="_blank" rel="noopener" href="https://pan.mengnankk.asia/">我的网盘</a><a class="footer-item" href="/cc">版权协议</a></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '3ZpuzQHHKWfFH59QFYmcuCvr-gzGzoHsz',
+      appKey: '8DIvljObQp853ueQMZzpb9Gx',
+      avatar: 'monsterid',
+      serverURLs: 'https://3zpuzqhh.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, {"placeholder":"快来发表您的最强说法","notify":false,"verify":false,"pageSize":10,"highlight":true,"recordIP":true,"lang":"zh-CN","enableQQ":true}))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><script>(()=>{
+  const loadLivere = () => {
+    if (typeof LivereTower === 'object') window.LivereTower.init()
+    else {
+      (function(d, s) {
+          var j, e = d.getElementsByTagName(s)[0];
+          if (typeof LivereTower === 'function') { return; }
+          j = d.createElement(s);
+          j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+          j.async = true;
+          e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    }
+  }
+
+  if ('Valine' === 'Livere' || !false) {
+    if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+    else loadLivere()
+  } else {
+    window.loadOtherComment = loadLivere
+  }
+})()</script></div><script src="/js/11.js"></script><script defer src="/live2d-widget/autoload.js"></script><link rel="stylesheet" href="/css/custom.css"  media="defer" onload="this.media='all'"><script defer src="https://gcore.jsdelivr.net/combine/npm/jquery@latest/dist/jquery.min.js,gh/weilining/jsdelivr/jquery/circlemagic/circlemagic.min.js,gh/weilining/jsdelivr@latest/jquery/circlemagic/butterflycirclemagic.js"></script><script src="/js/44.js"></script><script src="/js/snowflake.js"></script><script src="/js/timing.js"></script><script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=5V2tOKp8qAdRM-i8eu7ETTO9ugt5uKbbG-U7Yj8uMl8"></script><script src="/js/test.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="true" data-text="I,LOVE,YOU" data-fontsize="30px" data-random="false" async="async"></script><script src="//code.tidio.co/lcks6jvcdig9jk2kk6qystqkwfodfoym.js" async="async"></script><script>(() => {
+  const isChatBtn = false
+  const isChatHideShow = false
+
+  if (isChatBtn) {
+    let isShow = false
+    const close = () => {
+      window.tidioChatApi.hide()
+      isShow = false
+    }
+    
+    const open = () => {
+      window.tidioChatApi.open()
+      window.tidioChatApi.show()
+      isShow = true
+    }
+
+    const onTidioChatApiReady = () => {
+      window.tidioChatApi.hide()
+      window.tidioChatApi.on("close", close)
+    }
+    if (window.tidioChatApi) {
+      window.tidioChatApi.on("ready", onTidioChatApiReady)
+    } else {
+      document.addEventListener("tidioChat-ready", onTidioChatApiReady)
+    }
+
+    window.chatBtnFn = () => {
+      if (!window.tidioChatApi) return
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        window.tidioChatApi && window.tidioChatApi.hide()
+      },
+      show: () => {
+        window.tidioChatApi && window.tidioChatApi.show()
+      }
+    }
+  }
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:24%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://raw.githubusercontent.com/mengnankkkk/img/main/202407061424766.jpg);"> <a class="categoryBar-list-link" href="categories/sql/">sql</a><span class="categoryBar-list-count">9</span><span class="categoryBar-list-descr">点我</span></li><li class="categoryBar-list-item" style="background:url(https://raw.githubusercontent.com/mengnankkkk/img/main/202407062158461.jpg);"> <a class="categoryBar-list-link" href="categories/awdp/">awdp</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">点我</span></li><li class="categoryBar-list-item" style="background:url(https://raw.githubusercontent.com/mengnankkkk/img/main/202407062158462.jpg);"> <a class="categoryBar-list-link" href="categories/C/">C</a><span class="categoryBar-list-count">4</span><span class="categoryBar-list-descr">点我</span></li><li class="categoryBar-list-item" style="background:url(https://raw.githubusercontent.com/mengnankkkk/img/main/202407061426874.jpg);"> <a class="categoryBar-list-link" href="categories/web/">web</a><span class="categoryBar-list-count">13</span><span class="categoryBar-list-descr">点我</span></li><li class="categoryBar-list-item" style="background:url(https://raw.githubusercontent.com/mengnankkkk/img/main/202407071231714.jpg);"> <a class="categoryBar-list-link" href="categories/life/">life</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">点我</span></li><li class="categoryBar-list-item" style="background:url(https://raw.githubusercontent.com/mengnankkkk/img/main/202407071231717.jpg);"> <a class="categoryBar-list-link" href="categories/java/">java</a><span class="categoryBar-list-count">5</span><span class="categoryBar-list-descr">点我</span></li><li class="categoryBar-list-item" style="background:url(https://raw.githubusercontent.com/mengnankkkk/img/main/202407071231715.jpg);"> <a class="categoryBar-list-link" href="categories/mc/">mc</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">点我</span></li><li class="categoryBar-list-item" style="background:url(https://raw.githubusercontent.com/mengnankkkk/img/main/202407071231722.jpg);"> <a class="categoryBar-list-link" href="categories/python/">python</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">点我</span></li><li class="categoryBar-list-item" style="background:url(https://imgbed.mengnankk.asia/202407091723066.jpg);"> <a class="categoryBar-list-link" href="categories/work/">work</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">点我</span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = '9884db2967464660bcd52ced594c7ab2';
+  var gaud_map_key = 'b8feab448e3cac863a57635f1e2cbb9b';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '112.982279,28.19409';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="background:url(https://cy-pic.kuaizhan.com/g3/e3/17/0686-e9c4-4b12-9657-c711c80bbd9f80?cysign=7e88aa353ccc005cbaa597039f9157e6&amp;cyt=1721627574);border-radius:12px;opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><div class="blog-slider__content"><span class="blog-slider__code">2024-06-06</span><a class="blog-slider__title" onclick="window.open(&quot;2024/06/06/webbbs/&quot;);" href="javascript:void(0);" alt="">BBS项目设计</a><div class="blog-slider__text">文章推荐qwq</div></div></div><div class="blog-slider__item swiper-slide" style="background:url(https://cy-pic.kuaizhan.com/g3/f3/37/2f04-6105-41ab-b152-00f57bfece4b68?cysign=cf9923d97e292956d20eabe67518dc4a&amp;cyt=1721626929);border-radius:12px;opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><div class="blog-slider__content"><span class="blog-slider__code">2023-12-25</span><a class="blog-slider__title" onclick="window.open(&quot;2023/12/25/c/&quot;);" href="javascript:void(0);" alt="">C语言学习</a><div class="blog-slider__text">文章推荐qwq</div></div></div><div class="blog-slider__item swiper-slide" style="background:url(https://cy-pic.kuaizhan.com/g3/b0/cf/eeb2-da06-4d02-b2b1-e17c373358da32?cysign=95603500f298484757b4234267277a9a&amp;cyt=1721626929);border-radius:12px;opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><div class="blog-slider__content"><span class="blog-slider__code">2024-06-06</span><a class="blog-slider__title" onclick="window.open(&quot;2024/06/06/bbs/&quot;);" href="javascript:void(0);" alt="">bbs sql</a><div class="blog-slider__text">文章推荐qwq</div></div></div><div class="blog-slider__item swiper-slide" style="background:url(https://cy-pic.kuaizhan.com/g3/c7/2f/dc8e-dead-40aa-890f-fa366d78025827?cysign=8ba5c23df8ceeb6feba5824f9db666f6&amp;cyt=1721626929);border-radius:12px;opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><div class="blog-slider__content"><span class="blog-slider__code">2024-06-17</span><a class="blog-slider__title" onclick="window.open(&quot;2024/06/17/awdp/&quot;);" href="javascript:void(0);" alt="">awdp测试</a><div class="blog-slider__text">文章推荐qwq</div></div></div><div class="blog-slider__item swiper-slide" style="background:url(https://cy-pic.kuaizhan.com/g3/b8/f1/6d46-8ea1-4d4f-8150-103bc629a41114?cysign=7fe4aa0d4a220fec65b9f86f73a80368&amp;cyt=1721626929);border-radius:12px;opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><div class="blog-slider__content"><span class="blog-slider__code">2024-06-12</span><a class="blog-slider__title" onclick="window.open(&quot;2024/06/12/bbs web/&quot;);" href="javascript:void(0);" alt="">bbs项目设计</a><div class="blog-slider__text">文章推荐qwq</div></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div><div class="swiper-button-prev"></div><div class="swiper-button-next"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

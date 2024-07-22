@@ -1,0 +1,322 @@
+/* 效果一：彩带 */
+.card-info>.is-center:hover {
+    background: url(https://gcore.jsdelivr.net/gh/rigodlee/BLOGCDN/img/H3342af90d24b4d62b9bbfec9688ccc25M.gif);
+  }
+  
+  /* 效果二：花 */
+  .card-info>.is-center:hover {
+    background: url(https://gcore.jsdelivr.net/gh/rigodlee/BLOGCDN/img/20200530181856.gif);
+  }
+  
+  body {
+    cursor: url(https://gcore.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/default.cur),
+        default;
+}
+a,
+img {
+    cursor: url(https://gcore.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur),
+        default;
+}
+body {
+      background-color: #fff8fb76;
+    }
+
+    #footer_button {
+      display: grid;
+      justify-items: center;
+      align-items: center;
+      margin: 0;
+      padding: 2rem 0 0 0;
+    }
+
+    .buttons {
+      display: grid;
+      width: 45%;
+      padding: 0;
+      justify-items: center;
+      align-items: center;
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .buttons .icon {
+      display: grid;
+      justify-items: center;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      padding: 5px;
+      margin: 0px;
+      width: 50px;
+      height: 50px;
+      box-shadow: 1px 10px 10px 1px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .buttons a {
+      display: block;
+      height: 28px;
+      width: 26px;
+      font-size: 18px;
+      line-height: 35px;
+      color: #4c4948;
+    }
+
+    .buttons .bubble {
+      position: absolute;
+      top: 0;
+      font-size: 14px;
+      background: #ffffff;
+      color: #ffffff;
+      padding: 5px 8px;
+      border-radius: 5px;
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .buttons .bubble::before {
+      position: absolute;
+      content: "";
+      height: 8px;
+      width: 8px;
+      background: #ffffff;
+      bottom: -4px;
+      left: 50%;
+      transform: translate(-50%) rotate(45deg);
+      transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .buttons .icon:hover .bubble {
+      top: -15px;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .buttons .icon:hover span,
+    .buttons .icon:hover .bubble {
+      text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .buttons .Email:hover,
+    .buttons .Email:hover .bubble,
+    .buttons .Email:hover .bubble::before {
+      background: #1877F2;
+      color: #ffffff;
+    }
+
+    .buttons .Email:hover a {
+      color: #ffffff;
+    }
+
+    .buttons .QQ:hover,
+    .buttons .QQ:hover .bubble,
+    .buttons .QQ:hover .bubble::before {
+      background: #1DA1F2;
+      color: #ffffff;
+    }
+
+    .buttons .QQ:hover a {
+      color: #ffffff;
+    }
+
+    .buttons .top:hover,
+    .buttons .top:hover .bubble,
+    .buttons .top:hover .bubble::before {
+      background: #cfcacea5;
+      color: #ffffff;
+    }
+
+    .buttons .top:hover a {
+      color: #ffffff;
+    }
+
+    .buttons .github:hover,
+    .buttons .github:hover .bubble,
+    .buttons .github:hover .bubble::before {
+      background: #333333;
+      color: #ffffff;
+    }
+
+    .buttons .github:hover a {
+      color: #ffffff;
+    }
+
+    .buttons .CSDN:hover,
+    .buttons .CSDN:hover .bubble,
+    .buttons .CSDN:hover .bubble::before {
+      background: #CD201F;
+      color: #ffffff;
+    }
+
+    .buttons .CSDN:hover a {
+      color: #ffffff;
+    }
+
+    /* 自适应 */
+    @media screen and (max-width: 780px) {
+      .buttons {
+        width: 80%;
+      }
+    }
+
+    @media screen and (max-width: 1450px) and (min-width: 780px) {
+      .buttons {
+        width: 60%;
+      }
+    }
+
+    @media screen and (min-width: 1220px) {
+      #Hsu-foot {
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+    }
+
+    /* dark ♂ mode */
+    [data-theme="dark"] body {
+      background-color: #313131;
+    }
+
+    [data-theme="dark"] #Hsu-foot {
+      background-color: #121212;
+    }
+
+    [data-theme="light"] #footer {
+      padding-top: 15px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 18%, #ffffff 97%);
+    }
+
+    /* 深色模式的按钮全部是黑白色 */
+    [data-theme="dark"] .buttons .icon,
+    [data-theme="dark"] .buttons .icon:hover,
+    [data-theme="dark"] .buttons .icon:hover .bubble,
+    [data-theme="dark"] .buttons .icon:hover .bubble::before,
+    [data-theme="dark"] .buttons .icon:hover a {
+      background: #121212;
+      color: #ffffff;
+    }
+
+    /* 页脚 */
+    #Hsu-foot {
+      background-color: rgba(255, 255, 255, 0.4);
+      display: grid;
+      grid-template-columns: repeat(5, 2fr);
+      column-gap: 15px;
+      margin: 1%;
+      margin-top: 30px;
+      padding-bottom: 15px;
+      max-width: 1170px;
+      box-shadow: 9px 10px 16px 3px rgb(0 0 0 / 10%);
+      border-radius: 10px;
+    }
+
+    #Hsu-foot .footer-group {
+      display: grid;
+      grid-template-rows: 0fr 1fr;
+      margin-left: 30px;
+    }
+
+    #Hsu-foot .footer-title {
+      display: block;
+      font-size: 1rem;
+      height: 2rem;
+    }
+
+    #Hsu-foot .footer-links {
+      display: grid;
+      grid-auto-rows: 2rem;
+    }
+
+    #Hsu-foot .footer-item {
+      font-size: 1rem;
+      line-height: .8rem;
+      margin: .38rem 0;
+      color: var(--Jay-fontcolor);
+      /*margin-right: auto*/
+    }
+
+    /* 徽章 */
+    #footer-badges {
+      max-width: 1170px;
+      margin: auto;
+    }
+
+    #footer-badges .badge {
+      margin: 25px 5px 0px 0px;
+    }
+    div#runtime {
+      width: fit-content;
+      color: #fff;
+      padding: 0 10px;
+      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  [data-theme="dark"] div#runtime {
+      color: #28b4c8;
+      box-shadow: 0 0 5px rgba(28, 69, 218, 0.71);
+  }
+  #nav-right{
+    flex:1 1 auto;
+    justify-content: flex-end;
+    margin-left: auto;
+    display: flex;
+    flex-wrap:nowrap;
+  }
+  #nav *::after{
+    background-color: transparent!important;
+}
+.menus_item_child li:not(#sidebar-menus li){
+  float: left;
+  border-radius: 6px!important;
+  -webkit-border-radius: 6px!important;
+  -moz-border-radius: 6px!important;
+  -ms-border-radius: 6px!important;
+  -o-border-radius: 6px!important;
+}
+.menus_item_child:not(#sidebar-menus ul){
+/*
+  left:calc(-150%)!important;这是估算值，为了保持元素居中的，如果不合适可以自己调
+改为：*/
+left:50%;
+translate:-50%;
+}
+#web_bg {
+  background: url(https://pixabay.com/zh/photos/water-fresh-clear-summer-drops-2559064/);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top 10%; /* 调整背景图片的垂直位置 */
+}
+
+/* 文章页背景 */
+.layout_post>#post {
+  /* 以下代表透明度为0.7 可以自行修改*/
+  background: rgba(255,255,255,.7);
+}
+
+/* 所有页面背景 */
+#aside_content .card-widget, #recent-posts>.recent-post-item, .layout_page>div:first-child:not(.recent-posts), .layout_post>#page, .layout_post>#post, .read-mode .layout_post>#post{
+  /* 以下代表透明度为0.7 */
+  background: rgba(255,255,255,.7);
+}
+/*侧边卡片的透明度 */
+:root {
+--card-bg: rgba(255, 255, 255, .7);
+}
+/* 页脚透明 */
+#footer {
+/* 以下代表透明度为0.7 */
+background: rgba(255,255,255, .0);
+}
+.icon img {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s;
+}
+
+.icon:hover img {
+  transform: scale(1.1); /* 鼠标悬停时图片稍微放大 */
+}
