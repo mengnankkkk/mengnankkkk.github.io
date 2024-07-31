@@ -59,7 +59,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-07-31 22:32:03',
+  postUpdate: '2024-07-31 22:55:25',
   postMainColor: '',
 }</script><noscript><style type="text/css">
   #nav {
@@ -215,15 +215,15 @@ if (true) {
       </a>
     </div>
     
-    <div class="catalog-list-item" id="/categories/web/">
-      <a href="/categories/web/">
-        web
-      </a>
-    </div>
-    
     <div class="catalog-list-item" id="/categories/C/">
       <a href="/categories/C/">
         C
+      </a>
+    </div>
+    
+    <div class="catalog-list-item" id="/categories/web/">
+      <a href="/categories/web/">
+        web
       </a>
     </div>
     
@@ -273,22 +273,7 @@ https经由http进行通信，但是利用ssl/tls来加密数据包，https的�
 https的url是由https://起始，默认端口为443
 https的作用
 信任的情况：
-与一个网站之间的 HTTPS 连线仅在这些情况下可 ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/2023/11/20/day5/')"><div class="post_cover left"><a href="/2023/11/20/day5/" title="php命令注入及其实例" style="display: flex;height: 100%;"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221837447.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="php命令注入及其实例" style="pointer-events: none"></a></div><div class="recent-post-info"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><div class="article-categories-original">web</div><a class="unvisited-post" href="/2023/11/20/day5/" title="php命令注入及其实例">未读</a></div><a class="article-title" href="/2023/11/20/day5/" title="php命令注入及其实例">php命令注入及其实例</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-19T16:00:00.000Z" title="发表于 2023-11-20 00:00:00" time="2023-11-20 00:00:00">2023-11-20</time><time class="time_hidden" datetime="2024-07-22T10:49:26.301Z" title="更新于 2024-07-22 18:49:26" time="2024-07-22 18:49:26">2024-07-22</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/php/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>php</span></a></span></div><div class="content">php注入概述
-rce概念：remote command/code execute，远程命令/代码执行。
-php代码执行：在web中，php代码执行是指应用程序过滤不严，用户可通过http请求将代码注入到应用中执行
-php代码注入与sql注入比较：
-注入的思想类似，均是构造语句绕过服务器的过滤去执行。
-区别在于sql注入是将语句注入到数据库中执行，而php代码执行是可以将代码注入到应用中，最终由服务器运行。
-php代码注入的条件：
-1.程序中含有可以执行php代码的函数或者语言结构
-2.传入该函数或者语言结构的参数是可以由客户端控制的（可以直接修改或者造成影响）且应用过滤不严。
-危害：
-这样的漏洞如果没有特殊的过滤，相当于一个web后门的存在，攻击者可以执行漏洞继承web用户权限，执行任意代码。如果服务器没有正确配置或者web用户权限比较高的话，还可以读写靶机服务器任意文件的内容，甚至控制整个网站或者服务器。
-相关的函数或语言结构
-1.eval()函数
-作用：该函数的作用是将字符串作为PHP代码执行。
-例：
-12345678&lt;?phpif (isset($_GET[&#x27;c ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/2023/11/20/day4/')"><div class="post_cover left"><a href="/2023/11/20/day4/" title="php学习（2）" style="display: flex;height: 100%;"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221837447.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="php学习（2）" style="pointer-events: none"></a></div><div class="recent-post-info"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><div class="article-categories-original">web</div><a class="unvisited-post" href="/2023/11/20/day4/" title="php学习（2）">未读</a></div><a class="article-title" href="/2023/11/20/day4/" title="php学习（2）">php学习（2）</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-19T16:00:00.000Z" title="发表于 2023-11-20 00:00:00" time="2023-11-20 00:00:00">2023-11-20</time><time class="time_hidden" datetime="2024-07-22T10:48:36.608Z" title="更新于 2024-07-22 18:48:36" time="2024-07-22 18:48:36">2024-07-22</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/php/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>php</span></a></span></div><div class="content">web基础知识
+与一个网站之间的 HTTPS 连线仅在这些情况下可 ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/2023/11/20/day4/')"><div class="post_cover left"><a href="/2023/11/20/day4/" title="php学习（2）" style="display: flex;height: 100%;"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221837447.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="php学习（2）" style="pointer-events: none"></a></div><div class="recent-post-info"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><div class="article-categories-original">web</div><a class="unvisited-post" href="/2023/11/20/day4/" title="php学习（2）">未读</a></div><a class="article-title" href="/2023/11/20/day4/" title="php学习（2）">php学习（2）</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-19T16:00:00.000Z" title="发表于 2023-11-20 00:00:00" time="2023-11-20 00:00:00">2023-11-20</time><time class="time_hidden" datetime="2024-07-22T10:48:36.608Z" title="更新于 2024-07-22 18:48:36" time="2024-07-22 18:48:36">2024-07-22</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/php/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>php</span></a></span></div><div class="content">web基础知识
 php文件有以下几种备份的格式:
 1.git .svn .swp .bak .bash-history
 类如
@@ -309,7 +294,22 @@ php对于文件的读取
 3.=index.php读取的文件
 添加：
 读取上级目录文件
-1php://fil ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/2023/11/16/day2/')"><div class="post_cover left"><a href="/2023/11/16/day2/" title="web网络学习（1）" style="display: flex;height: 100%;"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221837447.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="web网络学习（1）" style="pointer-events: none"></a></div><div class="recent-post-info"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><div class="article-categories-original">web</div><a class="unvisited-post" href="/2023/11/16/day2/" title="web网络学习（1）">未读</a></div><a class="article-title" href="/2023/11/16/day2/" title="web网络学习（1）">web网络学习（1）</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-15T16:00:00.000Z" title="发表于 2023-11-16 00:00:00" time="2023-11-16 00:00:00">2023-11-16</time><time class="time_hidden" datetime="2024-07-22T10:45:39.435Z" title="更新于 2024-07-22 18:45:39" time="2024-07-22 18:45:39">2024-07-22</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/web/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>web</span></a></span></div><div class="content">01.get&amp;&amp;post的区别：
+1php://fil ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/2023/11/20/day5/')"><div class="post_cover left"><a href="/2023/11/20/day5/" title="php命令注入及其实例" style="display: flex;height: 100%;"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221837447.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="php命令注入及其实例" style="pointer-events: none"></a></div><div class="recent-post-info"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><div class="article-categories-original">web</div><a class="unvisited-post" href="/2023/11/20/day5/" title="php命令注入及其实例">未读</a></div><a class="article-title" href="/2023/11/20/day5/" title="php命令注入及其实例">php命令注入及其实例</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-19T16:00:00.000Z" title="发表于 2023-11-20 00:00:00" time="2023-11-20 00:00:00">2023-11-20</time><time class="time_hidden" datetime="2024-07-22T10:49:26.301Z" title="更新于 2024-07-22 18:49:26" time="2024-07-22 18:49:26">2024-07-22</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/php/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>php</span></a></span></div><div class="content">php注入概述
+rce概念：remote command/code execute，远程命令/代码执行。
+php代码执行：在web中，php代码执行是指应用程序过滤不严，用户可通过http请求将代码注入到应用中执行
+php代码注入与sql注入比较：
+注入的思想类似，均是构造语句绕过服务器的过滤去执行。
+区别在于sql注入是将语句注入到数据库中执行，而php代码执行是可以将代码注入到应用中，最终由服务器运行。
+php代码注入的条件：
+1.程序中含有可以执行php代码的函数或者语言结构
+2.传入该函数或者语言结构的参数是可以由客户端控制的（可以直接修改或者造成影响）且应用过滤不严。
+危害：
+这样的漏洞如果没有特殊的过滤，相当于一个web后门的存在，攻击者可以执行漏洞继承web用户权限，执行任意代码。如果服务器没有正确配置或者web用户权限比较高的话，还可以读写靶机服务器任意文件的内容，甚至控制整个网站或者服务器。
+相关的函数或语言结构
+1.eval()函数
+作用：该函数的作用是将字符串作为PHP代码执行。
+例：
+12345678&lt;?phpif (isset($_GET[&#x27;c ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/2023/11/16/day2/')"><div class="post_cover left"><a href="/2023/11/16/day2/" title="web网络学习（1）" style="display: flex;height: 100%;"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221837447.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="web网络学习（1）" style="pointer-events: none"></a></div><div class="recent-post-info"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><div class="article-categories-original">web</div><a class="unvisited-post" href="/2023/11/16/day2/" title="web网络学习（1）">未读</a></div><a class="article-title" href="/2023/11/16/day2/" title="web网络学习（1）">web网络学习（1）</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-15T16:00:00.000Z" title="发表于 2023-11-16 00:00:00" time="2023-11-16 00:00:00">2023-11-16</time><time class="time_hidden" datetime="2024-07-22T10:45:39.435Z" title="更新于 2024-07-22 18:45:39" time="2024-07-22 18:45:39">2024-07-22</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/web/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>web</span></a></span></div><div class="content">01.get&amp;&amp;post的区别：
 1.传送方式的不同：get通过url进行传参，而post通过dao文传输。
 2.传送长度的不同：get因为通过url栏进行传参，所以其长度是有限的，受限于url栏的长度。而post则没有限制。
 3.get产生一个tcp数据包，而Post产生两个数据包。
