@@ -15002,6 +15002,15 @@ blockquote {
 .post-tools .post-tools-left {
   width: auto;
 }
+#post .tag_share {
+  margin-bottom: 2rem;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -o-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
 .relatedPosts {
   margin-top: 1.25rem;
 }
