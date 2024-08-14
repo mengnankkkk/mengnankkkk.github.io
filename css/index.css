@@ -10560,7 +10560,7 @@ h1.page-title + .tag-cloud-list {
 }
 #footer-wrap {
   position: relative;
-  padding: 40px 20px;
+  padding: 40px 20px 0;
   color: var(--light-grey);
   text-align: center;
 }
