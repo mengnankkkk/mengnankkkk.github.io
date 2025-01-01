@@ -15,8 +15,38 @@
     <atom:link href="https://mengnankk.asia/rss2.xml" rel="self" type="application/rss+xml"/>
     <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
     <description>清风拂柳影，碧水映花香。</description>
-    <pubDate>Tue, 17 Dec 2024 05:06:33 GMT</pubDate>
+    <pubDate>Wed, 01 Jan 2025 10:24:46 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>English一月篇</title>
+      <link>https://mengnankk.asia/2025/01/01/en5/</link>
+      <guid>https://mengnankk.asia/2025/01/01/en5/</guid>
+      <pubDate>Tue, 31 Dec 2024 16:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;每日一话+单词遗忘表1.1&lt;/h1&gt;
+&lt;p&gt;A New Year is like a blank book, and the pen is in your hands. Go write yourself a beautiful</description>
+          
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h1>每日一话+单词遗忘表1.1</h1><p>A New Year is like a blank book, and the pen is in your hands. Go write yourself a beautiful story.</p><ul><li>masterpiece 杰作</li><li>mate 匹配</li><li>mature 成年人的</li><li>meantime 其间</li><li>measure 措施</li><li>mechanic 技工</li><li>medal 奖章</li><li></li></ul>]]></content:encoded>
+      
+      
+      <category domain="https://mengnankk.asia/categories/English/">English</category>
+      
+      
+      <category domain="https://mengnankk.asia/tags/English/">English</category>
+      
+      
+      <comments>https://mengnankk.asia/2025/01/01/en5/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>数据结构期末复习</title>
@@ -298,9 +328,9 @@
       <category domain="https://mengnankk.asia/categories/java/">java</category>
       
       
-      <category domain="https://mengnankk.asia/tags/java/">java</category>
-      
       <category domain="https://mengnankk.asia/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
+      
+      <category domain="https://mengnankk.asia/tags/java/">java</category>
       
       
       <comments>https://mengnankk.asia/2024/10/26/javatest2/#disqus_thread</comments>
@@ -629,37 +659,6 @@
       
       
       <comments>https://mengnankk.asia/2024/10/05/linux7/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>正则表达式 基础篇</title>
-      <link>https://mengnankk.asia/2024/10/03/reg-exp1/</link>
-      <guid>https://mengnankk.asia/2024/10/03/reg-exp1/</guid>
-      <pubDate>Wed, 02 Oct 2024 16:00:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h1&gt;简介&lt;/h1&gt;
-&lt;p&gt;一个正则表达式就是一个描述规则的字符串，所以，只需要编写正确的规则，我们就可以让正则表达式引擎去判断目标字符串是否符合规则。&lt;/p&gt;
-&lt;p&gt;正则表达式是一套标准，它可以用于任何语言。Java标准库的&lt;code&gt;java.util.regex&lt;/cod</description>
-          
-        
-      
-      
-      
-      <content:encoded><![CDATA[<h1>简介</h1><p>一个正则表达式就是一个描述规则的字符串，所以，只需要编写正确的规则，我们就可以让正则表达式引擎去判断目标字符串是否符合规则。</p><p>正则表达式是一套标准，它可以用于任何语言。Java标准库的<code>java.util.regex</code>包内置了正则表达式引擎，在Java程序中使用正则表达式非常简单。</p><p>举个例子：要判断用户输入的年份是否是<code>20##</code>年，我们先写出规则如下：</p><p>一共有4个字符，分别是：<code>2</code>，<code>0</code>，<code>0~9任意数字</code>，<code>0~9任意数字</code>。</p><p>对应的正则表达式就是：<code>20\d\d</code>，其中<code>\d</code>表示任意一个数字。</p><p>在java中就是</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">20\\d\\d</span><br></pre></td></tr></table></figure><p><strong>注意Java字符串用<code>\\</code>表示<code>\</code>。</strong></p><h1>匹配规则</h1><p><strong>正则表达式的匹配规则是从左到右按规则匹配</strong></p><h2 id="">&amp;</h2><p>正则表达式</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a\&amp;c</span><br></pre></td></tr></table></figure><p>它能精确匹配字符串<code>&quot;a&amp;c&quot;</code></p><p>但不能匹配<code>&quot;ac&quot;</code>、<code>&quot;a-c&quot;</code>、<code>&quot;a&amp;&amp;c&quot;</code>等</p><p>如果想匹配非ASCII字符，例如中文，那就用<code>\u####</code>的十六进制表示，例如：<code>a\u548cc</code>匹配字符串<code>&quot;a和c&quot;</code>，中文字符<code>和</code>的Unicode编码是<code>548c</code></p><p>这上面是精确匹配，但是用处不大。</p><p>因为我们可以直接String.equals()即可</p><h2 id="-2">.</h2><p>可以用<code>.</code>匹配一个任意字符。</p><p>例如，正则表达式<code>a.c</code>中间的<code>.</code>可以匹配一个任意字符，例如，下面的字符串都可以被匹配：</p><ul><li><code>&quot;abc&quot;</code>，因为<code>.</code>可以匹配字符<code>b</code>；</li><li><code>&quot;a&amp;c&quot;</code>，因为<code>.</code>可以匹配字符<code>&amp;</code>；</li><li><code>&quot;acc&quot;</code>，因为<code>.</code>可以匹配字符<code>c</code>。</li></ul><p><strong>但它不能匹配<code>&quot;ac&quot;</code>、<code>&quot;a&amp;&amp;c&quot;</code>，因为<code>.</code>匹配一个字符且仅限一个字符。</strong></p><h2 id="d">\d</h2><p>如果我们只想匹配<code>0</code>~<code>9</code>这样的数字，可以用<code>\d</code>匹配。例如，正则表达式<code>00\d</code>可以匹配：</p><ul><li><code>&quot;007&quot;</code>，因为<code>\d</code>可以匹配字符<code>7</code>；</li><li><code>&quot;008&quot;</code>，因为<code>\d</code>可以匹配字符<code>8</code>。</li></ul><p>它不能匹配<code>&quot;00A&quot;</code>，<code>&quot;0077&quot;</code>，因为<code>\d</code>仅限单个数字字符。</p><h2 id="w">\w</h2><p>用<code>\w</code>可以匹配一个字母、数字或下划线，w的意思是word。例如，<code>java\w</code>可以匹配：</p><ul><li><code>&quot;javac&quot;</code>，因为<code>\w</code>可以匹配英文字符<code>c</code>；</li><li><code>&quot;java9&quot;</code>，因为<code>\w</code>可以匹配数字字符<code>9</code>；。</li><li><code>&quot;java_&quot;</code>，因为<code>\w</code>可以匹配下划线<code>_</code>。</li></ul><p>它不能匹配<code>&quot;java#&quot;</code>，<code>&quot;java &quot;</code>，因为<code>\w</code>不能匹配<code>#</code>、空格等字符。</p><h2 id="s">\s</h2><p>用<code>\s</code>可以匹配一个空格字符，注意空格字符不但包括空格<code> </code>，还包括tab字符（在Java中用<code>\t</code>表示）。例如，<code>a\sc</code>可以匹配：</p><ul><li><code>&quot;a c&quot;</code>，因为<code>\s</code>可以匹配空格字符<code> </code>；</li><li><code>&quot;a c&quot;</code>，因为<code>\s</code>可以匹配tab字符<code>\t</code>。</li></ul><p>它不能匹配<code>&quot;ac&quot;</code>，<code>&quot;abc&quot;</code>等。</p><h2 id="D">\D</h2><p>用<code>\d</code>可以匹配一个数字，而<code>\D</code>则匹配一个非数字。例如，<code>00\D</code>可以匹配：</p><ul><li><code>&quot;00A&quot;</code>，因为<code>\D</code>可以匹配非数字字符<code>A</code>；</li><li><code>&quot;00#&quot;</code>，因为<code>\D</code>可以匹配非数字字符<code>#</code>。</li></ul><p><code>00\d</code>可以匹配的字符串<code>&quot;007&quot;</code>，<code>&quot;008&quot;</code>等，<code>00\D</code>是不能匹配的。</p><p>类似的，<code>\W</code>可以匹配<code>\w</code>不能匹配的字符，<code>\S</code>可以匹配<code>\s</code>不能匹配的字符，这几个正好是反着来的。</p><h2 id="-3">*</h2><p>修饰符<code>*</code>可以匹配任意个字符，包括0个字符。我们用<code>A\d*</code>可以匹配：</p><ul><li><code>A</code>：因为<code>\d*</code>可以匹配0个数字；</li><li><code>A0</code>：因为<code>\d*</code>可以匹配1个数字<code>0</code>；</li><li><code>A380</code>：因为<code>\d*</code>可以匹配多个数字<code>380</code>。</li></ul><h2 id="-4">+</h2><p>修饰符<code>+</code>可以匹配至少一个字符。我们用<code>A\d+</code>可以匹配：</p><ul><li><code>A0</code>：因为<code>\d+</code>可以匹配1个数字<code>0</code>；</li><li><code>A380</code>：因为<code>\d+</code>可以匹配多个数字<code>380</code>。</li></ul><p>但它无法匹配<code>&quot;A&quot;</code>，因为修饰符<code>+</code>要求至少一个字符。</p><h2 id="？">？</h2><p>修饰符<code>?</code>可以匹配0个或一个字符。我们用<code>A\d?</code>可以匹配：</p><ul><li><code>A</code>：因为<code>\d?</code>可以匹配0个数字；</li><li><code>A0</code>：因为<code>\d?</code>可以匹配1个数字<code>0</code>。</li></ul><h2 id="-5">{}</h2><p>如果我们想精确指定n个字符怎么办？用修饰符<code>&#123;n&#125;</code>就可以。<code>A\d&#123;3&#125;</code>可以精确匹配：</p><ul><li><code>A380</code>：因为<code>\d&#123;3&#125;</code>可以匹配3个数字<code>380</code>。</li></ul><p>如果我们想指定匹配n~m个字符怎么办？用修饰符<code>&#123;n,m&#125;</code>就可以。<code>A\d&#123;3,5&#125;</code>可以精确匹配：</p><ul><li><code>A380</code>：因为<code>\d&#123;3,5&#125;</code>可以匹配3个数字<code>380</code>；</li><li><code>A3800</code>：因为<code>\d&#123;3,5&#125;</code>可以匹配4个数字<code>3800</code>；</li><li><code>A38000</code>：因为<code>\d&#123;3,5&#125;</code>可以匹配5个数字<code>38000</code>。</li></ul><p>如果没有上限，那么修饰符<code>&#123;n,&#125;</code>就可以匹配至少n个字符。</p><h2 id="练习">练习</h2><p>请编写一个正则表达式匹配国内的电话号码规则：3~4位区号加7~8位电话，中间用-连接，例如：010-12345678。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\d&#123;3,4&#125;-\d&#123;7,8&#125;$</span><br></pre></td></tr></table></figure><ul><li><code>^</code>：表示字符串的开始。</li><li><code>\d&#123;3,4&#125;</code>：匹配 3 到 4 位数字（区号）。</li><li><code>-</code>：匹配一个连接符 <code>-</code>。</li><li><code>\d&#123;7,8&#125;</code>：匹配 7 到 8 位数字（电话号码）。</li><li><code>$</code>：表示字符串的结束。</li></ul><h1>复杂匹配</h1><p>用正则表达式进行多行匹配时，我们用<code>^</code>表示开头，<code>$</code>表示结尾。例如，<code>^A\d&#123;3&#125;$</code>，可以匹配<code>&quot;A001&quot;</code>、<code>&quot;A380&quot;</code>。</p><h2 id="…">[…]</h2><p>如果我们规定一个7~8位数字的电话号码不能以<code>0</code>开头，应该怎么写匹配规则呢？<code>\d&#123;7,8&#125;</code>是不行的，因为第一个<code>\d</code>可以匹配到<code>0</code>。</p><p>使用<code>[...]</code>可以匹配范围内的字符，例如，<code>[123456789]</code>可以匹配<code>1</code>~<code>9</code>，这样就可以写出上述电话号码的规则：<code>[123456789]\d&#123;6,7&#125;</code>。</p><p>把所有字符全列出来太麻烦，<code>[...]</code>还有一种写法，直接写<code>[1-9]</code>就可以。</p><p>所以就是</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1-9]\d&#123;6,7&#125;</span><br></pre></td></tr></table></figure><p>要匹配大小写不限的十六进制数，比如<code>1A2b3c</code>，我们可以这样写：<code>[0-9a-fA-F]</code>，它表示一共可以匹配以下任意范围的字符：</p><ul><li><code>0-9</code>：字符<code>0</code>~<code>9</code>；</li><li><code>a-f</code>：字符<code>a</code>~<code>f</code>；</li><li><code>A-F</code>：字符<code>A</code>~<code>F</code>。</li></ul><p>如果要匹配6位十六进制数，前面讲过的<code>&#123;n&#125;</code>仍然可以继续配合使用：<code>[0-9a-fA-F]&#123;6&#125;</code></p><p><code>[...]</code>还有一种排除法，即不包含指定范围的字符。假设我们要匹配任意字符，但不包括数字，可以写<code>[^1-9]&#123;3&#125;</code>：</p><ul><li>可以匹配<code>&quot;ABC&quot;</code>，因为不包含字符<code>1</code>~<code>9</code>；</li><li>可以匹配<code>&quot;A00&quot;</code>，因为不包含字符<code>1</code>~<code>9</code>；</li><li>不能匹配<code>&quot;A01&quot;</code>，因为包含字符<code>1</code>；</li><li>不能匹配<code>&quot;A05&quot;</code>，因为包含字符<code>5</code>。</li></ul><h2 id="或匹配">或匹配</h2><p>用<code>|</code>连接的两个正则规则是<em>或</em>规则，例如，<code>AB|CD</code>表示可以匹配<code>AB</code>或<code>CD</code></p><p>现在我们想要匹配字符串<code>learn java</code>、<code>learn php</code>和<code>learn go</code>怎么办？一个最简单的规则是<code>learn\sjava|learn\sphp|learn\sgo</code>，但是这个规则太复杂了，可以把公共部分提出来，然后用<code>(...)</code>把子规则括起来表示成<code>learn\s(java|php|go)</code>。</p><p>上面的规则仍然不能匹配<code>learn Java</code>、<code>learn Go</code>这样的字符串。试修改正则，使之能匹配大写字母开头的<code>learn Java</code>、<code>learn Php</code>、<code>learn Go</code>。这个要自己去进行修改</p><h1>分组匹配</h1><p>实际上<code>(...)</code>还有一个重要作用，就是分组匹配。</p><p>正确的方法是用<code>(...)</code>先把要提取的规则分组，把上述正则表达式变为<code>(\d&#123;3,4&#125;)\-(\d&#123;6,8&#125;)</code>。就是先进行这个</p><p>现在我们没办法用<code>String.matches()</code>这样简单的判断方法了，必须引入<code>java.util.regex</code>包，用<code>Pattern</code>对象匹配，匹配后获得一个<code>Matcher</code>对象，如果匹配成功，就可以直接从<code>Matcher.group(index)</code>返回子串：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import java.util.regex.Matcher;</span><br><span class="line">import java.util.regex.Pattern;</span><br><span class="line"></span><br><span class="line">public class reg_exp &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Pattern p = Pattern.compile(&quot;(\\d&#123;3,4&#125;)\\-(\\d&#123;7,8&#125;)&quot;);</span><br><span class="line">        Matcher m = p.matcher(&quot;010-12345678&quot;);</span><br><span class="line">        if(m.matches())&#123;</span><br><span class="line">            String g1 = m.group(1);</span><br><span class="line">            String g2 = m.group(2);</span><br><span class="line">            System.out.println(g2);</span><br><span class="line">            System.out.println(g1);</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            System.out.println(&quot;error&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>运行上述代码，会得到两个匹配上的子串<code>010</code>和<code>12345678</code>。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">12345678</span><br><span class="line">010 </span><br></pre></td></tr></table></figure><p><strong>要特别注意，<code>Matcher.group(index)</code>方法的参数用1表示第一个子串，2表示第二个子串。如果我们传入0会得到什么呢？答案是<code>010-12345678</code>，即整个正则匹配到的字符串。</strong></p><p><strong>这里面的括号就是用来进行分组的</strong></p><p>但是反复使用<code>String.matches()</code>对同一个正则表达式进行多次匹配效率较低，因为每次都会创建出一样的<code>Pattern</code>对象。完全可以先创建出一个<code>Pattern</code>对象，然后反复使用，就可以实现编译一次，多次匹配：</p><p>实现：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">import java.util.regex.Matcher;</span><br><span class="line">import java.util.regex.Pattern;</span><br><span class="line"></span><br><span class="line">public class reg_exp &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // 创建正则表达式对象，匹配形如 &quot;1234-567890&quot; 的电话号码</span><br><span class="line">        Pattern p = Pattern.compile(&quot;(\\d&#123;3,4&#125;)\\-(\\d&#123;7,8&#125;)&quot;);</span><br><span class="line">        </span><br><span class="line">        // 定义要测试的字符串，可以包括多个电话号码</span><br><span class="line">        String[] phoneNumbers = &#123;&quot;010-1245678&quot;, &quot;210-5555555&quot;, &quot;7895-554446&quot;, &quot;040-12345678&quot;&#125;;</span><br><span class="line"></span><br><span class="line">        // 遍历所有电话号码进行匹配</span><br><span class="line">        for (String phoneNumber : phoneNumbers) &#123;</span><br><span class="line">            Matcher matcher = p.matcher(phoneNumber);</span><br><span class="line">            </span><br><span class="line">            if (matcher.matches()) &#123;</span><br><span class="line">                // 获取匹配的整个字符串以及子组信息</span><br><span class="line">                String area = matcher.group(1); // 区号</span><br><span class="line">                String tel = matcher.group(2);  // 电话号码</span><br><span class="line">                System.out.println(&quot;Area Code: &quot; + area + &quot;, Tel: &quot; + tel);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                System.out.println(&quot;No match for: &quot; + phoneNumber);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>主要是建了一个数组，然后增强for然后匹配</p><p><strong>使用<code>Matcher</code>时，必须首先调用<code>matches()</code>判断是否匹配成功，匹配成功后，才能调用<code>group()</code>提取子串。</strong></p>]]></content:encoded>
-      
-      
-      <category domain="https://mengnankk.asia/categories/java/">java</category>
-      
-      
-      <category domain="https://mengnankk.asia/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</category>
-      
-      
-      <comments>https://mengnankk.asia/2024/10/03/reg-exp1/#disqus_thread</comments>
       
     </item>
     
