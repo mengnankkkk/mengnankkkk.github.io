@@ -15,8 +15,39 @@
     <atom:link href="https://mengnankk.asia/rss2.xml" rel="self" type="application/rss+xml"/>
     <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
     <description>清风拂柳影，碧水映花香。</description>
-    <pubDate>Fri, 10 Jan 2025 11:05:01 GMT</pubDate>
+    <pubDate>Sun, 12 Jan 2025 07:17:00 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Markdown语法</title>
+      <link>https://mengnankk.asia/2025/01/12/markdown1/</link>
+      <guid>https://mengnankk.asia/2025/01/12/markdown1/</guid>
+      <pubDate>Sat, 11 Jan 2025 16:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;Markdown是啥&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Markdown&lt;/strong&gt;是一种轻量级&lt;strong&gt;标记语言&lt;/strong&gt;，它以纯文本形式(&lt;em&gt;易读、易写、易更改&lt;/em&gt;)编写文档，并最终以HTML格式发布。&lt;br&gt;
+&lt;strong&gt;Markdo</description>
+          
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h1>Markdown是啥</h1><p><strong>Markdown</strong>是一种轻量级<strong>标记语言</strong>，它以纯文本形式(<em>易读、易写、易更改</em>)编写文档，并最终以HTML格式发布。<br><strong>Markdown</strong>也可以理解为将以MARKDOWN语法编写的语言转换成HTML内容的工具。</p><h1>语法</h1><h2 id="标题">标题</h2><p>用=和-来标记一级和二级标题</p><p>一级</p><p>二级</p><hr><p>#一级</p><p>##二级</p><p>###三级</p><h2 id="段落">段落</h2><ul><li>可以用&gt; &gt;&gt; &gt;&gt;&gt;或者是-</li><li></li></ul><p>代码快就在每行加上四个空格或者一个制表符</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure><h2 id="强调">强调</h2><p>使用<em>啊</em>  *</p><p>或者是_fff_    -</p><p>·呆呆·  ··使用这个</p><h2 id="列表">列表</h2><p>使用-</p><ul><li></li></ul><p>或者是直接使用符号</p><h2 id="分割线">分割线</h2><p>直接使用三个—</p><hr><h2 id="链接">链接</h2><p>【】（）</p><p>然后图片就是</p><p>！【】（）</p><p>注意是英文的符号好吧</p>]]></content:encoded>
+      
+      
+      <category domain="https://mengnankk.asia/categories/Markdown/">Markdown</category>
+      
+      
+      <category domain="https://mengnankk.asia/tags/markdown/">markdown</category>
+      
+      
+      <comments>https://mengnankk.asia/2025/01/12/markdown1/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>Mysql练习 寒假篇</title>
@@ -624,39 +655,6 @@
       
       
       <comments>https://mengnankk.asia/2024/10/08/en2/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>正则表达式 进阶</title>
-      <link>https://mengnankk.asia/2024/10/07/reg-exp2/</link>
-      <guid>https://mengnankk.asia/2024/10/07/reg-exp2/</guid>
-      <pubDate>Sun, 06 Oct 2024 16:00:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h1&gt;非贪婪匹配&lt;/h1&gt;
-&lt;p&gt;给定一个字符串表示的数字，判断该数字末尾&lt;code&gt;0&lt;/code&gt;的个数。例如：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;&amp;quot;123000&amp;quot;&lt;/code&gt;：3个&lt;code&gt;0&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;qu</description>
-          
-        
-      
-      
-      
-      <content:encoded><![CDATA[<h1>非贪婪匹配</h1><p>给定一个字符串表示的数字，判断该数字末尾<code>0</code>的个数。例如：</p><ul><li><code>&quot;123000&quot;</code>：3个<code>0</code></li><li><code>&quot;10100&quot;</code>：2个<code>0</code></li><li><code>&quot;1001&quot;</code>：0个<code>0</code></li></ul><p>可以很容易地写出该正则表达式：<code>(\d+)(0*)</code></p><p>这是因为正则表达式默认使用贪婪匹配：任何一个规则，它总是尽可能多地向后匹配，因此，<code>\d+</code>总是会把后面的<code>0</code>包含进来。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(\\d+?)(<span class="number">0</span>*)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>这样就代表非贪婪匹配，不会让\d少匹配，0*多匹配</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(\d??)(9*)</span><br></pre></td></tr></table></figure><p>我们再来看这个正则表达式<code>(\d??)(9*)</code>，注意<code>\d?</code>表示匹配0个或1个数字，后面第二个<code>?</code>表示非贪婪匹配，因此，给定字符串<code>&quot;9999&quot;</code>，匹配到的两个子串分别是<code>&quot;&quot;</code>和<code>&quot;9999&quot;</code>，因为对于<code>\d?</code>来说，可以匹配1个<code>9</code>，也可以匹配0个<code>9</code>，但是因为后面的<code>?</code>表示非贪婪匹配，它就会尽可能少的匹配，结果是匹配了0个<code>9</code></p><h1>搜索和替换</h1><p>使用正则表达式分割字符串可以实现更加灵活的功能。<code>String.split()</code>方法传入的正是正则表达式。我们来看下面的代码：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;a b c&quot;.split(&quot;\\s&quot;); // &#123; &quot;a&quot;, &quot;b&quot;, &quot;c&quot; &#125;</span><br><span class="line">&quot;a b  c&quot;.split(&quot;\\s&quot;); // &#123; &quot;a&quot;, &quot;b&quot;, &quot;&quot;, &quot;c&quot; &#125;</span><br><span class="line">&quot;a, b ;; c&quot;.split(&quot;[\\,\\;\\s]+&quot;); // &#123; &quot;a&quot;, &quot;b&quot;, &quot;c&quot; &#125;</span><br></pre></td></tr></table></figure><h2 id="搜索">搜索</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import java.util.regex.*;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String s = &quot;the quick brown fox jumps over the lazy dog.&quot;;</span><br><span class="line">        Pattern p = Pattern.compile(&quot;\\wo\\w&quot;);</span><br><span class="line">        Matcher m = p.matcher(s);</span><br><span class="line">        while (m.find()) &#123;</span><br><span class="line">            String sub = s.substring(m.start(), m.end());</span><br><span class="line">            System.out.println(sub);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这个代码就是找中间有前面一个字符后面一个。中间有个o的字符</p><p>return</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">row</span><br><span class="line">fox</span><br><span class="line">dog</span><br></pre></td></tr></table></figure><h2 id="替换">替换</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// regex</span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String s = &quot;The     quick\t\t brown   fox  jumps   over the  lazy dog.&quot;;</span><br><span class="line">        String r = s.replaceAll(&quot;\\s+&quot;, &quot; &quot;);</span><br><span class="line">        System.out.println(r); // &quot;The quick brown fox jumps over the lazy dog.&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>return</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The quick brown fox jumps over the lazy dog.</span><br></pre></td></tr></table></figure><h2 id="反向引用">反向引用</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// regex</span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String s = &quot;the quick brown fox jumps over the lazy dog.&quot;;</span><br><span class="line">        String r = s.replaceAll(&quot;\\s([a-z]&#123;4&#125;)\\s&quot;, &quot; &lt;b&gt;$1&lt;/b&gt; &quot;);</span><br><span class="line">        System.out.println(r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>return</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">the quick brown fox jumps &lt;b&gt;over&lt;/b&gt; the &lt;b&gt;lazy&lt;/b&gt; dog.</span><br></pre></td></tr></table></figure><p>它实际上把任何4字符单词的前后用<code>&lt;b&gt;xxxx&lt;/b&gt;</code>括起来。实现替换的关键就在于<code>&quot; &lt;b&gt;$1&lt;/b&gt; &quot;</code>，它用匹配的分组子串<code>([a-z]&#123;4&#125;)</code>替换了<code>$1</code>。</p><p>方法：</p><p>使用正则表达式可以：</p><ul><li>分割字符串：<code>String.split()</code></li><li>搜索子串：<code>Matcher.find()</code></li><li>替换字符串：<code>String.replaceAll()</code></li></ul><h1>练习</h1><p>模板引擎是指，定义一个字符串作为模板：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello, $&#123;name&#125;! You are learning $&#123;lang&#125;!</span><br></pre></td></tr></table></figure><p>其中，以<code>$&#123;key&#125;</code>表示的是变量，也就是将要被替换的内容。</p><p>当传入一个<code>Map&lt;String, String&gt;</code>给模板后，需要把对应的key替换为Map的value。</p><p>例如，传入<code>Map</code>为：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Bob&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;lang&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Java&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure><p>然后，<code>$&#123;name&#125;</code>被替换为<code>Map</code>对应的值<code>Bob</code>，<code>$&#123;lang&#125;</code>被替换为<code>Map</code>对应的值<code>Java</code>，最终输出的结果为：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello, Bob! You are learning Java!</span><br></pre></td></tr></table></figure><p>请编写一个简单的模板引擎，利用正则表达式实现这个功能。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Map;</span><br><span class="line">import java.util.regex.Matcher;</span><br><span class="line">import java.util.regex.Pattern;</span><br><span class="line"></span><br><span class="line">public class reg_exp &#123;</span><br><span class="line">    public static String render(String template, Map&lt;String, String&gt; values) &#123;</span><br><span class="line">        // 定义匹配 $&#123;key&#125; 的正则表达式</span><br><span class="line">        Pattern pattern = Pattern.compile(&quot;\\$\\&#123;(\\w+)&#125;&quot;);</span><br><span class="line">        Matcher matcher = pattern.matcher(template);</span><br><span class="line"></span><br><span class="line">        // 使用 StringBuffer 来高效拼接替换后的字符串</span><br><span class="line">        StringBuffer result = new StringBuffer();</span><br><span class="line"></span><br><span class="line">        while (matcher.find()) &#123;</span><br><span class="line">            String key = matcher.group(1);  // 获取 $&#123;key&#125; 中的 key</span><br><span class="line">            String replacement = values.getOrDefault(key, &quot;&quot;);  // 从 Map 中获取 key 对应的值</span><br><span class="line">            matcher.appendReplacement(result, replacement);  // 替换 $&#123;key&#125; 为对应的值</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        matcher.appendTail(result);  // 添加剩余的部分</span><br><span class="line">        return result.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // 定义模板</span><br><span class="line">        String template = &quot;Hello, $&#123;name&#125;! You are learning $&#123;lang&#125;!&quot;;</span><br><span class="line"></span><br><span class="line">        // 定义替换内容的 Map</span><br><span class="line">        Map&lt;String, String&gt; values = Map.of(</span><br><span class="line">                &quot;name&quot;, &quot;Bob&quot;,</span><br><span class="line">                &quot;lang&quot;, &quot;Java&quot;</span><br><span class="line">        );</span><br></pre></td></tr></table></figure><p>还有很多正则表达式的内容，可以在<a href="https://regex101.com/">https://regex101.com/</a></p><p>在线查看</p>]]></content:encoded>
-      
-      
-      <category domain="https://mengnankk.asia/categories/java/">java</category>
-      
-      
-      <category domain="https://mengnankk.asia/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</category>
-      
-      
-      <comments>https://mengnankk.asia/2024/10/07/reg-exp2/#disqus_thread</comments>
       
     </item>
     
