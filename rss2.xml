@@ -15,8 +15,44 @@
     <atom:link href="https://mengnankk.asia/rss2.xml" rel="self" type="application/rss+xml"/>
     <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
     <description>清风拂柳影，碧水映花香。</description>
-    <pubDate>Sun, 12 Jan 2025 07:17:00 GMT</pubDate>
+    <pubDate>Mon, 13 Jan 2025 12:13:42 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>计算机网络基础</title>
+      <link>https://mengnankk.asia/2025/01/13/net1/</link>
+      <guid>https://mengnankk.asia/2025/01/13/net1/</guid>
+      <pubDate>Sun, 12 Jan 2025 16:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;基础引入&lt;/h1&gt;
+&lt;p&gt;两个计算机设备想要通信，可以用一根线连接起来，两台设备使用电信号传播数据&lt;/p&gt;
+&lt;p&gt;如果都是用一根线连接两台设备的话，所需要的线数C等于&lt;br&gt;
+$$&lt;br&gt;
+C=(n-1)n/2&lt;br&gt;
+$$&lt;br&gt;
+但这样不太理想&lt;/p&gt;
+&lt;p&gt;所以我们</description>
+          
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h1>基础引入</h1><p>两个计算机设备想要通信，可以用一根线连接起来，两台设备使用电信号传播数据</p><p>如果都是用一根线连接两台设备的话，所需要的线数C等于<br>$$<br>C=(n-1)n/2<br>$$<br>但这样不太理想</p><p>所以我们可以使用一个hub就是一个集线器</p><p>比如</p><p>设备1可以通过hub然后转发给设备3，但这样的话是群发，不太安全</p><p>而且只能单向的交流，也不太好</p><p>所以使用了交换机，使用mac值来区分设备</p><p>这个是全球唯一的</p><p>允许两台设备双向交流，也可以两台交换机来交换数据，这叫桥接网络</p><p>内网这样是可以使用的，但是不能使用很多，因为交换机的存储mac地址的数量是有限的。</p><p>路由器可以适用于网络的转发</p><p><strong>不同网络连接到路由器的ip叫做默认网关</strong></p><p><strong>ip</strong>只是一个过程使用，最后还是使用<strong>mac地址</strong>来转发数据</p>]]></content:encoded>
+      
+      
+      <category domain="https://mengnankk.asia/categories/408/">408</category>
+      
+      
+      <category domain="https://mengnankk.asia/tags/net/">net</category>
+      
+      
+      <comments>https://mengnankk.asia/2025/01/13/net1/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>Markdown语法</title>
@@ -623,38 +659,6 @@
       
       
       <comments>https://mengnankk.asia/2024/10/09/sqltest2/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>English十月篇</title>
-      <link>https://mengnankk.asia/2024/10/08/en2/</link>
-      <guid>https://mengnankk.asia/2024/10/08/en2/</guid>
-      <pubDate>Mon, 07 Oct 2024 16:00:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h1&gt;每日一话+单词遗忘表10.8&lt;/h1&gt;
-&lt;p&gt;I have committed the worst sin of all that a man can commit. I have not been happy.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;blueprint</description>
-          
-        
-      
-      
-      
-      <content:encoded><![CDATA[<h1>每日一话+单词遗忘表10.8</h1><p>I have committed the worst sin of all that a man can commit. I have not been happy.</p><ul><li>blueprint 蓝图</li><li>blur 涂上，玷污</li><li>boast 自夸</li><li><strong>bold</strong> 大胆的</li><li>bolt 门闩</li><li>bonus 奖金</li><li>blend 混合</li></ul><h1>每日一话+单词遗忘表10.9</h1><p>Man never made any material as resilient as the human spirit.</p><ul><li>boost 促进支援</li><li><strong>booth</strong> 货摊</li><li>blossom 开花</li><li>bay 海湾</li><li>bound 跳</li><li>boundary 分界线</li></ul><h1>每日一话+单词遗忘表10.10</h1><p>今天是澳大利亚vs国足的五个小时前，能不能平啊！</p><p>A work of art must be full of adult dust before anyone can comprehend it.</p><ul><li>bracket 支架</li><li>brag 吹牛</li><li>brake 刹车</li><li>brand 商标</li><li>brand-new 崭新的</li><li>brandy 白兰地酒</li><li>brass 黄铜</li><li>breakdown 损坏</li><li>breakthrough 突破</li><li>boast 自夸</li></ul><h1>每日一话+单词遗忘表10.11</h1><p>I know my brothers would, with dogwood spray in hand, climb up mountain and miss me so far away.</p><ul><li>breed 繁殖</li><li>breeze 微风</li><li>bribe 贿赂</li><li>brick 砖块</li><li>bride 新娘</li><li>brief 简短的</li><li>briefcase 公文包</li><li>broker 经纪人</li><li>brow 眉毛</li></ul><h1>每日一话+单词遗忘表10.12</h1><p>Trees, when they are lopped and cut, grow up again in short time, but men, being once lost, cannot easily be recovered.</p><ul><li>brutal 残忍的</li><li>buckle 扣住</li><li>bud 萌芽</li><li>buddy 小伙伴</li><li>buffet 自助餐</li><li>bulb 电灯泡</li><li>broom 扫把</li><li>bull 牛</li><li>bulletin 公告</li></ul><h1>每日一话+单词遗忘表10.13</h1><p>The promised land always lies on the other side of a wilderness.</p><ul><li>bully 欺凌弱小者</li><li>bump 肿块 碰撞</li><li>bumper 丰富的</li><li>bundle 捆</li><li>burden 负担</li><li>bureau 局</li><li>burn 燃烧</li><li>burst 爆炸</li><li>bury 隐藏</li><li>butter 黄油</li><li>broker 经纪人</li><li>bulk 体积</li></ul><h1>每日一话+单词遗忘表10.14</h1><p>Some people succeed because they are destined to, but most people succeed because they are determined to.</p><ul><li><strong>bystander</strong> 旁观者</li><li>bud 萌芽</li><li>cabin 小屋</li><li>cabinet 内阁</li><li><strong>cable</strong> 电缆</li><li>cage 笼子</li><li>bury 埋葬</li><li>calf 牛犊</li></ul><h1>每日一话+单词遗忘表10.15</h1><p>You run from one place to another, but you are still you. You can’t escape from your body.</p><ul><li>camel 骆驼</li><li>camera 照相机</li><li>campaign 运动</li><li>bully 欺凌弱小</li><li><strong>cane 手杖</strong></li><li>canteen 小食堂</li><li>capacity 能力，容量</li><li>capture 夺得</li></ul><h1>每日一话+单词遗忘表10.16</h1><p>He who is of a calm and happy nature will hardly feel the pressure of age, but to him who is of an opposite disposition, youth and age are equally a burden.</p><ul><li>cargo  货船</li><li>carpenter 木工</li><li>cart 二轮装甲货车</li><li>castle 城堡</li><li><strong>cast</strong> 投掷</li></ul><h1>每日一话+单词遗忘表10.17</h1><p>The trees are in their autumn beauty. The woodland paths are dry. Under the October twilight the water Mirrors a still sky.</p><ul><li>casual 偶然的</li><li>catalog 目录</li><li>cater 迎合满足</li><li>caution 小心</li><li>cave 塌陷</li><li>cease 停止</li><li>ceiliing 天花板</li><li>cement 粘合物</li></ul><h1>每日一话+单词遗忘表10.18</h1><p>If you doubt yourself, then indeed you stand on shaky ground.</p><ul><li>centigrade 摄氏度</li><li>cereal 谷类</li><li><strong>ceremony</strong> 典礼</li><li>certain 某一</li><li>certficate 执照</li><li>chain 链子</li><li>chalk 粉笔</li><li>champagne 香槟</li><li>channel 频道</li><li>chaos 混乱</li><li>caution 小心</li></ul><h1>每日一话+单词遗忘表10.19</h1><p>When your will is ready, your feet are light.</p><ul><li>charity 慈善</li><li>chef 厨师</li><li>cherish 珍爱</li><li>chest 胸部</li></ul><h1>每日一话+单词遗忘表10.20</h1><p>He who rides and keeps the beaten track studies the fences chiefly.</p><ul><li>chief 领袖</li><li>chill 寒冷</li><li>chimney 烟囱</li><li>chin 下巴</li><li><strong>choke</strong> 窒息</li><li>cholestaerol 胆固醇</li><li>chop 排骨</li><li>chorus 合唱</li><li>chirist 基督</li><li>church 教堂</li><li>chore 家务</li></ul><h1>每日一话+单词遗忘表10.21</h1><p>The longer we dwell on our misfortunes, the greater is their power to harm us.</p><ul><li>circuit 巡回</li><li>circulate 循环</li><li>circumstance 环境</li><li>circus 马戏团</li><li>cite 引用</li><li>civil 公民的</li><li>clap 鼓掌</li><li>clarity 清楚</li></ul><h1>每日一话+单词遗忘表10.22</h1><p>We are what we repeatedly do. Excellence, then, is not an act but a habit.</p><ul><li>clause 条款</li><li>claw 爪子</li><li>clay 粘土</li><li>clerk 职员</li><li>cliff 悬崖</li><li>climax 高潮</li><li>cling 紧贴</li></ul><h1>每日一话+单词遗忘表10.23</h1><p>Years may wrinkle the skin, but to give up enthusiasm wrinkles the soul.</p><ul><li>chart 图表</li><li>clue 线索</li><li>clumsy 笨拙的</li><li>coarse 粗糙的</li><li>cock 雄鸡</li><li><strong>coherent</strong> 连贯的</li><li>cohesion 凝聚力</li></ul><h1>每日一话+单词遗忘表10.24</h1><p>Happy are the families where the government of parents is the reign of affection, and obedience of the children the submission of love.</p><ul><li>coil 盘绕</li><li>cellar 地窖</li><li>collaborate 合作</li><li>collapse 倒坍</li><li>collar 项圈</li><li><strong>colon</strong> 冒号</li><li><strong>colony</strong> 殖民队</li><li>column 圆柱</li><li></li></ul><h1>每日一话+单词遗忘表10.25</h1><p>Delicious autumn! My very soul is wedded to it, and if I were a bird I would fly about the earth seeking the successive autumns.</p><ul><li>comma 逗号</li><li>commence 开始</li><li>commerce 贸易</li><li><strong>commission</strong> 委托</li><li>commodity 商品</li><li>commonplace 平凡的</li><li>commune 公社</li><li>commute 通勤</li><li><strong>compact</strong> 合同</li><li>companion 同伴</li></ul><h1>每日一话+单词遗忘表10.26</h1><p>That man is the richest whose pleasures are the cheapest.</p><ul><li>compatible 并存的</li><li>compel 强迫</li><li><strong>competent</strong> 有能力的</li><li>complicate 使复杂化</li><li><strong>compensate</strong> 补偿</li><li><strong>component</strong> 元件</li><li>compound 合成</li><li><strong>comprehend</strong> 理解</li><li><strong>comprehensive</strong> 广泛的</li><li>comprise 由。。。组成</li><li><strong>compulsory</strong> 强制性的</li><li></li></ul><h1>每日一话+单词遗忘表10.27</h1><p>Nature gives you the face you have at twenty; it is up to you to merit the face you have at fifty.</p><ul><li>conceal 隐藏</li><li>concentrate 专心</li><li>conclude 作出决议</li><li>concreate 实在的</li><li>condense 浓缩</li><li>conduct 行为</li><li><strong>conference</strong> 会议</li><li>confess 承认</li><li><strong>confine</strong> 限制</li></ul><h1>单词遗忘表10.28</h1><ul><li>Confucian 孔子的</li><li>confuse 使混乱</li><li>congress 国会</li><li>conjunction 结合</li><li>conquer 战胜</li><li><strong>conscience</strong> 良心</li><li><strong>conscientious</strong> 认真的</li><li>conscious 意识到</li><li>consensus 一致</li><li><strong>consent</strong> 同意</li><li>consequence 结果</li><li>conservative 保守的</li><li>consolidate 巩固</li><li></li></ul><h1>每日一话+单词遗忘表10.29</h1><p>We must not cease from exploration and the end of all our exploring will be to arrive where we began and to know the place for the first time.</p><ul><li><strong>constitute</strong> 构成</li><li>constitution 宪法</li><li><strong>consult</strong> 查阅</li><li>contaminate 污染</li><li><strong>contempt</strong> 轻视</li><li><strong>contradict</strong> 反驳</li><li>contrary 相反的</li></ul><h1>每日一话+单词遗忘表10.30</h1><p>Sometimes our fate resembles a fruit tree in winter. Who would think that those branches would turn green and blossom, but we hope it, we know it.</p><ul><li><strong>controversy</strong> 辩论</li><li>converse 相反的</li><li>convey 传达</li><li>convince 说服</li><li><strong>cooridinate</strong> 一致</li><li>cop 抓住，警官</li></ul><h1>每日一话+单词遗忘表10.31</h1><p>Halloween, celebrated on October 31 every year, gets millions of people around the world to wear their scariest costume while partying or trick or treating.</p><p>哦~今天正好是万圣节，感觉不如我们自己的鬼节(七月十五)！</p><ul><li>collective 集体的</li><li>corner 角落</li><li>cornerstone 奠定基石基础</li><li>corporation 公司</li><li>corps 兵团</li><li><strong>correspond</strong> 相符合</li><li>corridor 走廊</li><li>corrupt 腐败的</li><li>cosmos 宇宙</li><li>council 会议</li><li></li></ul>]]></content:encoded>
-      
-      
-      <category domain="https://mengnankk.asia/categories/English/">English</category>
-      
-      
-      <category domain="https://mengnankk.asia/tags/English/">English</category>
-      
-      
-      <comments>https://mengnankk.asia/2024/10/08/en2/#disqus_thread</comments>
       
     </item>
     
