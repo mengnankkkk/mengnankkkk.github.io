@@ -15,8 +15,40 @@
     <atom:link href="https://mengnankk.asia/rss2.xml" rel="self" type="application/rss+xml"/>
     <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
     <description>清风拂柳影，碧水映花香。</description>
-    <pubDate>Fri, 31 Jan 2025 07:30:45 GMT</pubDate>
+    <pubDate>Sat, 01 Feb 2025 06:40:39 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>English二月篇</title>
+      <link>https://mengnankk.asia/2025/02/01/en6/</link>
+      <guid>https://mengnankk.asia/2025/02/01/en6/</guid>
+      <pubDate>Fri, 31 Jan 2025 16:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;每日一话+单词遗忘表2.1&lt;/h1&gt;
+&lt;p&gt;The more you experience and appreciate the goodness of life, the more there is to be lived.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pearl</description>
+          
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h1>每日一话+单词遗忘表2.1</h1><p>The more you experience and appreciate the goodness of life, the more there is to be lived.</p><ul><li>pearl 珍珠</li><li>peasant 农民</li><li>peculiar 特殊的</li><li>pedestrian 步行者</li><li>peer 凝视</li><li>penalty 处罚</li><li>penetrate 刺入</li><li>perhaps 也许</li><li>peril 危险</li><li>persevere 坚持</li><li>persist 持续</li><li>perspective 远景</li><li>persuade 说服</li><li></li></ul>]]></content:encoded>
+      
+      
+      <category domain="https://mengnankk.asia/categories/English/">English</category>
+      
+      
+      <category domain="https://mengnankk.asia/tags/English/">English</category>
+      
+      
+      <comments>https://mengnankk.asia/2025/02/01/en6/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>毛泽东选集阅读体会</title>
@@ -456,9 +488,9 @@ $$&lt;br&gt;
       <category domain="https://mengnankk.asia/categories/java/">java</category>
       
       
-      <category domain="https://mengnankk.asia/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
-      
       <category domain="https://mengnankk.asia/tags/java/">java</category>
+      
+      <category domain="https://mengnankk.asia/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
       
       
       <comments>https://mengnankk.asia/2024/10/26/javatest2/#disqus_thread</comments>
@@ -595,36 +627,6 @@ $$&lt;br&gt;
       
       
       <comments>https://mengnankk.asia/2024/10/11/linux8/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>字符串刷题 十月篇</title>
-      <link>https://mengnankk.asia/2024/10/09/datatest1/</link>
-      <guid>https://mengnankk.asia/2024/10/09/datatest1/</guid>
-      <pubDate>Tue, 08 Oct 2024 16:00:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;p&gt;暂时没找到题目，此文章暂时作废&lt;/p&gt;
-</description>
-          
-        
-      
-      
-      
-      <content:encoded><![CDATA[<p>暂时没找到题目，此文章暂时作废</p>]]></content:encoded>
-      
-      
-      <category domain="https://mengnankk.asia/categories/408/">408</category>
-      
-      
-      <category domain="https://mengnankk.asia/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
-      
-      
-      <comments>https://mengnankk.asia/2024/10/09/datatest1/#disqus_thread</comments>
       
     </item>
     
