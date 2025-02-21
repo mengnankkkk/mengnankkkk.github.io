@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>Mysql练习 暑假篇 | mengnankkのblog</title><meta name="keywords" content="mysql"><meta name="author" content="mengnankkzhou"><meta name="copyright" content="mengnankkzhou"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Mysql练习 暑假篇"><meta name="application-name" content="Mysql练习 暑假篇"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="Mysql练习 暑假篇"><meta property="og:url" content="https://blog.tokenlen.top/2024/07/22/sqltest1/index.html"><meta property="og:site_name" content="mengnankkのblog"><meta property="og:description" content="Mysql练习基础题1.从INS_SPR中选择SPR_FNM1 、SPR_SURN，其中SPR_CODE &amp;#x3D; ‘50200100’   1SELECT SPR_FNM1 , SPR_SURN FROM INS_SPR WHERE SPR_CODE &amp;#x3D; 50200100; return:     SP"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722379.jpg?_r_=38b19f45-f0d1-6bc8-7eee-2e32b1ac7311"><meta property="article:author" content="mengnankkzhou"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722379.jpg?_r_=38b19f45-f0d1-6bc8-7eee-2e32b1ac7311"><meta name="description" content="Mysql练习基础题1.从INS_SPR中选择SPR_FNM1 、SPR_SURN，其中SPR_CODE &amp;#x3D; ‘50200100’   1SELECT SPR_FNM1 , SPR_SURN FROM INS_SPR WHERE SPR_CODE &amp;#x3D; 50200100; return:     SP"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://blog.tokenlen.top/2024/07/22/sqltest1/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>Mysql练习 暑假篇 | mengnankkのblog</title><meta name="keywords" content="mysql"><meta name="author" content="mengnankkzhou"><meta name="copyright" content="mengnankkzhou"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Mysql练习 暑假篇"><meta name="application-name" content="Mysql练习 暑假篇"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="Mysql练习 暑假篇"><meta property="og:url" content="https://blog.tokenlen.top/2024/07/22/sqltest1/index.html"><meta property="og:site_name" content="mengnankkのblog"><meta property="og:description" content="Mysql练习 基础题 1. 从INS_SPR中选择SPR_FNM1 、SPR_SURN，其中SPR_CODE &amp;#x3D; ‘50200100’ 1SELECT SPR_FNM1 , SPR_SURN FROM INS_SPR WHERE SPR_CODE &amp;#x3D; 50200100; return:    SP"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712175.jpg?_r_=426f30d7-a080-e3ac-cba6-5a9c5ee70d70"><meta property="article:author" content="mengnankkzhou"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712175.jpg?_r_=426f30d7-a080-e3ac-cba6-5a9c5ee70d70"><meta name="description" content="Mysql练习 基础题 1. 从INS_SPR中选择SPR_FNM1 、SPR_SURN，其中SPR_CODE &amp;#x3D; ‘50200100’ 1SELECT SPR_FNM1 , SPR_SURN FROM INS_SPR WHERE SPR_CODE &amp;#x3D; 50200100; return:    SP"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://blog.tokenlen.top/2024/07/22/sqltest1/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
   linkPageTop: undefined,
   peoplecanvas: undefined,
   postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
@@ -228,10 +228,12 @@ if (true) {
   }
 }
 </script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 生活</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/Message/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 其他</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://home.tokenlen.top/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> home</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://status.mengnankk.asia/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 站点检测</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://home.tokenlen.top/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 心里话</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://imgbed.mengnankk.asia/202407021650088.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://imgbed.mengnankk.asia/202407021650088.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BF/" style="font-size: 1.05rem;">BF<sup>1</sup></a><a href="/tags/BigData/" style="font-size: 1.05rem;">BigData<sup>1</sup></a><a href="/tags/C/" style="font-size: 1.05rem;">C<sup>4</sup></a><a href="/tags/CE/" style="font-size: 1.05rem;">CE<sup>1</sup></a><a href="/tags/CSRF/" style="font-size: 1.05rem;">CSRF<sup>1</sup></a><a href="/tags/English/" style="font-size: 1.05rem;">English<sup>6</sup></a><a href="/tags/FI/" style="font-size: 1.05rem;">FI<sup>1</sup></a><a href="/tags/Hadoop/" style="font-size: 1.05rem;">Hadoop<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 1.05rem;">Linux<sup>12</sup></a><a href="/tags/XSS/" style="font-size: 1.05rem;">XSS<sup>1</sup></a><a href="/tags/css/" style="font-size: 1.05rem;">css<sup>2</sup></a><a href="/tags/football/" style="font-size: 1.05rem;">football<sup>1</sup></a><a href="/tags/html/" style="font-size: 1.05rem;">html<sup>1</sup></a><a href="/tags/java/" style="font-size: 1.05rem;">java<sup>19</sup></a><a href="/tags/markdown/" style="font-size: 1.05rem;">markdown<sup>1</sup></a><a href="/tags/mysql/" style="font-size: 1.05rem;">mysql<sup>14</sup></a><a href="/tags/net/" style="font-size: 1.05rem;">net<sup>1</sup></a><a href="/tags/paper/" style="font-size: 1.05rem;">paper<sup>1</sup></a><a href="/tags/php/" style="font-size: 1.05rem;">php<sup>5</sup></a><a href="/tags/pip/" style="font-size: 1.05rem;">pip<sup>1</sup></a><a href="/tags/python/" style="font-size: 1.05rem;">python<sup>3</sup></a><a href="/tags/shell/" style="font-size: 1.05rem;">shell<sup>4</sup></a><a href="/tags/spring-boot/" style="font-size: 1.05rem;">spring boot<sup>3</sup></a><a href="/tags/springboot/" style="font-size: 1.05rem;">springboot<sup>1</sup></a><a href="/tags/sql/" style="font-size: 1.05rem;">sql<sup>3</sup></a><a href="/tags/web/" style="font-size: 1.05rem;">web<sup>3</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.05rem;">数据结构<sup>9</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 1.05rem;">正则表达式<sup>2</sup></a><a href="/tags/%E6%AF%9B%E9%80%89/" style="font-size: 1.05rem;">毛选<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>3</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
-    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/02/"><span class="card-archive-list-date">二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/01/"><span class="card-archive-list-date">一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/12/"><span class="card-archive-list-date">十二月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/11/"><span class="card-archive-list-date">十一月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/10/"><span class="card-archive-list-date">十月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">14</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">8</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/08/"><span class="card-archive-list-date">八月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">16</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/sql/" itemprop="url">sql</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/mysql/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>mysql</span></a></span></div></div><h1 class="post-title" itemprop="name headline">Mysql练习 暑假篇</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2024-07-21T16:00:00.000Z" title="发表于 2024-07-22 00:00:00">2024-07-22</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2024-10-09T10:48:19.509Z" title="更新于 2024-10-09 18:48:19">2024-10-09</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">6.7k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>28分钟</span></span><span class="post-meta-separator"></span><span id="" data-flag-title="Mysql练习 暑假篇"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="twikoo_visitors" title="访问量"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为济南"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>济南</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722379.jpg?_r_=38b19f45-f0d1-6bc8-7eee-2e32b1ac7311"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://blog.tokenlen.top/2024/07/22/sqltest1/"><header><a class="post-meta-categories" href="/categories/sql/" itemprop="url">sql</a><a href="/tags/mysql/" tabindex="-1" itemprop="url">mysql</a><h1 id="CrawlerTitle" itemprop="name headline">Mysql练习 暑假篇</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">mengnankkzhou</span><time itemprop="dateCreated datePublished" datetime="2024-07-21T16:00:00.000Z" title="发表于 2024-07-22 00:00:00">2024-07-22</time><time itemprop="dateCreated datePublished" datetime="2024-10-09T10:48:19.509Z" title="更新于 2024-10-09 18:48:19">2024-10-09</time></header><h1 id="Mysql练习"><a href="#Mysql练习" class="headerlink" title="Mysql练习"></a>Mysql练习</h1><h2 id="基础题"><a href="#基础题" class="headerlink" title="基础题"></a>基础题</h2><h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2><p>从INS_SPR中选择SPR_FNM1 、SPR_SURN，其中SPR_CODE = ‘50200100’  </p>
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/02/"><span class="card-archive-list-date">二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/01/"><span class="card-archive-list-date">一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/12/"><span class="card-archive-list-date">十二月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/11/"><span class="card-archive-list-date">十一月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/10/"><span class="card-archive-list-date">十月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">14</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">8</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/08/"><span class="card-archive-list-date">八月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">16</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/sql/" itemprop="url">sql</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/mysql/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>mysql</span></a></span></div></div><h1 class="post-title" itemprop="name headline">Mysql练习 暑假篇</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2024-07-21T16:00:00.000Z" title="发表于 2024-07-22 00:00:00">2024-07-22</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2024-10-09T10:48:19.509Z" title="更新于 2024-10-09 18:48:19">2024-10-09</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">6.7k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>28分钟</span></span><span class="post-meta-separator"></span><span id="" data-flag-title="Mysql练习 暑假篇"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="twikoo_visitors" title="访问量"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为济南"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>济南</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712175.jpg?_r_=426f30d7-a080-e3ac-cba6-5a9c5ee70d70"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://blog.tokenlen.top/2024/07/22/sqltest1/"><header><a class="post-meta-categories" href="/categories/sql/" itemprop="url">sql</a><a href="/tags/mysql/" tabindex="-1" itemprop="url">mysql</a><h1 id="CrawlerTitle" itemprop="name headline">Mysql练习 暑假篇</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">mengnankkzhou</span><time itemprop="dateCreated datePublished" datetime="2024-07-21T16:00:00.000Z" title="发表于 2024-07-22 00:00:00">2024-07-22</time><time itemprop="dateCreated datePublished" datetime="2024-10-09T10:48:19.509Z" title="更新于 2024-10-09 18:48:19">2024-10-09</time></header><h1>Mysql练习</h1>
+<h2 id="基础题">基础题</h2>
+<h2 id="1">1.</h2>
+<p>从INS_SPR中选择SPR_FNM1 、SPR_SURN，其中SPR_CODE = ‘50200100’</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SPR_FNM1 , SPR_SURN <span class="keyword">FROM</span> INS_SPR <span class="keyword">WHERE</span> SPR_CODE <span class="operator">=</span> <span class="number">50200100</span>;</span><br></pre></td></tr></table></figure>
 <p>return:</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -246,10 +248,9 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
-<h2 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h2><p>显示学生编号为 50200100 的学生在 2016/7 TR1 学期学习的模块代码和模块名称</p>
+<h2 id="2">2.</h2>
+<p>显示学生编号为 50200100 的学生在 2016/7 TR1 学期学习的模块代码和模块名称</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> CAM_SMO.MOD_CODE,INS_MOD.MOD_NAME</span><br><span class="line"><span class="keyword">FROM</span> INS_MOD <span class="keyword">JOIN</span> CAM_SMO <span class="keyword">ON</span> (INS_MOD.MOD_CODE<span class="operator">=</span>CAM_SMO.MOD_CODE)</span><br><span class="line"><span class="keyword">WHERE</span> CAM_SMO.SPR_CODE <span class="operator">=</span> <span class="string">&#x27;50200100&#x27;</span></span><br><span class="line"><span class="keyword">AND</span> CAM_SMO.AYR_CODE <span class="operator">=</span> <span class="string">&#x27;2016/7&#x27;</span></span><br><span class="line"><span class="keyword">AND</span> CAM_SMO.PSL_CODE <span class="operator">=</span> <span class="string">&#x27;TR1&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -272,11 +273,10 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
-<h2 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h2><p><strong>显示学生编号为 50200100 的学生在 2016/7 TR1 学期学习的模块代码、模块名称和模块负责人的详细信息</strong></p>
+<h2 id="3">3.</h2>
+<p><strong>显示学生编号为 50200100 的学生在 2016/7 TR1 学期学习的模块代码、模块名称和模块负责人的详细信息</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> CAM_SMO.MOD_CODE, INS_MOD.MOD_NAME,</span><br><span class="line">       INS_PRS.PRS_CODE, INS_PRS.PRS_FNM1, INS_PRS.PRS_SURN</span><br><span class="line">  <span class="keyword">FROM</span> CAM_SMO <span class="keyword">JOIN</span> INS_MOD <span class="keyword">ON</span> (INS_MOD.MOD_CODE<span class="operator">=</span>CAM_SMO.MOD_CODE)</span><br><span class="line">               <span class="keyword">JOIN</span> INS_PRS <span class="keyword">ON</span> (INS_MOD.PRS_CODE<span class="operator">=</span>INS_PRS.PRS_CODE)</span><br><span class="line"> <span class="keyword">WHERE</span> CAM_SMO.SPR_CODE<span class="operator">=</span><span class="string">&#x27;50200100&#x27;</span></span><br><span class="line">   <span class="keyword">AND</span> CAM_SMO.AYR_CODE<span class="operator">=</span><span class="string">&#x27;2016/7&#x27;</span></span><br><span class="line">   <span class="keyword">AND</span> CAM_SMO.PSL_CODE<span class="operator">=</span><span class="string">&#x27;TR1&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>return:</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -311,9 +311,10 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
-<h2 id="4-力扣sql-175组合两个表"><a href="#4-力扣sql-175组合两个表" class="headerlink" title="4.力扣sql 175组合两个表"></a>4.力扣sql 175组合两个表</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select FirstName, LastName, City, State</span><br><span class="line">from Person left join Address</span><br><span class="line">on Person.PersonId = Address.PersonId</span><br><span class="line">;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="5-leetcode-超过经理收入的员工"><a href="#5-leetcode-超过经理收入的员工" class="headerlink" title="5.leetcode 超过经理收入的员工"></a>5.leetcode <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/employees-earning-more-than-their-managers/">超过经理收入的员工</a></h2><p>表：<code>Employee</code> </p>
+<h2 id="4-力扣sql-175组合两个表">4.力扣sql 175组合两个表</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select FirstName, LastName, City, State</span><br><span class="line">from Person left join Address</span><br><span class="line">on Person.PersonId = Address.PersonId</span><br><span class="line">;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="5-leetcode-超过经理收入的员工">5.leetcode <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/employees-earning-more-than-their-managers/">超过经理收入的员工</a></h2>
+<p>表：<code>Employee</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+-------------+---------+</span><br><span class="line">| Column Name | Type    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">| id          | int     |</span><br><span class="line">| name        | varchar |</span><br><span class="line">| salary      | int     |</span><br><span class="line">| managerId   | int     |</span><br><span class="line">+-------------+---------+</span><br><span class="line">id 是该表的主键（具有唯一值的列）。</span><br><span class="line">该表的每一行都表示雇员的ID、姓名、工资和经理的ID。</span><br></pre></td></tr></table></figure>
 <p>编写解决方案，找出收入比经理高的员工。</p>
 <p>以 <strong>任意顺序</strong> 返回结果表。</p>
@@ -323,7 +324,8 @@ if (true) {
 <p>这是表的自连接，通过同一张表的不同列的对比</p>
 <p>首先的条件是</p>
 <p>a.ManagerId = b.Id这个表明这个员工归属这个经理，然后a.Salary &gt; b.Salary;这个条件表明这个员工的工资大于他的经理</p>
-<h2 id="6-leetcode-查找重复的电子邮箱"><a href="#6-leetcode-查找重复的电子邮箱" class="headerlink" title="6.leetcode 查找重复的电子邮箱"></a>6.leetcode <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/duplicate-emails/description/">查找重复的电子邮箱</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">表: Person</span><br><span class="line"></span><br><span class="line">+-------------+---------+</span><br><span class="line">| Column Name | Type    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">| id          | int     |</span><br><span class="line">| email       | varchar |</span><br><span class="line">+-------------+---------+</span><br><span class="line">id 是该表的主键（具有唯一值的列）。</span><br><span class="line">此表的每一行都包含一封电子邮件。电子邮件不包含大写字母。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">编写解决方案来报告所有重复的电子邮件。 请注意，可以保证电子邮件字段不为 NULL。</span><br><span class="line"></span><br><span class="line">以 任意顺序 返回结果表。</span><br><span class="line"></span><br><span class="line">结果格式如下例。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">示例 1:</span><br><span class="line"></span><br><span class="line">输入: </span><br><span class="line">Person 表:</span><br><span class="line">+----+---------+</span><br><span class="line">| id | email   |</span><br><span class="line">+----+---------+</span><br><span class="line">| 1  | a@b.com |</span><br><span class="line">| 2  | c@d.com |</span><br><span class="line">| 3  | a@b.com |</span><br><span class="line">+----+---------+</span><br><span class="line">输出: </span><br><span class="line">+---------+</span><br><span class="line">| Email   |</span><br><span class="line">+---------+</span><br><span class="line">| a@b.com |</span><br><span class="line">+---------+</span><br><span class="line">解释: a@b.com 出现了两次。</span><br></pre></td></tr></table></figure>
+<h2 id="6-leetcode-查找重复的电子邮箱">6.leetcode <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/duplicate-emails/description/">查找重复的电子邮箱</a></h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">表: Person</span><br><span class="line"></span><br><span class="line">+-------------+---------+</span><br><span class="line">| Column Name | Type    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">| id          | int     |</span><br><span class="line">| email       | varchar |</span><br><span class="line">+-------------+---------+</span><br><span class="line">id 是该表的主键（具有唯一值的列）。</span><br><span class="line">此表的每一行都包含一封电子邮件。电子邮件不包含大写字母。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">编写解决方案来报告所有重复的电子邮件。 请注意，可以保证电子邮件字段不为 NULL。</span><br><span class="line"></span><br><span class="line">以 任意顺序 返回结果表。</span><br><span class="line"></span><br><span class="line">结果格式如下例。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">示例 1:</span><br><span class="line"></span><br><span class="line">输入: </span><br><span class="line">Person 表:</span><br><span class="line">+----+---------+</span><br><span class="line">| id | email   |</span><br><span class="line">+----+---------+</span><br><span class="line">| 1  | a@b.com |</span><br><span class="line">| 2  | c@d.com |</span><br><span class="line">| 3  | a@b.com |</span><br><span class="line">+----+---------+</span><br><span class="line">输出: </span><br><span class="line">+---------+</span><br><span class="line">| Email   |</span><br><span class="line">+---------+</span><br><span class="line">| a@b.com |</span><br><span class="line">+---------+</span><br><span class="line">解释: a@b.com 出现了两次。</span><br></pre></td></tr></table></figure>
 <p>题解：</p>
 <p>第一种思路，通过条件筛选</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT DISTINCT a.email AS &#x27;Email&#x27;</span><br><span class="line">FROM Person a, Person b</span><br><span class="line">WHERE a.email = b.email AND a.id != b.id;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -334,7 +336,8 @@ if (true) {
 <p>第二种思路，使用分组</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">    email</span><br><span class="line">FROM</span><br><span class="line">    Person</span><br><span class="line">GROUP BY</span><br><span class="line">    email</span><br><span class="line">HAVING</span><br><span class="line">    count(email) &gt; 1</span><br></pre></td></tr></table></figure>
 <p>使用分组直接显示出email大于一的邮箱的次数</p>
-<h2 id="7-leetcode-删除重复的电子邮箱"><a href="#7-leetcode-删除重复的电子邮箱" class="headerlink" title="7.leetcode 删除重复的电子邮箱"></a>7.leetcode <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/delete-duplicate-emails/">删除重复的电子邮箱</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">表: Person</span><br><span class="line"></span><br><span class="line">+-------------+---------+</span><br><span class="line">| Column Name | Type    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">| id          | int     |</span><br><span class="line">| email       | varchar |</span><br><span class="line">+-------------+---------+</span><br><span class="line">id 是该表的主键列(具有唯一值的列)。</span><br><span class="line">该表的每一行包含一封电子邮件。电子邮件将不包含大写字母。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">编写解决方案 删除 所有重复的电子邮件，只保留一个具有最小 id 的唯一电子邮件。</span><br><span class="line"></span><br><span class="line">（对于 SQL 用户，请注意你应该编写一个 DELETE 语句而不是 SELECT 语句。）</span><br><span class="line"></span><br><span class="line">（对于 Pandas 用户，请注意你应该直接修改 Person 表。）</span><br><span class="line"></span><br><span class="line">运行脚本后，显示的答案是 Person 表。驱动程序将首先编译并运行您的代码片段，然后再显示 Person 表。Person 表的最终顺序 无关紧要 。</span><br><span class="line"></span><br><span class="line">返回结果格式如下示例所示。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">示例 1:</span><br><span class="line"></span><br><span class="line">输入: </span><br><span class="line">Person 表:</span><br><span class="line">+----+------------------+</span><br><span class="line">| id | email            |</span><br><span class="line">+----+------------------+</span><br><span class="line">| 1  | john@example.com |</span><br><span class="line">| 2  | bob@example.com  |</span><br><span class="line">| 3  | john@example.com |</span><br><span class="line">+----+------------------+</span><br><span class="line">输出: </span><br><span class="line">+----+------------------+</span><br><span class="line">| id | email            |</span><br><span class="line">+----+------------------+</span><br><span class="line">| 1  | john@example.com |</span><br><span class="line">| 2  | bob@example.com  |</span><br><span class="line">+----+------------------+</span><br><span class="line">解释: john@example.com重复两次。我们保留最小的Id = 1。</span><br></pre></td></tr></table></figure>
+<h2 id="7-leetcode-删除重复的电子邮箱">7.leetcode <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/delete-duplicate-emails/">删除重复的电子邮箱</a></h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">表: Person</span><br><span class="line"></span><br><span class="line">+-------------+---------+</span><br><span class="line">| Column Name | Type    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">| id          | int     |</span><br><span class="line">| email       | varchar |</span><br><span class="line">+-------------+---------+</span><br><span class="line">id 是该表的主键列(具有唯一值的列)。</span><br><span class="line">该表的每一行包含一封电子邮件。电子邮件将不包含大写字母。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">编写解决方案 删除 所有重复的电子邮件，只保留一个具有最小 id 的唯一电子邮件。</span><br><span class="line"></span><br><span class="line">（对于 SQL 用户，请注意你应该编写一个 DELETE 语句而不是 SELECT 语句。）</span><br><span class="line"></span><br><span class="line">（对于 Pandas 用户，请注意你应该直接修改 Person 表。）</span><br><span class="line"></span><br><span class="line">运行脚本后，显示的答案是 Person 表。驱动程序将首先编译并运行您的代码片段，然后再显示 Person 表。Person 表的最终顺序 无关紧要 。</span><br><span class="line"></span><br><span class="line">返回结果格式如下示例所示。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">示例 1:</span><br><span class="line"></span><br><span class="line">输入: </span><br><span class="line">Person 表:</span><br><span class="line">+----+------------------+</span><br><span class="line">| id | email            |</span><br><span class="line">+----+------------------+</span><br><span class="line">| 1  | john@example.com |</span><br><span class="line">| 2  | bob@example.com  |</span><br><span class="line">| 3  | john@example.com |</span><br><span class="line">+----+------------------+</span><br><span class="line">输出: </span><br><span class="line">+----+------------------+</span><br><span class="line">| id | email            |</span><br><span class="line">+----+------------------+</span><br><span class="line">| 1  | john@example.com |</span><br><span class="line">| 2  | bob@example.com  |</span><br><span class="line">+----+------------------+</span><br><span class="line">解释: john@example.com重复两次。我们保留最小的Id = 1。</span><br></pre></td></tr></table></figure>
 <p>题解：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> p1 <span class="keyword">FROM</span> Person p1,</span><br><span class="line">    Person p2</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    p1.Email <span class="operator">=</span> p2.Email <span class="keyword">AND</span> p1.Id <span class="operator">&gt;</span> p2.Id</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>8.leetcode <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/rising-temperature/">上升的温度</a></p>
@@ -348,7 +351,8 @@ if (true) {
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT w1.id</span><br><span class="line">FROM Weather w1</span><br><span class="line">JOIN Weather w2 ON w1.recordDate = DATE_ADD(w2.recordDate, INTERVAL 1 DAY)</span><br><span class="line">WHERE w1.temperature &gt; w2.temperature;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>w1.recordDate = DATE_ADD(w2.recordDate, INTERVAL 1 DAY)</p>
 <p>使用日期函数来显示这个条件</p>
-<h2 id="9-leetcode-游戏玩法分析-I"><a href="#9-leetcode-游戏玩法分析-I" class="headerlink" title="9.leetcode 游戏玩法分析 I"></a>9.leetcode <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/game-play-analysis-i/">游戏玩法分析 I</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">活动表 Activity：</span><br><span class="line"></span><br><span class="line">+--------------+---------+</span><br><span class="line">| Column Name  | Type    |</span><br><span class="line">+--------------+---------+</span><br><span class="line">| player_id    | int     |</span><br><span class="line">| device_id    | int     |</span><br><span class="line">| event_date   | date    |</span><br><span class="line">| games_played | int     |</span><br><span class="line">+--------------+---------+</span><br><span class="line">在 SQL 中，表的主键是 (player_id, event_date)。</span><br><span class="line">这张表展示了一些游戏玩家在游戏平台上的行为活动。</span><br><span class="line">每行数据记录了一名玩家在退出平台之前，当天使用同一台设备登录平台后打开的游戏的数目（可能是 0 个）。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">查询每位玩家 第一次登录平台的日期。</span><br><span class="line"></span><br><span class="line">查询结果的格式如下所示：</span><br><span class="line"></span><br><span class="line">Activity 表：</span><br><span class="line">+-----------+-----------+------------+--------------+</span><br><span class="line">| player_id | device_id | event_date | games_played |</span><br><span class="line">+-----------+-----------+------------+--------------+</span><br><span class="line">| 1         | 2         | 2016-03-01 | 5            |</span><br><span class="line">| 1         | 2         | 2016-05-02 | 6            |</span><br><span class="line">| 2         | 3         | 2017-06-25 | 1            |</span><br><span class="line">| 3         | 1         | 2016-03-02 | 0            |</span><br><span class="line">| 3         | 4         | 2018-07-03 | 5            |</span><br><span class="line">+-----------+-----------+------------+--------------+</span><br><span class="line"></span><br><span class="line">Result 表：</span><br><span class="line">+-----------+-------------+</span><br><span class="line">| player_id | first_login |</span><br><span class="line">+-----------+-------------+</span><br><span class="line">| 1         | 2016-03-01  |</span><br><span class="line">| 2         | 2017-06-25  |</span><br><span class="line">| 3         | 2016-03-02  |</span><br><span class="line">+-----------+-------------+</span><br></pre></td></tr></table></figure>
+<h2 id="9-leetcode-游戏玩法分析-I">9.leetcode <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/game-play-analysis-i/">游戏玩法分析 I</a></h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">活动表 Activity：</span><br><span class="line"></span><br><span class="line">+--------------+---------+</span><br><span class="line">| Column Name  | Type    |</span><br><span class="line">+--------------+---------+</span><br><span class="line">| player_id    | int     |</span><br><span class="line">| device_id    | int     |</span><br><span class="line">| event_date   | date    |</span><br><span class="line">| games_played | int     |</span><br><span class="line">+--------------+---------+</span><br><span class="line">在 SQL 中，表的主键是 (player_id, event_date)。</span><br><span class="line">这张表展示了一些游戏玩家在游戏平台上的行为活动。</span><br><span class="line">每行数据记录了一名玩家在退出平台之前，当天使用同一台设备登录平台后打开的游戏的数目（可能是 0 个）。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">查询每位玩家 第一次登录平台的日期。</span><br><span class="line"></span><br><span class="line">查询结果的格式如下所示：</span><br><span class="line"></span><br><span class="line">Activity 表：</span><br><span class="line">+-----------+-----------+------------+--------------+</span><br><span class="line">| player_id | device_id | event_date | games_played |</span><br><span class="line">+-----------+-----------+------------+--------------+</span><br><span class="line">| 1         | 2         | 2016-03-01 | 5            |</span><br><span class="line">| 1         | 2         | 2016-05-02 | 6            |</span><br><span class="line">| 2         | 3         | 2017-06-25 | 1            |</span><br><span class="line">| 3         | 1         | 2016-03-02 | 0            |</span><br><span class="line">| 3         | 4         | 2018-07-03 | 5            |</span><br><span class="line">+-----------+-----------+------------+--------------+</span><br><span class="line"></span><br><span class="line">Result 表：</span><br><span class="line">+-----------+-------------+</span><br><span class="line">| player_id | first_login |</span><br><span class="line">+-----------+-------------+</span><br><span class="line">| 1         | 2016-03-01  |</span><br><span class="line">| 2         | 2017-06-25  |</span><br><span class="line">| 3         | 2016-03-02  |</span><br><span class="line">+-----------+-------------+</span><br></pre></td></tr></table></figure>
 <p>题解：</p>
 <p>首先我是想直接多表查询，然后用id相等来确定是同一个人，然后直接a1.event_date &lt; a2.event_date就行了，但是发现这样并不能完全正确。因为这样的话就会缺少一个id=2的人，发现他只有一次</p>
 <p>然后我就改了一版</p>
@@ -359,10 +363,10 @@ if (true) {
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select player_id, min(event_date) as first_login</span><br><span class="line">from Activity</span><br><span class="line">group by player_id;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>发现是我想多了哈哈，这个题根本不用那么难的/(ㄒoㄒ)/~~</p>
 <p>直接检索最小值，然后根据id分组就行了</p>
-<h2 id="10-lintcode-整合成绩单"><a href="#10-lintcode-整合成绩单" class="headerlink" title="10.lintcode 整合成绩单"></a>10.lintcode <a target="_blank" rel="noopener" href="https://www.lintcode.com/problem/3616/?showListFe=true&amp;page=1&amp;problemTypeId=3&amp;pageSize=50">整合成绩单</a></h2><p>描述</p>
+<h2 id="10-lintcode-整合成绩单">10.lintcode <a target="_blank" rel="noopener" href="https://www.lintcode.com/problem/3616/?showListFe=true&amp;page=1&amp;problemTypeId=3&amp;pageSize=50">整合成绩单</a></h2>
+<p>描述</p>
 <p>现在有两张结构相同的成绩表 <code>course1_score</code> 和 <code>course2_score</code>，请编写 SQL 语句，找出两张表中都存在的学生姓名，在结果表格中通过 <code>score1</code> 列和 <code>score2</code> 列分别展示这些学生的两门课程成绩，<strong>并按照姓名的字典序进行升序排序。</strong></p>
 <p>表定义1：<code>course1_score</code>（课程1的成绩表）</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -389,9 +393,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>表定义2：<code>course2_score</code>（课程2的成绩表）</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -418,13 +420,11 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>最短时间刷“透”算法面试：《66页算法宝典》.pdf</p>
 <p>微信添加【jiuzhangfeifei】备注【66】领取</p>
 <p>样例</p>
 <p><strong>样例一：</strong></p>
 <p>表内容1：<code>course1_score</code></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -461,9 +461,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>表内容2：<code>course2_score</code></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -495,9 +493,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>在运行你的 SQL 语句之后，表应返回：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -519,10 +515,8 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p><strong>样例二：</strong></p>
 <p>表内容1：<code>course1_score</code></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -559,9 +553,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>表内容2：<code>course2_score</code></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -593,9 +585,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>在运行你的 SQL 语句之后，表应返回：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -608,19 +598,19 @@ if (true) {
 <tr>
 <td style="text-align:center"></td>
 <td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 </tbody>
 </table>
-</div>
 <p>题解：</p>
 <p>因为他用加粗标出来了，需要按照name字段进行升序，所以要使用order by 。然后进行多表查询，通过筛选条件</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">c1.name , c1.score c2.score from course1_score c1 , course2_score c2 </span><br><span class="line">where c1.name = c2.name </span><br><span class="line">order by c1.name;</span><br></pre></td></tr></table></figure>
 <p>一开始我是这样，基本正确，但是不能通过🤯</p>
 <p>因为一开始的话就要声明🤦‍</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT c1.name, c1.score AS score1, c2.score AS score2 </span><br><span class="line">FROM course1_score c1, course2_score c2 </span><br><span class="line">WHERE c1.name = c2.name </span><br><span class="line">ORDER BY c1.name;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="11-lintcode-耗时前三的任务"><a href="#11-lintcode-耗时前三的任务" class="headerlink" title="11 lintcode 耗时前三的任务"></a>11 lintcode <a target="_blank" rel="noopener" href="https://lintcode.com/problem/3618/?showListFe=true&amp;page=1&amp;problemTypeId=3&amp;pageSize=50">耗时前三的任务</a></h2><p>描述</p>
+<h2 id="11-lintcode-耗时前三的任务">11 lintcode <a target="_blank" rel="noopener" href="https://lintcode.com/problem/3618/?showListFe=true&amp;page=1&amp;problemTypeId=3&amp;pageSize=50">耗时前三的任务</a></h2>
+<p>描述</p>
 <p>在本题中，你需要根据 <code>Tasks</code> 表：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -643,7 +633,6 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>找到任务耗时排名前三的任务（三条以下的记录只返回前 n 条）。你可以在样例中查看输出需要的格式。</p>
 <p>最短时间刷“透”算法面试：《66页算法宝典》.pdf</p>
 <p>微信添加【jiuzhangfeifei】备注【66】领取</p>
@@ -653,7 +642,6 @@ if (true) {
 <p>样例</p>
 <p><strong>样例 1</strong></p>
 <p>输入：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -690,9 +678,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>输出：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -715,10 +701,8 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p><strong>样例 2</strong></p>
 <p>输入：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -740,9 +724,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>输出：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -761,14 +743,13 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>题解：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select id,datediff(end_date, start_date) as diff</span><br><span class="line">from Tasks</span><br><span class="line">order by diff desc</span><br><span class="line">limit 3;</span><br></pre></td></tr></table></figure>
 <p>这个题目主要是用了排序的提交，还有分页，最重要的是日期函数datediff计算两个日期之间间隔的日子</p>
 <p>一开始我没看到题目要求，忘了limit了提交不成功🤯</p>
-<h2 id="12-lintcode-查询客户的推荐人"><a href="#12-lintcode-查询客户的推荐人" class="headerlink" title="12 lintcode 查询客户的推荐人"></a>12 lintcode <a target="_blank" rel="noopener" href="https://www.lintcode.com/problem/3614/?showListFe=true&amp;page=1&amp;problemTypeId=3&amp;level=1&amp;pageSize=50">查询客户的推荐人</a></h2><p>描述</p>
+<h2 id="12-lintcode-查询客户的推荐人">12 lintcode <a target="_blank" rel="noopener" href="https://www.lintcode.com/problem/3614/?showListFe=true&amp;page=1&amp;problemTypeId=3&amp;level=1&amp;pageSize=50">查询客户的推荐人</a></h2>
+<p>描述</p>
 <p>给定表 <code>customer</code> ，里面存储了所有客户信息和他们的推荐人，具体如下所示。</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -795,7 +776,6 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>现需要你写一个查询语句，返回一个<strong>只包含 <code>name</code> 字段的客户列表</strong>，要求列表中客户的推荐人编号都<strong>不是 1</strong>。</p>
 <p>最短时间刷“透”算法面试：《66页算法宝典》.pdf</p>
 <p>微信添加【jiuzhangfeifei】备注【66】领取</p>
@@ -803,7 +783,6 @@ if (true) {
 <p>样例</p>
 <p><strong>样例一</strong></p>
 <p>输入数据</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -840,9 +819,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>输出结果</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -864,10 +841,8 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p><strong>样例二</strong></p>
 <p>输入数据</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -894,9 +869,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>输出结果</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -912,17 +885,17 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>题解：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select name from customer</span><br><span class="line">where referrer_id is NULL or referrer_id &lt;&gt; 1;</span><br></pre></td></tr></table></figure>
 <p>直接筛选就行，他这个题目好像出bug了，我的东西都是正确的但是他给我输出错误😊</p>
-<ol>
-<li><h2 id="lintcode-·-查询成绩排名在第二到第五的学生"><a href="#lintcode-·-查询成绩排名在第二到第五的学生" class="headerlink" title="lintcode · 查询成绩排名在第二到第五的学生"></a>lintcode <a target="_blank" rel="noopener" href="https://www.lintcode.com/problem/3613/?showListFe=true&amp;page=1&amp;problemTypeId=3&amp;pageSize=50">· 查询成绩排名在第二到第五的学生</a></h2></li>
+<ol start="13">
+<li>
+<h2 id="lintcode-·-查询成绩排名在第二到第五的学生">lintcode <a target="_blank" rel="noopener" href="https://www.lintcode.com/problem/3613/?showListFe=true&amp;page=1&amp;problemTypeId=3&amp;pageSize=50">· 查询成绩排名在第二到第五的学生</a></h2>
+</li>
 </ol>
 <p>描述</p>
 <p>请编写 SQL 语句，从成绩表 <code>score</code> 中查询所有学生的三门课程的总分排名，并返回排名 <code>score_rank</code> 在第二到第五的学生学号 <code>sno</code> 以及这名学生的总分 <code>total_score</code>，<strong>排名不设置并列排名，当总分相同时，学号 <code>sno</code> 小的学生排在前面。</strong></p>
 <p>表定义：<code>score</code>（成绩表）</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -959,13 +932,12 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>最短时间刷“透”算法面试：《66页算法宝典》.pdf</p>
 <p>微信添加【jiuzhangfeifei】备注【66】领取</p>
 <p>当学生数量不足 5 人时，返回包括第 2 名之后的剩余学生的成绩排名表格。</p>
 <p>样例</p>
-<p><strong>样例一：</strong><br>表内容：<code>score</code></p>
-<div class="table-container">
+<p><strong>样例一：</strong><br>
+表内容：<code>score</code></p>
 <table>
 <thead>
 <tr>
@@ -1021,9 +993,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>在运行你的 SQL 语句之后，表应返回：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1055,10 +1025,9 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>学号为 <code>002</code> 和 <code>004</code> 的学生总分都为 <code>255</code>，但学号 <code>002</code> 较小，因此排在第一，而学号为 <code>004</code> 的学生排在第二。</p>
-<p><strong>样例二：</strong><br>表内容：<code>score</code></p>
-<div class="table-container">
+<p><strong>样例二：</strong><br>
+表内容：<code>score</code></p>
 <table>
 <thead>
 <tr>
@@ -1079,9 +1048,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>在运行你的 SQL 语句之后，表应返回：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1094,13 +1061,13 @@ if (true) {
 <tr>
 <td style="text-align:center"></td>
 <td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 </tbody>
 </table>
-</div>
 <p>没有排名从第二到第五的学生，返回空表。</p>
-<p><strong>样例三：</strong><br>表内容：<code>score</code></p>
-<div class="table-container">
+<p><strong>样例三：</strong><br>
+表内容：<code>score</code></p>
 <table>
 <thead>
 <tr>
@@ -1135,9 +1102,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>在运行你的 SQL 语句之后，表应返回：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1159,25 +1124,25 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>只有三名学生，返回第二到第三的学生。</p>
 <p>题解：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT row_number() over() as score_rank, sno, (course1 + course2 + course3) as total_score</span><br><span class="line">from score</span><br><span class="line">order by total_score desc</span><br><span class="line">limit 1,4</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>使用<code>ROW_NUMBER()</code> 函数来计算排名，</p>
 <p><strong>补充：在 SQL 中，<code>OVER</code> 子句与窗口函数一起使用，用于定义窗口或集合，窗口函数在该窗口或集合上执行计算。常见的窗口函数包括 <code>ROW_NUMBER()</code>, <code>RANK()</code>, <code>DENSE_RANK()</code>, 和 <code>SUM()</code> 等。</strong></p>
 <ul>
-<li><strong>`</strong>RANK()`：会为相同值的行分配相同的排名，并在不同值之间留出空缺。**</li>
+<li><strong><code>**RANK()</code>：会为相同值的行分配相同的排名，并在不同值之间留出空缺。</strong></li>
 <li><strong><code>DENSE_RANK()</code>：会为相同值的行分配相同的排名，但不会在不同值之间留出空缺。</strong></li>
 </ul>
 <p><strong>选择使用哪一个函数取决于你的需求：如果需要连续的排名（无空缺），使用 <code>DENSE_RANK()</code>；如果允许空缺，使用 <code>RANK()</code>。</strong></p>
 <p>最后通过limit来限制出现2-5名即可</p>
-<ol>
-<li><h2 id="lintcode-所有学生都选修的课程"><a href="#lintcode-所有学生都选修的课程" class="headerlink" title="lintcode 所有学生都选修的课程"></a>lintcode <a target="_blank" rel="noopener" href="https://www.lintcode.com/problem/3610/?showListFe=true&amp;page=1&amp;problemTypeId=3&amp;pageSize=50">所有学生都选修的课程</a></h2></li>
+<ol start="14">
+<li>
+<h2 id="lintcode-所有学生都选修的课程">lintcode <a target="_blank" rel="noopener" href="https://www.lintcode.com/problem/3610/?showListFe=true&amp;page=1&amp;problemTypeId=3&amp;pageSize=50">所有学生都选修的课程</a></h2>
+</li>
 </ol>
 <p>描述</p>
 <p>请编写 SQL 语句，从选课表 <code>courses</code> 中，查询选课表里存在的学生中，所有学生都选修的课程编号 <code>course_id</code>，并将结果 <code>course_id</code> 进行升序排序。</p>
 <p>表定义：<code>courses</code>（选课表）</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1204,13 +1169,11 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>最短时间刷“透”算法面试：《66页算法宝典》.pdf</p>
 <p>微信添加【jiuzhangfeifei】备注【66】领取</p>
 <p>样例</p>
 <p><strong>样例一：</strong></p>
 <p>表内容：<code>courses</code></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1252,9 +1215,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>在运行你的 SQL 语句之后，表应返回：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1267,11 +1228,9 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>解释：表中记录了学号为 1、2、4 的学生的选课情况，这三名学生都选修了课程编号为 <code>103</code> 的课程。</p>
 <p><strong>样例二：</strong></p>
 <p>表内容：<code>courses</code></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1308,9 +1267,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>在运行你的 SQL 语句之后，表应返回：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1323,18 +1280,18 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>解释：表中记录了学号为 1、2、3 的学生的选课情况，没有一门课程是这三名学生都选修的，故返回空表。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select course_id</span><br><span class="line">from courses</span><br><span class="line">group by course_id</span><br><span class="line">having count(distinct student_id) = (select count(distinct student_id) from courses)</span><br></pre></td></tr></table></figure>
 <p>having count(distinct student_id) = (select count(distinct student_id) from courses)这个选出学生id数量和课程数量相同的</p>
 <p>然后进行分组，就可以选出其所有学生都选的课</p>
-<ol>
-<li><h2 id="lintcode-考试通过的人数"><a href="#lintcode-考试通过的人数" class="headerlink" title="lintcode  考试通过的人数"></a>lintcode <a target="_blank" rel="noopener" href="https://www.lintcode.com/problem/3607/description?showListFe=true&amp;page=1&amp;problemTypeId=3&amp;level=1&amp;pageSize=50"> 考试通过的人数</a></h2></li>
+<ol start="15">
+<li>
+<h2 id="lintcode-考试通过的人数">lintcode <a target="_blank" rel="noopener" href="https://www.lintcode.com/problem/3607/description?showListFe=true&amp;page=1&amp;problemTypeId=3&amp;level=1&amp;pageSize=50"> 考试通过的人数</a></h2>
+</li>
 </ol>
 <p>描述</p>
 <p>请编写 SQL 语句，从学生表 <code>students</code> 和成绩表 <code>score</code> 中查询各个班级 <code>class</code> 中，<strong>三个课程都大于等于 60 分</strong>的学生数量 <code>pass_count</code>。</p>
 <p>表定义1：<code>students</code>（学生表）</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1366,9 +1323,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>表定义2：<code>score</code>（成绩表）</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1410,14 +1365,12 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>最短时间刷“透”算法面试：《66页算法宝典》.pdf</p>
 <p>微信添加【jiuzhangfeifei】备注【66】领取</p>
 <p>需要返回 <code>students</code> 表中出现过的所有班级的 <code>pass_count</code>，若该班级没有符合条件的学生，则 <code>pass_count</code> 为 <strong>0 。</strong></p>
 <p>样例</p>
 <p><strong>样例一：</strong></p>
 <p>表内容 1：<code>students</code></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1454,9 +1407,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>表内容 2：<code>score</code></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1503,9 +1454,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>在运行你的 SQL 语句之后，表应返回：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1524,10 +1473,8 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p><strong>样例二：</strong></p>
 <p>表内容 1：<code>students</code></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1570,9 +1517,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>表内容 2：<code>score</code></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1627,9 +1572,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>在运行你的 SQL 语句之后，表应返回：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1644,15 +1587,15 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>题解：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select s1.class as class ,count(s1.class) as pass_count</span><br><span class="line">from students  s1 join score  s2 on s1.sno = s2.sno</span><br><span class="line">where s2.course1 &gt;= 60 AND s2.course2 &gt;= 60 AND s2.course3 &gt;= 60</span><br><span class="line">group by s1.class;</span><br></pre></td></tr></table></figure>
 <p>首先先要确定这是要进行多表查询，而且连接的条件是s1.sno = s2.sno这是两张表的连接条件</p>
 <p>然后根据要求写where 语句都大于等于60分</p>
 <p>然后根据班级分组</p>
 <p>最后再写return返回的列表值</p>
-<h2 id="16-lintcode-最棒的销售"><a href="#16-lintcode-最棒的销售" class="headerlink" title="16.lintcode 最棒的销售"></a>16.lintcode 最棒的销售</h2><p>请你编写 SQL 语句，查询表 <code>sales</code> 表中销售额最高的销售 <code>id</code> 。<br>表定义：sales（销售表）</p>
-<div class="table-container">
+<h2 id="16-lintcode-最棒的销售">16.lintcode 最棒的销售</h2>
+<p>请你编写 SQL 语句，查询表 <code>sales</code> 表中销售额最高的销售 <code>id</code> 。<br>
+表定义：sales（销售表）</p>
 <table>
 <thead>
 <tr>
@@ -1679,14 +1622,12 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>最短时间刷“透”算法面试：《66页算法宝典》.pdf</p>
 <p>微信添加【jiuzhangfeifei】备注【66】领取</p>
 <p>如果存在多个 <code>id</code> 的销售额相同且都为最大值，则返回符合条件的所有 <code>id</code></p>
 <p>样例</p>
 <p>样例一</p>
 <p>表内容：sales</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1713,9 +1654,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>在运行你的 <code>SQL</code> 语句后，表应返回：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1728,9 +1667,8 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
-<p>样例二：<br>表内容：sales</p>
-<div class="table-container">
+<p>样例二：<br>
+表内容：sales</p>
 <table>
 <thead>
 <tr>
@@ -1762,9 +1700,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>在运行你的 <code>SQL</code> 语句后，表应返回：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1777,12 +1713,11 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>题解：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> id <span class="keyword">from</span> sales <span class="keyword">order</span> <span class="keyword">by</span> sales_sum <span class="keyword">desc</span> limit <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="17-lintcode-视图处理算法-Merge"><a href="#17-lintcode-视图处理算法-Merge" class="headerlink" title="17.lintcode  视图处理算法 Merge"></a>17.lintcode  视图处理算法 Merge</h2><p>请创建一个视图 <code>v_teachers</code> 查看 <code>teachers</code> 表中年龄大于25岁的教师信息，并使用 <code>Merge</code> 的视图算法</p>
+<h2 id="17-lintcode-视图处理算法-Merge">17.lintcode  视图处理算法 Merge</h2>
+<p>请创建一个视图 <code>v_teachers</code> 查看 <code>teachers</code> 表中年龄大于25岁的教师信息，并使用 <code>Merge</code> 的视图算法</p>
 <p>表定义 : teachers (教师表)</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1819,13 +1754,11 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>最短时间刷“透”算法面试：《66页算法宝典》.pdf</p>
 <p>微信添加【jiuzhangfeifei】备注【66】领取</p>
 <p>样例</p>
 <p><strong>输入数据：</strong></p>
 <p><code>teachers</code> 表：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1840,36 +1773,34 @@ if (true) {
 <tr>
 <td style="text-align:left">1</td>
 <td style="text-align:left">‘Eastern heretic’</td>
-<td style="text-align:left">‘<a href="mailto:eastern.heretic@gmail.com">eastern.heretic@gmail.com</a>‘</td>
+<td style="text-align:left">‘<a href="mailto:eastern.heretic@gmail.com">eastern.heretic@gmail.com</a>’</td>
 <td style="text-align:left">20</td>
 <td style="text-align:left">‘UK’</td>
 </tr>
 <tr>
 <td style="text-align:left">2</td>
 <td style="text-align:left">‘Northern Beggar’</td>
-<td style="text-align:left">‘<a href="mailto:northern.beggar@qq.com">northern.beggar@qq.com</a>‘</td>
+<td style="text-align:left">‘<a href="mailto:northern.beggar@qq.com">northern.beggar@qq.com</a>’</td>
 <td style="text-align:left">21</td>
 <td style="text-align:left">‘CN’</td>
 </tr>
 <tr>
 <td style="text-align:left">3</td>
 <td style="text-align:left">‘Western Venom’</td>
-<td style="text-align:left">‘<a href="mailto:western.venom@163.com">western.venom@163.com</a>‘</td>
+<td style="text-align:left">‘<a href="mailto:western.venom@163.com">western.venom@163.com</a>’</td>
 <td style="text-align:left">28</td>
 <td style="text-align:left">‘USA’</td>
 </tr>
 <tr>
 <td style="text-align:left">4</td>
 <td style="text-align:left">‘Southern Emperor’</td>
-<td style="text-align:left">‘<a href="mailto:southern.emperor@qq.com">southern.emperor@qq.com</a>‘</td>
+<td style="text-align:left">‘<a href="mailto:southern.emperor@qq.com">southern.emperor@qq.com</a>’</td>
 <td style="text-align:left">21</td>
 <td style="text-align:left">‘JP’</td>
 </tr>
 </tbody>
 </table>
-</div>
 <p><strong>返回结果：</strong></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1884,23 +1815,23 @@ if (true) {
 <tr>
 <td style="text-align:left">3</td>
 <td style="text-align:left">‘Western Venom’</td>
-<td style="text-align:left">‘<a href="mailto:western.venom@163.com">western.venom@163.com</a>‘</td>
+<td style="text-align:left">‘<a href="mailto:western.venom@163.com">western.venom@163.com</a>’</td>
 <td style="text-align:left">28</td>
+<td style="text-align:left"></td>
 </tr>
 </tbody>
 </table>
-</div>
 <p>题解：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create algorithm = Merge view v_teachers</span><br><span class="line">as </span><br><span class="line">select *</span><br><span class="line">from teachers </span><br><span class="line">where age&gt;25;</span><br></pre></td></tr></table></figure>
 <p><strong>主要是algorithm = Merge创建merge的视图</strong></p>
 <p>18.lintcode 创建批量插入数据的存储过程</p>
-<p>我们需要向 <code>teachers</code> 表中插入 <code>30000</code> 条测试数据，包含教师姓名 <code>name = &#39;teacher&#39; + 测试 id</code>，（测试 <code>id 从 1 增加到 30000</code>），教师邮箱 <code>email = name + &#39;@chapter.com&#39;</code>，教师年龄 <code>age = 26 + (id%20)</code><br>请利用 <code>SQl</code> 的存储过程来实现，请将存储过程命名为 <code>addTeachers</code>。</p>
+<p>我们需要向 <code>teachers</code> 表中插入 <code>30000</code> 条测试数据，包含教师姓名 <code>name = 'teacher' + 测试 id</code>，（测试 <code>id 从 1 增加到 30000</code>），教师邮箱 <code>email = name + '@chapter.com'</code>，教师年龄 <code>age = 26 + (id%20)</code><br>
+请利用 <code>SQl</code> 的存储过程来实现，请将存储过程命名为 <code>addTeachers</code>。</p>
 <p>最短时间刷“透”算法面试：《66页算法宝典》.pdf</p>
 <p>微信添加【jiuzhangfeifei】备注【66】领取</p>
 <p>样例</p>
 <p><strong>输入数据：</strong></p>
 <p><code>teachers</code> 表：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1917,12 +1848,11 @@ if (true) {
 <td style="text-align:left"></td>
 <td style="text-align:left"></td>
 <td style="text-align:left"></td>
+<td style="text-align:left"></td>
 </tr>
 </tbody>
 </table>
-</div>
 <p><strong>返回结果：</strong></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1937,49 +1867,49 @@ if (true) {
 <tr>
 <td style="text-align:left">1</td>
 <td style="text-align:left">‘teacher1’</td>
-<td style="text-align:left">‘<a href="mailto:teacher1@chapter.com">teacher1@chapter.com</a>‘</td>
+<td style="text-align:left">‘<a href="mailto:teacher1@chapter.com">teacher1@chapter.com</a>’</td>
 <td style="text-align:left">27</td>
 <td style="text-align:left">‘’</td>
 </tr>
 <tr>
 <td style="text-align:left">2</td>
 <td style="text-align:left">‘teacher2’</td>
-<td style="text-align:left">‘<a href="mailto:teacher2@chapter.com">teacher2@chapter.com</a>‘</td>
+<td style="text-align:left">‘<a href="mailto:teacher2@chapter.com">teacher2@chapter.com</a>’</td>
 <td style="text-align:left">28</td>
 <td style="text-align:left">‘’</td>
 </tr>
 <tr>
 <td style="text-align:left">3</td>
 <td style="text-align:left">‘teacher3’</td>
-<td style="text-align:left">‘<a href="mailto:teacher3@chapter.com">teacher3@chapter.com</a>‘</td>
+<td style="text-align:left">‘<a href="mailto:teacher3@chapter.com">teacher3@chapter.com</a>’</td>
 <td style="text-align:left">29</td>
 <td style="text-align:left">‘’</td>
 </tr>
 <tr>
 <td style="text-align:left">4</td>
 <td style="text-align:left">‘teacher4’</td>
-<td style="text-align:left">‘<a href="mailto:teacher4@chapter.com">teacher4@chapter.com</a>‘</td>
+<td style="text-align:left">‘<a href="mailto:teacher4@chapter.com">teacher4@chapter.com</a>’</td>
 <td style="text-align:left">30</td>
 <td style="text-align:left">‘’</td>
 </tr>
 <tr>
 <td style="text-align:left">5</td>
 <td style="text-align:left">‘teacher5’</td>
-<td style="text-align:left">‘<a href="mailto:teacher5@chapter.com">teacher5@chapter.com</a>‘</td>
+<td style="text-align:left">‘<a href="mailto:teacher5@chapter.com">teacher5@chapter.com</a>’</td>
 <td style="text-align:left">31</td>
 <td style="text-align:left">‘’</td>
 </tr>
 <tr>
 <td style="text-align:left">6</td>
 <td style="text-align:left">‘teacher6’</td>
-<td style="text-align:left">‘<a href="mailto:teacher6@chapter.com">teacher6@chapter.com</a>‘</td>
+<td style="text-align:left">‘<a href="mailto:teacher6@chapter.com">teacher6@chapter.com</a>’</td>
 <td style="text-align:left">32</td>
 <td style="text-align:left">‘’</td>
 </tr>
 <tr>
 <td style="text-align:left">7</td>
 <td style="text-align:left">‘teacher7’</td>
-<td style="text-align:left">‘<a href="mailto:teacher7@chapter.com">teacher7@chapter.com</a>‘</td>
+<td style="text-align:left">‘<a href="mailto:teacher7@chapter.com">teacher7@chapter.com</a>’</td>
 <td style="text-align:left">33</td>
 <td style="text-align:left">‘’</td>
 </tr>
@@ -1992,11 +1922,10 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>题解：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE PROCEDURE addTeachers()</span><br><span class="line">BEGIN</span><br><span class="line">    DECLARE num INT DEFAULT 0;</span><br><span class="line">    WHILE num &lt; 30000 DO</span><br><span class="line">        INSERT INTO teachers (name, email, age, country)</span><br><span class="line">        VALUES (CONCAT(&#x27;teacher&#x27;, num), CONCAT(&#x27;teacher&#x27;, num, &#x27;@chapter.com&#x27;), 26 + (num % 20), &#x27;&#x27;);</span><br><span class="line">        SET num = num + 1;</span><br><span class="line">    END WHILE;</span><br><span class="line">END;</span><br></pre></td></tr></table></figure>
-<h2 id="18-lintcode-更换连续两个人的座位"><a href="#18-lintcode-更换连续两个人的座位" class="headerlink" title="18.lintcode 更换连续两个人的座位"></a>18.lintcode <a target="_blank" rel="noopener" href="https://www.lintcode.com/problem/3617/description?showListFe=true&amp;page=1&amp;problemTypeId=3&amp;level=2&amp;pageSize=50">更换连续两个人的座位</a></h2><p>现有一表 <code>seat</code> 存储了每个座位的信息，具体如下所示。</p>
-<div class="table-container">
+<h2 id="18-lintcode-更换连续两个人的座位">18.lintcode <a target="_blank" rel="noopener" href="https://www.lintcode.com/problem/3617/description?showListFe=true&amp;page=1&amp;problemTypeId=3&amp;level=2&amp;pageSize=50">更换连续两个人的座位</a></h2>
+<p>现有一表 <code>seat</code> 存储了每个座位的信息，具体如下所示。</p>
 <table>
 <thead>
 <tr>
@@ -2018,7 +1947,6 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>请编写 SQL 查询来交换<strong>每两个连续的人的座位号</strong>。如果总体的数量是奇数，则最后一个人的座位不进行交换。</p>
 <p>最终的结果需要包含 <code>id</code> 和 <code>name</code> 两个字段，并按 <code>id</code> <strong>升序</strong>返回结果表。</p>
 <p>最短时间刷“透”算法面试：《66页算法宝典》.pdf</p>
@@ -2026,7 +1954,6 @@ if (true) {
 <p>样例</p>
 <p><strong>样例一</strong></p>
 <p>输入数据</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2057,9 +1984,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>输出结果</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2090,12 +2015,10 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>解释</p>
 <p>输入数据包含 <strong>5</strong> 个座位信息，则对编号 <strong>[1 &lt;-&gt; 2]</strong>、<strong>[3 &lt;-&gt; 4]</strong> 四个座位对应的人进行更换座位，<code>id</code> 为 5 的<strong>不进行更换</strong>。</p>
 <p><strong>样例二</strong></p>
 <p>输入数据</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2130,9 +2053,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>输出结果</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2167,15 +2088,14 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>解释</p>
 <p>输入数据包含 <strong>6</strong> 个座位信息，则对编号 <strong>[1 &lt;-&gt; 2]</strong>、<strong>[3 &lt;-&gt; 4]</strong> 以及 <strong>[5 &lt;-&gt; 6]</strong> 六个座位对应的人都进行更换座位。</p>
 <p>题解：</p>
 <p>使用了case语句</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SELECT </span><br><span class="line">    CASE </span><br><span class="line">        WHEN id % 2 = 1 AND id = (SELECT COUNT(*) FROM seat) THEN id</span><br><span class="line">        WHEN id % 2 = 1 THEN id + 1</span><br><span class="line">        ELSE id - 1</span><br><span class="line">    END AS id, </span><br><span class="line">    name</span><br><span class="line">FROM seat </span><br><span class="line">ORDER BY id;</span><br></pre></td></tr></table></figure>
-<h2 id="19-lintcode-查询国籍为-‘USA’-的所有教师所授课程名称"><a href="#19-lintcode-查询国籍为-‘USA’-的所有教师所授课程名称" class="headerlink" title="19.lintcode  查询国籍为 ‘USA’ 的所有教师所授课程名称"></a>19.lintcode <a target="_blank" rel="noopener" href="https://www.lintcode.com/problem/2063/?showListFe=true&amp;page=1&amp;problemTypeId=3&amp;level=2&amp;ordering=level&amp;pageSize=50"> 查询国籍为 ‘USA’ 的所有教师所授课程名称</a></h2><p>请编写 SQL 语句， 联合课程表（courses）和教师表（teachers）查询课程表中，国籍为 USA 的所有教师所授课程名称（name）。</p>
+<h2 id="19-lintcode-查询国籍为-‘USA’-的所有教师所授课程名称">19.lintcode <a target="_blank" rel="noopener" href="https://www.lintcode.com/problem/2063/?showListFe=true&amp;page=1&amp;problemTypeId=3&amp;level=2&amp;ordering=level&amp;pageSize=50"> 查询国籍为 ‘USA’ 的所有教师所授课程名称</a></h2>
+<p>请编写 SQL 语句， 联合课程表（courses）和教师表（teachers）查询课程表中，国籍为 USA 的所有教师所授课程名称（name）。</p>
 <p>表定义：teachers（教师表）</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2212,9 +2132,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>表定义：courses（课程表）</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2251,7 +2169,6 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>最短时间刷“透”算法面试：《66页算法宝典》.pdf</p>
 <p>微信添加【jiuzhangfeifei】备注【66】领取</p>
 <ul>
@@ -2261,7 +2178,6 @@ if (true) {
 <p>样例</p>
 <p><strong>样例一：</strong></p>
 <p>表内容 : teachers</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2310,9 +2226,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>表内容：courses</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2396,9 +2310,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>在运行你的 SQL 语句之后，表应返回：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2420,10 +2332,8 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p><strong>样例二：</strong></p>
 <p>表内容 : teachers</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2472,9 +2382,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>表内容：courses</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2530,7 +2438,6 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>在运行你的 SQL 语句之后，表应返回：</p>
 <p>name</p>
 <blockquote>
@@ -2539,7 +2446,8 @@ if (true) {
 <p>一看就是多表查询题目，让其外键相等即可将两个表连接起来</p>
 <p>题解：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select c.name</span><br><span class="line">from courses as c , teachers as teachers</span><br><span class="line">where c.teacher_id = teachers.id</span><br><span class="line">and teachers.country = &#x27;USA&#x27;;</span><br></pre></td></tr></table></figure>
-<h2 id="20-leetcode-第N高的薪水"><a href="#20-leetcode-第N高的薪水" class="headerlink" title="20.leetcode 第N高的薪水"></a>20.leetcode <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/nth-highest-salary/">第N高的薪水</a></h2><p>表: <code>Employee</code></p>
+<h2 id="20-leetcode-第N高的薪水">20.leetcode <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/nth-highest-salary/">第N高的薪水</a></h2>
+<p>表: <code>Employee</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+-------------+------+</span><br><span class="line">| Column Name | Type |</span><br><span class="line">+-------------+------+</span><br><span class="line">| id          | int  |</span><br><span class="line">| salary      | int  |</span><br><span class="line">+-------------+------+</span><br><span class="line">在 SQL 中，id 是该表的主键。</span><br><span class="line">该表的每一行都包含有关员工工资的信息。</span><br></pre></td></tr></table></figure>
 <p>查询 <code>Employee</code> 表中第 <code>n</code> 高的工资。如果没有第 <code>n</code> 个最高工资，查询结果应该为 <code>null</code> 。</p>
 <p>查询结果格式如下所示。</p>
@@ -2549,9 +2457,9 @@ if (true) {
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">输入: </span><br><span class="line">Employee 表:</span><br><span class="line">+----+--------+</span><br><span class="line">| id | salary |</span><br><span class="line">+----+--------+</span><br><span class="line">| 1  | 100    |</span><br><span class="line">+----+--------+</span><br><span class="line">n = 2</span><br><span class="line">输出: </span><br><span class="line">+------------------------+</span><br><span class="line">| getNthHighestSalary(2) |</span><br><span class="line">+------------------------+</span><br><span class="line">| null                   |</span><br><span class="line">+------------------------+</span><br></pre></td></tr></table></figure>
 <p>题解：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT</span><br><span class="line">BEGIN</span><br><span class="line">DECLARE M INT; </span><br><span class="line">    SET M = N-1; </span><br><span class="line">  RETURN (</span><br><span class="line">     select distinct salary from employee order by salary desc limit m,1</span><br><span class="line">  );</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
-<h2 id="21-linkcode-我的最佳好友"><a href="#21-linkcode-我的最佳好友" class="headerlink" title="21.linkcode 我的最佳好友"></a>21.linkcode <a target="_blank" rel="noopener" href="https://www.lintcode.com/problem/3611/description?showListFe=true&amp;page=1&amp;problemTypeId=3&amp;level=2&amp;pageSize=50">我的最佳好友</a></h2><p>在本题中，存在以下三张表：</p>
+<h2 id="21-linkcode-我的最佳好友">21.linkcode <a target="_blank" rel="noopener" href="https://www.lintcode.com/problem/3611/description?showListFe=true&amp;page=1&amp;problemTypeId=3&amp;level=2&amp;pageSize=50">我的最佳好友</a></h2>
+<p>在本题中，存在以下三张表：</p>
 <p><code>Student</code> 表</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2570,9 +2478,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p><code>Friend</code> 表（最佳好友）</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2591,9 +2497,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p><code>Score</code> 表</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2612,7 +2516,6 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>现在你需要根据这三张表，找到所有<strong>最佳好友成绩比他们自己高</strong>的学生，同时根据最佳好友的成绩进行降序排序，最后输出这些学生自己的名字。</p>
 <p>最短时间刷“透”算法面试：《66页算法宝典》.pdf</p>
 <p>微信添加【jiuzhangfeifei】备注【66】领取</p>
@@ -2622,7 +2525,6 @@ if (true) {
 <p><strong>样例 1</strong></p>
 <p>输入：</p>
 <p><code>Student</code> 表：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2645,9 +2547,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p><code>Friend</code> 表：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2670,9 +2570,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p><code>Score</code> 表：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2695,9 +2593,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>输出：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2713,7 +2609,6 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p><strong>解释：</strong></p>
 <ul>
 <li>Jack Rath 的最佳好友 Jackie Little 成绩为 90，比 Jack Rath 自己的 80 高</li>
@@ -2724,7 +2619,6 @@ if (true) {
 <p><strong>样例 2</strong></p>
 <p>输入：</p>
 <p><code>Student</code> 表：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2747,9 +2641,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p><code>Friend</code> 表：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2772,9 +2664,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p><code>Score</code> 表：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2797,9 +2687,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>输出：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2812,13 +2700,12 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>题解：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select s.name as name</span><br><span class="line">from Student as s</span><br><span class="line">join Friend as f on s.id = f.id </span><br><span class="line">join Score as sc1 on f.fid = sc1.id</span><br><span class="line">join Score as sc2 on s.id = sc2.id</span><br><span class="line">where sc2.value &lt; sc1.value</span><br><span class="line">order by sc1.value;</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
-<h2 id="22-牛客网-SQL26-计算25岁以上和以下的用户数量（if的使用）"><a href="#22-牛客网-SQL26-计算25岁以上和以下的用户数量（if的使用）" class="headerlink" title="22.牛客网 SQL26 计算25岁以上和以下的用户数量（if的使用）"></a>22.牛客网 <a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/30f9f470390a4a8a8dd3b8e1f8c7a9fa?tpId=199&amp;tqId=1975678&amp;ru=/exam/intelligent&amp;qru=/ta/sql-quick-study/question-ranking&amp;sourceUrl=%2Fexam%2Fintelligent%3Ftype%3Dvip"><strong>SQL26</strong> <strong>计算25岁以上和以下的用户数量</strong></a>（if的使用）</h2><p>题目：现在运营想要将用户划分为25岁以下和25岁及以上两个年龄段，分别查看这两个年龄段用户数量</p>
+<h2 id="22-牛客网-SQL26-计算25岁以上和以下的用户数量（if的使用）">22.牛客网 <a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/30f9f470390a4a8a8dd3b8e1f8c7a9fa?tpId=199&amp;tqId=1975678&amp;ru=/exam/intelligent&amp;qru=/ta/sql-quick-study/question-ranking&amp;sourceUrl=%2Fexam%2Fintelligent%3Ftype%3Dvip"><strong>SQL26</strong> <strong>计算25岁以上和以下的用户数量</strong></a>（if的使用）</h2>
+<p>题目：现在运营想要将用户划分为25岁以下和25岁及以上两个年龄段，分别查看这两个年龄段用户数量</p>
 <p><strong>本题注意：age为null 也记为 25岁以下</strong></p>
 <p>示例：user_profile</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2913,9 +2800,7 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>根据示例，你的查询应返回以下结果：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2934,21 +2819,23 @@ if (true) {
 </tr>
 </tbody>
 </table>
-</div>
 <p>题解：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT IF(age &gt;= 25, &#x27;25岁及以上&#x27;, &#x27;25岁以下&#x27;) AS age_cut, COUNT(*) AS number</span><br><span class="line"></span><br><span class="line">FROM user_profile</span><br><span class="line"></span><br><span class="line">GROUP BY age_cut;</span><br></pre></td></tr></table></figure>
 <p>这里主要用了if查询</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IF(condition, value_if_true, value_if_false)</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p><strong>condition</strong>: 这是一个逻辑表达式，返回布尔值（<code>TRUE</code> 或 <code>FALSE</code>）。</p>
+<li>
+<p><strong>condition</strong>: 这是一个逻辑表达式，返回布尔值（<code>TRUE</code> 或 <code>FALSE</code>）。</p>
 </li>
-<li><p><strong>value_if_true</strong>: 当条件为 <code>TRUE</code> 时返回的值。</p>
+<li>
+<p><strong>value_if_true</strong>: 当条件为 <code>TRUE</code> 时返回的值。</p>
 </li>
-<li><p><strong>value_if_false</strong>: 当条件为 <code>FALSE</code> 时返回的值。</p>
+<li>
+<p><strong>value_if_false</strong>: 当条件为 <code>FALSE</code> 时返回的值。</p>
 </li>
 </ul>
 <p>解释</p>
-</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">mengnankkzhou</div><div class="post-copyright__author_desc">不要走捏</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://blog.tokenlen.top/2024/07/22/sqltest1/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://blog.tokenlen.top/2024/07/22/sqltest1/')">Mysql练习 暑假篇</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://blog.tokenlen.top/2024/07/22/sqltest1/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=Mysql练习 暑假篇&amp;url=https://blog.tokenlen.top/2024/07/22/sqltest1/&amp;pic=https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722379.jpg?_r_=38b19f45-f0d1-6bc8-7eee-2e32b1ac7311" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">mengnankkzhou</div><div class="post-copyright__author_desc">不要走捏</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://blog.tokenlen.top/2024/07/22/sqltest1/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://blog.tokenlen.top/2024/07/22/sqltest1/')">Mysql练习 暑假篇</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://blog.tokenlen.top/2024/07/22/sqltest1/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=Mysql练习 暑假篇&amp;url=https://blog.tokenlen.top/2024/07/22/sqltest1/&amp;pic=https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712175.jpg?_r_=426f30d7-a080-e3ac-cba6-5a9c5ee70d70" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
   var currentPageUrl = window.location.href;
   var input = document.createElement("input");
   input.setAttribute("value", currentPageUrl);
@@ -2957,7 +2844,7 @@ if (true) {
   input.setSelectionRange(0, 99999);
   document.execCommand("copy");
   document.body.removeChild(input);
-}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.tokenlen.top" target="_blank">mengnankkのblog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__category-list"><a class="post-meta__box__categoryes" href="/categories/sql/"><span class="categoryes-punctuation"> <i class="anzhiyufont anzhiyu-icon-inbox"></i></span>sql<span class="categoryesPageCount">16</span></a></div><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/mysql/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>mysql<span class="tagsPageCount">14</span></a></div></div><div class="post_share"><div class="social-share" data-image="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202408081510494.jpg?_r_=b9675c8a-90f8-bcfc-80c1-4dc272eb499b" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/07/19/mysql5/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712179.jpg?_r_=77c7242e-a12a-139f-dda8-4346a330c943" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Mysql 多表查询</div></div></a></div><div class="next-post pull-right"><a href="/2024/07/22/mysql6/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722379.jpg?_r_=480ef57c-c0e5-835a-6f4d-ea7df54174e5" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Mysql 事务</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/01/10/sqltest3/" title="Mysql练习 寒假篇"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg?_r_=860e67ec-6266-9a39-5732-79ed96a1d958" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-01-10</div><div class="title">Mysql练习 寒假篇</div></div></a></div><div><a href="/2024/10/09/sqltest2/" title="Mysql练习 十月篇"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712179.jpg?_r_=e5e5cd75-f9bb-f105-14c9-c16a8ba7d3ff" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2024-10-09</div><div class="title">Mysql练习 十月篇</div></div></a></div><div><a href="/2024/08/06/mysql11/" title="Mysql 锁"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221837709.jpg?_r_=94431786-a1c7-0504-3535-da3dfa3469d0" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2024-08-06</div><div class="title">Mysql 锁</div></div></a></div><div><a href="/2024/08/01/mysql10/" title="Mysql 存储对象"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712178.jpg?_r_=b122dd0e-4717-c3cf-bc9a-8e416fc92b4f" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2024-08-01</div><div class="title">Mysql 存储对象</div></div></a></div><div><a href="/2024/07/31/mysql9/" title="Mysql sql优化"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221837601.jpeg?_r_=966237e5-731d-489a-ede1-da842db53844" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2024-07-31</div><div class="title">Mysql sql优化</div></div></a></div><div><a href="/2024/07/25/mysql8/" title="Mysql 索引"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722381.jpg?_r_=3be0bafd-130d-e88a-fcc3-17fb92a4ae4e" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2024-07-25</div><div class="title">Mysql 索引</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-switch"><span class="first-comment">Twikoo</span><span id="switch-btn"></span><span class="second-comment">Valine</span></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">清风拂柳影，碧水映花香。</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">mengnankkzhou</h1><div class="author-info__desc">不要走捏</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/mengnankkkk" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/440831872" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来看我的博客鸭~</div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410021212939.jpg) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Mysql%E7%BB%83%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text">Mysql练习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">基础题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.2.</span> <span class="toc-text">1.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">1.3.</span> <span class="toc-text">2.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3"><span class="toc-number">1.4.</span> <span class="toc-text">3.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%8A%9B%E6%89%A3sql-175%E7%BB%84%E5%90%88%E4%B8%A4%E4%B8%AA%E8%A1%A8"><span class="toc-number">1.5.</span> <span class="toc-text">4.力扣sql 175组合两个表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-leetcode-%E8%B6%85%E8%BF%87%E7%BB%8F%E7%90%86%E6%94%B6%E5%85%A5%E7%9A%84%E5%91%98%E5%B7%A5"><span class="toc-number">1.6.</span> <span class="toc-text">5.leetcode 超过经理收入的员工</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-leetcode-%E6%9F%A5%E6%89%BE%E9%87%8D%E5%A4%8D%E7%9A%84%E7%94%B5%E5%AD%90%E9%82%AE%E7%AE%B1"><span class="toc-number">1.7.</span> <span class="toc-text">6.leetcode 查找重复的电子邮箱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-leetcode-%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E7%9A%84%E7%94%B5%E5%AD%90%E9%82%AE%E7%AE%B1"><span class="toc-number">1.8.</span> <span class="toc-text">7.leetcode 删除重复的电子邮箱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-leetcode-%E6%B8%B8%E6%88%8F%E7%8E%A9%E6%B3%95%E5%88%86%E6%9E%90-I"><span class="toc-number">1.9.</span> <span class="toc-text">9.leetcode 游戏玩法分析 I</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-lintcode-%E6%95%B4%E5%90%88%E6%88%90%E7%BB%A9%E5%8D%95"><span class="toc-number">1.10.</span> <span class="toc-text">10.lintcode 整合成绩单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-lintcode-%E8%80%97%E6%97%B6%E5%89%8D%E4%B8%89%E7%9A%84%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.11.</span> <span class="toc-text">11 lintcode 耗时前三的任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-lintcode-%E6%9F%A5%E8%AF%A2%E5%AE%A2%E6%88%B7%E7%9A%84%E6%8E%A8%E8%8D%90%E4%BA%BA"><span class="toc-number">1.12.</span> <span class="toc-text">12 lintcode 查询客户的推荐人</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lintcode-%C2%B7-%E6%9F%A5%E8%AF%A2%E6%88%90%E7%BB%A9%E6%8E%92%E5%90%8D%E5%9C%A8%E7%AC%AC%E4%BA%8C%E5%88%B0%E7%AC%AC%E4%BA%94%E7%9A%84%E5%AD%A6%E7%94%9F"><span class="toc-number">1.13.</span> <span class="toc-text">lintcode · 查询成绩排名在第二到第五的学生</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lintcode-%E6%89%80%E6%9C%89%E5%AD%A6%E7%94%9F%E9%83%BD%E9%80%89%E4%BF%AE%E7%9A%84%E8%AF%BE%E7%A8%8B"><span class="toc-number">1.14.</span> <span class="toc-text">lintcode 所有学生都选修的课程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lintcode-%E8%80%83%E8%AF%95%E9%80%9A%E8%BF%87%E7%9A%84%E4%BA%BA%E6%95%B0"><span class="toc-number">1.15.</span> <span class="toc-text">lintcode  考试通过的人数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-lintcode-%E6%9C%80%E6%A3%92%E7%9A%84%E9%94%80%E5%94%AE"><span class="toc-number">1.16.</span> <span class="toc-text">16.lintcode 最棒的销售</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#17-lintcode-%E8%A7%86%E5%9B%BE%E5%A4%84%E7%90%86%E7%AE%97%E6%B3%95-Merge"><span class="toc-number">1.17.</span> <span class="toc-text">17.lintcode  视图处理算法 Merge</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-lintcode-%E6%9B%B4%E6%8D%A2%E8%BF%9E%E7%BB%AD%E4%B8%A4%E4%B8%AA%E4%BA%BA%E7%9A%84%E5%BA%A7%E4%BD%8D"><span class="toc-number">1.18.</span> <span class="toc-text">18.lintcode 更换连续两个人的座位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#19-lintcode-%E6%9F%A5%E8%AF%A2%E5%9B%BD%E7%B1%8D%E4%B8%BA-%E2%80%98USA%E2%80%99-%E7%9A%84%E6%89%80%E6%9C%89%E6%95%99%E5%B8%88%E6%89%80%E6%8E%88%E8%AF%BE%E7%A8%8B%E5%90%8D%E7%A7%B0"><span class="toc-number">1.19.</span> <span class="toc-text">19.lintcode  查询国籍为 ‘USA’ 的所有教师所授课程名称</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#20-leetcode-%E7%AC%ACN%E9%AB%98%E7%9A%84%E8%96%AA%E6%B0%B4"><span class="toc-number">1.20.</span> <span class="toc-text">20.leetcode 第N高的薪水</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#21-linkcode-%E6%88%91%E7%9A%84%E6%9C%80%E4%BD%B3%E5%A5%BD%E5%8F%8B"><span class="toc-number">1.21.</span> <span class="toc-text">21.linkcode 我的最佳好友</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-%E7%89%9B%E5%AE%A2%E7%BD%91-SQL26-%E8%AE%A1%E7%AE%9725%E5%B2%81%E4%BB%A5%E4%B8%8A%E5%92%8C%E4%BB%A5%E4%B8%8B%E7%9A%84%E7%94%A8%E6%88%B7%E6%95%B0%E9%87%8F%EF%BC%88if%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%89"><span class="toc-number">1.22.</span> <span class="toc-text">22.牛客网 SQL26 计算25岁以上和以下的用户数量（if的使用）</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/02/01/en6/" title="English二月篇"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202408081510494.jpg?_r_=b9675c8a-90f8-bcfc-80c1-4dc272eb499b" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="English二月篇"/></a><div class="content"><a class="title" href="/2025/02/01/en6/" title="English二月篇">English二月篇</a><time datetime="2025-01-31T16:00:00.000Z" title="发表于 2025-02-01 00:00:00">2025-02-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/26/mao1/" title="毛泽东选集阅读体会&amp;杂谈"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202408081510095.jpg?_r_=67570ec1-6b6e-8288-0ce8-3fa27516ef5d" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="毛泽东选集阅读体会&amp;杂谈"/></a><div class="content"><a class="title" href="/2025/01/26/mao1/" title="毛泽东选集阅读体会&amp;杂谈">毛泽东选集阅读体会&amp;杂谈</a><time datetime="2025-01-25T16:00:00.000Z" title="发表于 2025-01-26 00:00:00">2025-01-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/13/net1/" title="计算机网络-五层体系结构"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712179.jpg?_r_=22eedb8d-6c41-52b3-aa8f-6f7d2f93c0c1" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络-五层体系结构"/></a><div class="content"><a class="title" href="/2025/01/13/net1/" title="计算机网络-五层体系结构">计算机网络-五层体系结构</a><time datetime="2025-01-12T16:00:00.000Z" title="发表于 2025-01-13 00:00:00">2025-01-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/12/markdown1/" title="Markdown语法"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221811725.jpeg?_r_=face68b7-8bcc-f2fb-f234-9a8e76c6e57b" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Markdown语法"/></a><div class="content"><a class="title" href="/2025/01/12/markdown1/" title="Markdown语法">Markdown语法</a><time datetime="2025-01-11T16:00:00.000Z" title="发表于 2025-01-12 00:00:00">2025-01-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/10/sqltest3/" title="Mysql练习 寒假篇"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg?_r_=860e67ec-6266-9a39-5732-79ed96a1d958" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mysql练习 寒假篇"/></a><div class="content"><a class="title" href="/2025/01/10/sqltest3/" title="Mysql练习 寒假篇">Mysql练习 寒假篇</a><time datetime="2025-01-09T16:00:00.000Z" title="发表于 2025-01-10 00:00:00">2025-01-10</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="footer_custom_text"><p><a style="margin-inline:5px" target="_blank" href="https://hexo.io/">
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.tokenlen.top" target="_blank">mengnankkのblog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__category-list"><a class="post-meta__box__categoryes" href="/categories/sql/"><span class="categoryes-punctuation"> <i class="anzhiyufont anzhiyu-icon-inbox"></i></span>sql<span class="categoryesPageCount">16</span></a></div><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/mysql/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>mysql<span class="tagsPageCount">14</span></a></div></div><div class="post_share"><div class="social-share" data-image="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712181.jpg?_r_=90eb9c31-1a03-10f1-4387-5408e6615724" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/07/19/mysql5/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712181.jpg?_r_=e73f8822-4403-bebc-473e-4729b3b46600" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Mysql 多表查询</div></div></a></div><div class="next-post pull-right"><a href="/2024/07/22/mysql6/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712180.jpg?_r_=9eab7c21-a624-b65b-9dc9-996600c25747" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Mysql 事务</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2024/08/06/mysql11/" title="Mysql 锁"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221838345.jpg?_r_=3842f3c5-04ec-bcc1-b684-ff96e781177f" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2024-08-06</div><div class="title">Mysql 锁</div></div></a></div><div><a href="/2024/08/01/mysql10/" title="Mysql 存储对象"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722377.jpg?_r_=a446725e-a371-8857-7c98-659295d86d24" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2024-08-01</div><div class="title">Mysql 存储对象</div></div></a></div><div><a href="/2024/07/09/mysql3/" title="Mysql DCL"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221837602.jpg?_r_=cd4155ed-af20-3ab1-62ff-453ce9c51c0c" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2024-07-09</div><div class="title">Mysql DCL</div></div></a></div><div><a href="/2024/07/04/mysql1/" title="Mysql BASIC"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221838345.jpg?_r_=a48002e1-a26c-59a9-9344-d0c78c1261c5" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2024-07-04</div><div class="title">Mysql BASIC</div></div></a></div><div><a href="/2024/07/11/mysql4/" title="Mysql 函数"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712177.jpg?_r_=561d00aa-ad18-6eee-7ac3-2e5099ea547f" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2024-07-11</div><div class="title">Mysql 函数</div></div></a></div><div><a href="/2024/07/08/mysql2/" title="Mysql DQL"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221838345.jpg?_r_=6cea5d6e-7bbc-b1cf-f9ac-b87e0350bd1f" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2024-07-08</div><div class="title">Mysql DQL</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-switch"><span class="first-comment">Twikoo</span><span id="switch-btn"></span><span class="second-comment">Valine</span></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">清风拂柳影，碧水映花香。</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">mengnankkzhou</h1><div class="author-info__desc">不要走捏</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/mengnankkkk" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/440831872" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来看我的博客鸭~</div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410021212939.jpg) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">Mysql练习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">基础题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.2.</span> <span class="toc-text">1.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">1.3.</span> <span class="toc-text">2.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3"><span class="toc-number">1.4.</span> <span class="toc-text">3.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%8A%9B%E6%89%A3sql-175%E7%BB%84%E5%90%88%E4%B8%A4%E4%B8%AA%E8%A1%A8"><span class="toc-number">1.5.</span> <span class="toc-text">4.力扣sql 175组合两个表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-leetcode-%E8%B6%85%E8%BF%87%E7%BB%8F%E7%90%86%E6%94%B6%E5%85%A5%E7%9A%84%E5%91%98%E5%B7%A5"><span class="toc-number">1.6.</span> <span class="toc-text">5.leetcode 超过经理收入的员工</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-leetcode-%E6%9F%A5%E6%89%BE%E9%87%8D%E5%A4%8D%E7%9A%84%E7%94%B5%E5%AD%90%E9%82%AE%E7%AE%B1"><span class="toc-number">1.7.</span> <span class="toc-text">6.leetcode 查找重复的电子邮箱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-leetcode-%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E7%9A%84%E7%94%B5%E5%AD%90%E9%82%AE%E7%AE%B1"><span class="toc-number">1.8.</span> <span class="toc-text">7.leetcode 删除重复的电子邮箱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-leetcode-%E6%B8%B8%E6%88%8F%E7%8E%A9%E6%B3%95%E5%88%86%E6%9E%90-I"><span class="toc-number">1.9.</span> <span class="toc-text">9.leetcode 游戏玩法分析 I</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-lintcode-%E6%95%B4%E5%90%88%E6%88%90%E7%BB%A9%E5%8D%95"><span class="toc-number">1.10.</span> <span class="toc-text">10.lintcode 整合成绩单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-lintcode-%E8%80%97%E6%97%B6%E5%89%8D%E4%B8%89%E7%9A%84%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.11.</span> <span class="toc-text">11 lintcode 耗时前三的任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-lintcode-%E6%9F%A5%E8%AF%A2%E5%AE%A2%E6%88%B7%E7%9A%84%E6%8E%A8%E8%8D%90%E4%BA%BA"><span class="toc-number">1.12.</span> <span class="toc-text">12 lintcode 查询客户的推荐人</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lintcode-%C2%B7-%E6%9F%A5%E8%AF%A2%E6%88%90%E7%BB%A9%E6%8E%92%E5%90%8D%E5%9C%A8%E7%AC%AC%E4%BA%8C%E5%88%B0%E7%AC%AC%E4%BA%94%E7%9A%84%E5%AD%A6%E7%94%9F"><span class="toc-number">1.13.</span> <span class="toc-text">lintcode · 查询成绩排名在第二到第五的学生</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lintcode-%E6%89%80%E6%9C%89%E5%AD%A6%E7%94%9F%E9%83%BD%E9%80%89%E4%BF%AE%E7%9A%84%E8%AF%BE%E7%A8%8B"><span class="toc-number">1.14.</span> <span class="toc-text">lintcode 所有学生都选修的课程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lintcode-%E8%80%83%E8%AF%95%E9%80%9A%E8%BF%87%E7%9A%84%E4%BA%BA%E6%95%B0"><span class="toc-number">1.15.</span> <span class="toc-text">lintcode  考试通过的人数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-lintcode-%E6%9C%80%E6%A3%92%E7%9A%84%E9%94%80%E5%94%AE"><span class="toc-number">1.16.</span> <span class="toc-text">16.lintcode 最棒的销售</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#17-lintcode-%E8%A7%86%E5%9B%BE%E5%A4%84%E7%90%86%E7%AE%97%E6%B3%95-Merge"><span class="toc-number">1.17.</span> <span class="toc-text">17.lintcode  视图处理算法 Merge</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-lintcode-%E6%9B%B4%E6%8D%A2%E8%BF%9E%E7%BB%AD%E4%B8%A4%E4%B8%AA%E4%BA%BA%E7%9A%84%E5%BA%A7%E4%BD%8D"><span class="toc-number">1.18.</span> <span class="toc-text">18.lintcode 更换连续两个人的座位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#19-lintcode-%E6%9F%A5%E8%AF%A2%E5%9B%BD%E7%B1%8D%E4%B8%BA-%E2%80%98USA%E2%80%99-%E7%9A%84%E6%89%80%E6%9C%89%E6%95%99%E5%B8%88%E6%89%80%E6%8E%88%E8%AF%BE%E7%A8%8B%E5%90%8D%E7%A7%B0"><span class="toc-number">1.19.</span> <span class="toc-text">19.lintcode  查询国籍为 ‘USA’ 的所有教师所授课程名称</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#20-leetcode-%E7%AC%ACN%E9%AB%98%E7%9A%84%E8%96%AA%E6%B0%B4"><span class="toc-number">1.20.</span> <span class="toc-text">20.leetcode 第N高的薪水</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#21-linkcode-%E6%88%91%E7%9A%84%E6%9C%80%E4%BD%B3%E5%A5%BD%E5%8F%8B"><span class="toc-number">1.21.</span> <span class="toc-text">21.linkcode 我的最佳好友</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-%E7%89%9B%E5%AE%A2%E7%BD%91-SQL26-%E8%AE%A1%E7%AE%9725%E5%B2%81%E4%BB%A5%E4%B8%8A%E5%92%8C%E4%BB%A5%E4%B8%8B%E7%9A%84%E7%94%A8%E6%88%B7%E6%95%B0%E9%87%8F%EF%BC%88if%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%89"><span class="toc-number">1.22.</span> <span class="toc-text">22.牛客网 SQL26 计算25岁以上和以下的用户数量（if的使用）</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/02/01/en6/" title="English二月篇"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712181.jpg?_r_=90eb9c31-1a03-10f1-4387-5408e6615724" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="English二月篇"/></a><div class="content"><a class="title" href="/2025/02/01/en6/" title="English二月篇">English二月篇</a><time datetime="2025-01-31T16:00:00.000Z" title="发表于 2025-02-01 00:00:00">2025-02-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/26/mao1/" title="毛泽东选集阅读体会&amp;杂谈"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202408081510095.jpg?_r_=cedddde0-f4ae-0e52-4a6b-8821a8f226e0" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="毛泽东选集阅读体会&amp;杂谈"/></a><div class="content"><a class="title" href="/2025/01/26/mao1/" title="毛泽东选集阅读体会&amp;杂谈">毛泽东选集阅读体会&amp;杂谈</a><time datetime="2025-01-25T16:00:00.000Z" title="发表于 2025-01-26 00:00:00">2025-01-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/13/net1/" title="计算机网络-五层体系结构"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221818490.jpeg?_r_=4edd1259-ed7b-f761-e081-364332d6d1c0" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络-五层体系结构"/></a><div class="content"><a class="title" href="/2025/01/13/net1/" title="计算机网络-五层体系结构">计算机网络-五层体系结构</a><time datetime="2025-01-12T16:00:00.000Z" title="发表于 2025-01-13 00:00:00">2025-01-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/12/markdown1/" title="Markdown语法"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221811725.jpeg?_r_=59d70828-8b46-0868-1255-62185249594d" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Markdown语法"/></a><div class="content"><a class="title" href="/2025/01/12/markdown1/" title="Markdown语法">Markdown语法</a><time datetime="2025-01-11T16:00:00.000Z" title="发表于 2025-01-12 00:00:00">2025-01-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/10/sqltest3/" title="Mysql练习 寒假篇"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202408081510678.jpg?_r_=73f2569a-bfa0-6c51-52d2-63b0bb12ad20" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mysql练习 寒假篇"/></a><div class="content"><a class="title" href="/2025/01/10/sqltest3/" title="Mysql练习 寒假篇">Mysql练习 寒假篇</a><time datetime="2025-01-09T16:00:00.000Z" title="发表于 2025-01-10 00:00:00">2025-01-10</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="footer_custom_text"><p><a style="margin-inline:5px" target="_blank" href="https://hexo.io/">
   <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Framework-Hexo-4e88f8?style=flat&logo=hexo" 
        title="博客框架为 Hexo" alt="Hexo">
 </a>
