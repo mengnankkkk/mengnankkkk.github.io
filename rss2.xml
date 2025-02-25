@@ -15,8 +15,39 @@
     <atom:link href="https://blog.tokenlen.top/rss2.xml" rel="self" type="application/rss+xml"/>
     <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
     <description>清风拂柳影，碧水映花香。</description>
-    <pubDate>Sun, 23 Feb 2025 13:16:50 GMT</pubDate>
+    <pubDate>Tue, 25 Feb 2025 07:35:28 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>sql原理</title>
+      <link>https://blog.tokenlen.top/2025/02/25/sql1/</link>
+      <guid>https://blog.tokenlen.top/2025/02/25/sql1/</guid>
+      <pubDate>Mon, 24 Feb 2025 16:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;事务&lt;/h1&gt;
+&lt;p&gt;事务指的是满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使用 Rollback 进行回滚。&lt;/p&gt;
+&lt;p&gt;&lt;img</description>
+          
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h1>事务</h1><p>事务指的是满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使用 Rollback 进行回滚。</p><p><img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/image-20191207222237925.png" alt=""></p><p>ACID特性</p><p>原子性（Atomicity）</p><p><strong>事务</strong>被视为不可分割的最小单元，事务的所有操作要么全部提交成功，要么全部失败回滚。</p><p>回滚可以用回滚日志（Undo Log）来实现，回滚日志记录着事务所执行的修改操作，在回滚时反向执行这些修改操作即可。</p><p>一致性（Consistency）</p><p>数据库在事务执行前后都保持一致性状态。在一致性状态下，所有事务对同一个数据的读取结果都是相同的。</p><p>隔离性（Isolation）</p><p>一个事务所做的修改在最终提交以前，对其它事务是不可见的。</p><p>持久性（Durability）</p><p>一旦事务提交，则其所做的修改将会永远保存到数据库中。即使系统发生崩溃，事务执行的结果也不能丢失。</p><p>系统发生崩溃可以用重做日志（Redo Log）进行恢复，从而实现持久性。与回滚日志记录数据的逻辑修改不同，重做日志记录的是数据页的物理修改。</p><p>但是这几个特性不是有一种平级关系</p><ul><li>只有满足一致性，事务的执行结果才是正确的。</li><li>在无并发的情况下，事务串行执行，隔离性一定能够满足。此时只要能满足原子性，就一定能满足一致性。</li><li>在并发的情况下，多个事务并行执行，事务不仅要满足原子性，还需要满足隔离性，才能满足一致性。</li><li>事务满足持久化是为了能应对系统崩溃的情况。</li></ul><p><img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/image-20191207210437023.png" alt=""></p><p>在mysql中一般采用autocommit自动提交模式</p><p>除非使用<code>START TRANSACTION</code>开启一个事务</p><p>否则每一个语句都被视作一个事务</p><p>mysql中事务的使用：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT @@AUTOCOMMIT;</span><br><span class="line">SET @@AUTOCOMIIT = 0;</span><br></pre></td></tr></table></figure><p>设置为手动提交</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">commit;</span><br></pre></td></tr></table></figure><p>提交</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rollback;</span><br></pre></td></tr></table></figure><p>回滚事务</p><p>开启事务</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">START TRANSACTION 或 BEGIN;</span><br></pre></td></tr></table></figure><p><strong>实例银行：</strong></p><p>没有发生错误的时候，不需要rollback的情况</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span> TRANSACTION;</span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>查询账户A的余额</span><br><span class="line"><span class="keyword">SELECT</span> MONEY <span class="keyword">FROM</span> ACCOUNT <span class="keyword">WHERE</span> NAME <span class="operator">=</span> <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> 更新账户A的余额，减去<span class="number">1000</span></span><br><span class="line"><span class="keyword">UPDATE</span> ACCOUNT <span class="keyword">SET</span> MONEY <span class="operator">=</span> MONEY <span class="operator">-</span> <span class="number">1000</span> <span class="keyword">WHERE</span> NAME <span class="operator">=</span> <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>更新账户B的余额，增加<span class="number">1000</span></span><br><span class="line"><span class="keyword">UPDATE</span> ACCOUNT <span class="keyword">SET</span> MONEY <span class="operator">=</span> MONEY <span class="operator">+</span> <span class="number">1000</span> <span class="keyword">WHERE</span> NAME <span class="operator">=</span> <span class="string">&#x27;B&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> 提交事务</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>发生错误的时候，则需要rollback</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span> TRANSACTION;</span><br><span class="line"></span><br><span class="line"><span class="keyword">BEGIN</span> TRY</span><br><span class="line">    <span class="operator">/</span><span class="operator">/</span> 查询账户A的余额</span><br><span class="line">    <span class="keyword">SELECT</span> MONEY <span class="keyword">FROM</span> ACCOUNT <span class="keyword">WHERE</span> NAME <span class="operator">=</span> <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="operator">/</span><span class="operator">/</span>更新账户A的余额，减去<span class="number">1000</span></span><br><span class="line">    <span class="keyword">UPDATE</span> ACCOUNT <span class="keyword">SET</span> MONEY <span class="operator">=</span> MONEY <span class="operator">-</span> <span class="number">1000</span> <span class="keyword">WHERE</span> NAME <span class="operator">=</span> <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="operator">/</span><span class="operator">/</span> 更新账户B的余额，增加<span class="number">1000</span></span><br><span class="line">    <span class="keyword">UPDATE</span> ACCOUNT <span class="keyword">SET</span> MONEY <span class="operator">=</span> MONEY <span class="operator">+</span> <span class="number">1000</span> <span class="keyword">WHERE</span> NAME <span class="operator">=</span> <span class="string">&#x27;B&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="operator">/</span><span class="operator">/</span> 提交事务</span><br><span class="line">    <span class="keyword">COMMIT</span>;</span><br><span class="line"><span class="keyword">END</span> TRY</span><br><span class="line"><span class="keyword">BEGIN</span> CATCH</span><br><span class="line">    <span class="operator">/</span><span class="operator">/</span> 如果发生错误，回滚事务</span><br><span class="line">    <span class="keyword">ROLLBACK</span>;</span><br><span class="line">    <span class="operator">/</span><span class="operator">/</span> 可以添加错误处理的代码，比如记录日志或者返回错误信息</span><br><span class="line"><span class="keyword">END</span> CATCH;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h1>并发一致性问题</h1><p>在并发环境下，事务的隔离性很难保证，因此会出现很多并发一致性问题。</p><h2 id="丢失修改：">丢失修改：</h2><p>丢失修改指一个事务的更新操作被另外一个事务的更新操作替换。一般在现实生活中常会遇到，例如：T1 和 T2 两个事务都对一个数据进行修改，T1 先修改并提交生效，T2 随后修改，T2 的修改覆盖了 T1 的修改。</p><h2 id="读取脏数据">读取脏数据</h2><p>读脏数据指在不同的事务下，当前事务可以读到另外事务未提交的数据。例如：T1 修改一个数据但未提交，T2 随后读取这个数据。如果 T1 撤销了这次修改，那么 T2 读取的数据是脏数据。</p><h2 id="不可重复读">不可重复读</h2><p>不可重复读指在一个事务内多次读取同一数据集合。在这一事务还未结束前，另一事务也访问了该同一数据集合并做了修改，由于第二个事务的修改，第一次事务的两次读取的数据可能不一致。例如：T2 读取一个数据，T1 对该数据做了修改。如果 T2 再次读取这个数据，此时读取的结果和第一次读取的结果不同。</p><h2 id="幻读">幻读</h2><p>幻读本质上也属于不可重复读的情况，T1 读取某个范围的数据，T2 在这个范围内插入新的数据，T1 再次读取这个范围的数据，此时读取的结果和和第一次读取的结果不同。</p><p>产生并发不一致性问题的主要原因是破坏了事务的隔离性，解决方法是<strong>通过并发控制来保证隔离性</strong>。并发控制可以通过封锁来实现，但是封锁操作需要用户自己控制，相当复杂。数据库管理系统提供了事务的隔离级别，让用户以一种更轻松的方式处理并发一致性问题</p><h1>锁</h1>]]></content:encoded>
+      
+      
+      <category domain="https://blog.tokenlen.top/categories/sql/">sql</category>
+      
+      
+      <category domain="https://blog.tokenlen.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86/">数据库原理</category>
+      
+      
+      <comments>https://blog.tokenlen.top/2025/02/25/sql1/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>计算机网络-网络核心概念</title>
@@ -625,38 +656,6 @@ $$&lt;br&gt;
       
       
       <comments>https://blog.tokenlen.top/2024/10/14/linux9/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>Linux 备份恢复篇</title>
-      <link>https://blog.tokenlen.top/2024/10/11/linux8/</link>
-      <guid>https://blog.tokenlen.top/2024/10/11/linux8/</guid>
-      <pubDate>Thu, 10 Oct 2024 16:00:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h1&gt;备份和恢复需要的工具&lt;/h1&gt;
-&lt;p&gt;在使用虚拟机的时候我们可以使用快照进行恢复，但是在实体机的时候，我们不能使用快照&lt;/p&gt;
-&lt;p&gt;那我们就要掌握备份恢复的技术操作&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;dump&lt;/strong&gt;指令和&lt;strong&gt;restore&lt;/stro</description>
-          
-        
-      
-      
-      
-      <content:encoded><![CDATA[<h1>备份和恢复需要的工具</h1><p>在使用虚拟机的时候我们可以使用快照进行恢复，但是在实体机的时候，我们不能使用快照</p><p>那我们就要掌握备份恢复的技术操作</p><p><strong>dump</strong>指令和<strong>restore</strong>指令</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-fast install dump</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-fast install restorecond   </span><br></pre></td></tr></table></figure><h1>dump</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dump [options] file</span><br></pre></td></tr></table></figure><p>dump指令的基本语法</p><p>选项解析：</p><ul><li>-0~-9代表存储的级别，0代表完全备份，1-9代表增量备份（增量备份就是备份上次备份修改或者增加的备份）</li><li>-f 指定备份的文件或者设备，不指定默认使用磁带</li><li>-u 显示备份更新的时间 在/etc/dumpupdates文件夹内</li><li>-v 显示详细的信息</li><li>-b 修改数据块的大小，默认是kb</li><li>-s 磁带的大小</li><li>-j 使用压缩</li></ul><p>完全备份整个文件系统</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dump -0uf /backup/full_backup.dump /dev/sda1</span><br></pre></td></tr></table></figure><p>增量备份</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dump -1uf /backup/full1_backup.dump /dev/sda1</span><br></pre></td></tr></table></figure><p>不仅仅可以备份整个文件，还可以备份某个文件夹或者是文件</p><h1>restore</h1><p>restore的基本语法</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">restore [options] file</span><br></pre></td></tr></table></figure><p>详细的选项：</p><ul><li>-i 进入交互模式</li><li>-r 完全恢复</li><li>-R 恢复增量备份</li><li>-t 显示详细信息</li><li>-C 切换指定的目录</li><li>-f 指定备份的文件</li></ul><p>恢复完全</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">restore -rf /backup/full_backup.dump</span><br></pre></td></tr></table></figure><p>即可</p><h1>使用守则</h1><p>为了保证数据的安全，尽量使用定时备份</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e </span><br></pre></td></tr></table></figure><p>比如这样备份</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 2 * * * dump -1uf /backup/incremental_backup.dump /dev/sda1</span><br></pre></td></tr></table></figure><p>在使用 <code>dump</code> 进行备份时，确保文件系统是处于一致的状态非常重要。可以使用以下几种方法：</p><ul><li><strong>单用户模式</strong>：在备份之前进入单用户模式，以确保系统不会发生并发修改。</li><li><strong>只读挂载</strong>：将文件系统挂载为只读，防止在备份期间进行写操作。</li><li>在恢复时，如果你有增量备份和完全备份，恢复顺序是：<ol><li>先恢复最新的完全备份。</li><li>依次应用所有增量备份（按顺序从低到高的增量级别恢复）。</li></ol></li></ul><h1>压缩备份</h1><p>使用 <code>-j</code> 选项（启用压缩），可以减少备份文件的大小。你还可以结合 Linux 的压缩工具进行备份：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dump -0uf - /dev/sda1 | gzip &gt; /backup/full_backup.gz</span><br></pre></td></tr></table></figure><p>恢复时，使用解压命令：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gunzip -c /backup/full_backup.gz | restore -rf -</span><br></pre></td></tr></table></figure><h1>跨设备备份</h1><h3 id="5-跨设备备份">5. <strong>跨设备备份</strong></h3><p>如果你需要将备份存储在远程服务器上，可以使用 <code>ssh</code> 和 <code>dump</code> 结合将备份传输到远程设备：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dump -0uf - /dev/sda1 | ssh user@remote_server &quot;cat &gt; /remote_backup/full_backup.dump&quot;</span><br></pre></td></tr></table></figure><p>恢复时，同样可以通过 SSH 进行数据传输：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh user@remote_server &quot;cat /remote_backup/full_backup.dump&quot; | restore -rf -</span><br></pre></td></tr></table></figure>]]></content:encoded>
-      
-      
-      <category domain="https://blog.tokenlen.top/categories/408/">408</category>
-      
-      
-      <category domain="https://blog.tokenlen.top/tags/Linux/">Linux</category>
-      
-      
-      <comments>https://blog.tokenlen.top/2024/10/11/linux8/#disqus_thread</comments>
       
     </item>
     
