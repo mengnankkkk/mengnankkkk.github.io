@@ -15,8 +15,46 @@
     <atom:link href="https://blog.tokenlen.top/rss2.xml" rel="self" type="application/rss+xml"/>
     <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
     <description>清风拂柳影，碧水映花香。</description>
-    <pubDate>Sat, 12 Apr 2025 04:01:12 GMT</pubDate>
+    <pubDate>Sat, 12 Apr 2025 12:02:56 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>后端开发笔试题目集合</title>
+      <link>https://blog.tokenlen.top/2025/04/12/write1/</link>
+      <guid>https://blog.tokenlen.top/2025/04/12/write1/</guid>
+      <pubDate>Fri, 11 Apr 2025 16:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;数据结构&lt;/h1&gt;
+&lt;p&gt;1.将关键字9, 17, 25, 33, 21, 77, 64, 53, 42,</description>
+          
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h1>数据结构</h1><p>1.将关键字9, 17, 25, 33, 21, 77, 64, 53, 42, 31依次插入到初始为空的小根堆H中，得到的H是</p><p>小根堆是一个完全二叉树，每个节点都要小于等与他的左右节点</p><p>根节点是最小的值</p><p>最终：</p><p>[9, 17, 25, 33, 21, 77, 64, 53, 42, 31]</p><p>二叉树的形式：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">        9</span><br><span class="line">      /   \</span><br><span class="line">    17     25</span><br><span class="line">   /  \   /  \</span><br><span class="line"> 33  21 77  64</span><br><span class="line">/  \ /</span><br><span class="line">53,42,31</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>2.在一个二维数组A中，假设每个数组元素的长度为3个存储单元，行下标i为0~9，列下标j为0~7，从首地址200开始连续按列优先存放，在这种情况下，元素A[9][2}的起始地址为（ ）</p><p>一列一列地存，每列里是从上到下。</p><p>所以每个元素的起始地址相对于前一个元素的起始地址增加3个存储单元</p><p>起始地址 = 首地址 + (j * 行数 + i) * 元素长度</p><p>所以最后是287</p><p>3.考虑以下递归函数：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int calculateI(int i) &#123;</span><br><span class="line">    if (i &lt;= 1) &#123;</span><br><span class="line">        return i;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return calculateI(i - 1) + 1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>对于给定的初始i值（i&gt;1），计算最终的i值是多少？</p><p>这个函数是每次调用的时候，i-1，然后调用的结果又+1</p><p>所以最后还是i</p><p>4.已知串S=‘bccabcaac’，采用KMP算法进行模式匹配，则得到的next数组值为（）</p><p>这道题采用手工求next数组的方法。</p><p>先求串S='bccabcaac’的部分匹配值：</p><p>'b’的前后缀都为空，最长相等前后缀长度为0。</p><p>'bc’的前缀{b}交集后缀{c}为空</p><p>'bcc’前缀{b,bc}交后缀{c,cc}为空</p><p>依次求出的部分匹配值如下表第三行所示，将其整体右移一位，低位用-1填充，如下表第四行所示。</p><p>PM是部分匹配值（Partial Match）</p><table><thead><tr><th>编号</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th></tr></thead><tbody><tr><td>S</td><td>b</td><td>c</td><td>c</td><td>a</td><td>b</td><td>c</td><td>a</td><td>a</td><td>c</td></tr><tr><td>PM</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>2</td><td>0</td><td>0</td><td>0</td></tr><tr><td>next</td><td>-1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>2</td><td>0</td><td>0</td></tr></tbody></table><p>next[1]=0所以,next数组整体+1</p><p>所以答案为011112311</p><h1>计算机网络</h1><p>1.在HTTP协议中，请求报文中的请求行包括：请求方法，url,和http版本号</p><p>2.TCP&quot;四次挥手&quot;过程中，第一次&quot;挥手&quot;时，发送的报文段中fin标志位被置为1。</p><h1>操作系统</h1><p>1.高响应比优先（HRRN）算法属于快速响应式调度算法</p><p>2.在操作系统中，PV操作用于管理资源的访问和同步。P用于申请资源，V用于释放资源</p><p>3.下面关于 Linux 进程地址空间中的代码段和数据段的说法错误的是</p><p>A 代码段用于存储程序的可执行指令</p><p>B 数据段用于存储初始化的全局和静态变量</p><p>C 代码段和数据段通常属于只读内存区域</p><p>D 在 Linux 中，代码段和数据段总是共享同一个物理页面</p><p>在Linux进程地址空间中,代码段和数据段是两个不同的内存区域,它们有着不同的特点和用途。</p><p>代码段(text segment)确实用于存储程序的可执行指令,这些指令是CPU直接执行的机器码。</p><p>数据段(data segment)用于存储已初始化的全局变量和静态变量,这些数据在程序启动时就被加载到内存中。</p><p>代码段通常是只读的,这样可以防止程序在运行时意外修改指令;而数据段中可能包含只读数据区(.rodata)。</p><p>代码段和数据段出于以下原因通常不会共享同一个物理页面:<br>1 内存保护需求不同:代码段需要执行权限,数据段需要读写权限<br>2 缓存效率考虑:分开存放有利于CPU缓存的使用效率<br>3 内存对齐要求:不同段可能有不同的对齐要求<br>4 安全性考虑:分开存放可以防止缓冲区溢出等攻击</p><h1>数据库</h1><p>1.在 E-R 图中，矩形用于表示实体</p><p>2.增量备份能基于上次任意一种备份，将上次备份后发生变化的数据进行备份，并将备份后的数据进行标记</p><p>3.在MySQL存储过程中，以下关于声明存储过程的参数类型的说法正确的是（）</p><p>A使用DECLARE语句声明参数类型</p><p>B在参数名前加上“@”符号来表示参数类型</p><p>C在参数名后加上数据类型来声明参数类型</p><p>D在存储过程名后使用中括号来声明参数类型</p><p>在MySQL存储过程中，可以在存储过程名后使用括号来声明参数</p><p>在存储过程中，也可以使用DECLARE语句来声明变量的类型，但是不能用来声明存储过程的参数类型。在MySQL中，不需要在参数名前加上“@”符号来表示参数类型。</p><h1>java</h1><p>1.下面 Java 代码能够编译通过的是（）</p><p>Aint arr[3] = {1, 2, 3};</p><p>Bint arr[] = new int[3];</p><p>Cint[] arr = new int[]{1, 2, 3};</p><p>Dint[] arr = {1, 2, 3};</p><p>错误的是A，Java中声明数组时不能在[]中指定长度。</p><p>2.下面关于 Java 中反射机制的说法正确的是（）</p><p>A反射机制可以在程序运行时获取类的信息</p><p>B反射机制可以动态地创建对象、调用方法和访问属性</p><p>C反射机制能够提高程序的性能和安全性</p><p>D反射机制只能用于访问 public 访问控制修饰符修饰的成员</p><p>反射机制实际上会降低程序的性能,因为它需要在运行时进行类型检查和解析。同时,反射也可能破坏封装性,带来安全风险,因为它可以访问私有成员。</p><p>反射机制不仅可以访问public成员,通过setAccessible(true)方法,它还可以访问private、protected等其他访问控制级别的成员。这也是反射强大但需要谨慎使用的原因之一。</p><p>所以选择A和B这是反射的关键特性和优势</p><p>3.下面关于 Java 中集合相关的说法正确的是（）</p><p>AList 是一个有序的集合，可以包含重复的元素</p><p>BJava 中的集合框架只包括 List、Set 两种类型的集合</p><p>CSet 是一个无序的集合，不允许包含重复的元素</p><p>DMap 是一种键值对的集合，其中键和值都可以重复</p><p>Java集合框架不仅包括List和Set，还包括Map、Queue等多种集合类型。这是对Java集合框架范围的错误理解。</p><p>Map中的键(Key)必须是唯一的，不能重复，而值(Value)可以重复。这是Map的基本特性，确保了每个键都能唯一标识一个值。比如HashMap、TreeMap等Map实现类都必须遵守这个规则。</p><p>Set是一个不允许重复元素的集合接口。Set的实现类(如HashSet)不保证元素的存储顺序，因此是无序的。虽然LinkedHashSet保持了插入顺序，TreeSet按照自然顺序排序，但Set接口本身的特性是无序的。</p><p>4.下列关于 Java 中 volatile 关键字的说法正确的是（）</p><p>Avolatile 关键字修饰的变量被修改之前会从主存中读取最新的值覆盖掉cpu缓存</p><p>Bvolatie 底层实现遵循 happens-before 原则</p><p>Cvolatile 关键字修饰的共享变量是线程安全的</p><p>Dvolatile 关键字可以保证被修饰变量在运算时不会进行指令重排</p><p>volatile关键字是Java中用于保证变量可见性和有序性的重要机制。</p><p>volatile变量在每次被线程访问时，都强制从主内存中重新读取最新值，而不是使用线程工作内存中的值。这确保了变量的可见性。</p><p>volatile的实现确实遵循happens-before原则。happens-before原则是Java内存模型中的重要概念，它保证了volatile写操作一定happens-before于后续对这个volatile变量的读操作。</p><p>volatile关键字通过内存屏障(Memory Barrier)来阻止指令重排序。它能确保volatile变量读写操作的顺序性，防止编译器和处理器对这些操作进行重排序优化。</p><p>volatile不能保证线程安全。它只能保证变量的可见性和禁止指令重排序，但不能保证原子性。</p><p>5.下列关于 Java 中泛型（Generics）的说法正确的是（）</p><p>A泛型可以在编译时检查类型安全性，避免运行时出现类型转换异常</p><p>B泛型可以应用于类、接口和方法，但不能用于数组</p><p>C泛型中的类型参数可以是任何类或接口类型，甚至包括基本数据类型</p><p>D泛型中的类型参数只能是对象类型，不能是基本数据类型</p><p>泛型的一个主要优势就是在编译时进行类型检查。这可以帮助开发者在编码阶段就发现类型不匹配的问题,而不是等到运行时才出现ClassCastException。这提高了代码的类型安全性和可靠性。</p><p>Java泛型支持任何引用类型(类或接口)作为类型参数。这包括自定义类、集合类、包装类等所有对象类型。</p><p>Java泛型不仅可以应用于类、接口和方法,还可以用于数组。虽然不能直接创建泛型数组(如new T[]),但可以声明泛型数组类型。例如List[] array是合法的。</p>]]></content:encoded>
+      
+      
+      <category domain="https://blog.tokenlen.top/categories/%E7%AC%94%E8%AF%95/">笔试</category>
+      
+      
+      <category domain="https://blog.tokenlen.top/tags/sql/">sql</category>
+      
+      <category domain="https://blog.tokenlen.top/tags/java/">java</category>
+      
+      <category domain="https://blog.tokenlen.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
+      
+      <category domain="https://blog.tokenlen.top/tags/net/">net</category>
+      
+      <category domain="https://blog.tokenlen.top/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</category>
+      
+      
+      <comments>https://blog.tokenlen.top/2025/04/12/write1/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>English四月篇</title>
@@ -299,44 +337,6 @@
       
       
       <comments>https://blog.tokenlen.top/2025/02/25/sql2/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>后端开发笔试题目集合</title>
-      <link>https://blog.tokenlen.top/2025/02/25/write1/</link>
-      <guid>https://blog.tokenlen.top/2025/02/25/write1/</guid>
-      <pubDate>Mon, 24 Feb 2025 16:00:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h1&gt;数据结构&lt;/h1&gt;
-&lt;p&gt;1.将关键字9, 17, 25, 33, 21, 77, 64, 53, 42,</description>
-          
-        
-      
-      
-      
-      <content:encoded><![CDATA[<h1>数据结构</h1><p>1.将关键字9, 17, 25, 33, 21, 77, 64, 53, 42, 31依次插入到初始为空的小根堆H中，得到的H是</p><p>小根堆是一个完全二叉树，每个节点都要小于等与他的左右节点</p><p>根节点是最小的值</p><p>最终：</p><p>[9, 17, 25, 33, 21, 77, 64, 53, 42, 31]</p><p>二叉树的形式：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">        9</span><br><span class="line">      /   \</span><br><span class="line">    17     25</span><br><span class="line">   /  \   /  \</span><br><span class="line"> 33  21 77  64</span><br><span class="line">/  \ /</span><br><span class="line">53,42,31</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>2.在一个二维数组A中，假设每个数组元素的长度为3个存储单元，行下标i为0~9，列下标j为0~7，从首地址200开始连续按列优先存放，在这种情况下，元素A[9][2}的起始地址为（ ）</p><p>一列一列地存，每列里是从上到下。</p><p>所以每个元素的起始地址相对于前一个元素的起始地址增加3个存储单元</p><p>起始地址 = 首地址 + (j * 行数 + i) * 元素长度</p><p>所以最后是287</p><p>3.考虑以下递归函数：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int calculateI(int i) &#123;</span><br><span class="line">    if (i &lt;= 1) &#123;</span><br><span class="line">        return i;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return calculateI(i - 1) + 1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>对于给定的初始i值（i&gt;1），计算最终的i值是多少？</p><p>这个函数是每次调用的时候，i-1，然后调用的结果又+1</p><p>所以最后还是i</p><p>4.已知串S=‘bccabcaac’，采用KMP算法进行模式匹配，则得到的next数组值为（）</p><p>这道题采用手工求next数组的方法。</p><p>先求串S='bccabcaac’的部分匹配值：</p><p>'b’的前后缀都为空，最长相等前后缀长度为0。</p><p>'bc’的前缀{b}交集后缀{c}为空</p><p>'bcc’前缀{b,bc}交后缀{c,cc}为空</p><p>依次求出的部分匹配值如下表第三行所示，将其整体右移一位，低位用-1填充，如下表第四行所示。</p><p>PM是部分匹配值（Partial Match）</p><table><thead><tr><th>编号</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th></tr></thead><tbody><tr><td>S</td><td>b</td><td>c</td><td>c</td><td>a</td><td>b</td><td>c</td><td>a</td><td>a</td><td>c</td></tr><tr><td>PM</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>2</td><td>0</td><td>0</td><td>0</td></tr><tr><td>next</td><td>-1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>2</td><td>0</td><td>0</td></tr></tbody></table><p>next[1]=0所以,next数组整体+1</p><p>所以答案为011112311</p><h1>计算机网络</h1><p>1.在HTTP协议中，请求报文中的请求行包括：请求方法，url,和http版本号</p><p>2.TCP&quot;四次挥手&quot;过程中，第一次&quot;挥手&quot;时，发送的报文段中fin标志位被置为1。</p><h1>操作系统</h1><p>1.高响应比优先（HRRN）算法属于快速响应式调度算法</p><p>2.在操作系统中，PV操作用于管理资源的访问和同步。P用于申请资源，V用于释放资源</p><p>3.下面关于 Linux 进程地址空间中的代码段和数据段的说法错误的是</p><p>A 代码段用于存储程序的可执行指令</p><p>B 数据段用于存储初始化的全局和静态变量</p><p>C 代码段和数据段通常属于只读内存区域</p><p>D 在 Linux 中，代码段和数据段总是共享同一个物理页面</p><p>在Linux进程地址空间中,代码段和数据段是两个不同的内存区域,它们有着不同的特点和用途。</p><p>代码段(text segment)确实用于存储程序的可执行指令,这些指令是CPU直接执行的机器码。</p><p>数据段(data segment)用于存储已初始化的全局变量和静态变量,这些数据在程序启动时就被加载到内存中。</p><p>代码段通常是只读的,这样可以防止程序在运行时意外修改指令;而数据段中可能包含只读数据区(.rodata)。</p><p>代码段和数据段出于以下原因通常不会共享同一个物理页面:<br>1 内存保护需求不同:代码段需要执行权限,数据段需要读写权限<br>2 缓存效率考虑:分开存放有利于CPU缓存的使用效率<br>3 内存对齐要求:不同段可能有不同的对齐要求<br>4 安全性考虑:分开存放可以防止缓冲区溢出等攻击</p><h1>数据库</h1><p>1.在 E-R 图中，矩形用于表示实体</p><p>2.增量备份能基于上次任意一种备份，将上次备份后发生变化的数据进行备份，并将备份后的数据进行标记</p><p>3.在MySQL存储过程中，以下关于声明存储过程的参数类型的说法正确的是（）</p><p>A使用DECLARE语句声明参数类型</p><p>B在参数名前加上“@”符号来表示参数类型</p><p>C在参数名后加上数据类型来声明参数类型</p><p>D在存储过程名后使用中括号来声明参数类型</p><p>在MySQL存储过程中，可以在存储过程名后使用括号来声明参数</p><p>在存储过程中，也可以使用DECLARE语句来声明变量的类型，但是不能用来声明存储过程的参数类型。在MySQL中，不需要在参数名前加上“@”符号来表示参数类型。</p><h1>java</h1><p>1.下面 Java 代码能够编译通过的是（）</p><p>Aint arr[3] = {1, 2, 3};</p><p>Bint arr[] = new int[3];</p><p>Cint[] arr = new int[]{1, 2, 3};</p><p>Dint[] arr = {1, 2, 3};</p><p>错误的是A，Java中声明数组时不能在[]中指定长度。</p><p>2.下面关于 Java 中反射机制的说法正确的是（）</p><p>A反射机制可以在程序运行时获取类的信息</p><p>B反射机制可以动态地创建对象、调用方法和访问属性</p><p>C反射机制能够提高程序的性能和安全性</p><p>D反射机制只能用于访问 public 访问控制修饰符修饰的成员</p><p>反射机制实际上会降低程序的性能,因为它需要在运行时进行类型检查和解析。同时,反射也可能破坏封装性,带来安全风险,因为它可以访问私有成员。</p><p>反射机制不仅可以访问public成员,通过setAccessible(true)方法,它还可以访问private、protected等其他访问控制级别的成员。这也是反射强大但需要谨慎使用的原因之一。</p><p>所以选择A和B这是反射的关键特性和优势</p><p>3.下面关于 Java 中集合相关的说法正确的是（）</p><p>AList 是一个有序的集合，可以包含重复的元素</p><p>BJava 中的集合框架只包括 List、Set 两种类型的集合</p><p>CSet 是一个无序的集合，不允许包含重复的元素</p><p>DMap 是一种键值对的集合，其中键和值都可以重复</p><p>Java集合框架不仅包括List和Set，还包括Map、Queue等多种集合类型。这是对Java集合框架范围的错误理解。</p><p>Map中的键(Key)必须是唯一的，不能重复，而值(Value)可以重复。这是Map的基本特性，确保了每个键都能唯一标识一个值。比如HashMap、TreeMap等Map实现类都必须遵守这个规则。</p><p>Set是一个不允许重复元素的集合接口。Set的实现类(如HashSet)不保证元素的存储顺序，因此是无序的。虽然LinkedHashSet保持了插入顺序，TreeSet按照自然顺序排序，但Set接口本身的特性是无序的。</p><p>4.下列关于 Java 中 volatile 关键字的说法正确的是（）</p><p>Avolatile 关键字修饰的变量被修改之前会从主存中读取最新的值覆盖掉cpu缓存</p><p>Bvolatie 底层实现遵循 happens-before 原则</p><p>Cvolatile 关键字修饰的共享变量是线程安全的</p><p>Dvolatile 关键字可以保证被修饰变量在运算时不会进行指令重排</p><p>volatile关键字是Java中用于保证变量可见性和有序性的重要机制。</p><p>volatile变量在每次被线程访问时，都强制从主内存中重新读取最新值，而不是使用线程工作内存中的值。这确保了变量的可见性。</p><p>volatile的实现确实遵循happens-before原则。happens-before原则是Java内存模型中的重要概念，它保证了volatile写操作一定happens-before于后续对这个volatile变量的读操作。</p><p>volatile关键字通过内存屏障(Memory Barrier)来阻止指令重排序。它能确保volatile变量读写操作的顺序性，防止编译器和处理器对这些操作进行重排序优化。</p><p>volatile不能保证线程安全。它只能保证变量的可见性和禁止指令重排序，但不能保证原子性。</p><p>5.下列关于 Java 中泛型（Generics）的说法正确的是（）</p><p>A泛型可以在编译时检查类型安全性，避免运行时出现类型转换异常</p><p>B泛型可以应用于类、接口和方法，但不能用于数组</p><p>C泛型中的类型参数可以是任何类或接口类型，甚至包括基本数据类型</p><p>D泛型中的类型参数只能是对象类型，不能是基本数据类型</p><p>泛型的一个主要优势就是在编译时进行类型检查。这可以帮助开发者在编码阶段就发现类型不匹配的问题,而不是等到运行时才出现ClassCastException。这提高了代码的类型安全性和可靠性。</p><p>Java泛型支持任何引用类型(类或接口)作为类型参数。这包括自定义类、集合类、包装类等所有对象类型。</p><p>Java泛型不仅可以应用于类、接口和方法,还可以用于数组。虽然不能直接创建泛型数组(如new T[]),但可以声明泛型数组类型。例如List[] array是合法的。</p>]]></content:encoded>
-      
-      
-      <category domain="https://blog.tokenlen.top/categories/%E7%AC%94%E8%AF%95/">笔试</category>
-      
-      
-      <category domain="https://blog.tokenlen.top/tags/sql/">sql</category>
-      
-      <category domain="https://blog.tokenlen.top/tags/java/">java</category>
-      
-      <category domain="https://blog.tokenlen.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
-      
-      <category domain="https://blog.tokenlen.top/tags/net/">net</category>
-      
-      <category domain="https://blog.tokenlen.top/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</category>
-      
-      
-      <comments>https://blog.tokenlen.top/2025/02/25/write1/#disqus_thread</comments>
       
     </item>
     
