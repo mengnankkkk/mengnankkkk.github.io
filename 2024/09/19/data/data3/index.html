@@ -1,0 +1,697 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>数据结构 队列字符串篇 | mengnankkのblog</title><meta name="keywords" content="数据结构"><meta name="author" content="mengnankkzhou"><meta name="copyright" content="mengnankkzhou"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="数据结构 队列字符串篇"><meta name="application-name" content="数据结构 队列字符串篇"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="数据结构 队列字符串篇"><meta property="og:url" content="https://blog.tokenlen.top/2024/09/19/data/data3/index.html"><meta property="og:site_name" content="mengnankkのblog"><meta property="og:description" content="队列队列是一种线性数据结构,先进先出,队列常用于各种需要顺序处理的场景，如任务调度、资源分配、广度优先搜索等 简单的链式队列实现 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221811725.jpeg?_r_=7fbfd91a-b587-771b-eae1-b87667e1111b"><meta property="article:author" content="mengnankkzhou"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221811725.jpeg?_r_=7fbfd91a-b587-771b-eae1-b87667e1111b"><meta name="description" content="队列队列是一种线性数据结构,先进先出,队列常用于各种需要顺序处理的场景，如任务调度、资源分配、广度优先搜索等 简单的链式队列实现 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://blog.tokenlen.top/2024/09/19/data/data3/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走啊，那种事情不要啊","backTitle":"♪(^∇^*)欢迎回家！！！！"},
+  LA51: undefined,
+  greetingBox: {"enable":"ture","default":"晚上好👋","list":[{"greeting":"晚安😴","startTime":0,"endTime":5},{"greeting":"早上好鸭👋, 祝你一天好心情！","startTime":6,"endTime":9},{"greeting":"上午好👋, 状态很好，鼓励一下～","startTime":10,"endTime":10},{"greeting":"11点多啦, 在坚持一下就吃饭啦～","startTime":11,"endTime":11},{"greeting":"午安👋, 宝贝","startTime":12,"endTime":14},{"greeting":"🌈充实的一天辛苦啦！","startTime":14,"endTime":18},{"greeting":"19点喽, 奖励一顿丰盛的大餐吧🍔。","startTime":19,"endTime":19},{"greeting":"晚上好👋, 在属于自己的时间好好放松😌~","startTime":20,"endTime":24}]},
+  twikooEnvId: 'https://comment.tokenlen.top/',
+  commentBarrageConfig:{"enable":true,"maxBarrage":1,"barrageTime":4000,"accessToken":"\tbd9428de12b54b96b2f1b4e69aeee81f","mailMd5":"F37442226DA71492"},
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    simplehomepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: mengnankkzhou","link":"链接: ","source":"来源: mengnankkのblog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'mengnankkのblog',
+  title: '数据结构 队列字符串篇',
+  postAI: '',
+  pageFillDescription: '队列, 二叉堆, 字符串, 字符串的字符编码, 存储结构, 字符串的匹配问题队列队列是一种线性数据结构先进先出队列常用于各种需要顺序处理的场景如任务调度资源分配广度优先搜索等简单的链式队列实现入队元素是队列为空出队元素是队列为空由于链式队列使用链表存储数据它没有固定的容量可以根据需要动态增长队列还有双端队列和优先队列优先队列和普通队列的不同点在于出队顺序优先队列的应用场景非常多比如数据压缩赫夫曼编码算法最短路径算法算法最小生成树算法算法任务调度器根据优先级执行系统任务事件驱动仿真顾客排队算法排序问题查找第个最小元素在中类可以用来实现优先队列默认情况下它是一个最小堆也就是说优先级最低的元素会最先出队我们可以自定义比较器来改变优先级规则使其成为最大堆创建一个优先队列默认为最小堆向队列中插入元素打印优先队列中的元素优先队列中的元素获取并移除优先队列中的最小元素移除的元素查看队头元素最小元素队头元素继续移除队列中的元素移除的元素简单的队列的使用那么我们可以自定义一个优先队列创建一个自定义对象类包含你要比较的属性实现接口或使用定义元素比较的逻辑以此确定优先级使用并传入比较规则代码实现任务类包含任务名优先级执行时间优先级值越小优先级越高执行时间时间戳构造函数实现方法首先比较优先级如果优先级相同则比较执行时间优先级小的先处理时间早的先处理创建优先队列并将任务对象放入队列添加任务传入任务名称优先级和执行时间任务任务任务任务依次处理优先队列中的任务处理任务先比较优先级优先级相同再比较时间戳二叉堆二叉堆符合以下两个条件之一的完全二叉树大顶堆根节点值子节点值小顶堆根节点值子节点值堆调整方法把移走了最大值元素以后的剩余元素组成的序列再构造为一个新的堆积具体步骤如下从根节点开始自上而下地调整节点的位置使其成为堆积即把序号为的节点与其左子树节点序号为右子树节点序号为中值最大的节点交换位置因为交换了位置使得当前节点的左右子树原有的堆积特性被破坏于是从当前节点的左右子树节点开始自上而下继续进行类似的调整如此下去直到整棵完全二叉树成为一个大顶堆将数组构建为二叉堆方法初始堆建立方法如果原始序列对应的完全二叉树不一定是堆的深度为则从层最右侧分支节点序号为开始初始时令调用堆调整算法每调用一次堆调整算法执行一次直到时再调用一次就把原始数组构建为了一个二叉堆字符串简称为串是由零个或多个字符组成的有限序列一般记为字符串名称字符串定义中的就是字符串的名称字符串的值组成的字符序列就是字符串的值一般用双引号括起来字符变量字符串每一个位置上的元素都是一个字符变量字符可以是字母数字或者其他字符是该字符在字符串中的位置字符串的长度字符串中字符的数目称为字符串的长度空串零个字符构成的串也成为空字符串它的长度为可以表示为子串字符串中任意个连续的字符组成的子序列称为该字符串的子串并且有两种特殊子串起始于位置为长度为的子串称为前缀而终止于位置长度为的子串称为后缀主串包含子串的字符串相应的称为主串举例是字符串的变量名称是该字符串的值其字符串的长度为从前面开始是然后从后面开始是以此类推字符串一般作为一个整体来使用关于字符串的问题一般有这几种根据字符串的特点我们可以将字符串问题分为以下几种字符串匹配问题子串相关问题前缀后缀相关问题回文串相关问题子序列相关问题字符串和它们的第一个字母都是而第二个字母由于字母比字母要靠前所以于是我们可以说也可以说字符串相等的情况和的长度相等和对应位置上的各个字符都相等自定义字符串的比较字符串的字符编码计算机中常用字符使用的编码为例最早的时候人们制定了一个包含个字符的编码表到计算机系统中编码表中的字符包含了大小写的英文字母数字和一些符号每个字符对应一个编码比如大写字母的编码是小写字母的编码是这几个是我国定制的中文编码编码是现在国际上最常用的编码最常用的就是编码编码把一个字符根据不同的数字大小编码成个字节常用的英文字母被编码成个字节汉字通常是个字节存储结构符串的链式存储将一组任意的存储单元串联在一起链节点之间的逻辑关系是通过指针来间接反映的还有顺序存储结构物理地址上是相连的字符串的匹配问题',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-12-16 17:23:17',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/rss2.xml" title="mengnankkのblog" type="application/rss+xml">
+</head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://blog.tokenlen.top/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="http://img.mengnankk.top:9001/" title="图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="图床"/><span class="back-menu-item-text">图床</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="http://img.mengnankk.top:9001/" title="mengnankk图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/13/64d8c2653332e.ico" alt="mengnankk图床"/><span class="back-menu-item-text">mengnankk图床</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">mengnankkのblog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 生活</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/Message/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 其他</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://home.tokenlen.top/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> home</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://status.mengnankk.asia/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 站点检测</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://home.tokenlen.top/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 心里话</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://imgbed.mengnankk.asia/202407021650088.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://imgbed.mengnankk.asia/202407021650088.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BF/" style="font-size: 1.05rem;">BF<sup>1</sup></a><a href="/tags/BigData/" style="font-size: 1.05rem;">BigData<sup>1</sup></a><a href="/tags/C/" style="font-size: 1.05rem;">C<sup>4</sup></a><a href="/tags/CE/" style="font-size: 1.05rem;">CE<sup>1</sup></a><a href="/tags/CSRF/" style="font-size: 1.05rem;">CSRF<sup>1</sup></a><a href="/tags/English/" style="font-size: 1.05rem;">English<sup>9</sup></a><a href="/tags/FI/" style="font-size: 1.05rem;">FI<sup>1</sup></a><a href="/tags/Hadoop/" style="font-size: 1.05rem;">Hadoop<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 1.05rem;">Linux<sup>12</sup></a><a href="/tags/XSS/" style="font-size: 1.05rem;">XSS<sup>1</sup></a><a href="/tags/css/" style="font-size: 1.05rem;">css<sup>2</sup></a><a href="/tags/football/" style="font-size: 1.05rem;">football<sup>1</sup></a><a href="/tags/html/" style="font-size: 1.05rem;">html<sup>1</sup></a><a href="/tags/java/" style="font-size: 1.05rem;">java<sup>29</sup></a><a href="/tags/juc/" style="font-size: 1.05rem;">juc<sup>1</sup></a><a href="/tags/leetcode/" style="font-size: 1.05rem;">leetcode<sup>6</sup></a><a href="/tags/markdown/" style="font-size: 1.05rem;">markdown<sup>1</sup></a><a href="/tags/mysql/" style="font-size: 1.05rem;">mysql<sup>15</sup></a><a href="/tags/net/" style="font-size: 1.05rem;">net<sup>4</sup></a><a href="/tags/paper/" style="font-size: 1.05rem;">paper<sup>1</sup></a><a href="/tags/php/" style="font-size: 1.05rem;">php<sup>5</sup></a><a href="/tags/pip/" style="font-size: 1.05rem;">pip<sup>1</sup></a><a href="/tags/python/" style="font-size: 1.05rem;">python<sup>3</sup></a><a href="/tags/redis/" style="font-size: 1.05rem;">redis<sup>3</sup></a><a href="/tags/shell/" style="font-size: 1.05rem;">shell<sup>4</sup></a><a href="/tags/spring/" style="font-size: 1.05rem;">spring<sup>1</sup></a><a href="/tags/spring-boot/" style="font-size: 1.05rem;">spring boot<sup>5</sup></a><a href="/tags/sql/" style="font-size: 1.05rem;">sql<sup>4</sup></a><a href="/tags/web/" style="font-size: 1.05rem;">web<sup>3</sup></a><a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 1.05rem;">操作系统<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86/" style="font-size: 1.05rem;">数据库原理<sup>3</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.05rem;">数据结构<sup>16</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 1.05rem;">正则表达式<sup>2</sup></a><a href="/tags/%E6%AF%9B%E9%80%89/" style="font-size: 1.05rem;">毛选<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>8</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">五月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/04/"><span class="card-archive-list-date">四月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">7</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/03/"><span class="card-archive-list-date">三月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/02/"><span class="card-archive-list-date">二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/01/"><span class="card-archive-list-date">一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/12/"><span class="card-archive-list-date">十二月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/11/"><span class="card-archive-list-date">十一月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/10/"><span class="card-archive-list-date">十月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">14</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/408/" itemprop="url">408</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>数据结构</span></a></span></div></div><h1 class="post-title" itemprop="name headline">数据结构 队列字符串篇</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2024-09-18T16:00:00.000Z" title="发表于 2024-09-19 00:00:00">2024-09-19</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2024-12-16T09:23:17.325Z" title="更新于 2024-12-16 17:23:17">2024-12-16</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">2.3k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator"></span><span id="" data-flag-title="数据结构 队列字符串篇"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="twikoo_visitors" title="访问量"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为济南"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>济南</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221811725.jpeg?_r_=7fbfd91a-b587-771b-eae1-b87667e1111b"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://blog.tokenlen.top/2024/09/19/data/data3/"><header><a class="post-meta-categories" href="/categories/408/" itemprop="url">408</a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" tabindex="-1" itemprop="url">数据结构</a><h1 id="CrawlerTitle" itemprop="name headline">数据结构 队列字符串篇</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">mengnankkzhou</span><time itemprop="dateCreated datePublished" datetime="2024-09-18T16:00:00.000Z" title="发表于 2024-09-19 00:00:00">2024-09-19</time><time itemprop="dateCreated datePublished" datetime="2024-12-16T09:23:17.325Z" title="更新于 2024-12-16 17:23:17">2024-12-16</time></header><h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><p>队列是一种线性数据结构,<strong>先进先出</strong>,队列常用于各种需要顺序处理的场景，如任务调度、资源分配、广度优先搜索等</p>
+<p>简单的链式队列实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">public class Linkedqueue &#123;</span><br><span class="line">    private Node front;</span><br><span class="line">    private Node rear;</span><br><span class="line">    private int size;</span><br><span class="line"></span><br><span class="line">    public Linkedqueue(Node front, Node rear, int size) &#123;</span><br><span class="line">        this.front = front;</span><br><span class="line">        this.rear = rear;</span><br><span class="line">        this.size = size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public boolean isEmpty() &#123;</span><br><span class="line">        return front == null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void enqueue(int date) &#123;</span><br><span class="line">        Node newNode = new Node(date);</span><br><span class="line">        if (rear == null) &#123;</span><br><span class="line">            front = rear = newNode;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            rear.next = newNode;</span><br><span class="line">            rear = newNode;</span><br><span class="line">        &#125;</span><br><span class="line">        size++;</span><br><span class="line">        System.out.println(&quot;入队元素是&quot; + date);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int dequeue() &#123;</span><br><span class="line">        if (isEmpty()) &#123;</span><br><span class="line">            System.out.println(&quot;队列为空&quot;);</span><br><span class="line">            return -1;</span><br><span class="line">        &#125;</span><br><span class="line">        int data = front.data;</span><br><span class="line">        front = front.next;</span><br><span class="line"></span><br><span class="line">        if (front == null) &#123;</span><br><span class="line">            rear = null;</span><br><span class="line">        &#125;</span><br><span class="line">        size--;</span><br><span class="line">        System.out.println(&quot;出队元素是&quot; + data);</span><br><span class="line">        return data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int peek() &#123;</span><br><span class="line">        if (isEmpty()) &#123;</span><br><span class="line">            System.out.println(&quot;队列为空&quot;);</span><br><span class="line">            return -1;</span><br><span class="line">        &#125;</span><br><span class="line">        return front.data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getSize() &#123;</span><br><span class="line">        return size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>由于链式队列使用链表存储数据，它没有固定的容量，可以根据需要动态增长。</p>
+<p>队列还有双端队列和优先队列</p>
+<p>优先队列和普通队列的不同点在于出队顺序</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://qcdn.itcharge.cn/images/202405092258900.png" alt="优先队列"></p>
+<p>优先队列的应用场景非常多，比如：</p>
+<ul>
+<li><strong>数据压缩</strong>：赫夫曼编码算法；</li>
+<li><strong>最短路径算法</strong>：Dijkstra 算法；</li>
+<li><strong>最小生成树算法</strong>：Prim 算法；</li>
+<li><strong>任务调度器</strong>：根据优先级执行系统任务；</li>
+<li><strong>事件驱动仿真</strong>：顾客排队算法；</li>
+<li><strong>排序问题</strong>：查找第 k 个最小元素。</li>
+</ul>
+<p>在java中PriorityQueue类可以用来实现优先队列</p>
+<p>默认情况下，它是一个<strong>最小堆</strong>，也就是说，优先级最低的元素会最先出队。我们可以自定义比较器来改变优先级规则，使其成为最大堆。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import java.util.PriorityQueue;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // 创建一个优先队列，默认为最小堆</span><br><span class="line">        PriorityQueue&lt;Integer&gt; pq = new PriorityQueue&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        // 向队列中插入元素</span><br><span class="line">        pq.add(5);</span><br><span class="line">        pq.add(1);</span><br><span class="line">        pq.add(3);</span><br><span class="line">        pq.add(2);</span><br><span class="line">        pq.add(4);</span><br><span class="line"></span><br><span class="line">        // 打印优先队列中的元素</span><br><span class="line">        System.out.println(&quot;优先队列中的元素: &quot; + pq);</span><br><span class="line"></span><br><span class="line">        // 获取并移除优先队列中的最小元素</span><br><span class="line">        System.out.println(&quot;移除的元素: &quot; + pq.poll());</span><br><span class="line"></span><br><span class="line">        // 查看队头元素（最小元素）</span><br><span class="line">        System.out.println(&quot;队头元素: &quot; + pq.peek());</span><br><span class="line"></span><br><span class="line">        // 继续移除队列中的元素</span><br><span class="line">        while (!pq.isEmpty()) &#123;</span><br><span class="line">            System.out.println(&quot;移除的元素: &quot; + pq.poll());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>简单的队列的使用</p>
+<p>那么我们可以自定义一个优先队列</p>
+<p>创建一个自定义对象类，包含你要比较的属性。</p>
+<p>实现 <code>Comparable</code> 接口或使用 <code>Comparator</code>，定义元素比较的逻辑，以此确定优先级。</p>
+<p>使用 <code>PriorityQueue</code> 并传入比较规则。</p>
+<p>代码实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">import java.util.PriorityQueue;</span><br><span class="line"></span><br><span class="line">// 任务类，包含任务名、优先级、执行时间</span><br><span class="line">class Task implements Comparable&lt;Task&gt; &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int priority;       // 优先级，值越小优先级越高</span><br><span class="line">    private long executionTime;  // 执行时间（时间戳）</span><br><span class="line"></span><br><span class="line">    // 构造函数</span><br><span class="line">    public Task(String name, int priority, long executionTime) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.priority = priority;</span><br><span class="line">        this.executionTime = executionTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 实现 compareTo 方法，首先比较优先级，如果优先级相同，则比较执行时间</span><br><span class="line">    @Override</span><br><span class="line">    public int compareTo(Task other) &#123;</span><br><span class="line">        if (this.priority != other.priority) &#123;</span><br><span class="line">            return Integer.compare(this.priority, other.priority);  // 优先级小的先处理</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return Long.compare(this.executionTime, other.executionTime);  // 时间早的先处理</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;Task&#123;name=&#x27;&quot; + name + &quot;&#x27;, priority=&quot; + priority + &quot;, executionTime=&quot; + executionTime + &#x27;&#125;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class CustomPriorityQueue &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // 创建优先队列，并将 Task 任务对象放入队列</span><br><span class="line">        PriorityQueue&lt;Task&gt; taskQueue = new PriorityQueue&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        // 添加任务，传入任务名称、优先级和执行时间</span><br><span class="line">        taskQueue.add(new Task(&quot;任务1&quot;, 3, System.currentTimeMillis() + 1000));</span><br><span class="line">        taskQueue.add(new Task(&quot;任务2&quot;, 1, System.currentTimeMillis()));</span><br><span class="line">        taskQueue.add(new Task(&quot;任务3&quot;, 2, System.currentTimeMillis() + 500));</span><br><span class="line">        taskQueue.add(new Task(&quot;任务4&quot;, 2, System.currentTimeMillis() + 200));</span><br><span class="line"></span><br><span class="line">        // 依次处理优先队列中的任务</span><br><span class="line">        while (!taskQueue.isEmpty()) &#123;</span><br><span class="line">            System.out.println(&quot;处理任务: &quot; + taskQueue.poll());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>先比较优先级，优先级相同再比较时间戳</p>
+<h2 id="二叉堆"><a href="#二叉堆" class="headerlink" title="二叉堆"></a>二叉堆</h2><p>二叉堆：符合以下两个条件之一的完全二叉树：</p>
+<ul>
+<li>大顶堆：根节点值 ≥ 子节点值。</li>
+<li><p>小顶堆：根节点值 ≤ 子节点值。</p>
+</li>
+<li><p><strong>堆调整方法 <code>heapAdjust</code></strong>：把移走了最大值元素以后的剩余元素组成的序列再构造为一个新的堆积。具体步骤如下：</p>
+<ul>
+<li>从根节点开始，自上而下地调整节点的位置，使其成为堆积。即把序号为 i<em>i</em> 的节点与其左子树节点（序号为 2×i2×<em>i</em>）、右子树节点（序号为 2×i+12×<em>i</em>+1）中值最大的节点交换位置。</li>
+<li>因为交换了位置，使得当前节点的左右子树原有的堆积特性被破坏。于是，从当前节点的左右子树节点开始，自上而下继续进行类似的调整。</li>
+<li>如此下去直到整棵完全二叉树成为一个大顶堆。</li>
+</ul>
+</li>
+<li><strong>将数组构建为二叉堆方法（初始堆建立方法） <code>heapify</code></strong>：</li>
+<li>如果原始序列对应的完全二叉树（不一定是堆）的深度为 d<em>d</em>，则从 d−1<em>d</em>−1 层最右侧分支节点（序号为 ⌊n2⌋⌊2<em>n</em>⌋）开始，初始时令 i=⌊n2⌋<em>i</em>=⌊2<em>n</em>⌋，调用堆调整算法。</li>
+<li>每调用一次堆调整算法，执行一次 i=i−1<em>i</em>=<em>i</em>−1，直到 i==1<em>i</em>==1 时，再调用一次，就把原始数组构建为了一个二叉堆。</li>
+</ul>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><p>简称为串，是由零个或多个字符组成的有限序列。一般记为 s=a1a2…an(0≤n⪇∞)<em>s</em>=<em>a</em>1<em>a</em>2…<em>a**n</em>(0≤<em>n</em>⪇∞)。</p>
+<ul>
+<li><strong>字符串名称</strong>：字符串定义中的 s<em>s</em> 就是字符串的名称。</li>
+<li><strong>字符串的值</strong>：a1a2…an<em>a</em>1<em>a</em>2…<em>a**n</em> 组成的字符序列就是字符串的值，一般用双引号括起来。</li>
+<li><strong>字符变量</strong>：字符串每一个位置上的元素都是一个字符变量。字符 ai<em>a**i</em> 可以是字母、数字或者其他字符。i<em>i</em> 是该字符在字符串中的位置。</li>
+<li><strong>字符串的长度</strong>：字符串中字符的数目 n<em>n</em> 称为字符串的长度。</li>
+<li><strong>空串</strong>：零个字符构成的串也成为 <strong>「空字符串（Null String）」</strong>，它的长度为 00，可以表示为 <code>&quot;&quot;</code>。</li>
+<li><strong>子串</strong>：字符串中任意个连续的字符组成的子序列称为该字符串的 <strong>「子串（Substring）」</strong>。并且有两种特殊子串，起始于位置为 00、长度为 k<em>k</em> 的子串称为 <strong>「前缀（Prefix）」</strong>。而终止于位置 n−1<em>n</em>−1、长度为 k<em>k</em> 的子串称为 <strong>「后缀（Suffix）」</strong>。</li>
+<li><strong>主串</strong>：包含子串的字符串相应的称为 <strong>「主串」</strong>。</li>
+</ul>
+<p>举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str = &quot;Hello World&quot;</span><br></pre></td></tr></table></figure>
+<p>str 是字符串的变量名称，Hello World是该字符串的值，其字符串的长度为11。</p>
+<p>从前面开始是0-n-1，然后从后面开始是-1-以此类推</p>
+<p>字符串一般作为一个整体来使用</p>
+<p>关于字符串的问题一般有这几种</p>
+<p>根据字符串的特点，我们可以将字符串问题分为以下几种：</p>
+<ul>
+<li>字符串匹配问题。</li>
+<li>子串相关问题。</li>
+<li>前缀 / 后缀相关问题；</li>
+<li>回文串相关问题。</li>
+<li>子序列相关问题。</li>
+</ul>
+<p>字符串 <code>str1 = &quot;abc&quot;</code> 和 <code>str2 = &quot;acc&quot;</code>，它们的第一个字母都是 a<em>a</em>，而第二个字母，由于字母 b<em>b</em> 比字母 c<em>c</em> 要靠前，所以 b&lt;c<em>b</em>&lt;<em>c</em>，于是我们可以说 <code>&quot;abc&quot; &lt; &quot;acd&quot;</code>，也可以说 str1&lt;str2。</p>
+<p>字符串相等的情况：</p>
+<ul>
+<li><p>str1和str2的长度相等</p>
+</li>
+<li><p>str1和str2对应位置上的各个字符都相等</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class stcmp &#123;</span><br><span class="line">    public static int strcmp(String str1,String str2)&#123;</span><br><span class="line">        int index1 = 0,index2 = 0;</span><br><span class="line"></span><br><span class="line">        while (index1&lt;str1.length()&amp;&amp;index2&lt;str2.length())</span><br><span class="line">            if (str1.charAt(index1)==str2.charAt(index2))&#123;</span><br><span class="line">                index1++;</span><br><span class="line">                index2++;</span><br><span class="line">            &#125;else if (str1.charAt(index1)&lt;str2.charAt(index2))&#123;</span><br><span class="line">                return -1;</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                return 1;</span><br><span class="line">            &#125;</span><br><span class="line">        if (str1.length()&lt;str2.length())&#123;</span><br><span class="line">            return -1;</span><br><span class="line">        &#125;else if (str1.length()&gt;str2.length())&#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>自定义字符串的比较</p>
+<h3 id="字符串的字符编码"><a href="#字符串的字符编码" class="headerlink" title="字符串的字符编码"></a>字符串的字符编码</h3><p>计算机中常用字符使用的 ASCII 编码为例。最早的时候，人们制定了一个包含 127127 个字符的编码表 ASCII 到计算机系统中。ASCII 编码表中的字符包含了大小写的英文字母、数字和一些符号。每个字符对应一个编码，比如大写字母 A 的编码是 65，小写字母 a 的编码是 97。</p>
+<p>GB2312、GBK、GB18030这几个是我国定制的中文编码</p>
+<p>Unicode 编码是现在国际上最常用的</p>
+<p>Unicode 编码最常用的就是 UTF-8 编码，UTF-8 编码把一个 Unicode 字符根据不同的数字大小编码成 1∼61∼6 个字节，常用的英文字母被编码成 11 个字节，汉字通常是 33 个字节。</p>
+<h3 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://qcdn.itcharge.cn/images/20240511114804.png" alt="字符串的链式存储"></p>
+<p>符串的链式存储将一组任意的存储单元串联在一起。链节点之间的逻辑关系是通过指针来间接反映的。</p>
+<p>还有顺序存储结构，物理地址上是相连的</p>
+<h3 id="字符串的匹配问题"><a href="#字符串的匹配问题" class="headerlink" title="字符串的匹配问题"></a>字符串的匹配问题</h3></article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">mengnankkzhou</div><div class="post-copyright__author_desc">不要走捏</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://blog.tokenlen.top/2024/09/19/data/data3/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://blog.tokenlen.top/2024/09/19/data/data3/')">数据结构 队列字符串篇</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://blog.tokenlen.top/2024/09/19/data/data3/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=数据结构 队列字符串篇&amp;url=https://blog.tokenlen.top/2024/09/19/data/data3/&amp;pic=https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221811725.jpeg?_r_=7fbfd91a-b587-771b-eae1-b87667e1111b" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.tokenlen.top" target="_blank">mengnankkのblog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__category-list"><a class="post-meta__box__categoryes" href="/categories/408/"><span class="categoryes-punctuation"> <i class="anzhiyufont anzhiyu-icon-inbox"></i></span>408<span class="categoryesPageCount">23</span></a></div><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>数据结构<span class="tagsPageCount">16</span></a></div></div><div class="post_share"><div class="social-share" data-image="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722377.jpg?_r_=547bdb75-14bf-9a3d-77f0-e3ab74086c77" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/09/07/en/en1/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722380.jpg?_r_=20e19bd2-c850-e1cb-2cc7-e8762eb5682b" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">English九月国庆篇</div></div></a></div><div class="next-post pull-right"><a href="/2024/09/22/linux/linux3/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722380.jpg?_r_=fc4edf4d-9bc4-a293-2ed7-e0c93e3f665a" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux基础3</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/04/01/leetcode/leetcodedayone/" title="Leetcode 每日一题"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202408081510494.jpg?_r_=340a92b6-8369-6f42-2536-492124a6cf7f" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-04-01</div><div class="title">Leetcode 每日一题</div></div></a></div><div><a href="/2025/03/02/leetcode/leetcodehot/" title="Leetcode HOT100题"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722381.jpg?_r_=7c4d2c99-e492-da41-8f3d-6c9c7e738a44" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-03-02</div><div class="title">Leetcode HOT100题</div></div></a></div><div><a href="/2025/05/12/leetcode/leetcode3/" title="Leetcode双指针"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202408081510494.jpg?_r_=69d494d9-2215-e1af-ea50-0e1fac976615" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-05-12</div><div class="title">Leetcode双指针</div></div></a></div><div><a href="/2025/05/09/leetcode/leetcodetotal/" title="Leetcode各类题目模板分析题目总结"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712178.jpg?_r_=0b8b8f2f-c6c5-1e06-64eb-82181633283b" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-05-09</div><div class="title">Leetcode各类题目模板分析题目总结</div></div></a></div><div><a href="/2025/04/29/leetcode/leetcode2/" title="Leetcode滑动窗口"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221811725.jpeg?_r_=aaa4dd58-b2bd-58b5-f3cf-d8e5cdcb5727" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-04-29</div><div class="title">Leetcode滑动窗口</div></div></a></div><div><a href="/2025/04/19/leetcode/leetcode1/" title="Leetcode二分查找专项"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221837602.jpg?_r_=bb798a87-07f1-3955-fe49-0ce9ee96691d" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-04-19</div><div class="title">Leetcode二分查找专项</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-switch"><span class="first-comment">Twikoo</span><span id="switch-btn"></span><span class="second-comment">Valine</span></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">清风拂柳影，碧水映花香。</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">mengnankkzhou</h1><div class="author-info__desc">不要走捏</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/mengnankkkk" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/440831872" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来看我的博客鸭~</div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410021212939.jpg) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%98%9F%E5%88%97"><span class="toc-number">1.</span> <span class="toc-text">队列</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E5%A0%86"><span class="toc-number">1.1.</span> <span class="toc-text">二叉堆</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">2.</span> <span class="toc-text">字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81"><span class="toc-number">2.0.1.</span> <span class="toc-text">字符串的字符编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">2.0.2.</span> <span class="toc-text">存储结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98"><span class="toc-number">2.0.3.</span> <span class="toc-text">字符串的匹配问题</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/05/15/java-stack/redis2/" title="redis面试hot"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722377.jpg?_r_=547bdb75-14bf-9a3d-77f0-e3ab74086c77" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="redis面试hot"/></a><div class="content"><a class="title" href="/2025/05/15/java-stack/redis2/" title="redis面试hot">redis面试hot</a><time datetime="2025-05-14T16:00:00.000Z" title="发表于 2025-05-15 00:00:00">2025-05-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/12/leetcode/leetcode3/" title="Leetcode双指针"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202408081510494.jpg?_r_=69d494d9-2215-e1af-ea50-0e1fac976615" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Leetcode双指针"/></a><div class="content"><a class="title" href="/2025/05/12/leetcode/leetcode3/" title="Leetcode双指针">Leetcode双指针</a><time datetime="2025-05-11T16:00:00.000Z" title="发表于 2025-05-12 00:00:00">2025-05-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/09/java-stack/juc/" title="JUC-线程池"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202408081510095.jpg?_r_=b0f3de63-0336-60ce-0a19-af504ed77606" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JUC-线程池"/></a><div class="content"><a class="title" href="/2025/05/09/java-stack/juc/" title="JUC-线程池">JUC-线程池</a><time datetime="2025-05-08T16:00:00.000Z" title="发表于 2025-05-09 00:00:00">2025-05-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/09/leetcode/leetcodetotal/" title="Leetcode各类题目模板分析题目总结"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712178.jpg?_r_=0b8b8f2f-c6c5-1e06-64eb-82181633283b" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Leetcode各类题目模板分析题目总结"/></a><div class="content"><a class="title" href="/2025/05/09/leetcode/leetcodetotal/" title="Leetcode各类题目模板分析题目总结">Leetcode各类题目模板分析题目总结</a><time datetime="2025-05-08T16:00:00.000Z" title="发表于 2025-05-09 00:00:00">2025-05-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/05/java-stack/spring1/" title="Spring基础"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221818490.jpeg?_r_=02682898-84de-3c9e-a1fa-9d01965fa8e5" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring基础"/></a><div class="content"><a class="title" href="/2025/05/05/java-stack/spring1/" title="Spring基础">Spring基础</a><time datetime="2025-05-04T16:00:00.000Z" title="发表于 2025-05-05 00:00:00">2025-05-05</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="footer_custom_text"><p><a style="margin-inline:5px" target="_blank" href="https://hexo.io/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Framework-Hexo-4e88f8?style=flat&logo=hexo" 
+       title="博客框架为 Hexo" alt="Hexo">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://github.com/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Source-Github-24292f?style=flat&logo=github" 
+       title="本站项目由 GitHub 托管" alt="GitHub">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://vercel.com/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Cloud-Vercel-000000?style=flat&logo=vercel" 
+       title="使用 Vercel 部署" alt="Vercel">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://www.qlu.edu.cn/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/University-齐鲁工业大学-0056a2?style=flat&logo=university" 
+       title="齐鲁工业大学" alt="齐鲁工业大学">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://www.aliyun.com/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Cloud-阿里云-ff6a00?style=flat&logo=aliyun" 
+       title="使用阿里云服务" alt="阿里云">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://cloud.tencent.com/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Cloud-腾讯云-0a73b8?style=flat&logo=tencent-cloud" 
+       title="使用腾讯云服务" alt="腾讯云">
+</a></p>
+</div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2023 - 2025 By <a class="footer-bar-link" href="/" title="mengnankkzhou" target="_blank">mengnankkzhou</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/" title="鲁ICP备2024110758号">鲁ICP备2024110758号</a><a class="footer-bar-link" href="https://blog.tokenlen.top/rss2.xml" title="Rss">Rss</a><a class="footer-bar-link cc" href="/pravite" title="cc协议"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-by-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nc-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nd-line"></i></a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">110</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">35</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">17</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://blog.tokenlen.top/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="http://img.mengnankk.top:9001/" title="图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="图床"/><span class="back-menu-item-text">图床</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="http://img.mengnankk.top:9001/" title="mengnankk图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/13/64d8c2653332e.ico" alt="mengnankk图床"/><span class="back-menu-item-text">mengnankk图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 生活</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/Message/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 其他</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://home.tokenlen.top/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> home</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://status.mengnankk.asia/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 站点检测</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://home.tokenlen.top/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 心里话</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BF/" style="font-size: 0.88rem;">BF<sup>1</sup></a><a href="/tags/BigData/" style="font-size: 0.88rem;">BigData<sup>1</sup></a><a href="/tags/C/" style="font-size: 0.88rem;">C<sup>4</sup></a><a href="/tags/CE/" style="font-size: 0.88rem;">CE<sup>1</sup></a><a href="/tags/CSRF/" style="font-size: 0.88rem;">CSRF<sup>1</sup></a><a href="/tags/English/" style="font-size: 0.88rem;">English<sup>9</sup></a><a href="/tags/FI/" style="font-size: 0.88rem;">FI<sup>1</sup></a><a href="/tags/Hadoop/" style="font-size: 0.88rem;">Hadoop<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 0.88rem;">Linux<sup>12</sup></a><a href="/tags/XSS/" style="font-size: 0.88rem;">XSS<sup>1</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>2</sup></a><a href="/tags/football/" style="font-size: 0.88rem;">football<sup>1</sup></a><a href="/tags/html/" style="font-size: 0.88rem;">html<sup>1</sup></a><a href="/tags/java/" style="font-size: 0.88rem;">java<sup>29</sup></a><a href="/tags/juc/" style="font-size: 0.88rem;">juc<sup>1</sup></a><a href="/tags/leetcode/" style="font-size: 0.88rem;">leetcode<sup>6</sup></a><a href="/tags/markdown/" style="font-size: 0.88rem;">markdown<sup>1</sup></a><a href="/tags/mysql/" style="font-size: 0.88rem;">mysql<sup>15</sup></a><a href="/tags/net/" style="font-size: 0.88rem;">net<sup>4</sup></a><a href="/tags/paper/" style="font-size: 0.88rem;">paper<sup>1</sup></a><a href="/tags/php/" style="font-size: 0.88rem;">php<sup>5</sup></a><a href="/tags/pip/" style="font-size: 0.88rem;">pip<sup>1</sup></a><a href="/tags/python/" style="font-size: 0.88rem;">python<sup>3</sup></a><a href="/tags/redis/" style="font-size: 0.88rem;">redis<sup>3</sup></a><a href="/tags/shell/" style="font-size: 0.88rem;">shell<sup>4</sup></a><a href="/tags/spring/" style="font-size: 0.88rem;">spring<sup>1</sup></a><a href="/tags/spring-boot/" style="font-size: 0.88rem;">spring boot<sup>5</sup></a><a href="/tags/sql/" style="font-size: 0.88rem;">sql<sup>4</sup></a><a href="/tags/web/" style="font-size: 0.88rem;">web<sup>3</sup></a><a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 0.88rem;">操作系统<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86/" style="font-size: 0.88rem;">数据库原理<sup>3</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 0.88rem;">数据结构<sup>16</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 0.88rem;">正则表达式<sup>2</sup></a><a href="/tags/%E6%AF%9B%E9%80%89/" style="font-size: 0.88rem;">毛选<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>8</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><a id="switch-commentBarrage" href="javascript:anzhiyu.switchCommentBarrage();" title="开关弹幕"><i class="anzhiyufont anzhiyu-icon-danmu"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.cbd.int/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2023 By 安知鱼 V1.6.12",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 mengnankkzhou 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.cbd.int/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://comment.tokenlen.top/',
+      region: '',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, "siu~~~~~"))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.25/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://comment.tokenlen.top/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '3ZpuzQHHKWfFH59QFYmcuCvr-gzGzoHsz',
+      appKey: '8DIvljObQp853ueQMZzpb9Gx',
+      avatar: 'mp',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Twikoo' === 'Valine' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://comment.tokenlen.top/',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.25/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
