@@ -1,0 +1,826 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>javase面试题目hot | mengnankkのblog</title><meta name="keywords" content="java"><meta name="author" content="mengnankkzhou"><meta name="copyright" content="mengnankkzhou"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="javase面试题目hot"><meta name="application-name" content="javase面试题目hot"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="javase面试题目hot"><meta property="og:url" content="https://blog.tokenlen.top/2025/05/19/javase/javase2/index.html"><meta property="og:site_name" content="mengnankkのblog"><meta property="og:description" content="基础面试题目 概念 1.说一下Java的特点 平台无关性：Java的编写一次，运无不在&amp;quot;哲学是其最大的特点之一。Java编译器将源代码编译成字节码（bytecode），该字节码可以在任何安装了Java虚拟机（JVM）的系统上运行。 面向对象：JaVa是一严格的面可对象编程语言，几乎一切都是"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202408081510095.jpg?_r_=7d981bdd-4c47-4587-d6be-b1a53eec5148"><meta property="article:author" content="mengnankkzhou"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202408081510095.jpg?_r_=7d981bdd-4c47-4587-d6be-b1a53eec5148"><meta name="description" content="基础面试题目 概念 1.说一下Java的特点 平台无关性：Java的编写一次，运无不在&amp;quot;哲学是其最大的特点之一。Java编译器将源代码编译成字节码（bytecode），该字节码可以在任何安装了Java虚拟机（JVM）的系统上运行。 面向对象：JaVa是一严格的面可对象编程语言，几乎一切都是"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://blog.tokenlen.top/2025/05/19/javase/javase2/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走啊，那种事情不要啊","backTitle":"♪(^∇^*)欢迎回家！！！！"},
+  LA51: undefined,
+  greetingBox: {"enable":"ture","default":"晚上好👋","list":[{"greeting":"晚安😴","startTime":0,"endTime":5},{"greeting":"早上好鸭👋, 祝你一天好心情！","startTime":6,"endTime":9},{"greeting":"上午好👋, 状态很好，鼓励一下～","startTime":10,"endTime":10},{"greeting":"11点多啦, 在坚持一下就吃饭啦～","startTime":11,"endTime":11},{"greeting":"午安👋, 宝贝","startTime":12,"endTime":14},{"greeting":"🌈充实的一天辛苦啦！","startTime":14,"endTime":18},{"greeting":"19点喽, 奖励一顿丰盛的大餐吧🍔。","startTime":19,"endTime":19},{"greeting":"晚上好👋, 在属于自己的时间好好放松😌~","startTime":20,"endTime":24}]},
+  twikooEnvId: 'https://comment.tokenlen.top/',
+  commentBarrageConfig:{"enable":true,"maxBarrage":1,"barrageTime":4000,"accessToken":"\tbd9428de12b54b96b2f1b4e69aeee81f","mailMd5":"F37442226DA71492"},
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    simplehomepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: mengnankkzhou","link":"链接: ","source":"来源: mengnankkのblog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'mengnankkのblog',
+  title: 'javase面试题目hot',
+  postAI: '',
+  pageFillDescription: '基础面试题目, 概念, 1.说一下Java的特点, 2.Java 的优势和劣势是什么？, 3.Java为什么是跨平台的？, 4.JVM、JDK、JRE三者关系？, 5.为什么Java解释和编译都有？, 6.jvm是什么, 7.编译型语言和解释型语言的区别？, 数据类型, 1.八种基本的数据类型, 2.int和long是多少位多少字节的？, 3.long和int可以互转吗 ？, 4.数据类型转换方式你知道哪些？, 5.类型互转会出现什么问题吗？, 6.为什么用bigDecimal 不用double ？, 7.装箱和拆箱是什么？, 8.Java为什么要有Integer？, 9.Integer相比int有什么优点？, 10.那为什么还要保留int类型？, 11.说一下 integer的缓存基础面试题目概念说一下的特点平台无关性的编写一次运无不在哲学是其最大的特点之一编译器将源代码编译成字节码该字节码可以在任何安装了虚拟机的系统上运行面向对象是一严格的面可对象编程语言几乎一切都是对象面可对象编程特性使得代码更易于维护和重用包括类对象继承多态抽象和封装内存管理有目己的垃圾回收机制目动管理内存和回收不再使用的对象这样开发者不需要手动管埋内存从而减少内存泄漏和其他内存相关的问题的优势和劣势是什么首先的优势我记得跨平台应该是一个大点因为的存在一次编写到处运行然后面向对象这个可能也是优势不过现在很多语言都支持面向对象但是的设计从一开始就是的还有强大的生态系统比如框架各种库和工具社区支持大企业应用广泛另外内存管理方面自动垃圾回收机制减少了内存泄漏的问题对开发者友好还有多线程支持内置的线程机制方便并发编程安全性方面有安全模型比如沙箱机制适合网络环境还有稳定性企业级应用长期使用版本更新也比较注重向后兼容劣势的话性能可能是一个虽然优化了很多但相比或者这种原生编译语言还是有一定开销特别是启动时间比如微服务场景下可能不如之类的快语法繁琐比如样板代码多之前没有的时候更麻烦现在有了但比起还是不够简洁内存消耗本身占内存对于资源有限的环境可能不太友好还有面向对象过于严格有时候写简单程序反而麻烦虽然引入了函数式编程但不如其他语言自然还有开发效率相比动态语言如需要更多代码编译过程也可能拖慢开发节奏为什么是跨平台的能支持跨平台主要依赖于关系比较大也是一个软件不同的平台有不同的版本我们编写的源码编译后会生成一种文件称为字节码文件虚拟机就是负责将字节码文件翻译成特定平台下的机器码然后运行也就是说只要在不同平台上安装对应的就可以运行字节码文件运行我们编写的程序是一个桥梁是一个中间件是实现跨平台的关键代码首先被编译成字节码文件再由将字节码文件翻译成机器语言从而达到运行程序的目的编译的结果不是生成机器码而是生成字节码字节码不能直接运行必须通过翻译成机器码才能运行不同平台下编译生成的字节码是一样的但是由翻译成的机器码却不一样所以运行程序必须有的支持因为编译的结果不是机器码必须要经过的再次翻译才能执行即使你将程序打包成可执行文件例如仍然需要的支持三者关系是虚拟机是程序运行的环境它负责将字节码由编译器生成解释或编译成机器码并执行程序提供了内存管理垃圾回收安全性等功能使得程序具备跨平台性是开发工具包是开发程序所需的工具集合它包含了编译器调试器等开发工具以及一系列的类库如标准库和开发工具库提供了开发编译调试和运行程序所需的全部工具和环境是运行时环境是程序运行所需的最小环境它包含了和一组类库用于支持程序的执行不包含开发工具只提供程序运行所需的运行环境为什么解释和编译都有首先在经过编译之后生成字节码文件接下来进入中就有两个步骤编译和解释如下图编译性源代码首先被编译成字节码会把编译过的机器码保存起来以备下次使用解释性中一个方法调用计数器当累计计数大于一定值的时候就使用进行编译生成机器码文件否则就是用解释器进行解释执行然后字节码也是经过解释器进行解释运行的所以既是编译型也是解释性语言默认采用的是解释器和编译器混合的模式是什么是虚拟机主要工作是解释自己的指令集即字节码并映射到本地的指令集和的系统调用屏蔽了与操作系统平台相关的信息使得程序只需要生成在虚拟机上运行的目标代码字节码就可在多种平台上不加修改的运行这也是能够一次编译到处运行的原因编译型语言和解释型语言的区别编译型语言和解释型语言的区别在于编译型语言在程序执行之前整个源代码会被编译成机器码或者字节码生成可执行文件执行时直接运行编译后的代码速度快但跨平台性较差解释型语言在程序执行时逐行解释执行源代码不生成独立的可执行文件通常由解释器动态解释并执行代码跨平台性好但执行速度相对较慢典型的编译型语言如典型的解释型语言如数据类型八种基本的数据类型支持数据类型分为两类基本数据类型和引用数据类型基本数据类型共有种可以分为三类数值型整数类型和浮点类型字符型布尔型种基本数据类型的默认值位数取值范围如下表所示数据类型占用大小字节位数取值范围默认值描述到是最小的整数类型适合用于节省内存例如在处理文件或网络流时存储小范围整数数据到较少使用通常用于在需要节省内存且数值范围在该区间的场景到最常用的整数类型可满足大多数日常编程中整数计算的需求到用于表示非常大的整数当类型无法满足需求时使用定义时数值后需加或到单精度浮点数用于表示小数精度相对较低定义时数值后需加或到双精度浮点数精度比高是中表示小数的默认类型到用于表示单个字符采用编码可表示各种语言的字符无明确字节大小理论上位无明确位数或用于逻辑判断只有两个取值常用于条件判断和循环控制等逻辑场景八种基本数据类型的字节数字节字节字节字节浮点数的默认类型为如果需要声明一个常量为型则必须要在末尾加上或整数的默认类型为声明型在末尾加上或者八种基本数据类型的包装类除了的是类型的是其他都是首字母大写类型是无符号的不能为负所以是开始的和是多少位多少字节的类型是位占个字节是有符号整数类型其取值范围是从到例如在一个简单的计数器程序中如果使用类型来存储计数值它可以表示的最大正数是如果计数值超过这个范围就会发生溢出导致结果不符合预期类型是位占个字节类型也是有符号整数类型它的取值范围是从到在处理较大的整数数值时果类型的取值范围不够就需要使用类型例如在一个文件传输程序中文件的大小可能会很大使用类型可能无法准确表示而类型就可以很好地处理这种情况和可以互转吗可以的中的和可以相互转换由于类型的范围比类型大因此将转换为是安全的而将转换为可能会导致数据丢失或溢出将转换为可以通过直接赋值或强制类型转换来实现例如自动转换安全的将转换为需要使用强制类型转换但需要注意潜在的数据丢失或溢出问题在将转换为时如果的值超出了类型的范围转换结果将是截断后的低位部分因此在进行转换之前建议先检查的值是否在类型的范围内以避免数据丢失或溢出的问题低高直接转数据类型转换方式你知道哪些自动类型转换隐式转换当目标类型的范围大于源类型时会自动将源类型转换为目标类型不需要显式的类型转换例如将转换为将转换为等强制类型转换显式转换当目标类型的范围小于源类型时需要使用强制类型转换将源类型转换为目标类型这可能导致数据丢失或溢出例如将转换为将转换为等语法为目标类型变量名目标类型源类型字符串转换提供了将字符串表示的数据转换为其他类型数据的方法例如将字符串转换为整型可以使用方法将字符串转换为浮点型可以使用方法等数值之间的转换提供了一些数值类型之间的转换方法如将整型转换为字符型将字符型转换为整型等这些转换方式可以通过类型的包装类来实现例如类类等提供了相应的转换方法类型互转会出现什么问题吗数据丢失当将一个范围较大的数据类型转换为一个范围较小的数据类型时可能会发生数据丢失例如将一个类型的值转换为类型时如果值超出了类型的范围转换结果将是截断后的低位部分高位部分的数据将丢失数据溢出与数据丢失相反当将一个范围较小的数据类型转换为一个范围较大的数据类型时可能会发生数据溢出例如将一个类型的值转换为类型时转换结果会填充额外的高位空间但原始数据仍然保持不变精度损失在进行浮点数类型的转换时可能会发生精度损失由于浮点数的表示方式不同将一个单精度浮点数转换为双精度浮点数时精度可能会损失类型不匹配导致的错误在进行类型转换时需要确保源类型和目标类型是兼容的如果两者不兼容会导致编译错误或运行时错误为什么用不用会出现精度丢失的问题执行的是二进制浮点运算二进制有些情况下不能准确的表示一个小数就像十进制不能准确的表示也就是说二进制表示小数的时候只能够表示能够用的和的任意组合但是不能够精确表示因为它不能够表示成为的和的形式比如输出可以看到在中进行浮点数运算的时候会出现丢失精度的问题那么我们如果在进行商品价格计算的时候就会出现问题很有可能造成我们手中有元却无法购买一个元和一个元的商品因为如上所示他们两个的总和为这无疑是一个很严重的问题尤其是当电商网站的并发量上去的时候出现的问题将是巨大的可能会导致无法下单或者对账出现问题而是精确计算所以一般牵扯到金钱的计算都使用输出这样的使用可以确保精确的十进制数值计算避免了使用可能出现的舍入误差需要注意的是在创建对象时应该使用字符串作为参数而不是直接使用浮点数值以避免浮点数精度丢失装箱和拆箱是什么装箱和拆箱是将基本数据类型和对应的包装类之间进行转换的过程自动装箱主要发生在两种情况一种是赋值时另一种是在方法调用的时候赋值时这是最常见的一种情况在以前我们需要手动地进行转换才行而现在所有的转换都是由编译器来完成方法调用时当我们在方法调用时我们可以传入原始数据值或者对象同样编译器会帮我们进行转换方法接受对象作为参数当调用时会将值转换成对应的对象这就是所谓的自动装箱方法返回对象而中为类型所以这时候发生自动拆箱操作将方法的返回的对象转换成值自动装箱有一个问题那就是在一个循环中进行自动装箱操作的情况如下面的例子就会创建多余的对象影响程序的性能上面的代码可以看成但是这个操作符不适用于对象首先进行自动拆箱操作进行数值相加操作最后发生自动装箱操作转换成对象其内部变化如下由于我们这里声明的为类型在上面的循环中会创建将近个无用的对象在这样庞大的循环中会降低程序的性能并且加重了垃圾回收的工作量因此在我们编程时需要注意到这一点正确地声明变量类型避免因为自动装箱引起的性能问题为什么要有对应是类型的包装类就是把类型包装成对象对象封装有很多好处可以把属性也就是数据跟处理这些数据的方法结合在一起比如就有等方法来专门处理型相关的数据另一个非常重要的原因就是在中绝大部分方法或类都是用来处理类类型对象的如集合类就只能以类作为他的存储对象而这时如果想把一个型的数据存入是不可能的必须把它包装成类也就是才能被所接受所以的存在是很必要的在中泛型只能使用引用类型而不能使用基本类型因此如果要在泛型中使用类型必须使用包装类在中基本类型和引用类型不能直接进行转换必须使用包装类来实现例如将一个类型的值转换为类型必须首先将其转换为类型然后再转换为类型集合中只能存储对象而不能存储基本数据类型因此如果要将类型的数据存储在集合中必须使用包装类相比有什么优点是中的原始数据类型而是的包装类和的区别基本类型和引用类型首先是一种基本数据类型而是一种引用类型基本数据类型是中最基本的数据类型它们是预定义的不需要实例化就可以使用而引用类型则需要通过实例化对象来使用这意味着使用来存储一个整数时不需要任何额外的内存分配而使用时必须为对象分配内存在性能方面基本数据类型的操作通常比相应的引用类型快自动装箱和拆箱其次作为的包装类它可以实现自动装箱和拆箱自动装箱是指将基本类型转化为相应的包装类类型而自动拆箱则是将包装类类型转化为相应的基本类型这使得程序员更加方便地进行数据类型转换例如当我们需要将类型的值赋给变量时可以自动地将类型转换为类型同样地当我们需要将类型的值赋给变量时可以自动地将类型转换为类型空指针异常另外变量可以直接赋值为而变量必须通过实例化对象来赋值如果对一个未经初始化的变量进行操作就会出现空指针异常这是因为它被赋予了值而值是无法进行自动拆箱的那为什么还要保留类型包装类是引用类型对象的引用和对象本身是分开存储的而对于基本类型数据变量对应的内存块直接存储数据本身因此基本类型数据在读写效率方面要比包装类高效除此之外在位上在开启引用压缩的情况下一个对象占用个字节的内存空间而一个类型数据只占用字节的内存空间前者对空间的占用是后者的倍也就是说不管是读写效率还是存储效率基本类型都比包装类高效说一下的缓存的类内部实现了一个静态缓存池用于存储特定范围内的整数值对应的对象默认情况下这个范围是至当通过方法创建一个在这个范围内的整数对象时并不会每次都生成新的对象实例而是复用缓存中的现有对象会直接从内存中取出不需要新建一个对象但是你的话就是一个新的对象了',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-05-20 22:09:38',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/rss2.xml" title="mengnankkのblog" type="application/rss+xml">
+</head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://blog.tokenlen.top/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="http://img.mengnankk.top:9001/" title="图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="图床"/><span class="back-menu-item-text">图床</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="http://img.mengnankk.top:9001/" title="mengnankk图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/13/64d8c2653332e.ico" alt="mengnankk图床"/><span class="back-menu-item-text">mengnankk图床</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">mengnankkのblog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 生活</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/Message/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 其他</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://home.tokenlen.top/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> home</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://status.mengnankk.asia/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 站点检测</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://home.tokenlen.top/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 心里话</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://imgbed.mengnankk.asia/202407021650088.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://imgbed.mengnankk.asia/202407021650088.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BF/" style="font-size: 1.05rem;">BF<sup>1</sup></a><a href="/tags/BigData/" style="font-size: 1.05rem;">BigData<sup>1</sup></a><a href="/tags/C/" style="font-size: 1.05rem;">C<sup>4</sup></a><a href="/tags/CE/" style="font-size: 1.05rem;">CE<sup>1</sup></a><a href="/tags/CSRF/" style="font-size: 1.05rem;">CSRF<sup>1</sup></a><a href="/tags/English/" style="font-size: 1.05rem;">English<sup>9</sup></a><a href="/tags/FI/" style="font-size: 1.05rem;">FI<sup>1</sup></a><a href="/tags/Hadoop/" style="font-size: 1.05rem;">Hadoop<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 1.05rem;">Linux<sup>12</sup></a><a href="/tags/XSS/" style="font-size: 1.05rem;">XSS<sup>1</sup></a><a href="/tags/css/" style="font-size: 1.05rem;">css<sup>2</sup></a><a href="/tags/football/" style="font-size: 1.05rem;">football<sup>1</sup></a><a href="/tags/html/" style="font-size: 1.05rem;">html<sup>1</sup></a><a href="/tags/java/" style="font-size: 1.05rem;">java<sup>31</sup></a><a href="/tags/juc/" style="font-size: 1.05rem;">juc<sup>1</sup></a><a href="/tags/leetcode/" style="font-size: 1.05rem;">leetcode<sup>6</sup></a><a href="/tags/markdown/" style="font-size: 1.05rem;">markdown<sup>1</sup></a><a href="/tags/mysql/" style="font-size: 1.05rem;">mysql<sup>15</sup></a><a href="/tags/net/" style="font-size: 1.05rem;">net<sup>4</sup></a><a href="/tags/paper/" style="font-size: 1.05rem;">paper<sup>1</sup></a><a href="/tags/php/" style="font-size: 1.05rem;">php<sup>5</sup></a><a href="/tags/pip/" style="font-size: 1.05rem;">pip<sup>1</sup></a><a href="/tags/python/" style="font-size: 1.05rem;">python<sup>3</sup></a><a href="/tags/redis/" style="font-size: 1.05rem;">redis<sup>3</sup></a><a href="/tags/shell/" style="font-size: 1.05rem;">shell<sup>4</sup></a><a href="/tags/spring/" style="font-size: 1.05rem;">spring<sup>1</sup></a><a href="/tags/spring-boot/" style="font-size: 1.05rem;">spring boot<sup>5</sup></a><a href="/tags/sql/" style="font-size: 1.05rem;">sql<sup>4</sup></a><a href="/tags/web/" style="font-size: 1.05rem;">web<sup>3</sup></a><a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 1.05rem;">操作系统<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86/" style="font-size: 1.05rem;">数据库原理<sup>3</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.05rem;">数据结构<sup>16</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 1.05rem;">正则表达式<sup>2</sup></a><a href="/tags/%E6%AF%9B%E9%80%89/" style="font-size: 1.05rem;">毛选<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>8</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">五月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">8</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/04/"><span class="card-archive-list-date">四月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">7</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/03/"><span class="card-archive-list-date">三月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/02/"><span class="card-archive-list-date">二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/01/"><span class="card-archive-list-date">一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/12/"><span class="card-archive-list-date">十二月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/11/"><span class="card-archive-list-date">十一月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/10/"><span class="card-archive-list-date">十月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">14</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/javase/" itemprop="url">javase</a><i class="anzhiyufont anzhiyu-icon-angle-right post-meta-separator"></i><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/javase/java/" itemprop="url">java</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/java/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>java</span></a></span></div></div><h1 class="post-title" itemprop="name headline">javase面试题目hot</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-05-18T16:00:00.000Z" title="发表于 2025-05-19 00:00:00">2025-05-19</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-05-20T14:09:38.221Z" title="更新于 2025-05-20 22:09:38">2025-05-20</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">5.5k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>17分钟</span></span><span class="post-meta-separator"></span><span id="" data-flag-title="javase面试题目hot"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="twikoo_visitors" title="访问量"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为济南"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>济南</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202408081510095.jpg?_r_=7d981bdd-4c47-4587-d6be-b1a53eec5148"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://blog.tokenlen.top/2025/05/19/javase/javase2/"><header><a class="post-meta-categories" href="/categories/javase/" itemprop="url">javase</a><a class="post-meta-categories" href="/categories/javase/java/" itemprop="url">java</a><a href="/tags/java/" tabindex="-1" itemprop="url">java</a><h1 id="CrawlerTitle" itemprop="name headline">javase面试题目hot</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">mengnankkzhou</span><time itemprop="dateCreated datePublished" datetime="2025-05-18T16:00:00.000Z" title="发表于 2025-05-19 00:00:00">2025-05-19</time><time itemprop="dateCreated datePublished" datetime="2025-05-20T14:09:38.221Z" title="更新于 2025-05-20 22:09:38">2025-05-20</time></header><h1>基础面试题目</h1>
+<h2 id="概念">概念</h2>
+<h3 id="1-说一下Java的特点">1.说一下Java的特点</h3>
+<p><strong>平台无关性</strong>：Java的编写一次，运无不在&quot;哲学是其最大的特点之一。Java编译器将源代码编译成字节码（bytecode），该字节码可以在任何安装了Java虚拟机（JVM）的系统上运行。<br>
+<strong>面向对象</strong>：JaVa是一严格的面可对象编程语言，几乎一切都是对象。面可对象编程（OOP）特性使得代码更易于维护和重用，包括类（class）、对象（object）、继承（inheritance）、多态　(polymorphism）、抽象（abstraction）和封装（encapsulation）。<br>
+<strong>内存管理</strong>：JaVa有目己的垃圾回收机制，目动管理内存和回收不再使用的对象。这样，开发者不需要手动管埋内存，从而减少内存泄漏和其他内存相关的问题。</p>
+<h3 id="2-Java-的优势和劣势是什么？">2.Java 的优势和劣势是什么？</h3>
+<p>首先，Java的优势，我记得<strong>跨平台</strong>应该是一个大点，因为<strong>JVM</strong>的存在，一次编写到处运行。然后<strong>面向对象</strong>，这个可能也是优势，不过现在很多语言都支持面向对象，但是Java的设计从一开始就是OOP的。还有<strong>强大的生态系统</strong>，比如Spring框架，Hibernate，各种库和工具，社区支持大，企业应用广泛。另外，<strong>内存管理方面</strong>，自动垃圾回收机制，减少了内存泄漏的问题，对开发者友好。<strong>还有多线程支持</strong>，内置的线程机制，方便并发编程。安全性方面，<strong>Java有安全模型</strong>，比如沙箱机制，适合网络环境。还有稳定性，企业级应用长期使用，版本更新也比较注重向后兼容。</p>
+<p>劣势的话，<strong>性能</strong>可能是一个，虽然JVM优化了很多，但相比C++或者Rust这种原生编译语言，还是有一定开销。<strong>特别是启动时间</strong>，比如微服务场景下，可能不如Go之类的快。语法繁琐，比如样板代码多，之前没有lambda的时候更麻烦，现在有了但比起Python还是<strong>不够简洁</strong>。内存消耗，<strong>JVM本身占内存，对于资源有限的环境可能不太友好</strong>。<strong>还有面向对象过于严格</strong>，有时候写简单程序反而麻烦，虽然Java8引入了函数式编程，但不如其他语言自然。还有开发效率，相比动态语言如Python，<strong>Java需要更多代码，编译过程也可能拖慢开发节奏。</strong></p>
+<h3 id="3-Java为什么是跨平台的？">3.Java为什么是跨平台的？</h3>
+<p>Java 能支持跨平台，主要依赖于 <strong>JVM</strong> 关系比较大。</p>
+<p><strong>JVM也是一个软件，不同的平台有不同的版本</strong>。我们编写的Java源码，编译后会生成一种 .class 文件，称为字节码文件。**Java虚拟机就是负责将字节码文件翻译成特定平台下的机器码然后运行。**也就是说，只要在不同平台上安装对应的JVM，就可以运行字节码文件，运行我们编写的Java程序。</p>
+<p>JVM是一个”桥梁“，是一个”中间件“，是实现跨平台的关键，Java代码首先被编译成字节码文件，再由JVM将字节码文件翻译成机器语言，从而达到运行Java程序的目的。</p>
+<p>编译的结果不是生成机器码，而是生成字节码，字节码不能直接运行，必须通过JVM翻译成机器码才能运行。不同平台下编译生成的字节码是一样的，但是由JVM翻译成的机器码却不一样。</p>
+<p>所以，运行Java程序必须有JVM的支持，因为编译的结果不是机器码，必须要经过JVM的再次翻译才能执行。即使你将Java程序打包成可执行文件（例如 .exe），仍然需要JVM的支持。</p>
+<h3 id="4-JVM、JDK、JRE三者关系？">4.JVM、JDK、JRE三者关系？</h3>
+<ul>
+<li><strong>JVM</strong>是Java虚拟机，<strong>是Java程序运行的环境</strong>。它负责将Java字节码（由Java编译器生成）解释或编译成机器码，并执行程序。JVM提供了内存管理、垃圾回收、安全性等功能，使得Java程序具备跨平台性。</li>
+<li><strong>JDK</strong>是Java开发工具包，<strong>是开发Java程序所需的工具集合</strong>。它包含了JVM、编译器（javac）、调试器（jdb）等开发工具，以及一系列的类库（如Java标准库和开发工具库）。<strong>JDK提供了开发、编译、调试和运行Java程序所需的全部工具和环境。</strong></li>
+<li><strong>JRE</strong>是Java运行时环境，<strong>是Java程序运行所需的最小环境</strong>。它包含了JVM和一组Java类库，用于支持Java程序的执行。<strong>JRE不包含开发工具，只提供Java程序运行所需的运行环境。</strong></li>
+</ul>
+<h3 id="5-为什么Java解释和编译都有？">5.为什么Java解释和编译都有？</h3>
+<p>首先在Java经过编译之后生成字节码文件，接下来进入JVM中，就有两个步骤编译和解释。 如下图：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.xiaolincoding.com//picgo/1715928000183-44fc6130-8abc-4f0b-8f6d-79de0ab09509.webp" alt=""></p>
+<p><strong>编译性</strong>：</p>
+<ul>
+<li>Java源代码首先被编译成字节码，JIT 会把编译过的机器码保存起来,以备下次使用。</li>
+</ul>
+<p><strong>解释性：</strong></p>
+<ul>
+<li>JVM中一个**方法调用计数器，当累计计数大于一定值的时候，就使用JIT进行编译生成机器码文件。**否则就是用解释器进行解释执行，然后字节码也是经过解释器进行解释运行的。</li>
+</ul>
+<p>所以Java既是<strong>编译型也是解释性语言</strong>，默认采用的是解释器和编译器混合的模式。</p>
+<h3 id="6-jvm是什么">6.jvm是什么</h3>
+<p>JVM是 <strong>java 虚拟机</strong>，主要工作是<strong>解释自己的指令集（即字节码）并映射到本地的CPU指令集和OS的系统调用。</strong></p>
+<p>JVM屏蔽了与操作系统平台相关的信息，使得Java程序只需要生成在Java虚拟机上运行的目标代码（字节码），就可在多种平台上不加修改的运行，这也是Java能够“<strong>一次编译，到处运行的</strong>”原因。</p>
+<h3 id="7-编译型语言和解释型语言的区别？">7.<strong>编译型语言和解释型语言的区别？</strong></h3>
+<p>编译型语言和解释型语言的区别在于：</p>
+<ul>
+<li>编译型语言：在程序执行之前，整个源代码会被编译成机器码或者字节码，生成可执行文件。执行时直接<strong>运行编译后的代码，速度快，但跨平台性较差</strong>。</li>
+<li>解释型语言：在程序执行时，逐行解释执行源代码，不生成独立的可执行文件。通常由<strong>解释器动态解释并执行代码，跨平台性好，但执行速度相对较慢。</strong></li>
+<li>典型的编译型语言如C、C++，典型的解释型语言如Python、JavaScript。</li>
+</ul>
+<h2 id="数据类型">数据类型</h2>
+<h3 id="1-八种基本的数据类型">1.八种基本的数据类型</h3>
+<p>Java支持数据类型分为两类： 基本数据类型和引用数据类型。</p>
+<p>基本数据类型共有8种，可以分为三类：</p>
+<ul>
+<li>数值型：整数类型（byte、short、int、long）和浮点类型（float、double）</li>
+<li>字符型：char</li>
+<li>布尔型：boolean</li>
+</ul>
+<p>8种基本数据类型的默认值、位数、取值范围，如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>占用大小（字节）</th>
+<th>位数</th>
+<th>取值范围</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>byte</code></td>
+<td>1</td>
+<td>8</td>
+<td>-128（-2^7） 到 127（2^7 - 1）</td>
+<td>0</td>
+<td>是最小的整数类型，适合用于节省内存，例如在处理文件或网络流时存储小范围整数数据。</td>
+</tr>
+<tr>
+<td><code>short</code></td>
+<td>2</td>
+<td>16</td>
+<td>-32768（-2^15） 到 32767（2^15 - 1）</td>
+<td>0</td>
+<td>较少使用，通常用于在需要节省内存且数值范围在该区间的场景。</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td>4</td>
+<td>32</td>
+<td>-2147483648（-2^31） 到 2147483647（2^31 - 1）</td>
+<td>0</td>
+<td>最常用的整数类型，可满足大多数日常编程中整数计算的需求。</td>
+</tr>
+<tr>
+<td><code>long</code></td>
+<td>8</td>
+<td>64</td>
+<td>-9223372036854775808（-2^63） 到 9223372036854775807（2^63 - 1）</td>
+<td>0L</td>
+<td>用于表示非常大的整数，当 <code>int</code> 类型无法满足需求时使用，定义时数值后需加 <code>L</code> 或 <code>l</code>。</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td>4</td>
+<td>32</td>
+<td>1.4E - 45 到 3.4028235E38</td>
+<td>0.0f</td>
+<td>单精度浮点数，用于表示小数，精度相对较低，定义时数值后需加 <code>F</code> 或 <code>f</code>。</td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td>8</td>
+<td>64</td>
+<td>4.9E - 324 到 1.7976931348623157E308</td>
+<td>0.0d</td>
+<td>双精度浮点数，精度比 <code>float</code> 高，是 Java 中表示小数的默认类型。</td>
+</tr>
+<tr>
+<td><code>char</code></td>
+<td>2</td>
+<td>16</td>
+<td>‘\u0000’（0） 到 ‘\uffff’（65535）</td>
+<td>‘\u0000’</td>
+<td>用于表示单个字符，采用 Unicode 编码，可表示各种语言的字符。</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td>无明确字节大小（理论上 1 位）</td>
+<td>无明确位数</td>
+<td><code>true</code> 或 <code>false</code></td>
+<td><code>false</code></td>
+<td>用于逻辑判断，只有两个取值，常用于条件判断和循环控制等逻辑场景。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Java八种基本数据类型的字节数：1字节(byte、boolean)、 2字节(short、char)、4字节(int、float)、8字节(long、double)</li>
+<li>浮点数的默认类型为double（如果需要声明一个常量为float型，则必须要在末尾加上f或F）</li>
+<li>整数的默认类型为int（声明Long型在末尾加上l或者L）</li>
+<li>八种基本数据类型的包装类：除了char的是Character、int类型的是Integer，其他都是首字母大写</li>
+<li>char类型是无符号的，不能为负，所以是0开始的</li>
+</ul>
+<h3 id="2-int和long是多少位，多少字节的？">2.int和long是多少位，多少字节的？</h3>
+<ul>
+<li><code>int</code>类型是 <strong>32 位（bit），占 4 个字节（byte）</strong>，int 是有符号整数类型，其取值范围是从 <strong>-2^31 到 2^31-1</strong> 。例如，在一个简单的计数器程序中，如果使用<code>int</code>类型来存储计数值，它可以表示的最大正数是 <strong>2,147,483,647</strong>。如果计数值超过这个范围，就会发生溢出，导致结果不符合预期。</li>
+<li><code>long</code>类型是 <strong>64 位，占 8 个字节</strong>，<code>long</code>类型也是有符号整数类型，它的取值范围是从 <strong>-2^63 到 2^63 -1</strong> ，在处理较大的整数数值时，果<code>int</code>类型的取值范围不够，就需要使用<code>long</code>类型。例如，在一个文件传输程序中，文件的大小可能会很大，使用<code>int</code>类型可能无法准确表示，而<code>long</code>类型就可以很好地处理这种情况。</li>
+</ul>
+<h3 id="3-long和int可以互转吗-？">3.long和int可以互转吗 ？</h3>
+<p>可以的，Java中的<code>long</code>和<code>int</code>可以相互转换。由于<code>long</code>类型的范围比<code>int</code>类型大，因此将<code>int</code>转换为<code>long</code>是安全的，而将<code>long</code>转换为<code>int</code>可能会导致数据丢失或溢出。</p>
+<p>将<code>int</code>转换为<code>long</code>可以通过<strong>直接赋值或强制类型转换</strong>来实现。例如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int intValue = 10;</span><br><span class="line">long longValue = intValue; // 自动转换，安全的</span><br></pre></td></tr></table></figure>
+<p>将<code>long</code>转换为<code>int</code>需要使用<strong>强制类型转换</strong>，但需要注意潜在的数据丢失或溢出问题。</p>
+<p>在将<code>long</code>转换为<code>int</code>时，如果<code>longValue</code>的值超出了<code>int</code>类型的范围，转换结果将是截断后的低位部分。因此，在进行转换之前，建议先检查<code>longValue</code>的值是否在<code>int</code>类型的范围内，以避免数据丢失或溢出的问题。</p>
+<p><strong>低-&gt;高直接转</strong></p>
+<h3 id="4-数据类型转换方式你知道哪些？">4.数据类型转换方式你知道哪些？</h3>
+<ul>
+<li><strong>自动类型转换（隐式转换）</strong>：当目标类型的范围大于源类型时，Java会自动将源类型转换为目标类型，不需要显式的类型转换。例如，将<code>int</code>转换为<code>long</code>、将<code>float</code>转换为<code>double</code>等。</li>
+<li><strong>强制类型转换（显式转换）</strong>：当目标类型的范围小于源类型时，需要使用强制类型转换将源类型转换为目标类型。这可能导致数据丢失或溢出。例如，将<code>long</code>转换为<code>int</code>、将<code>double</code>转换为<code>int</code>等。语法为：目标类型 变量名 = (目标类型) 源类型。</li>
+<li>字符串转换：<strong>Java提供了将字符串表示的数据转换为其他类型数据的方法</strong>。例如，将字符串转换为整型<code>int</code>，可以使用<code>Integer.parseInt()</code>方法；将字符串转换为浮点型<code>double</code>，可以使用<code>Double.parseDouble()</code>方法等。</li>
+<li>数值之间的转换：**Java提供了一些数值类型之间的转换方法，如将整型转换为字符型、将字符型转换为整型等。**这些转换方式可以通过类型的包装类来实现，例如<code>Character</code>类、<code>Integer</code>类等提供了相应的转换方法。</li>
+</ul>
+<h3 id="5-类型互转会出现什么问题吗？">5.类型互转会出现什么问题吗？</h3>
+<ul>
+<li>数据丢失：当将<strong>一个范围较大的数据类型转换为一个范围较小的数据类型时</strong>，可能会发生数据丢失。例如，将一个<code>long</code>类型的值转换为<code>int</code>类型时，如果<code>long</code>值超出了<code>int</code>类型的范围，转换结果将是截断后的低位部分，高位部分的数据将丢失。</li>
+<li>数据溢出：与数据丢失相反，**当将一个范围较小的数据类型转换为一个范围较大的数据类型时，可能会发生数据溢出。**例如，将一个<code>int</code>类型的值转换为<code>long</code>类型时，转换结果会填充额外的高位空间，但原始数据仍然保持不变。</li>
+<li>精度损失：**在进行浮点数类型的转换时，可能会发生精度损失。**由于浮点数的表示方式不同，将一个单精度浮点数(<code>float</code>)转换为双精度浮点数(<code>double</code>)时，精度可能会损失。</li>
+<li>类型不匹配导致的错误：在进行类型转换时，<strong>需要确保源类型和目标类型是兼容的。如果两者不兼容，会导致编译错误或运行时错误。</strong></li>
+</ul>
+<h3 id="6-为什么用bigDecimal-不用double-？">6.为什么用bigDecimal 不用double ？</h3>
+<p>double会出现精度丢失的问题，double执行的是二进制浮点运算，二进制有些情况下不能准确的表示一个小数，就像十进制不能准确的表示1/3(1/3=0.3333…)，也就是说二进制表示小数的时候只能够表示能够用1/(2^n)的和的任意组合，但是0.1不能够精确表示，因为它不能够表示成为1/(2^n)的和的形式。</p>
+<p>比如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="number">0.05</span> + <span class="number">0.01</span>);</span><br><span class="line">System.out.println(<span class="number">1.0</span> - <span class="number">0.42</span>);</span><br><span class="line">System.out.println(<span class="number">4.015</span> * <span class="number">100</span>);</span><br><span class="line">System.out.println(<span class="number">123.3</span> / <span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line"><span class="number">0.060000000000000005</span></span><br><span class="line"><span class="number">0.5800000000000001</span></span><br><span class="line"><span class="number">401.49999999999994</span></span><br><span class="line"><span class="number">1.2329999999999999</span></span><br></pre></td></tr></table></figure>
+<p>可以看到在**Java中进行浮点数运算的时候，会出现丢失精度的问题。**那么我们如果在进行商品价格计算的时候，就会出现问题。很有可能造成我们手中有0.06元，却无法购买一个0.05元和一个0.01元的商品。因为如上所示，他们两个的总和为0.060000000000000005。这无疑是一个很严重的问题，尤其是当电商网站的并发量上去的时候，出现的问题将是巨大的。可能会导致无法下单，或者对账出现问题。</p>
+<p><strong>而 Decimal 是精确计算 , 所以一般牵扯到金钱的计算 , 都使用 Decimal。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.math.BigDecimal;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BigDecimalExample</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">BigDecimal</span> <span class="variable">num1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigDecimal</span>(<span class="string">&quot;0.1&quot;</span>);</span><br><span class="line">        <span class="type">BigDecimal</span> <span class="variable">num2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigDecimal</span>(<span class="string">&quot;0.2&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">BigDecimal</span> <span class="variable">sum</span> <span class="operator">=</span> num1.add(num2);</span><br><span class="line">        <span class="type">BigDecimal</span> <span class="variable">product</span> <span class="operator">=</span> num1.multiply(num2);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;Sum: &quot;</span> + sum);</span><br><span class="line">        System.out.println(<span class="string">&quot;Product: &quot;</span> + product);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出</span></span><br><span class="line">Sum: <span class="number">0.3</span></span><br><span class="line">Product: <span class="number">0.02</span></span><br></pre></td></tr></table></figure>
+<p>这样的使用<code>BigDecimal</code>可以确保精确的十进制数值计算，避免了使用<code>double</code>可能出现的舍入误差。需要注意的是，在创建<code>BigDecimal</code>对象时，应该使用<strong>字符串作为参数</strong>，而不是直接使用浮点数值，以避免浮点数精度丢失。</p>
+<h3 id="7-装箱和拆箱是什么？">7.装箱和拆箱是什么？</h3>
+<p>装箱（Boxing）和拆箱（Unboxing）是将基本数据类型和对应的包装类之间进行转换的过程。</p>
+<p>自动装箱主要发生在两种情况，<strong>一种是赋值时，另一种是在方法调用的时候。</strong></p>
+<blockquote>
+<p>赋值时</p>
+</blockquote>
+<p>这是最常见的一种情况，在Java 1.5以前我们需要手动地进行转换才行，而现在所有的转换都是由编译器来完成。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//before autoboxing</span></span><br><span class="line"><span class="type">Integer</span> <span class="variable">iObject</span> <span class="operator">=</span> Integer.valueOf(<span class="number">3</span>);</span><br><span class="line"><span class="type">Int</span> <span class="variable">iPrimitive</span> <span class="operator">=</span> iObject.intValue()</span><br><span class="line"></span><br><span class="line"><span class="comment">//after java5</span></span><br><span class="line"><span class="type">Integer</span> <span class="variable">iObject</span> <span class="operator">=</span> <span class="number">3</span>; <span class="comment">//autobxing - primitive to wrapper conversion</span></span><br><span class="line"><span class="type">int</span> <span class="variable">iPrimitive</span> <span class="operator">=</span> iObject; <span class="comment">//unboxing - object to primitive conversion</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>方法调用时</p>
+</blockquote>
+<p>当我们在方法调用时，我们可以传入原始数据值或者对象，同样编译器会帮我们进行转换。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title function_">show</span><span class="params">(Integer iParam)</span>&#123;</span><br><span class="line">   System.out.println(<span class="string">&quot;autoboxing example - method invocation i: &quot;</span> + iParam);</span><br><span class="line">   <span class="keyword">return</span> iParam;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//autoboxing and unboxing in method invocation</span></span><br><span class="line">show(<span class="number">3</span>); <span class="comment">//autoboxing</span></span><br><span class="line"><span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> show(<span class="number">3</span>); <span class="comment">//unboxing because return type of method is Integer</span></span><br></pre></td></tr></table></figure>
+<p>show方法接受Integer对象作为参数，当调用<code>show(3)</code>时，会将int值转换成对应的Integer对象，这就是所谓的自动装箱，show方法返回Integer对象，而<code>int result = show(3);</code>中result为int类型，所以这时候发生自动拆箱操作，将show方法的返回的Integer对象转换成int值。</p>
+<p>自动装箱有一个问题，<strong>那就是在一个循环中进行自动装箱操作的情况，如下面的例子就会创建多余的对象，影响程序的性能。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Integer</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>; <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1000</span>; i&lt;<span class="number">5000</span>; i++)&#123;   sum+=i; &#125; </span><br></pre></td></tr></table></figure>
+<p>上面的代码<code>sum+=i</code>可以看成<code>sum = sum + i</code>，但是<code>+</code>这个操作符不适用于Integer对象，首先sum进行自动拆箱操作，进行数值相加操作，最后发生自动装箱操作转换成Integer对象。其内部变化如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> sum.intValue() + i; <span class="type">Integer</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(result); </span><br></pre></td></tr></table></figure>
+<p>由于我们这里声明的sum为Integer类型，**在上面的循环中会创建将近4000个无用的Integer对象，在这样庞大的循环中，会降低程序的性能并且加重了垃圾回收的工作量。**因此在我们编程时，需要注意到这一点，正确地声明变量类型，避免因为自动装箱引起的性能问题。</p>
+<h3 id="8-Java为什么要有Integer？">8.Java为什么要有Integer？</h3>
+<p>Integer对应是int类型的包装类，就是把int类型包装成Object对象，<strong>对象封装有很多好处，可以把属性也就是数据跟处理这些数据的方法结合在一起</strong>，比如Integer就有parseInt()等方法来专门处理int型相关的数据。</p>
+<p>另一个非常重要的原因就是在**Java中绝大部分方法或类都是用来处理类类型对象的，如ArrayList集合类就只能以类作为他的存储对象，而这时如果想把一个int型的数据存入list是不可能的，必须把它包装成类，**也就是Integer才能被List所接受。所以Integer的存在是很必要的。</p>
+<p>在Java中，<strong>泛型只能使用引用类型</strong>，而不能使用基本类型。因此，如果要在泛型中使用int类型，必须使用Integer包装类。</p>
+<p>在Java中，**基本类型和引用类型不能直接进行转换，必须使用包装类来实现。**例如，将一个int类型的值转换为String类型，必须首先将其转换为Integer类型，然后再转换为String类型。</p>
+<p>Java**集合中只能存储对象，而不能存储基本数据类型。**因此，如果要将int类型的数据存储在集合中，必须使用Integer包装类。</p>
+<h3 id="9-Integer相比int有什么优点？">9.Integer相比int有什么优点？</h3>
+<p>int是Java中的原始数据类型，而Integer是int的包装类。</p>
+<p>Integer和 int 的区别：</p>
+<ul>
+<li>基本类型和引用类型：首先，int是一种基本数据类型，而Integer是一种引用类型。基本数据类型是Java中最基本的数据类型，**它们是预定义的，不需要实例化就可以使用。而引用类型则需要通过实例化对象来使用。**这意味着，使用int来存储一个整数时，不需要任何额外的内存分配，而使用Integer时，必须为对象分配内存。在性能方面，<strong>基本数据类型的操作通常比相应的引用类型快。</strong></li>
+<li>自动装箱和拆箱：其次，Integer作为int的包装类，**它可以实现自动装箱和拆箱。自动装箱是指将基本类型转化为相应的包装类类型，而自动拆箱则是将包装类类型转化为相应的基本类型。<strong>这使得Java程序员</strong>更加方便地进行数据类型转换。**例如，当我们需要将int类型的值赋给Integer变量时，Java可以自动地将int类型转换为Integer类型。同样地，当我们需要将Integer类型的值赋给int变量时，Java可以自动地将Integer类型转换为int类型。</li>
+<li>空指针异常：另外，<strong>int变量可以直接赋值为0，而Integer变量必须通过实例化对象来赋值。<strong>如果对一个未经初始化的Integer变量进行操作，就会出现空指针异常。这是因为它被赋予了</strong>null值</strong>，而null值是无法进行自动拆箱的。</li>
+</ul>
+<h3 id="10-那为什么还要保留int类型？">10.那为什么还要保留int类型？</h3>
+<p>包装类是引用类型，对象的引用和对象本身是分开存储的，<strong>而对于基本类型数据，变量对应的内存块直接存储数据本身。</strong></p>
+<p>因此，基本类型数据在<strong>读写效率方面，要比包装类高效</strong>。除此之外，在64位JVM上，在开启引用压缩的情况下，一个Integer对象占用16个字节的内存空间，而一个int类型数据只占用4字节的内存空间，前者对空间的占用是后者的4倍。</p>
+<p>也就是说，<strong>不管是读写效率，还是存储效率，基本类型都比包装类高效。</strong></p>
+<h3 id="11-说一下-integer的缓存">11.说一下 integer的缓存</h3>
+<p>Java的Integer类内部实现了一个<strong>静态缓存池</strong>，用于存储特定范围内的整数值对应的Integer对象。</p>
+<p>默认情况下，<strong>这个范围是-128至127。<strong>当通过</strong>Integer.valueOf(int)方法创建一个在这个范围内的整数对象时，并不会每次都生成新的对象实例，而是复用缓存中的现有对象，会直接从内存中取出，不需要新建一个对象。</strong></p>
+<p>但是你new的话就是一个新的对象了。</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">mengnankkzhou</div><div class="post-copyright__author_desc">不要走捏</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://blog.tokenlen.top/2025/05/19/javase/javase2/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://blog.tokenlen.top/2025/05/19/javase/javase2/')">javase面试题目hot</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://blog.tokenlen.top/2025/05/19/javase/javase2/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=javase面试题目hot&amp;url=https://blog.tokenlen.top/2025/05/19/javase/javase2/&amp;pic=https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202408081510095.jpg?_r_=7d981bdd-4c47-4587-d6be-b1a53eec5148" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.tokenlen.top" target="_blank">mengnankkのblog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__category-list"><a class="post-meta__box__categoryes" href="/categories/javase/"><span class="categoryes-punctuation"> <i class="anzhiyufont anzhiyu-icon-inbox"></i></span>javase<span class="categoryesPageCount">12</span></a><a class="post-meta__box__categoryes" href="/categories/javase/java/"><span class="categoryes-punctuation"> <i class="anzhiyufont anzhiyu-icon-inbox"></i></span>java<span class="categoryesPageCount">2</span></a></div><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/java/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>java<span class="tagsPageCount">31</span></a></div></div><div class="post_share"><div class="social-share" data-image="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg?_r_=d18dffc8-208a-e54a-67d2-53cff930591c" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/05/15/java-stack/redis2/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg?_r_=26c78ba2-f1df-6163-1b6e-6dc6682bb317" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">redis面试hot</div></div></a></div><div class="next-post pull-right"><a href="/2025/05/19/javase/javase1/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg?_r_=d18dffc8-208a-e54a-67d2-53cff930591c" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">javase知识总结</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/04/01/leetcode/leetcodedayone/" title="Leetcode 每日一题"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722381.jpg?_r_=980f640c-43ec-f9ca-3d4a-9dcbd9e10c4c" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-04-01</div><div class="title">Leetcode 每日一题</div></div></a></div><div><a href="/2025/03/02/leetcode/leetcodehot/" title="Leetcode HOT100题"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202408081510550.jpg?_r_=513cfafa-ff2f-ef61-2afa-7d1196da0059" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-03-02</div><div class="title">Leetcode HOT100题</div></div></a></div><div><a href="/2025/05/19/javase/javase1/" title="javase知识总结"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg?_r_=d18dffc8-208a-e54a-67d2-53cff930591c" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-05-19</div><div class="title">javase知识总结</div></div></a></div><div><a href="/2025/05/12/leetcode/leetcode3/" title="Leetcode双指针"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712175.jpg?_r_=bf136041-4cc1-1f93-d977-63c1470b981d" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-05-12</div><div class="title">Leetcode双指针</div></div></a></div><div><a href="/2025/05/09/java-stack/juc/" title="JUC-线程池"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712180.jpg?_r_=6c1fd562-4911-d1c5-b9da-1076aeb63c7f" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-05-09</div><div class="title">JUC-线程池</div></div></a></div><div><a href="/2025/05/09/leetcode/leetcodetotal/" title="Leetcode各类题目模板分析题目总结"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712180.jpg?_r_=286afe3c-78fe-da94-8386-189fb48157cd" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-05-09</div><div class="title">Leetcode各类题目模板分析题目总结</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-switch"><span class="first-comment">Twikoo</span><span id="switch-btn"></span><span class="second-comment">Valine</span></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">清风拂柳影，碧水映花香。</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">mengnankkzhou</h1><div class="author-info__desc">不要走捏</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/mengnankkkk" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/440831872" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来看我的博客鸭~</div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410021212939.jpg) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">基础面试题目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%AF%B4%E4%B8%80%E4%B8%8BJava%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.说一下Java的特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Java-%E7%9A%84%E4%BC%98%E5%8A%BF%E5%92%8C%E5%8A%A3%E5%8A%BF%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.2.</span> <span class="toc-text">2.Java 的优势和劣势是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Java%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%EF%BC%9F"><span class="toc-number">1.1.3.</span> <span class="toc-text">3.Java为什么是跨平台的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-JVM%E3%80%81JDK%E3%80%81JRE%E4%B8%89%E8%80%85%E5%85%B3%E7%B3%BB%EF%BC%9F"><span class="toc-number">1.1.4.</span> <span class="toc-text">4.JVM、JDK、JRE三者关系？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E4%B8%BA%E4%BB%80%E4%B9%88Java%E8%A7%A3%E9%87%8A%E5%92%8C%E7%BC%96%E8%AF%91%E9%83%BD%E6%9C%89%EF%BC%9F"><span class="toc-number">1.1.5.</span> <span class="toc-text">5.为什么Java解释和编译都有？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-jvm%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.1.6.</span> <span class="toc-text">6.jvm是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E7%BC%96%E8%AF%91%E5%9E%8B%E8%AF%AD%E8%A8%80%E5%92%8C%E8%A7%A3%E9%87%8A%E5%9E%8B%E8%AF%AD%E8%A8%80%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">1.1.7.</span> <span class="toc-text">7.编译型语言和解释型语言的区别？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.</span> <span class="toc-text">数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%85%AB%E7%A7%8D%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.八种基本的数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-int%E5%92%8Clong%E6%98%AF%E5%A4%9A%E5%B0%91%E4%BD%8D%EF%BC%8C%E5%A4%9A%E5%B0%91%E5%AD%97%E8%8A%82%E7%9A%84%EF%BC%9F"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.int和long是多少位，多少字节的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-long%E5%92%8Cint%E5%8F%AF%E4%BB%A5%E4%BA%92%E8%BD%AC%E5%90%97-%EF%BC%9F"><span class="toc-number">1.2.3.</span> <span class="toc-text">3.long和int可以互转吗 ？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E6%96%B9%E5%BC%8F%E4%BD%A0%E7%9F%A5%E9%81%93%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-number">1.2.4.</span> <span class="toc-text">4.数据类型转换方式你知道哪些？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E7%B1%BB%E5%9E%8B%E4%BA%92%E8%BD%AC%E4%BC%9A%E5%87%BA%E7%8E%B0%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%E5%90%97%EF%BC%9F"><span class="toc-number">1.2.5.</span> <span class="toc-text">5.类型互转会出现什么问题吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8bigDecimal-%E4%B8%8D%E7%94%A8double-%EF%BC%9F"><span class="toc-number">1.2.6.</span> <span class="toc-text">6.为什么用bigDecimal 不用double ？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E8%A3%85%E7%AE%B1%E5%92%8C%E6%8B%86%E7%AE%B1%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.2.7.</span> <span class="toc-text">7.装箱和拆箱是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-Java%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89Integer%EF%BC%9F"><span class="toc-number">1.2.8.</span> <span class="toc-text">8.Java为什么要有Integer？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-Integer%E7%9B%B8%E6%AF%94int%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F"><span class="toc-number">1.2.9.</span> <span class="toc-text">9.Integer相比int有什么优点？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E9%82%A3%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E8%A6%81%E4%BF%9D%E7%95%99int%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="toc-number">1.2.10.</span> <span class="toc-text">10.那为什么还要保留int类型？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E8%AF%B4%E4%B8%80%E4%B8%8B-integer%E7%9A%84%E7%BC%93%E5%AD%98"><span class="toc-number">1.2.11.</span> <span class="toc-text">11.说一下 integer的缓存</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/05/19/javase/javase1/" title="javase知识总结"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg?_r_=d18dffc8-208a-e54a-67d2-53cff930591c" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="javase知识总结"/></a><div class="content"><a class="title" href="/2025/05/19/javase/javase1/" title="javase知识总结">javase知识总结</a><time datetime="2025-05-18T16:00:00.000Z" title="发表于 2025-05-19 00:00:00">2025-05-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/19/javase/javase2/" title="javase面试题目hot"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202408081510095.jpg?_r_=7d981bdd-4c47-4587-d6be-b1a53eec5148" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="javase面试题目hot"/></a><div class="content"><a class="title" href="/2025/05/19/javase/javase2/" title="javase面试题目hot">javase面试题目hot</a><time datetime="2025-05-18T16:00:00.000Z" title="发表于 2025-05-19 00:00:00">2025-05-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/15/java-stack/redis2/" title="redis面试hot"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg?_r_=26c78ba2-f1df-6163-1b6e-6dc6682bb317" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="redis面试hot"/></a><div class="content"><a class="title" href="/2025/05/15/java-stack/redis2/" title="redis面试hot">redis面试hot</a><time datetime="2025-05-14T16:00:00.000Z" title="发表于 2025-05-15 00:00:00">2025-05-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/12/leetcode/leetcode3/" title="Leetcode双指针"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712175.jpg?_r_=bf136041-4cc1-1f93-d977-63c1470b981d" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Leetcode双指针"/></a><div class="content"><a class="title" href="/2025/05/12/leetcode/leetcode3/" title="Leetcode双指针">Leetcode双指针</a><time datetime="2025-05-11T16:00:00.000Z" title="发表于 2025-05-12 00:00:00">2025-05-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/09/java-stack/juc/" title="JUC-线程池"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712180.jpg?_r_=6c1fd562-4911-d1c5-b9da-1076aeb63c7f" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JUC-线程池"/></a><div class="content"><a class="title" href="/2025/05/09/java-stack/juc/" title="JUC-线程池">JUC-线程池</a><time datetime="2025-05-08T16:00:00.000Z" title="发表于 2025-05-09 00:00:00">2025-05-09</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="footer_custom_text"><p><a style="margin-inline:5px" target="_blank" href="https://hexo.io/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Framework-Hexo-4e88f8?style=flat&logo=hexo" 
+       title="博客框架为 Hexo" alt="Hexo">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://github.com/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Source-Github-24292f?style=flat&logo=github" 
+       title="本站项目由 GitHub 托管" alt="GitHub">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://vercel.com/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Cloud-Vercel-000000?style=flat&logo=vercel" 
+       title="使用 Vercel 部署" alt="Vercel">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://www.qlu.edu.cn/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/University-齐鲁工业大学-0056a2?style=flat&logo=university" 
+       title="齐鲁工业大学" alt="齐鲁工业大学">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://www.aliyun.com/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Cloud-阿里云-ff6a00?style=flat&logo=aliyun" 
+       title="使用阿里云服务" alt="阿里云">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://cloud.tencent.com/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Cloud-腾讯云-0a73b8?style=flat&logo=tencent-cloud" 
+       title="使用腾讯云服务" alt="腾讯云">
+</a></p>
+</div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2023 - 2025 By <a class="footer-bar-link" href="/" title="mengnankkzhou" target="_blank">mengnankkzhou</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/" title="鲁ICP备2024110758号">鲁ICP备2024110758号</a><a class="footer-bar-link" href="https://blog.tokenlen.top/rss2.xml" title="Rss">Rss</a><a class="footer-bar-link cc" href="/pravite" title="cc协议"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-by-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nc-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nd-line"></i></a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">112</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">35</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">18</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://blog.tokenlen.top/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="http://img.mengnankk.top:9001/" title="图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="图床"/><span class="back-menu-item-text">图床</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="http://img.mengnankk.top:9001/" title="mengnankk图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/13/64d8c2653332e.ico" alt="mengnankk图床"/><span class="back-menu-item-text">mengnankk图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 生活</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/Message/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 其他</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://home.tokenlen.top/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> home</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://status.mengnankk.asia/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 站点检测</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://home.tokenlen.top/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 心里话</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BF/" style="font-size: 0.88rem;">BF<sup>1</sup></a><a href="/tags/BigData/" style="font-size: 0.88rem;">BigData<sup>1</sup></a><a href="/tags/C/" style="font-size: 0.88rem;">C<sup>4</sup></a><a href="/tags/CE/" style="font-size: 0.88rem;">CE<sup>1</sup></a><a href="/tags/CSRF/" style="font-size: 0.88rem;">CSRF<sup>1</sup></a><a href="/tags/English/" style="font-size: 0.88rem;">English<sup>9</sup></a><a href="/tags/FI/" style="font-size: 0.88rem;">FI<sup>1</sup></a><a href="/tags/Hadoop/" style="font-size: 0.88rem;">Hadoop<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 0.88rem;">Linux<sup>12</sup></a><a href="/tags/XSS/" style="font-size: 0.88rem;">XSS<sup>1</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>2</sup></a><a href="/tags/football/" style="font-size: 0.88rem;">football<sup>1</sup></a><a href="/tags/html/" style="font-size: 0.88rem;">html<sup>1</sup></a><a href="/tags/java/" style="font-size: 0.88rem;">java<sup>31</sup></a><a href="/tags/juc/" style="font-size: 0.88rem;">juc<sup>1</sup></a><a href="/tags/leetcode/" style="font-size: 0.88rem;">leetcode<sup>6</sup></a><a href="/tags/markdown/" style="font-size: 0.88rem;">markdown<sup>1</sup></a><a href="/tags/mysql/" style="font-size: 0.88rem;">mysql<sup>15</sup></a><a href="/tags/net/" style="font-size: 0.88rem;">net<sup>4</sup></a><a href="/tags/paper/" style="font-size: 0.88rem;">paper<sup>1</sup></a><a href="/tags/php/" style="font-size: 0.88rem;">php<sup>5</sup></a><a href="/tags/pip/" style="font-size: 0.88rem;">pip<sup>1</sup></a><a href="/tags/python/" style="font-size: 0.88rem;">python<sup>3</sup></a><a href="/tags/redis/" style="font-size: 0.88rem;">redis<sup>3</sup></a><a href="/tags/shell/" style="font-size: 0.88rem;">shell<sup>4</sup></a><a href="/tags/spring/" style="font-size: 0.88rem;">spring<sup>1</sup></a><a href="/tags/spring-boot/" style="font-size: 0.88rem;">spring boot<sup>5</sup></a><a href="/tags/sql/" style="font-size: 0.88rem;">sql<sup>4</sup></a><a href="/tags/web/" style="font-size: 0.88rem;">web<sup>3</sup></a><a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 0.88rem;">操作系统<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86/" style="font-size: 0.88rem;">数据库原理<sup>3</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 0.88rem;">数据结构<sup>16</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 0.88rem;">正则表达式<sup>2</sup></a><a href="/tags/%E6%AF%9B%E9%80%89/" style="font-size: 0.88rem;">毛选<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>8</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><a id="switch-commentBarrage" href="javascript:anzhiyu.switchCommentBarrage();" title="开关弹幕"><i class="anzhiyufont anzhiyu-icon-danmu"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.cbd.int/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2023 By 安知鱼 V1.6.12",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 mengnankkzhou 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.cbd.int/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://comment.tokenlen.top/',
+      region: '',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, "siu~~~~~"))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.25/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://comment.tokenlen.top/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '3ZpuzQHHKWfFH59QFYmcuCvr-gzGzoHsz',
+      appKey: '8DIvljObQp853ueQMZzpb9Gx',
+      avatar: 'mp',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Twikoo' === 'Valine' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://comment.tokenlen.top/',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.25/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
