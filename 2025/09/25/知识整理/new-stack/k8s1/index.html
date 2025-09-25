@@ -1,0 +1,956 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>K8S | mengnankkのblog</title><meta name="keywords" content="k8s"><meta name="author" content="mengnankkzhou"><meta name="copyright" content="mengnankkzhou"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="K8S"><meta name="application-name" content="K8S"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="K8S"><meta property="og:url" content="https://blog.tokenlen.top/2025/09/25/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/new-stack/k8s1/index.html"><meta property="og:site_name" content="mengnankkのblog"><meta property="og:description" content="基础知识 容器化 想象一下传统开发流程中的经典难题：“在我的电脑上明明是好的，怎么一到服务器上就出问题了？” 这个问题的根源在于环境不一致。开发者的电脑和服务器的操作系统、依赖库、配置文件等可能存在细微差别，导致程序行为不一致。 核心逻辑： 我们需要一种技术，能将我们的应用程序及其所有依赖（代码、库"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722381.jpg?_r_=5e95057f-40d5-a5da-450c-1eb8d2af5fc5"><meta property="article:author" content="mengnankkzhou"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722381.jpg?_r_=5e95057f-40d5-a5da-450c-1eb8d2af5fc5"><meta name="description" content="基础知识 容器化 想象一下传统开发流程中的经典难题：“在我的电脑上明明是好的，怎么一到服务器上就出问题了？” 这个问题的根源在于环境不一致。开发者的电脑和服务器的操作系统、依赖库、配置文件等可能存在细微差别，导致程序行为不一致。 核心逻辑： 我们需要一种技术，能将我们的应用程序及其所有依赖（代码、库"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://blog.tokenlen.top/2025/09/25/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/new-stack/k8s1/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走啊，那种事情不要啊","backTitle":"♪(^∇^*)欢迎回家！！！！"},
+  LA51: undefined,
+  greetingBox: {"enable":"ture","default":"晚上好👋","list":[{"greeting":"晚安😴","startTime":0,"endTime":5},{"greeting":"早上好鸭👋, 祝你一天好心情！","startTime":6,"endTime":9},{"greeting":"上午好👋, 状态很好，鼓励一下～","startTime":10,"endTime":10},{"greeting":"11点多啦, 在坚持一下就吃饭啦～","startTime":11,"endTime":11},{"greeting":"午安👋, 宝贝","startTime":12,"endTime":14},{"greeting":"🌈充实的一天辛苦啦！","startTime":14,"endTime":18},{"greeting":"19点喽, 奖励一顿丰盛的大餐吧🍔。","startTime":19,"endTime":19},{"greeting":"晚上好👋, 在属于自己的时间好好放松😌~","startTime":20,"endTime":24}]},
+  twikooEnvId: 'https://comment.tokenlen.top/',
+  commentBarrageConfig:{"enable":true,"maxBarrage":1,"barrageTime":4000,"accessToken":"\tbd9428de12b54b96b2f1b4e69aeee81f","mailMd5":"F37442226DA71492"},
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    simplehomepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: mengnankkzhou","link":"链接: ","source":"来源: mengnankkのblog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'mengnankkのblog',
+  title: 'K8S',
+  postAI: '',
+  pageFillDescription: '基础知识, 容器化, k8s, 控制器, 核心组件, Control Plane, node组件, 实践基础知识容器化想象一下传统开发流程中的经典难题在我的电脑上明明是好的怎么一到服务器上就出问题了这个问题的根源在于环境不一致开发者的电脑和服务器的操作系统依赖库配置文件等可能存在细微差别导致程序行为不一致核心逻辑我们需要一种技术能将我们的应用程序及其所有依赖代码库配置文件等打包在一起形成一个标准化的可移植的集装箱这个集装箱在哪里运行其内部环境都完全一致从而彻底解决环境依赖问题这就是容器化思想的由来就是目前最流行的容器化工具它引入了几个核心概念来实现这个目标镜像它是什么镜像是一个只读的模板是应用程序的安装包或光盘它包含了运行应用程序所需的一切代码运行时库环境变量和配置文件如何构建通过一个名为的文本文件来定义构建步骤就像一张菜谱指导如何一步步制作出这个安装包核心逻辑镜像是静态的标准化的交付物一次构建处处运行这就保证了从开发到测试再到生产应用的环境是完全一致的容器它是什么容器是镜像的运行实例如果说镜像是菜谱容器就是根据这份菜谱做出来的正在被享用的菜肴运行机制启动一个容器实际上是在镜像之上创建了一个可写的层容器与宿主机共享操作系统内核但拥有自己独立的文件系统进程空间和网络实现了资源隔离核心逻辑容器是动态的隔离的运行环境你可以从同一个镜像启动无数个相互隔离的容器它们轻量启动快就像启动一个普通进程一样网络业务痛点多个容器运行在同一台主机上它们之间如何通信容器如何与外部世界通信它是什么为容器提供了多种网络模式最常用的是桥接网络会创建一个虚拟网桥每个容器都会获得一个独立的内部地址同一网桥下的容器可以通过内部直接通信如果需要让外部访问容器需要做端口映射即将主机的一个端口映射到容器的特定端口上例如将主机的端口映射到容器的端口核心逻辑网络解决了容器的通信隔离与对外暴露的问题让容器拥有了像独立主机一样的网络能力存储业务痛点容器被设计为用完即焚的如果一个容器被删除它在运行期间产生的所有数据如日志用户上传的文件数据库文件都会丢失这对于需要持久化数据的应用是不可接受的它是什么数据卷是一种特殊的目录它可以绕过容器的文件系统直接映射到宿主机上的一个目录核心逻辑数据卷将数据的生命周期与容器的生命周期解耦就像给容器外挂了一个移动硬盘无论容器如何创建销毁数据都安全地保存在这个硬盘里新的容器还可以挂载同一个硬盘继续使用数据在单台机器上表现出色但当业务发展我们需要在数十数百台服务器上运行成百上千个容器时新的问题出现了调度哪个容器应该在哪台机器上运行服务发现一个容器如何找到并与另一个容器通信它们可能在不同机器上扩缩容如何根据访问量自动增加或减少容器数量自愈如果一台服务器宕机或一个容器崩溃了如何自动恢复服务手动管理这一切是无法想象的我们需要一个容器的操作系统或容器集群的大管家这就是常简写为核心概念集群节点集群指的是由管理的所有计算资源服务器的集合这是我们操作的整体节点指的是集群中的一台物理机或虚拟机节点是实际承载和运行容器的地方核心逻辑将多台机器虚拟化成一个统一的巨大的资源池我们不再关心应用具体在哪台机器上而是将应用扔给集群由负责管理它是什么是中最小的部署和调度单元一个可以包含一个或多个紧密相关的容器为什么需要有些容器需要共享网络和存储例如一个应用容器和一个日志收集容器将它们封装在一个里就会保证它们始终被调度到同一个节点上并共享同一个网络命名空间核心逻辑不要将等同于容器把想象成一个豆荚里面的豆子才是容器我们管理和调度的对象是豆荚而不是单个豆子服务业务痛点的生命周期是短暂的它们会被销毁和重建每次重建地址都会改变那么一个服务如前端应用如何稳定地访问另一个服务如后端呢它是什么为一组功能相同的提供了一个统一稳定的访问入口有一个固定的虚拟和名称它会自动将流量负载均衡到后端的健康上核心逻辑解耦了服务的消费者和提供者无论后端的如何变化数量增减地址变更消费者只需访问固定的地址即可它解决了服务发现和负载均衡两大难题命名空间业务痛点当一个集群被多个团队或多个项目如开发环境测试环境生产环境共用时如何进行逻辑上的隔离避免命名冲突和资源混乱它是什么是对集群内部资源的逻辑分组不同内的资源名称可以相同并且可以设置不同的资源配额和访问权限核心逻辑就像在电脑硬盘上创建不同的文件夹来分类存放文件一样它让多租户共用一个集群成为可能标签注解是附加到资源如上的键值对用于识别和筛选资源例如可以给所有前端打上的标签给后端打上的标签就是通过来找到它应该代理哪些的也是键值对但它主要用于存储非识别性的元数据供工具或人阅读例如构建版本负责人联系方式等核心逻辑是资源之间松散耦合的关系纽带是实现灵活分组和管理的核心机制控制器我们通常不直接创建和管理单个的而是通过控制器来管理控制器的核心任务是确保集群的实际状态与我们定义的期望状态保持一致部署适用场景无状态应用如服务器网关等这些应用不保存任何本地数据可以随意扩缩容和替换核心能力副本管理定义期望的副本数量会确保运行中的数量始终与此一致滚动更新能够平滑地分批次地用新版本的替换旧版本的实现服务的无中断升级核心逻辑是最常用最基础的控制器管理着应用的数量和版本有状态集适用场景有状态应用如数据库消息队列等核心能力稳定的唯一的网络标识的名称是固定的有序的如稳定的持久的存储每个都会绑定一个专属的持久化存储卷即使重启它仍然会连接到原来的存储卷数据不会丢失核心逻辑为需要稳定身份和持久化数据的应用提供了专门的生命周期管理守护进程集适用场景需要在集群中的每一个或指定的节点上都运行一个且仅一个副本的场景典型用途日志收集如系统监控如网络插件等核心逻辑确保了基础设施相关的服务能够在每个节点上可靠运行是集群运维的基石任务定时任务适用场景需要运行一次并确保成功完成的离线任务例如数据批处理一次性的数据迁移核心逻辑会创建来执行任务直到指定数量的成功退出返回码为的使命才算完成如果失败会自动重试适用场景需要按计划周期性执行的任务例如每日备份定时报告生成核心逻辑就像的它会根据你设定的时间表如表示每天凌晨点来周期性地创建来执行任务核心组件在深入组件之前必须理解的核心设计哲学状态机您用户通过文件或命令向声明一个期望状态例如我期望有个在运行不知疲倦地工作持续监控集群的实际状态调谐循环如果实际状态与期望状态不符例如只有个在运行会自动采取行动例如新建一个努力使两者达成一致控制平面是集群的大脑和决策中心它不下达具体如何做的指令只负责做出决策和下达做什么的命令通常它运行在专门的主节点上公司总秘书处前台职责唯一入口是整个集群所有交互的唯一集中的入口点无论是外部用户如命令还是集群内部组件所有操作请求都必须经过它请求处理负责接收校验处理所有请求授权认证承担了认证授权和准入控制等所有安全相关的工作是集群的守门人交互它是所有组件沟通的中心枢纽它是唯一可以直接与通信的组件确保了数据的一致性和安全性公司类比公司的总秘书处所有部门的报告所有员工的请求加薪请假都必须提交到这里秘书处负责验证请求的合法性权限然后存档存入并通知相关部门处理公司的档案数据库不可篡改职责数据存储一个高可用的键值对数据库是集群的唯一数据中心和唯一真实来源状态记录完整准确地存储了整个集群的期望状态和实际状态的所有数据例如创建了哪些每个的是多少等交互只有可以直接读写其他组件需要的信息都通过获取公司类比公司的核心档案数据库记录了所有正式文件员工合同财务报表这个数据库是权威的不可随意篡改只有总秘书处有权写入新档案人力资源部负责分配岗位职责调度其唯一职责是为新创建的尚未分配节点的寻找一个最合适的节点来运行决策过程调度决策基于一系列复杂的算法主要考虑的资源需求内存节点的当前负载亲和性反亲和性策略等它只负责决策不负责执行交互它通过监视有没有待调度的一旦发现就为其选择一个节点然后将这个决策将绑定到某个写回给公司类比公司的人力资源部当有一个新员工新入职时会根据他的岗位需求团队空位办公室资源等情况决定他去哪个部门坐哪个工位只负责分配不负责带他去工位各个部门的经理负责执行职责维护状态是所有控制器的集合体是驱动集群从实际状态趋向期望状态的核心引擎调谐循环每个控制器都负责一种特定资源并运行着一个独立的调谐循环例如控制器发现运行的数量少于期望值就会创建新的控制器发现有节点宕机就会将该节点标记为不可用交互它通过监控各类资源的状态并在发现不一致时通过发起纠正操作如创建删除公司类比公司里各个部门的经理财务经理项目经理后勤经理项目经理发现项目组少了一个人副本不足他不会自己去招人而是向总秘书处提交一个需要增加一个人的请求后续由和具体执行者来完成组件这些组件运行在每个工作节点上是实际执行任务的劳动力分公司负责人车间主任职责节点代理是在每个上的代理人管理它会监视分配给自己所在节点的并确保这些中的容器都按照预期运行状态汇报负责向汇报本节点的健康状况和的运行状态交互它与通信获取自己需要管理的清单然后它与容器运行时交互命令其创建启动停止容器公司类比每个分公司的负责人他会不断地从总部接收任务清单列表然后指挥自己公司的员工和设备容器运行时去完成这些任务并定期向总部汇报工作进度分公司的网络管理员路由器职责网络规则维护负责在每个节点上维护网络规则以实现的概念流量路由它确保了从外部或内部访问一个的流量能够被正确地转发到后端正确的上它本质上是一个网络代理和负载均衡器交互它从获取和的信息并据此修改节点上的或规则公司类比每个分公司的网络管理员他知道公司总机号码应该转接到哪些具体员工的座机上并负责配置好电话交换机容器运行时职责实际运行容器的软件例如交互通过标准接口向容器运行时下达指令如拉取这个镜像启动这个容器公司类比真正干活的机器或工人车间主任下达指令它就负责生产出产品运行容器网络模型公司的电话总机系统内部电话分机默认类型为分配一个只能在集群内部访问的虚拟适用于集群内部服务之间的通信指定分公司的直线电话在每个节点的物理上暴露一个固定的端口外部可以通过访问服务主要用于测试或临时暴露服务公司的统一客服热线在的基础上额外向云服务商如申请一个外部负载均衡器并将流量导向所有节点的是标准生产级的对外暴露服务的方式智能前台语音导航系统它不是而是工作在层的流量路由器它可以根据请求的域名或路径将流量转发到不同的一个就可以管理多个服务的对外暴露比为每个服务都创建一个更高效成本更低网络公司的内部虚拟专网像这样的网络插件构建了一个跨越所有节点的虚拟网络层它使得每个都拥有一个全局唯一的地址并且之间可以像在同一个局域网内一样直接通信屏蔽了底层的物理网络复杂性存储模式公司的资源申请流程这个流程巧妙地将使用者和提供者解耦临时储物柜生命周期与绑定销毁数据可能丢失部门的库存资源由管理员预先创建好的具体的存储资源如一块云硬盘它是一个独立于的集群资源员工的资源申请单由开发者用户创建描述自己需要什么样的存储我需要的可读写存储但不关心具体是哪块硬盘自动化资源供应策略它定义了如何动态创建当申请的资源在现有库存中找不到匹配时如果配置了系统就会根据这个策略自动去云服务商那里创建一个新的并与绑定这实现了存储的按需自动供给实践常用命令是您与集群交互的命令行工具是您的指挥棒必须熟练掌握声明式管理的入口向声明您期望的资源状态例如我需要一个运行的会负责让集群的当前状态与您的期望状态保持一致这是最核心最常用的命令查看资源状态用于获取一类或某个特定资源的信息查看所有查看名为的常用参数显示更详细信息指定命名空间获取资源的详细描述当资源出现问题时如启动失败此命令是排错的第一步它会显示资源的状态事件配置等详细信息查看的日志用于调试应用本身的问题常用参数实时跟踪日志当一个中有多个容器时指定容器进入的容器内部相当于到一个虚拟机允许您在容器内执行命令非常适合进行现场调试示例端口转发将本地端口映射到或的端口方便在本地直接访问集群内的服务进行测试实现过程编写与作用定义了应用的期望状态它负责管理的副本数量镜像版本更新策略等您可以把它理解为的控制器或管理员如果一个意外挂掉了会立刻创建一个新的来替代它确保应用实例数量始终符合您的设定作用为一组功能相同的提供一个稳定统一的访问入口的地址是动态变化的重启后会变直接访问是不可靠的提供了一个固定的虚拟和名称无论后端的如何变化客户端都可以通过访问来访问应用它还承担了负载均衡的职责滚动更新回滚与零停机部署这是体现强大自愈和管理能力的核心功能滚动更新原理当您更新中的应用镜像版本时不会一次性杀掉所有旧版而是会滚动地进行启动一个新版等待新版准备就绪停止一个旧版再启动一个新版如此循环直到所有都更新为新版本价值在整个更新过程中始终有可用的在提供服务从而实现了零停机部署回滚原理如果新版本应用有问题您可以使用一条简单的命令让滚回到上一个稳定版本保存了部署的历史记录使得回滚操作变得非常简单快捷配置目标将配置与应用镜像解耦提高应用的灵活性和安全性作用用于存储非敏感的配置信息如环境变量配置文件内容等您可以将这些配置以键值对的形式存储在中然后通过环境变量或卷挂载的方式注入到中价值修改配置时只需更新并重启即可无需重新构建应用镜像作用用于存储敏感信息如数据库密码密钥证书等它的使用方式与类似但会对其进行特殊处理例如默认以编码存储可以集成更安全的存储方案核心原则永远不要将密码等敏感信息硬编码在代码或镜像中数据持久化解决有状态应用如数据库消息队列的数据持久化问题因为本身是无状态且生命周期短暂的其内部文件系统会随的消亡而丢失和这是一个解耦的设计非常重要集群管理员准备好的存储资源它可以是物理硬盘云厂商的磁盘等是对存储实体的抽象应用用户对存储资源的申请应用开发者不需要关心存储到底是什么类型在哪里只需要在中声明需要多大空间需要什么样的访问模式例如读写权限绑定过程会根据的申请在现有的中寻找一个满足条件的进行绑定应用启动时只需引用即可这个模式的好处在于应用开发者关心和集群管理员关心的职责被分开了后端存储类型将宿主机上的一个目录直接挂载给优点简单易用无需额外配置缺点数据与特定节点绑定如果被调度到其他节点数据就丢失了仅适用于单节点测试环境一种常见的网络存储优点数据不与任何特定节点绑定多个可以同时读写同一个存储卷需要模式缺点需要额外搭建和维护一个服务器定位云原生存储解决方案它本身就可以部署在集群内部将各个节点的磁盘聚合成一个分布式的高可用的存储池优点高性能高可用可扩展与无缝集成缺点配置和维护相对复杂是更高级的存储方案重要特性访问模式卷只能被单个节点以读写方式挂载注意是单个节点不是单个卷可以被多个节点同时以读写方式挂载像等网络存储才支持此模式卷可以被多个节点以只读方式挂载动态供应原理当没有现成的能满足的申请时如果配置了会自动调用底层存储插件如云厂商的磁盘服务动态地创建一个并与绑定价值实现了存储的按需自动创建极大简化了管理员的工作这是目前云上环境的主流使用方式回收策略定义了当被删除后与之绑定的如何处理常见的有保留数据删除数据和清空数据已不推荐',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-09-25 18:06:32',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/rss2.xml" title="mengnankkのblog" type="application/rss+xml">
+</head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://blog.tokenlen.top/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="http://img.mengnankk.top:9001/" title="图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="图床"/><span class="back-menu-item-text">图床</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="http://img.mengnankk.top:9001/" title="mengnankk图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/13/64d8c2653332e.ico" alt="mengnankk图床"/><span class="back-menu-item-text">mengnankk图床</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">mengnankkのblog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 生活</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/Message/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 其他</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://home.tokenlen.top/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> home</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://status.mengnankk.asia/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 站点检测</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://home.tokenlen.top/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 心里话</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://imgbed.mengnankk.asia/202407021650088.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://imgbed.mengnankk.asia/202407021650088.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BF/" style="font-size: 1.05rem;">BF<sup>1</sup></a><a href="/tags/BUG/" style="font-size: 1.05rem;">BUG<sup>1</sup></a><a href="/tags/BigData/" style="font-size: 1.05rem;">BigData<sup>1</sup></a><a href="/tags/C/" style="font-size: 1.05rem;">C<sup>4</sup></a><a href="/tags/CE/" style="font-size: 1.05rem;">CE<sup>1</sup></a><a href="/tags/CSRF/" style="font-size: 1.05rem;">CSRF<sup>1</sup></a><a href="/tags/English/" style="font-size: 1.05rem;">English<sup>9</sup></a><a href="/tags/FI/" style="font-size: 1.05rem;">FI<sup>1</sup></a><a href="/tags/Github/" style="font-size: 1.05rem;">Github<sup>1</sup></a><a href="/tags/Go/" style="font-size: 1.05rem;">Go<sup>1</sup></a><a href="/tags/Hadoop/" style="font-size: 1.05rem;">Hadoop<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 1.05rem;">Linux<sup>12</sup></a><a href="/tags/XSS/" style="font-size: 1.05rem;">XSS<sup>1</sup></a><a href="/tags/css/" style="font-size: 1.05rem;">css<sup>2</sup></a><a href="/tags/football/" style="font-size: 1.05rem;">football<sup>1</sup></a><a href="/tags/html/" style="font-size: 1.05rem;">html<sup>1</sup></a><a href="/tags/java/" style="font-size: 1.05rem;">java<sup>60</sup></a><a href="/tags/juc/" style="font-size: 1.05rem;">juc<sup>2</sup></a><a href="/tags/jvm/" style="font-size: 1.05rem;">jvm<sup>2</sup></a><a href="/tags/markdown/" style="font-size: 1.05rem;">markdown<sup>1</sup></a><a href="/tags/mysql/" style="font-size: 1.05rem;">mysql<sup>17</sup></a><a href="/tags/net/" style="font-size: 1.05rem;">net<sup>7</sup></a><a href="/tags/paper/" style="font-size: 1.05rem;">paper<sup>1</sup></a><a href="/tags/php/" style="font-size: 1.05rem;">php<sup>5</sup></a><a href="/tags/pip/" style="font-size: 1.05rem;">pip<sup>1</sup></a><a href="/tags/python/" style="font-size: 1.05rem;">python<sup>3</sup></a><a href="/tags/redis/" style="font-size: 1.05rem;">redis<sup>4</sup></a><a href="/tags/shell/" style="font-size: 1.05rem;">shell<sup>4</sup></a><a href="/tags/spring-boot/" style="font-size: 1.05rem;">spring boot<sup>14</sup></a><a href="/tags/sql/" style="font-size: 1.05rem;">sql<sup>5</sup></a><a href="/tags/web/" style="font-size: 1.05rem;">web<sup>3</sup></a><a href="/tags/%E5%8E%8B%E6%B5%8B/" style="font-size: 1.05rem;">压测<sup>1</sup></a><a href="/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91/" style="font-size: 1.05rem;">数字逻辑<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86/" style="font-size: 1.05rem;">数据库原理<sup>3</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.05rem;">数据结构<sup>20</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 1.05rem;">正则表达式<sup>2</sup></a><a href="/tags/%E6%AF%9B%E9%80%89/" style="font-size: 1.05rem;">毛选<sup>1</sup></a><a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" style="font-size: 1.05rem;">汇编语言<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>9</sup></a><a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 1.05rem;">面试<sup>46</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">25</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">9</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">15</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">16</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">五月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">22</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/04/"><span class="card-archive-list-date">四月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">7</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/03/"><span class="card-archive-list-date">三月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/02/"><span class="card-archive-list-date">二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/" itemprop="url">技术栈</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/k8s/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>k8s</span></a></span></div></div><h1 class="post-title" itemprop="name headline">K8S</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-09-24T16:00:00.000Z" title="发表于 2025-09-25 00:00:00">2025-09-25</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-09-25T10:06:32.719Z" title="更新于 2025-09-25 18:06:32">2025-09-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">6.6k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>20分钟</span></span><span class="post-meta-separator"></span><span id="" data-flag-title="K8S"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="twikoo_visitors" title="访问量"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为济南"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>济南</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722381.jpg?_r_=5e95057f-40d5-a5da-450c-1eb8d2af5fc5"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://blog.tokenlen.top/2025/09/25/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/new-stack/k8s1/"><header><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/" itemprop="url">技术栈</a><a href="/tags/k8s/" tabindex="-1" itemprop="url">k8s</a><h1 id="CrawlerTitle" itemprop="name headline">K8S</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">mengnankkzhou</span><time itemprop="dateCreated datePublished" datetime="2025-09-24T16:00:00.000Z" title="发表于 2025-09-25 00:00:00">2025-09-25</time><time itemprop="dateCreated datePublished" datetime="2025-09-25T10:06:32.719Z" title="更新于 2025-09-25 18:06:32">2025-09-25</time></header><h1>基础知识</h1>
+<h2 id="容器化">容器化</h2>
+<p>想象一下传统开发流程中的经典难题：“<strong>在我的电脑上明明是好的，怎么一到服务器上就出问题了？</strong>”</p>
+<p>这个问题的根源在于<strong>环境不一致</strong>。开发者的电脑和服务器的操作系统、依赖库、配置文件等可能存在细微差别，导致程序行为不一致。</p>
+<p><strong>核心逻辑：</strong> 我们需要一种技术，能将我们的应用程序及其所有依赖（代码、库、配置文件等）打包在一起，形成一个标准化的、可移植的“集装箱”。这个“集装箱”在哪里运行，其内部环境都完全一致，从而彻底解决环境依赖问题。</p>
+<p>这就是**容器化（Containerization）**思想的由来。</p>
+<p>Docker 就是目前最流行的容器化工具。它引入了几个核心概念来实现这个目标。</p>
+<p><strong>2.1 镜像 (Image)</strong></p>
+<ul>
+<li><strong>它是什么：</strong> 镜像是一个<strong>只读的模板</strong>，是应用程序的“安装包”或“光盘”。它包含了运行应用程序所需的一切：代码、运行时、库、环境变量和配置文件。</li>
+<li><strong>如何构建：</strong> 通过一个名为 <code>Dockerfile</code> 的文本文件来定义构建步骤。<code>Dockerfile</code> 就像一张“菜谱”，指导 Docker 如何一步步制作出这个“安装包”。</li>
+<li><strong>核心逻辑：</strong> 镜像是静态的、标准化的交付物。一次构建，处处运行。这就保证了从开发到测试再到生产，应用的环境是完全一致的。</li>
+</ul>
+<p><strong>2.2 容器 (Container)</strong></p>
+<ul>
+<li><strong>它是什么：</strong> 容器是镜像的<strong>运行实例</strong>。如果说镜像是“菜谱”，容器就是根据这份菜谱做出来的、正在被享用的“菜肴”。</li>
+<li><strong>运行机制：</strong> 启动一个容器，实际上是在镜像之上创建了一个可写的“层”。容器与宿主机共享操作系统内核，但拥有自己独立的文件系统、进程空间和网络，实现了资源隔离。</li>
+<li><strong>核心逻辑：</strong> 容器是动态的、隔离的运行环境。你可以从同一个镜像启动无数个相互隔离的容器，它们轻量、启动快，就像启动一个普通进程一样。</li>
+</ul>
+<p><strong>2.3 网络 (Network)</strong></p>
+<ul>
+<li><strong>业务痛点：</strong> 多个容器运行在同一台主机上，它们之间如何通信？容器如何与外部世界通信？</li>
+<li><strong>它是什么：</strong> Docker 为容器提供了多种网络模式。最常用的是<strong>桥接网络（Bridge Network）</strong>。
+<ul>
+<li>Docker 会创建一个虚拟网桥，每个容器都会获得一个独立的内部IP地址。</li>
+<li>同一网桥下的容器可以通过内部IP直接通信。</li>
+<li>如果需要让外部访问容器，需要做<strong>端口映射（Port Mapping）</strong>，即将主机的一个端口映射到容器的特定端口上（例如，将主机的8080端口映射到容器的80端口）。</li>
+</ul>
+</li>
+<li><strong>核心逻辑：</strong> Docker 网络解决了容器的“通信隔离”与“对外暴露”的问题，让容器拥有了像独立主机一样的网络能力。</li>
+</ul>
+<p><strong>2.4 存储 (Volume)</strong></p>
+<ul>
+<li><strong>业务痛点：</strong> 容器被设计为“用完即焚”的。如果一个容器被删除，它在运行期间产生的所有数据（如日志、用户上传的文件、数据库文件）都会丢失。这对于需要持久化数据的应用是不可接受的。</li>
+<li><strong>它是什么：</strong> **数据卷（Volume）**是一种特殊的目录，它可以绕过容器的文件系统，直接映射到宿主机上的一个目录。</li>
+<li><strong>核心逻辑：</strong> 数据卷将<strong>数据的生命周期</strong>与<strong>容器的生命周期</strong>解耦。就像给容器外挂了一个“移动硬盘”，无论容器如何创建、销毁，数据都安全地保存在这个“硬盘”里，新的容器还可以挂载同一个“硬盘”继续使用数据。</li>
+</ul>
+<h2 id="k8s">k8s</h2>
+<p>Docker 在单台机器上表现出色。但当业务发展，我们需要在<strong>数十、数百台服务器</strong>上运行<strong>成百上千个容器</strong>时，新的问题出现了：</p>
+<ul>
+<li><strong>调度：</strong> 哪个容器应该在哪台机器上运行？</li>
+<li><strong>服务发现：</strong> 一个容器如何找到并与另一个容器通信（它们可能在不同机器上）？</li>
+<li><strong>扩缩容：</strong> 如何根据访问量自动增加或减少容器数量？</li>
+<li><strong>自愈：</strong> 如果一台服务器宕机或一个容器崩溃了，如何自动恢复服务？</li>
+</ul>
+<p>手动管理这一切是无法想象的。我们需要一个“<strong>容器的操作系统</strong>”或“<strong>容器集群的大管家</strong>”。这就是 <strong>Kubernetes</strong>（常简写为 K8s）。</p>
+<p>核心概念：</p>
+<p><strong>2.1 集群 (Cluster) &amp; 节点 (Node)</strong></p>
+<ul>
+<li><strong>集群：</strong> 指的是由 Kubernetes 管理的所有计算资源（服务器）的集合。这是我们操作的整体。</li>
+<li><strong>节点：</strong> 指的是集群中的一台物理机或虚拟机。节点是实际承载和运行容器的地方。</li>
+<li><strong>核心逻辑：</strong> Kubernetes 将多台机器虚拟化成一个统一的、巨大的资源池。我们不再关心应用具体在哪台机器上，而是将应用“扔”给集群，由 K8s 负责管理。</li>
+</ul>
+<p><strong>2.2 Pod</strong></p>
+<ul>
+<li><strong>它是什么：</strong> Pod 是 Kubernetes 中<strong>最小的部署和调度单元</strong>。一个 Pod 可以包含一个或多个紧密相关的容器。</li>
+<li><strong>为什么需要 Pod：</strong> 有些容器需要共享网络和存储（例如，一个应用容器和一个日志收集容器）。将它们封装在一个 Pod 里，K8s 就会保证它们始终被调度到同一个节点上，并共享同一个网络命名空间。</li>
+<li><strong>核心逻辑：</strong> <strong>不要将 Pod 等同于容器</strong>。把 Pod 想象成一个“豆荚”，里面的“豆子”才是容器。我们管理和调度的对象是“豆荚”，而不是单个“豆子”。</li>
+</ul>
+<p><strong>2.3 Service (服务)</strong></p>
+<ul>
+<li><strong>业务痛点：</strong> Pod 的生命周期是短暂的，它们会被销毁和重建，每次重建 IP 地址都会改变。那么，一个服务（如前端应用）如何稳定地访问另一个服务（如后端API）呢？</li>
+<li><strong>它是什么：</strong> Service 为一组功能相同的 Pod 提供了一个<strong>统一、稳定的访问入口</strong>。Service 有一个固定的虚拟IP和DNS名称，它会自动将流量负载均衡到后端的健康 Pod 上。</li>
+<li><strong>核心逻辑：</strong> Service 解耦了服务的“消费者”和“提供者”。无论后端的 Pod 如何变化（数量增减、IP地址变更），消费者只需访问固定的 Service 地址即可。它解决了<strong>服务发现</strong>和<strong>负载均衡</strong>两大难题。</li>
+</ul>
+<p><strong>2.4 Namespace (命名空间)</strong></p>
+<ul>
+<li><strong>业务痛点：</strong> 当一个集群被多个团队或多个项目（如开发环境、测试环境、生产环境）共用时，如何进行逻辑上的隔离，避免命名冲突和资源混乱？</li>
+<li><strong>它是什么：</strong> Namespace 是对集群内部资源的<strong>逻辑分组</strong>。不同 Namespace 内的资源名称可以相同，并且可以设置不同的资源配额和访问权限。</li>
+<li><strong>核心逻辑：</strong> Namespace 就像在电脑硬盘上创建不同的文件夹来分类存放文件一样，它让多租户共用一个集群成为可能。</li>
+</ul>
+<p><strong>2.5 Label (标签) / Annotation (注解)</strong></p>
+<ul>
+<li><strong>Label：</strong> 是附加到资源（如 Pod）上的键值对，用于<strong>识别和筛选资源</strong>。例如，可以给所有前端 Pod 打上 <code>app=frontend</code> 的标签，给后端 Pod 打上 <code>app=backend</code> 的标签。Service 就是通过 Label Selector 来找到它应该代理哪些 Pod 的。</li>
+<li><strong>Annotation：</strong> 也是键值对，但它主要用于存储<strong>非识别性的元数据</strong>，供工具或人阅读。例如，构建版本、负责人联系方式等。</li>
+<li><strong>核心逻辑：</strong> Label 是 K8s 资源之间松散耦合的“关系纽带”，是实现灵活分组和管理的核心机制。</li>
+</ul>
+<h2 id="控制器">控制器</h2>
+<p>我们通常不直接创建和管理单个的 Pod，而是通过“控制器”来管理。控制器的核心任务是确保集群的<strong>实际状态</strong>与我们定义的<strong>期望状态</strong>保持一致。</p>
+<p><strong>3.1 Deployment (部署)</strong></p>
+<ul>
+<li><strong>适用场景：</strong> <strong>无状态应用</strong>（Stateless Application），如 Web 服务器、API 网关等。这些应用不保存任何本地数据，可以随意扩缩容和替换。</li>
+<li><strong>核心能力：</strong>
+<ul>
+<li><strong>副本管理：</strong> 定义期望的 Pod 副本数量（<code>replicas</code>），Deployment 会确保运行中的 Pod 数量始终与此一致。</li>
+<li><strong>滚动更新：</strong> 能够平滑地、分批次地用新版本的 Pod 替换旧版本的 Pod，实现服务的无中断升级。</li>
+</ul>
+</li>
+<li><strong>核心逻辑：</strong> Deployment 是最常用、最基础的控制器，管理着应用的“数量”和“版本”。</li>
+</ul>
+<p><strong>3.2 StatefulSet (有状态集)</strong></p>
+<ul>
+<li><strong>适用场景：</strong> <strong>有状态应用</strong>（Stateful Application），如数据库（MySQL, PostgreSQL）、消息队列（Kafka）等。</li>
+<li><strong>核心能力：</strong>
+<ul>
+<li><strong>稳定的、唯一的网络标识：</strong> Pod 的名称是固定的、有序的（如 <code>db-0</code>, <code>db-1</code>）。</li>
+<li><strong>稳定的、持久的存储：</strong> 每个 Pod 都会绑定一个专属的持久化存储卷（PV）。即使 Pod 重启，它仍然会连接到原来的存储卷，数据不会丢失。</li>
+</ul>
+</li>
+<li><strong>核心逻辑：</strong> StatefulSet 为需要稳定身份和持久化数据的应用提供了专门的生命周期管理。</li>
+</ul>
+<p><strong>3.3 DaemonSet (守护进程集)</strong></p>
+<ul>
+<li><strong>适用场景：</strong> 需要在集群中的<strong>每一个（或指定的）节点上都运行一个且仅一个 Pod 副本</strong>的场景。</li>
+<li><strong>典型用途：</strong> 日志收集（如 Fluentd）、系统监控（如 Prometheus Node Exporter）、网络插件等。</li>
+<li><strong>核心逻辑：</strong> DaemonSet 确保了基础设施相关的服务能够在每个节点上可靠运行，是集群运维的基石。</li>
+</ul>
+<p><strong>3.4 Job / CronJob (任务 / 定时任务)</strong></p>
+<ul>
+<li><strong>Job：</strong>
+<ul>
+<li><strong>适用场景：</strong> 需要<strong>运行一次并确保成功完成</strong>的离线任务。例如，数据批处理、一次性的数据迁移。</li>
+<li><strong>核心逻辑：</strong> Job 会创建 Pod 来执行任务，直到指定数量的 Pod 成功退出（返回码为0），Job 的使命才算完成。如果 Pod 失败，Job 会自动重试。</li>
+</ul>
+</li>
+<li><strong>CronJob：</strong>
+<ul>
+<li><strong>适用场景：</strong> 需要<strong>按计划周期性执行</strong>的任务。例如，每日备份、定时报告生成。</li>
+<li><strong>核心逻辑：</strong> CronJob 就像 Linux 的 <code>crontab</code>，它会根据你设定的时间表（如 <code>0 2 * * *</code> 表示每天凌晨2点）来周期性地创建 Job 来执行任务。</li>
+</ul>
+</li>
+</ul>
+<h1>核心组件</h1>
+<p>在深入组件之前，必须理解 Kubernetes 的核心设计哲学：<strong>状态机</strong>。</p>
+<ol>
+<li><strong>您（用户）</strong>：通过 YAML 文件或命令，向 Kubernetes 声明一个“<strong>期望状态</strong>”（Desired State）。例如，“我期望有3个 Nginx Pod 在运行”。</li>
+<li><strong>Kubernetes</strong>：不知疲倦地工作，持续监控集群的“<strong>实际状态</strong>”（Actual State）。</li>
+<li><strong>调谐循环 (Reconciliation Loop)</strong>：如果“实际状态”与“期望状态”不符（例如，只有2个 Nginx Pod 在运行），Kubernetes 会自动采取行动（例如，新建一个 Pod），努力使两者达成一致。</li>
+</ol>
+<h2 id="Control-Plane">Control Plane</h2>
+<p>控制平面是集群的大脑和决策中心。它不下达具体“如何做”的指令，只负责做出决策和下达“做什么”的命令。通常它运行在专门的主节点 (Master Node) 上。</p>
+<p><strong>1.1 API Server - “公司总秘书处 / 前台”</strong></p>
+<ul>
+<li><strong>职责：</strong>
+<ul>
+<li><strong>唯一入口</strong>：是整个集群所有交互的<strong>唯一、集中的入口点</strong>。无论是外部用户（如 <code>kubectl</code> 命令）还是集群内部组件，所有操作请求都必须经过它。</li>
+<li><strong>请求处理</strong>：负责接收、校验、处理所有 RESTful API 请求。</li>
+<li><strong>授权认证</strong>：承担了认证、授权和准入控制等所有安全相关的工作，是集群的“守门人”。</li>
+</ul>
+</li>
+<li><strong>交互：</strong> 它是所有组件沟通的<strong>中心枢纽</strong>。它是唯一可以直接与 <code>etcd</code> 通信的组件，确保了数据的一致性和安全性。</li>
+<li><strong>公司类比：</strong> 公司的总秘书处。所有部门的报告、所有员工的请求（加薪、请假）都必须提交到这里。秘书处负责验证请求的合法性（权限），然后存档（存入 etcd），并通知相关部门处理。</li>
+</ul>
+<p><strong>1.2 etcd - “公司的档案数据库 (不可篡改)”</strong></p>
+<ul>
+<li><strong>职责：</strong>
+<ul>
+<li><strong>数据存储</strong>：一个高可用的键值对数据库，是集群的<strong>唯一数据中心</strong>和<strong>唯一真实来源 (Single Source of Truth)</strong>。</li>
+<li><strong>状态记录</strong>：完整、准确地存储了整个集群的“期望状态”和“实际状态”的所有数据（例如，创建了哪些 Pod、每个 Pod 的 IP 是多少等）。</li>
+</ul>
+</li>
+<li><strong>交互：</strong> 只有 API Server 可以直接读写 <code>etcd</code>。其他组件需要的信息都通过 API Server 获取。</li>
+<li><strong>公司类比：</strong> 公司的核心档案数据库，记录了所有正式文件、员工合同、财务报表。这个数据库是权威的，不可随意篡改，只有总秘书处（API Server）有权写入新档案。</li>
+</ul>
+<p><strong>1.3 Scheduler - “人力资源部 (负责分配岗位)”</strong></p>
+<ul>
+<li><strong>职责：</strong>
+<ul>
+<li><strong>Pod 调度</strong>：其唯一职责是<strong>为新创建的、尚未分配节点的 Pod，寻找一个最合适的 Node 节点来运行</strong>。</li>
+<li><strong>决策过程</strong>：调度决策基于一系列复杂的算法，主要考虑：Pod 的资源需求（CPU、内存）、节点的当前负载、亲和性/反亲和性策略等。它只负责“决策”，不负责“执行”。</li>
+</ul>
+</li>
+<li><strong>交互：</strong> 它通过 API Server 监视有没有“待调度”的 Pod。一旦发现，就为其选择一个节点，然后将这个“决策”（将 Pod 绑定到某个 Node）写回给 API Server。</li>
+<li><strong>公司类比：</strong> 公司的人力资源部。当有一个新员工（新 Pod）入职时，HR 会根据他的岗位需求、团队空位、办公室资源等情况，决定他去哪个部门、坐哪个工位（Node）。HR 只负责“分配”，不负责带他去工位。</li>
+</ul>
+<p><strong>1.4 Controller Manager - “各个部门的经理 (负责执行)”</strong></p>
+<ul>
+<li><strong>职责：</strong>
+<ul>
+<li><strong>维护状态</strong>：是所有<strong>控制器</strong>的集合体，是驱动集群从“实际状态”趋向“期望状态”的<strong>核心引擎</strong>。</li>
+<li><strong>调谐循环</strong>：每个控制器都负责一种特定资源，并运行着一个独立的“调谐循环”。例如：
+<ul>
+<li><strong>Deployment 控制器</strong>：发现运行的 Pod 数量少于期望值，就会创建新的 Pod。</li>
+<li><strong>Node 控制器</strong>：发现有节点宕机，就会将该节点标记为不可用。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>交互：</strong> 它通过 API Server 监控各类资源的状态，并在发现不一致时，通过 API Server 发起纠正操作（如创建/删除 Pod）。</li>
+<li><strong>公司类比：</strong> 公司里各个部门的经理（财务经理、项目经理、后勤经理）。项目经理（Deployment Controller）发现项目组少了一个人（Pod 副本不足），他不会自己去招人，而是向总秘书处提交一个“需要增加一个人”的请求，后续由 HR（Scheduler）和具体执行者（kubelet）来完成。</li>
+</ul>
+<h2 id="node组件">node组件</h2>
+<p>这些组件运行在每个工作节点 (Worker Node) 上，是实际执行任务的“劳动力”。</p>
+<p><strong>2.1 kubelet - “分公司负责人 / 车间主任”</strong></p>
+<ul>
+<li><strong>职责：</strong>
+<ul>
+<li><strong>节点代理</strong>：是 Control Plane 在每个 Node 上的<strong>代理人</strong>。</li>
+<li><strong>Pod 管理</strong>：它会监视分配给<strong>自己所在节点</strong>的 Pod，并确保这些 Pod 中的容器都按照预期运行。</li>
+<li><strong>状态汇报</strong>：负责向 Control Plane 汇报本节点的健康状况和 Pod 的运行状态。</li>
+</ul>
+</li>
+<li><strong>交互：</strong> 它与 API Server 通信，获取自己需要管理的 Pod 清单。然后，它与<strong>容器运行时</strong>交互，命令其创建、启动、停止容器。</li>
+<li><strong>公司类比：</strong> 每个分公司（Node）的负责人。他会不断地从总部（API Server）接收任务清单（Pod 列表），然后指挥自己公司的员工和设备（容器运行时）去完成这些任务，并定期向总部汇报工作进度。</li>
+</ul>
+<p><strong>2.2 kube-proxy - “分公司的网络管理员 / 路由器”</strong></p>
+<ul>
+<li><strong>职责：</strong>
+<ul>
+<li><strong>网络规则维护</strong>：负责在每个节点上维护网络规则，以实现 Kubernetes <strong>Service</strong> 的概念。</li>
+<li><strong>流量路由</strong>：它确保了从外部或内部访问一个 Service 的流量，能够被正确地转发到后端正确的 Pod 上。它本质上是一个网络代理和负载均衡器。</li>
+</ul>
+</li>
+<li><strong>交互：</strong> 它从 API Server 获取 Service 和 Endpoint (Pod IP) 的信息，并据此修改节点上的 <code>iptables</code> 或 <code>IPVS</code> 规则。</li>
+<li><strong>公司类比：</strong> 每个分公司（Node）的网络管理员。他知道公司总机号码（Service IP）应该转接到哪些具体员工的座机（Pod IP）上，并负责配置好电话交换机（iptables）。</li>
+</ul>
+<p><strong>2.3 容器运行时 (Container Runtime)</strong></p>
+<ul>
+<li><strong>职责：</strong> 实际<strong>运行容器</strong>的软件。例如 Docker、containerd、CRI-O。</li>
+<li><strong>交互：</strong> <code>kubelet</code> 通过 CRI (Container Runtime Interface) 标准接口，向容器运行时下达指令，如“拉取这个镜像”、“启动这个容器”。</li>
+<li><strong>公司类比：</strong> 真正干活的“机器”或“工人”。车间主任（kubelet）下达指令，它就负责生产出产品（运行容器）。</li>
+</ul>
+<p><strong>3.1 Service 网络模型 - “公司的电话总机系统”</strong></p>
+<ul>
+<li><strong>ClusterIP</strong>：<strong>内部电话分机</strong>。默认类型，为 Service 分配一个只能在集群内部访问的虚拟 IP。适用于集群内部服务之间的通信。</li>
+<li><strong>NodePort</strong>：<strong>指定分公司的直线电话</strong>。在每个节点的物理 IP 上暴露一个固定的端口。外部可以通过 <code>NodeIP:NodePort</code> 访问服务。主要用于测试或临时暴露服务。</li>
+<li><strong>LoadBalancer</strong>：<strong>公司的 400 统一客服热线</strong>。在 NodePort 的基础上，额外向云服务商（如 AWS, GCP）申请一个外部负载均衡器，并将流量导向所有节点的 NodePort。是标准、生产级的对外暴露服务的方式。</li>
+<li><strong>Ingress</strong>：<strong>智能前台/语音导航系统</strong>。它不是 Service，而是工作在 HTTP/HTTPS 层的<strong>流量路由器</strong>。它可以根据请求的域名（<code>a.com</code>, <code>b.com</code>）或路径（<code>/foo</code>, <code>/bar</code>）将流量转发到不同的 Service。一个 Ingress 就可以管理多个服务的对外暴露，比为每个服务都创建一个 LoadBalancer 更高效、成本更低。</li>
+<li><strong>Overlay 网络</strong>：<strong>公司的内部虚拟专网 (VPN)</strong>。像 Calico、Flannel 这样的网络插件，构建了一个跨越所有节点的虚拟网络层。它使得每个 Pod 都拥有一个全局唯一的 IP 地址，并且 Pod 之间可以像在同一个局域网内一样直接通信，屏蔽了底层的物理网络复杂性。</li>
+</ul>
+<p><strong>3.2 存储模式 - “公司的资源申请流程”</strong></p>
+<p>这个流程巧妙地将“使用者”和“提供者”解耦。</p>
+<ul>
+<li><strong>Volume</strong>：<strong>临时储物柜</strong>。生命周期与 Pod 绑定，Pod 销毁，数据可能丢失。</li>
+<li><strong>PersistentVolume (PV)</strong>：<strong>IT 部门的“库存资源”</strong>。由管理员预先创建好的、具体的存储资源（如一块云硬盘）。它是一个独立于 Pod 的集群资源。</li>
+<li><strong>PersistentVolumeClaim (PVC)</strong>：<strong>员工的“资源申请单”</strong>。由开发者（用户）创建，描述自己需要什么样的存储（“我需要 5GB 的可读写存储”），但不关心具体是哪块硬盘。</li>
+<li><strong>StorageClass</strong>：<strong>“自动化资源供应”策略</strong>。它定义了如何<strong>动态创建</strong> PV。当 PVC 申请的资源在现有 PV 库存中找不到匹配时，如果配置了 StorageClass，系统就会根据这个“策略”自动去云服务商那里创建一个新的 PV 并与 PVC 绑定。这实现了存储的按需自动供给。</li>
+</ul>
+<h1>实践</h1>
+<p><code>kubectl</code> 常用命令:</p>
+<p><code>kubectl</code> 是您与 Kubernetes 集群交互的命令行工具，是您的“指挥棒”。必须熟练掌握。</p>
+<ul>
+<li><code>kubectl apply -f &lt;filename.yaml&gt;</code>: <strong>声明式管理的入口</strong>。向 K8s 声明您期望的资源状态（例如，“我需要一个运行 Nginx 的 Deployment”），K8s 会负责让集群的当前状态与您的期望状态保持一致。这是最核心、最常用的命令。</li>
+<li><code>kubectl get &lt;resource_type&gt; [resource_name]</code>: <strong>查看资源状态</strong>。用于获取一类或某个特定资源的信息。
+<ul>
+<li><code>kubectl get pods</code>: 查看所有 Pod。</li>
+<li><code>kubectl get deployment my-app</code>: 查看名为 my-app 的 Deployment。</li>
+<li>常用参数: <code>-o wide</code> (显示更详细信息), <code>-n &lt;namespace&gt;</code> (指定命名空间)。</li>
+</ul>
+</li>
+<li><code>kubectl describe &lt;resource_type&gt; &lt;resource_name&gt;</code>: <strong>获取资源的详细描述</strong>。当资源出现问题时（如 Pod 启动失败），此命令是排错的第一步。它会显示资源的状态、事件（Events）、配置等详细信息。</li>
+<li><code>kubectl logs &lt;pod_name&gt;</code>: <strong>查看 Pod 的日志</strong>。用于调试应用本身的问题。
+<ul>
+<li>常用参数: <code>-f</code> (实时跟踪日志), <code>-c &lt;container_name&gt;</code> (当一个 Pod 中有多个容器时指定容器)。</li>
+</ul>
+</li>
+<li><code>kubectl exec -it &lt;pod_name&gt; -- &lt;command&gt;</code>: <strong>进入 Pod 的容器内部</strong>。相当于 SSH 到一个虚拟机，允许您在容器内执行命令，非常适合进行现场调试。
+<ul>
+<li>示例: <code>kubectl exec -it my-pod -- /bin/bash</code></li>
+</ul>
+</li>
+<li><code>kubectl port-forward &lt;pod_name_or_service_name&gt; &lt;local_port&gt;:&lt;target_port&gt;</code>: <strong>端口转发</strong>。将本地端口映射到 Pod 或 Service 的端口，方便在本地直接访问集群内的服务进行测试。</li>
+</ul>
+<p>实现过程：</p>
+<ol>
+<li><strong>编写 Deployment 与 Service YAML</strong></li>
+</ol>
+<ul>
+<li><strong>Deployment</strong>:
+<ul>
+<li><strong>作用</strong>: 定义了应用的“期望状态”。它负责管理 Pod 的副本数量、镜像版本、更新策略等。您可以把它理解为<strong>Pod 的控制器或“管理员”</strong>。如果一个 Pod 意外挂掉了，Deployment 会立刻创建一个新的来替代它，确保应用实例数量始终符合您的设定。</li>
+</ul>
+</li>
+<li><strong>Service</strong>:
+<ul>
+<li><strong>作用</strong>: 为一组功能相同的 Pod 提供一个<strong>稳定、统一的访问入口</strong>。Pod 的 IP 地址是动态变化的（Pod 重启后 IP 会变），直接访问 Pod 是不可靠的。Service 提供了一个固定的虚拟 IP 和 DNS 名称，无论后端的 Pod 如何变化，客户端都可以通过访问 Service 来访问应用。它还承担了<strong>负载均衡</strong>的职责。</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li><strong>滚动更新、回滚与零停机部署</strong></li>
+</ol>
+<p>这是体现 Kubernetes 强大自愈和管理能力的核心功能。</p>
+<ul>
+<li><strong>滚动更新 (Rolling Update)</strong>:
+<ul>
+<li><strong>原理</strong>: 当您更新 Deployment 中的应用镜像版本时，K8s 不会一次性杀掉所有旧版 Pod，而是会“滚动地”进行：启动一个新版 Pod -&gt; 等待新版 Pod 准备就绪 -&gt; 停止一个旧版 Pod -&gt; 再启动一个新版 Pod… 如此循环，直到所有 Pod 都更新为新版本。</li>
+<li><strong>价值</strong>: 在整个更新过程中，始终有可用的 Pod 在提供服务，从而实现了<strong>零停机部署 (Zero-Downtime Deployment)</strong>。</li>
+</ul>
+</li>
+<li><strong>回滚 (Rollback)</strong>:
+<ul>
+<li><strong>原理</strong>: 如果新版本应用有问题，您可以使用一条简单的命令（<code>kubectl rollout undo deployment/&lt;deployment_name&gt;</code>）让 Deployment 滚回到上一个稳定版本。K8s 保存了部署的历史记录，使得回滚操作变得非常简单快捷。</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li><strong>配置 ConfigMap、Secret</strong></li>
+</ol>
+<p><strong>目标</strong>: 将配置与应用镜像解耦，提高应用的灵活性和安全性。</p>
+<ul>
+<li><strong>ConfigMap</strong>:
+<ul>
+<li><strong>作用</strong>: 用于存储<strong>非敏感的配置信息</strong>，如环境变量、配置文件内容等。您可以将这些配置以键值对的形式存储在 ConfigMap 中，然后通过环境变量或卷挂载的方式注入到 Pod 中。</li>
+<li><strong>价值</strong>: 修改配置时，只需更新 ConfigMap 并重启 Pod 即可，无需重新构建应用镜像。</li>
+</ul>
+</li>
+<li><strong>Secret</strong>:
+<ul>
+<li><strong>作用</strong>: 用于存储<strong>敏感信息</strong>，如数据库密码、API 密钥、TLS 证书等。它的使用方式与 ConfigMap 类似，但 K8s 会对其进行特殊处理（例如，默认以 Base64 编码存储，可以集成更安全的存储方案）。</li>
+<li><strong>核心原则</strong>: <strong>永远不要将密码等敏感信息硬编码在代码或镜像中</strong>。</li>
+</ul>
+</li>
+</ul>
+<p>4.数据持久化</p>
+<p>解决有状态应用（如数据库、消息队列）的数据持久化问题。因为 Pod 本身是“无状态”且生命周期短暂的，其内部文件系统会随 Pod 的消亡而丢失。</p>
+<p>PV、PVC 和 StorageClass，这是一个解耦的设计，非常重要。</p>
+<ul>
+<li><strong>PersistentVolume (PV)</strong>: 集群管理员准备好的<strong>存储资源</strong>。它可以是物理硬盘、NFS、云厂商的磁盘等。PV 是对存储实体的抽象。</li>
+<li><strong>PersistentVolumeClaim (PVC)</strong>: 应用（用户）对存储资源的<strong>申请</strong>。应用开发者不需要关心存储到底是什么类型、在哪里，只需要在 PVC 中声明需要多大空间、需要什么样的访问模式（例如，读写权限）。</li>
+<li><strong>绑定过程</strong>: K8s 会根据 PVC 的申请，在现有的 PV 中寻找一个满足条件的进行绑定。应用 Pod 启动时，只需引用 PVC 即可。</li>
+</ul>
+<p><strong>这个模式的好处在于：</strong> 应用开发者（关心 PVC）和集群管理员（关心 PV）的职责被分开了。</p>
+<p>后端存储类型：</p>
+<p><strong>HostPath</strong>: 将宿主机（Node）上的一个目录直接挂载给 Pod。</p>
+<ul>
+<li><strong>优点</strong>: 简单易用，无需额外配置。</li>
+<li><strong>缺点</strong>: 数据与特定节点绑定，如果 Pod 被调度到其他节点，数据就丢失了。<strong>仅适用于单节点测试环境</strong>。</li>
+</ul>
+<p><strong>NFS (Network File System)</strong>: 一种常见的网络存储。</p>
+<ul>
+<li><strong>优点</strong>: 数据不与任何特定节点绑定，多个 Pod 可以同时读写同一个存储卷（需要 <code>ReadWriteMany</code> 模式）。</li>
+<li><strong>缺点</strong>: 需要额外搭建和维护一个 NFS 服务器。</li>
+</ul>
+<p><strong>Rook/Ceph</strong>:</p>
+<ul>
+<li><strong>定位</strong>: 云原生存储解决方案。它本身就可以部署在 Kubernetes 集群内部，将各个节点的磁盘聚合成一个分布式的、高可用的存储池。</li>
+<li><strong>优点</strong>: 高性能、高可用、可扩展，与 K8s 无缝集成。</li>
+<li><strong>缺点</strong>: 配置和维护相对复杂，是更高级的存储方案。</li>
+</ul>
+<p>重要特性：</p>
+<p><strong>访问模式 (Access Modes)</strong>:</p>
+<ul>
+<li><code>ReadWriteOnce</code> (RWO): 卷只能被<strong>单个节点</strong>以读写方式挂载。注意是单个节点，不是单个 Pod。</li>
+<li><code>ReadWriteMany</code> (RWX): 卷可以被<strong>多个节点</strong>同时以读写方式挂载。像 NFS、CephFS 等网络存储才支持此模式。</li>
+<li><code>ReadOnlyMany</code> (ROX): 卷可以被多个节点以只读方式挂载。</li>
+</ul>
+<p><strong>动态供应 (Dynamic Provisioning)</strong>:</p>
+<ul>
+<li><strong>原理</strong>: 当没有现成的 PV 能满足 PVC 的申请时，如果配置了 <code>StorageClass</code>，K8s 会自动调用底层存储插件（如云厂商的磁盘服务）<strong>动态地创建一个 PV</strong> 并与 PVC 绑定。</li>
+<li><strong>价值</strong>: 实现了存储的按需自动创建，极大简化了管理员的工作。这是目前云上环境的主流使用方式。</li>
+</ul>
+<p><strong>回收策略 (Reclaim Policy)</strong>: 定义了当 PVC 被删除后，与之绑定的 PV 如何处理。常见的有 <code>Retain</code>（保留数据）、<code>Delete</code>（删除数据）和 <code>Recycle</code>（清空数据，已不推荐）。</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">mengnankkzhou</div><div class="post-copyright__author_desc">不要走捏</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://blog.tokenlen.top/2025/09/25/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/new-stack/k8s1/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://blog.tokenlen.top/2025/09/25/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/new-stack/k8s1/')">K8S</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://blog.tokenlen.top/2025/09/25/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/new-stack/k8s1/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=K8S&amp;url=https://blog.tokenlen.top/2025/09/25/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/new-stack/k8s1/&amp;pic=https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722381.jpg?_r_=5e95057f-40d5-a5da-450c-1eb8d2af5fc5" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.tokenlen.top" target="_blank">mengnankkのblog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__category-list"><a class="post-meta__box__categoryes" href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/"><span class="categoryes-punctuation"> <i class="anzhiyufont anzhiyu-icon-inbox"></i></span>技术栈<span class="categoryesPageCount">30</span></a></div><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/k8s/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>k8s<span class="tagsPageCount">1</span></a></div></div><div class="post_share"><div class="social-share" data-image="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722381.jpg?_r_=5e95057f-40d5-a5da-450c-1eb8d2af5fc5" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2025/09/25/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/k8s/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722380.jpg?_r_=76315b50-2ce2-69e0-8cd9-9cd768b87839" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">k8s八股分析</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-switch"><span class="first-comment">Twikoo</span><span id="switch-btn"></span><span class="second-comment">Valine</span></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">清风拂柳影，碧水映花香。</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">mengnankkzhou</h1><div class="author-info__desc">不要走捏</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/mengnankkkk" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/440831872" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来看我的博客鸭~</div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410021212939.jpg) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E5%8C%96"><span class="toc-number">1.1.</span> <span class="toc-text">容器化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#k8s"><span class="toc-number">1.2.</span> <span class="toc-text">k8s</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="toc-number">1.3.</span> <span class="toc-text">控制器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">核心组件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Control-Plane"><span class="toc-number">2.1.</span> <span class="toc-text">Control Plane</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#node%E7%BB%84%E4%BB%B6"><span class="toc-number">2.2.</span> <span class="toc-text">node组件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">实践</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/09/25/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/new-stack/k8s1/" title="K8S"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722381.jpg?_r_=5e95057f-40d5-a5da-450c-1eb8d2af5fc5" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="K8S"/></a><div class="content"><a class="title" href="/2025/09/25/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/new-stack/k8s1/" title="K8S">K8S</a><time datetime="2025-09-24T16:00:00.000Z" title="发表于 2025-09-25 00:00:00">2025-09-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/25/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/k8s/" title="k8s八股分析"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722380.jpg?_r_=76315b50-2ce2-69e0-8cd9-9cd768b87839" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="k8s八股分析"/></a><div class="content"><a class="title" href="/2025/09/25/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/k8s/" title="k8s八股分析">k8s八股分析</a><time datetime="2025-09-24T16:00:00.000Z" title="发表于 2025-09-25 00:00:00">2025-09-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/aicode/" title="aicode八股分析"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712181.jpg?_r_=cade125e-ce5b-12db-f615-bc66eabd9e8a" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="aicode八股分析"/></a><div class="content"><a class="title" href="/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/aicode/" title="aicode八股分析">aicode八股分析</a><time datetime="2025-09-23T16:00:00.000Z" title="发表于 2025-09-24 00:00:00">2025-09-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/cap/" title="分布式八股分析"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722380.jpg?_r_=95c2b13e-2259-0b93-60c2-1cbfab83be9f" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="分布式八股分析"/></a><div class="content"><a class="title" href="/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/cap/" title="分布式八股分析">分布式八股分析</a><time datetime="2025-09-23T16:00:00.000Z" title="发表于 2025-09-24 00:00:00">2025-09-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/changjing/" title="场景八股分析"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722380.jpg?_r_=e2809f77-d466-9abb-c4c6-637eadd58742" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="场景八股分析"/></a><div class="content"><a class="title" href="/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/changjing/" title="场景八股分析">场景八股分析</a><time datetime="2025-09-23T16:00:00.000Z" title="发表于 2025-09-24 00:00:00">2025-09-24</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="footer_custom_text"><p><a style="margin-inline:5px" target="_blank" href="https://hexo.io/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Framework-Hexo-4e88f8?style=flat&logo=hexo" 
+       title="博客框架为 Hexo" alt="Hexo">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://github.com/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Source-Github-24292f?style=flat&logo=github" 
+       title="本站项目由 GitHub 托管" alt="GitHub">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://vercel.com/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Cloud-Vercel-000000?style=flat&logo=vercel" 
+       title="使用 Vercel 部署" alt="Vercel">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://www.qlu.edu.cn/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/University-齐鲁工业大学-0056a2?style=flat&logo=university" 
+       title="齐鲁工业大学" alt="齐鲁工业大学">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://www.aliyun.com/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Cloud-阿里云-ff6a00?style=flat&logo=aliyun" 
+       title="使用阿里云服务" alt="阿里云">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://cloud.tencent.com/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Cloud-腾讯云-0a73b8?style=flat&logo=tencent-cloud" 
+       title="使用腾讯云服务" alt="腾讯云">
+</a></p>
+</div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2023 - 2025 By <a class="footer-bar-link" href="/" title="mengnankkzhou" target="_blank">mengnankkzhou</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/" title="鲁ICP备2024110758号">鲁ICP备2024110758号</a><a class="footer-bar-link" href="https://blog.tokenlen.top/rss2.xml" title="Rss">Rss</a><a class="footer-bar-link cc" href="/pravite" title="cc协议"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-by-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nc-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nd-line"></i></a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">191</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">26</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://blog.tokenlen.top/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="http://img.mengnankk.top:9001/" title="图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="图床"/><span class="back-menu-item-text">图床</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="http://img.mengnankk.top:9001/" title="mengnankk图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/13/64d8c2653332e.ico" alt="mengnankk图床"/><span class="back-menu-item-text">mengnankk图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 生活</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/Message/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 其他</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://home.tokenlen.top/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> home</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://status.mengnankk.asia/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 站点检测</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://home.tokenlen.top/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 心里话</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BF/" style="font-size: 0.88rem;">BF<sup>1</sup></a><a href="/tags/BUG/" style="font-size: 0.88rem;">BUG<sup>1</sup></a><a href="/tags/BigData/" style="font-size: 0.88rem;">BigData<sup>1</sup></a><a href="/tags/C/" style="font-size: 0.88rem;">C<sup>4</sup></a><a href="/tags/CE/" style="font-size: 0.88rem;">CE<sup>1</sup></a><a href="/tags/CSRF/" style="font-size: 0.88rem;">CSRF<sup>1</sup></a><a href="/tags/English/" style="font-size: 0.88rem;">English<sup>9</sup></a><a href="/tags/FI/" style="font-size: 0.88rem;">FI<sup>1</sup></a><a href="/tags/Github/" style="font-size: 0.88rem;">Github<sup>1</sup></a><a href="/tags/Go/" style="font-size: 0.88rem;">Go<sup>1</sup></a><a href="/tags/Hadoop/" style="font-size: 0.88rem;">Hadoop<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 0.88rem;">Linux<sup>12</sup></a><a href="/tags/XSS/" style="font-size: 0.88rem;">XSS<sup>1</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>2</sup></a><a href="/tags/football/" style="font-size: 0.88rem;">football<sup>1</sup></a><a href="/tags/html/" style="font-size: 0.88rem;">html<sup>1</sup></a><a href="/tags/java/" style="font-size: 0.88rem;">java<sup>60</sup></a><a href="/tags/juc/" style="font-size: 0.88rem;">juc<sup>2</sup></a><a href="/tags/jvm/" style="font-size: 0.88rem;">jvm<sup>2</sup></a><a href="/tags/markdown/" style="font-size: 0.88rem;">markdown<sup>1</sup></a><a href="/tags/mysql/" style="font-size: 0.88rem;">mysql<sup>17</sup></a><a href="/tags/net/" style="font-size: 0.88rem;">net<sup>7</sup></a><a href="/tags/paper/" style="font-size: 0.88rem;">paper<sup>1</sup></a><a href="/tags/php/" style="font-size: 0.88rem;">php<sup>5</sup></a><a href="/tags/pip/" style="font-size: 0.88rem;">pip<sup>1</sup></a><a href="/tags/python/" style="font-size: 0.88rem;">python<sup>3</sup></a><a href="/tags/redis/" style="font-size: 0.88rem;">redis<sup>4</sup></a><a href="/tags/shell/" style="font-size: 0.88rem;">shell<sup>4</sup></a><a href="/tags/spring-boot/" style="font-size: 0.88rem;">spring boot<sup>14</sup></a><a href="/tags/sql/" style="font-size: 0.88rem;">sql<sup>5</sup></a><a href="/tags/web/" style="font-size: 0.88rem;">web<sup>3</sup></a><a href="/tags/%E5%8E%8B%E6%B5%8B/" style="font-size: 0.88rem;">压测<sup>1</sup></a><a href="/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91/" style="font-size: 0.88rem;">数字逻辑<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86/" style="font-size: 0.88rem;">数据库原理<sup>3</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 0.88rem;">数据结构<sup>20</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 0.88rem;">正则表达式<sup>2</sup></a><a href="/tags/%E6%AF%9B%E9%80%89/" style="font-size: 0.88rem;">毛选<sup>1</sup></a><a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" style="font-size: 0.88rem;">汇编语言<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>9</sup></a><a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 0.88rem;">面试<sup>46</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><a id="switch-commentBarrage" href="javascript:anzhiyu.switchCommentBarrage();" title="开关弹幕"><i class="anzhiyufont anzhiyu-icon-danmu"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.cbd.int/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2023 By 安知鱼 V1.6.12",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 mengnankkzhou 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.cbd.int/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://comment.tokenlen.top/',
+      region: '',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, "siu~~~~~"))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.25/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://comment.tokenlen.top/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '3ZpuzQHHKWfFH59QFYmcuCvr-gzGzoHsz',
+      appKey: '8DIvljObQp853ueQMZzpb9Gx',
+      avatar: 'mp',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Twikoo' === 'Valine' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://comment.tokenlen.top/',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.25/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
