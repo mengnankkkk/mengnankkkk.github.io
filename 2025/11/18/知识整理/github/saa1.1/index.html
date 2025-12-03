@@ -1,0 +1,814 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>SAA1.1迭代 | mengnankkのblog</title><meta name="keywords" content="项目"><meta name="author" content="mengnankkzhou"><meta name="copyright" content="mengnankkzhou"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="SAA1.1迭代"><meta name="application-name" content="SAA1.1迭代"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="SAA1.1迭代"><meta property="og:url" content="https://blog.tokenlen.top/2025/11/18/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/github/saa1.1/index.html"><meta property="og:site_name" content="mengnankkのblog"><meta property="og:description" content="架构设计 Spring AI Alibaba 项目在架构上包含三个清晰的层次：  Agent Framework：以 ReactAgent 设计理念为核心的 Agent 开发框架，内置了自动上下文工程和 Human In The Loop 等高级能力。 Graph：一个更底层级别的工作流和多代理协调"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712178.jpg?_r_=715104a8-a971-d710-ae1c-249531261b59"><meta property="article:author" content="mengnankkzhou"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712178.jpg?_r_=715104a8-a971-d710-ae1c-249531261b59"><meta name="description" content="架构设计 Spring AI Alibaba 项目在架构上包含三个清晰的层次：  Agent Framework：以 ReactAgent 设计理念为核心的 Agent 开发框架，内置了自动上下文工程和 Human In The Loop 等高级能力。 Graph：一个更底层级别的工作流和多代理协调"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://blog.tokenlen.top/2025/11/18/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/github/saa1.1/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走啊，那种事情不要啊","backTitle":"♪(^∇^*)欢迎回家！！！！"},
+  LA51: undefined,
+  greetingBox: {"enable":"ture","default":"晚上好👋","list":[{"greeting":"晚安😴","startTime":0,"endTime":5},{"greeting":"早上好鸭👋, 祝你一天好心情！","startTime":6,"endTime":9},{"greeting":"上午好👋, 状态很好，鼓励一下～","startTime":10,"endTime":10},{"greeting":"11点多啦, 在坚持一下就吃饭啦～","startTime":11,"endTime":11},{"greeting":"午安👋, 宝贝","startTime":12,"endTime":14},{"greeting":"🌈充实的一天辛苦啦！","startTime":14,"endTime":18},{"greeting":"19点喽, 奖励一顿丰盛的大餐吧🍔。","startTime":19,"endTime":19},{"greeting":"晚上好👋, 在属于自己的时间好好放松😌~","startTime":20,"endTime":24}]},
+  twikooEnvId: 'https://comment.tokenlen.top/',
+  commentBarrageConfig:{"enable":true,"maxBarrage":1,"barrageTime":4000,"accessToken":"\tbd9428de12b54b96b2f1b4e69aeee81f","mailMd5":"F37442226DA71492"},
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    simplehomepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: mengnankkzhou","link":"链接: ","source":"来源: mengnankkのblog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'mengnankkのblog',
+  title: 'SAA1.1迭代',
+  postAI: '',
+  pageFillDescription: '架构设计, 设计理念, ReactAgent, Graph, Context Engineering, 人工介入, 消息压缩, 规划, 模型调用限制, 工具重试, 工具选择器, 上下文编辑, hookampampInterceptors, Tool, Memory, 多智能体协作架构设计项目在架构上包含三个清晰的层次以设计理念为核心的开发框架内置了自动上下文工程和等高级能力一个更底层级别的工作流和多代理协调框架是的底层运行时基座用于实现复杂的工作流编排同时对用户开放基于框架的底层原子抽象提供了模型工具消息向量存储等构建应用的基础设计理念是版本的核心组件之一它基于范式这意味着不仅仅是调用它还可以在一个循环中运行通过思考来分析任务决定使用哪个工具然后观察工具结果并迭代此过程直到任务完成就是我们先去进行一个思考然后再去进行工具的调用根据结果再去进行思考调用这里面是一个的过程然后最终完成一个自思考的结果相比工作流的那种流式编程思考决策更加完善应对出现错误的情况更加完善的组成模型的大脑即推理引擎如各个模型工具赋予执行操作的能力有一部分内置的和你自己去设计的搜索结果将其注册为工具回调搜索信息的工具系统提示通过或参数塑造的角色和行为方式这个感觉是比较重要的比如是的底层运行时基座是一个低级工作流和多智能体编排框架它通过状态节点和边三个核心概念使开发者能够实现复杂的应用程序编排类似与图数据库里面的设计这个是之前开发的重点偏底层一点是一个工作流编排的实现然后里面的上下文是通过实现的我们通过的进行上下文的获取内置多个流程顺序执行按预定义顺序依次执行多个每个的输出通过指定会传递给下一个适用于需要按步骤顺序处理的任务如写作评审发布的流程并行执行将相同的输入同时发送给所有子并行处理然后使用合并结果适用于需要同时执行多个独立任务的场景如同时生成散文诗歌和总结等智能路由使用根据用户输入和子的智能地选择一个最合适的子来处理请求适用于需要根据上下文动态选择专家的场景如根据问题类型自动路由到编程专家或写作专家构建最大的难点是使其可靠失败通常不是因为能力不足而是因为没有向传递正确的上下文然后无法知道我门具体是干了什么然后导致输出的结果不理想但是的上下文又是有限的我们不可能将所有的消息都发送给他所以上下文工程就是很必须的将上下文分为三类并提供了精细化的控制机制上下文类型你控制的内容拦截与处理机制模型上下文指令消息历史可用工具响应格式等工具上下文在工具中可以访问和修改的状态如短期记忆长期生命周期上下文模型和工具调用之间发生的事如摘要护栏版本提供了一些常用的默认和实现人工介入规划模型调用限制工具重试工具选择器工具模拟器上下文编辑人工介入在生产环境中高风险操作如删除数据库发送邮件需要人工监督完美解决了这个问题它允许暂停执行等待人工决策批准编辑或拒绝后再继续配置在上配置指定需要审批的工具如此功能必须配置检查点执行需要审批必须配置触发中断当尝试调用时执行会暂停第一次调用会返回一个中断元数据删除旧记录此时是人工决策与恢复您的应用程序向用户展示中断信息用户做出决策例如批准后您构建一个包含该决策的反馈并再次调用以恢复执行假设用户批准了必须使用相同的第二次调用以恢复执行消息压缩当对话历史接近限制时自动调用压缩总结旧消息防止上下文溢出这是处理长期对话和多轮交互的关键能力可以确保在保持对话上下文的同时不会因为消息历史过长而超出模型的上下文窗口限制使用于超出上下文窗口的长期对话需要大量历史记录的会话需要保留完整对话实现的上下文的应用程序创建消息压缩用于生成摘要的可以使用更便宜的模型触发摘要之前的最大数摘要后保留的最新消息数使用需要配置来持久化状态参数选项用于生成摘要的可以使用更便宜的模型来降低成本触发摘要之前的最大数当消息历史达到此阈值时自动触发压缩摘要后保留的最新消息数确保最近的对话内容完整保留规划在执行工具之前强制执行一个规划步骤以概述将要采取的步骤这对于需要执行复杂多步骤任务的特别有用可以提高执行透明度并便于调试错误就是这个一般都是使用思考模型来的或者是我们去调用思考的迭代的去执行然后去写入里面需要执行复杂多步骤任务的通过在执行前显示的计划来提高透明度通过检查建议的计划来调试错误模型调用限制限制模型调用次数以防止无限循环或过度成本这是生产环境中成本控制的重要手段适用场景防止失控的进行太多调用在生产部署中强制执行成本控制在特定调用预算内测试行为限制模型调用次数为次工具重试自动重试失败的工具调用具有可配置的指数退避策略这对于处理外部调用中的瞬态故障特别有用可以提高依赖网络的工具的可靠性适用场景处理外部调用中的瞬态故障提高依赖网络的工具的可靠性构建优雅处理临时错误的弹性工具选择器使用一个来决定在多个可用工具之间选择哪个工具当多个工具可以实现相似目标时可以根据细微的上下文差异进行智能选择适用场景当多个工具可以实现相似目标时需要根据细微的上下文差异进行工具选择动态选择最适合特定输入的工具上下文编辑在将上下文发送给之前对其进行修改以注入删除或修改信息这是上下文工程的核心能力之一可以动态调整传递给模型的信息适用场景向提供额外的上下文或指令从对话历史中删除不相关或冗余的信息动态修改上下文以引导的行为当上下文超过时触发至少清理钩子和拦截器是实现上下文工程的核心机制它们允许您在执行的每一步进行监控修改控制和强制执行比如监控通过日志分析和调试跟踪行为修改转换提示工具选择和输出格式控制添加重试回退和提前终止逻辑强制执行应用速率限制护栏和检测我们的好多功能都是基于和实现的在或模型生命周期的特定节点如插入自定义逻辑如日志记录或消息修剪包裹模型或工具的调用允许您拦截和修改请求响应或实现重试缓存安全护栏等比如内容审核的拦截器敏感词敏感词敏感词检查输入检测到不适当的内容请修改您的输入执行模型调用检查输出清理输出已过滤是调用来执行操作的组件它们通过定义良好的输入和输出让模型与外部世界交互从而扩展模型的能力封装了一个可调用的函数及其输入模式我们可以把工具定义传递给兼容的允许模型决定是否调用工具以及使用什么参数在这些场景中工具调用使模型能够生成符合指定输入模式的请求工具定义你可以通过编程方式构建将函数类型或转换为工具工具的名称模型使用此名称在调用时识别工具因此在同一上下文中不允许有两个同名的工具对于特定的聊天请求名称在模型可用的所有工具中必须是唯一的必需表示工具方法的函数对象或必需工具的描述模型可以使用它来了解何时以及如何调用工具如果未提供将使用方法名称作为工具描述但是强烈建议提供详细描述因为这对于模型理解工具的目的和使用方式至关重要如果未提供良好的描述可能导致模型在应该使用工具时不使用或者使用不正确函数输入的类型必需工具输入参数的如果未提供将根据自动生成你可以使用注解提供有关输入参数的附加信息例如描述或参数是必需还是可选默认情况下所有输入参数都被视为必需定义附加设置的实例例如是否应将结果直接返回给客户端以及要使用的结果转换器你可以使用类构建它用于将工具调用结果转换为字符串对象以发送回模型的实例如果未提供将使用默认转换器函数的输入和输出可以是或输入和输出必须是可序列化的因为结果将被序列化并发送回模型函数以及输入和输出类型必须是公共的重要提示某些类型不受支持有关更多详细信息请参阅函数工具限制然后工具调用的时候直接使用即可将短期记忆作为状态的一部分进行管理通过将这些存储在的状态中可以访问给定对话的完整上下文同时保持不同对话之间的分离状态使用持久化到数据库或内存以便可以随时恢复线程短期记忆在调用或完成步骤如工具调用时更新并在每个步骤开始时读取状态其实就是我们的用它的来存储我们的一部分短期记忆保留所有对话历史是实现短期记忆最常见的形式但较长的对话对历史可能会导致大模型上下文窗口超限导致上下文丢失或报错即使你在使用的大模型上下文长度足够大大多数模型在处理较长上下文时的表现仍然很差因为很多模型会被过时或偏离主题的内容分散注意力同时过长的上下文还会带来响应时间变长成本增加等问题在中使用记录和传递上下文其中包括指令和输入在中消息在用户输入和模型响应之间交替导致消息列表随着时间的推移变得越来越长由于上下文窗口有限许多应用程序可以从使用技术来移除或忘记过时信息中受益即上下文工程启用记忆要启用会话级持久化您只需在创建时指定一个保存器配置内存存储使用维护对话上下文我叫张三我叫什么名字会回答你叫张三在生产环境中您可以轻松换成或等持久化存储多智能体协作当单个难以处理复杂任务时多智能体架构允许您将任务分解为多个协同工作的专业化支持两种核心模式模式一工具调用这是一种集中式控制流一个控制器将其他子作为工具来调用子独立执行任务并返回结果但不直接与用户对话创建子作家擅长写作可以写文章创建主控制器使用写作工具来完成用户的文章创作请求将子封装为工具帮我写一篇关于西湖的散文工作流编排这是一种去中心化控制流控制权从一个交接给下一个框架内置了多种流程型按预定义顺序依次执行每个的输出通过指定会传递给下一个将相同的输入同时发送给所有子并行处理然后使用合并结果使用根据用户输入和子的智能地选择一个最合适的子来处理请求在路由模式中使用大语言模型动态决定将请求路由到哪个子这种模式非常适合需要智能选择不同专家的场景会根据用户输入和子的智能地选择最合适的来处理请求创建多个专家擅长创作各类文章包括散文诗歌等文学作品你是一个知名的作家擅长写作和创作请根据用户的提问进行回答专门处理编程相关问题包括代码编写和调试你是一个资深的软件工程师擅长编写和调试代码创建路由根据用户需求智能路由到合适的专家路由需要一个来进行智能选择使用会自动选择最合适的会路由到帮我写一篇关于春天的散文会路由到帮我写一个排序算法在复杂的工作流场景中可以将作为集成到中实现更强大的组合能力作为可以利用其推理和工具调用能力处理需要多步骤推理的任务可以通过方法转换为可以嵌入到父中的创建专门的数据分析你是一个数据分析专家负责分析数据并提供洞察创建报告生成你是一个报告生成专家负责将分析结果转化为专业报告构建包含的工作流将作为添加是否传递父图的消息历史是否返回推理过程输出键名定义流程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-11-20 21:24:31',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/rss2.xml" title="mengnankkのblog" type="application/rss+xml">
+</head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://blog.tokenlen.top/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="http://img.mengnankk.top:9001/" title="图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="图床"/><span class="back-menu-item-text">图床</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="http://img.mengnankk.top:9001/" title="mengnankk图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/13/64d8c2653332e.ico" alt="mengnankk图床"/><span class="back-menu-item-text">mengnankk图床</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">mengnankkのblog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 生活</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/Message/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 其他</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://home.tokenlen.top/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> home</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://status.mengnankk.asia/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 站点检测</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://home.tokenlen.top/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 心里话</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://imgbed.mengnankk.asia/202407021650088.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://imgbed.mengnankk.asia/202407021650088.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BF/" style="font-size: 1.05rem;">BF<sup>1</sup></a><a href="/tags/BUG/" style="font-size: 1.05rem;">BUG<sup>1</sup></a><a href="/tags/BigData/" style="font-size: 1.05rem;">BigData<sup>1</sup></a><a href="/tags/C/" style="font-size: 1.05rem;">C<sup>4</sup></a><a href="/tags/CE/" style="font-size: 1.05rem;">CE<sup>1</sup></a><a href="/tags/CSRF/" style="font-size: 1.05rem;">CSRF<sup>1</sup></a><a href="/tags/English/" style="font-size: 1.05rem;">English<sup>9</sup></a><a href="/tags/FI/" style="font-size: 1.05rem;">FI<sup>1</sup></a><a href="/tags/Github/" style="font-size: 1.05rem;">Github<sup>1</sup></a><a href="/tags/Go/" style="font-size: 1.05rem;">Go<sup>1</sup></a><a href="/tags/Hadoop/" style="font-size: 1.05rem;">Hadoop<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 1.05rem;">Linux<sup>12</sup></a><a href="/tags/XSS/" style="font-size: 1.05rem;">XSS<sup>1</sup></a><a href="/tags/css/" style="font-size: 1.05rem;">css<sup>2</sup></a><a href="/tags/football/" style="font-size: 1.05rem;">football<sup>1</sup></a><a href="/tags/html/" style="font-size: 1.05rem;">html<sup>1</sup></a><a href="/tags/java/" style="font-size: 1.05rem;">java<sup>61</sup></a><a href="/tags/juc/" style="font-size: 1.05rem;">juc<sup>2</sup></a><a href="/tags/markdown/" style="font-size: 1.05rem;">markdown<sup>1</sup></a><a href="/tags/mysql/" style="font-size: 1.05rem;">mysql<sup>17</sup></a><a href="/tags/net/" style="font-size: 1.05rem;">net<sup>7</sup></a><a href="/tags/paper/" style="font-size: 1.05rem;">paper<sup>1</sup></a><a href="/tags/php/" style="font-size: 1.05rem;">php<sup>5</sup></a><a href="/tags/pip/" style="font-size: 1.05rem;">pip<sup>1</sup></a><a href="/tags/python/" style="font-size: 1.05rem;">python<sup>3</sup></a><a href="/tags/redis/" style="font-size: 1.05rem;">redis<sup>4</sup></a><a href="/tags/shell/" style="font-size: 1.05rem;">shell<sup>4</sup></a><a href="/tags/spring-boot/" style="font-size: 1.05rem;">spring boot<sup>14</sup></a><a href="/tags/sql/" style="font-size: 1.05rem;">sql<sup>5</sup></a><a href="/tags/web/" style="font-size: 1.05rem;">web<sup>3</sup></a><a href="/tags/%E5%8E%8B%E6%B5%8B/" style="font-size: 1.05rem;">压测<sup>1</sup></a><a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 1.05rem;">操作系统<sup>2</sup></a><a href="/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91/" style="font-size: 1.05rem;">数字逻辑<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86/" style="font-size: 1.05rem;">数据库原理<sup>3</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.05rem;">数据结构<sup>20</sup></a><a href="/tags/%E6%AF%9B%E9%80%89/" style="font-size: 1.05rem;">毛选<sup>1</sup></a><a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" style="font-size: 1.05rem;">汇编语言<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>9</sup></a><a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 1.05rem;">面试<sup>46</sup></a><a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 1.05rem;">项目<sup>2</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">26</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">9</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">15</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">16</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">五月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">22</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/04/"><span class="card-archive-list-date">四月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">7</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/github/" itemprop="url">github</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E9%A1%B9%E7%9B%AE/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>项目</span></a></span></div></div><h1 class="post-title" itemprop="name headline">SAA1.1迭代</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-11-17T16:00:00.000Z" title="发表于 2025-11-18 00:00:00">2025-11-18</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-11-20T13:24:31.867Z" title="更新于 2025-11-20 21:24:31">2025-11-20</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">5.1k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>18分钟</span></span><span class="post-meta-separator"></span><span id="" data-flag-title="SAA1.1迭代"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="twikoo_visitors" title="访问量"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为济南"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>济南</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712178.jpg?_r_=715104a8-a971-d710-ae1c-249531261b59"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://blog.tokenlen.top/2025/11/18/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/github/saa1.1/"><header><a class="post-meta-categories" href="/categories/github/" itemprop="url">github</a><a href="/tags/%E9%A1%B9%E7%9B%AE/" tabindex="-1" itemprop="url">项目</a><h1 id="CrawlerTitle" itemprop="name headline">SAA1.1迭代</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">mengnankkzhou</span><time itemprop="dateCreated datePublished" datetime="2025-11-17T16:00:00.000Z" title="发表于 2025-11-18 00:00:00">2025-11-18</time><time itemprop="dateCreated datePublished" datetime="2025-11-20T13:24:31.867Z" title="更新于 2025-11-20 21:24:31">2025-11-20</time></header><h1>架构设计</h1>
+<p>Spring AI Alibaba 项目在架构上包含三个清晰的层次：</p>
+<ol>
+<li><strong>Agent Framework</strong>：以 <code>ReactAgent</code> 设计理念为核心的 Agent 开发框架，内置了自动上下文工程和 Human In The Loop 等高级能力。</li>
+<li><strong>Graph</strong>：一个更底层级别的工作流和多代理协调框架，是 Agent Framework 的底层运行时基座，用于实现复杂的工作流编排，同时对用户开放 API。</li>
+<li>Augmented LLM**：基于 Spring AI 框架的底层原子抽象，提供了模型、工具、消息、向量存储等构建 LLM 应用的基础。</li>
+</ol>
+<h1>设计理念</h1>
+<h2 id="ReactAgent">ReactAgent</h2>
+<p><code>ReactAgent</code>是 1.1 版本的核心组件之一，它基于 <strong>ReAct（Reasoning + Acting）</strong> 范式。这意味着 Agent 不仅仅是调用 LLM，它还可以在一个循环中运行，通过“思考（Reasoning）”来分析任务、决定使用哪个“工具（Acting）”，然后“观察（Observation）”工具结果，并迭代此过程，直到任务完成。</p>
+<p>就是我们先去进行一个思考，然后再去进行工具的调用，根据结果再去进行思考调用，这里面是一个loop的过程，然后最终完成一个自思考的结果。相比工作流的那种流式编程，ReActAgent思考决策更加完善，应对出现错误的情况更加完善。</p>
+<p>ReactAgent的组成</p>
+<ul>
+<li><strong>Model (模型)</strong>：Agent 的“大脑”，即 LLM 推理引擎，如 <code>DashScopeChatModel</code>。各个模型</li>
+<li><strong>Tools (工具)</strong>：赋予 Agent 执行操作的能力。有一部分内置的和你自己去设计的</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SearchTool</span> <span class="keyword">implements</span> <span class="title class_">BiFunction</span>&lt;String, ToolContext, String&gt; &#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> String <span class="title function_">apply</span><span class="params">(String query, ToolContext toolContext)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;搜索结果：&quot;</span> + query;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将其注册为工具回调</span></span><br><span class="line"><span class="type">ToolCallback</span> <span class="variable">searchTool</span> <span class="operator">=</span> FunctionToolCallback</span><br><span class="line">  .builder(<span class="string">&quot;search&quot;</span>, <span class="keyword">new</span> <span class="title class_">SearchTool</span>())</span><br><span class="line">  .description(<span class="string">&quot;搜索信息的工具&quot;</span>)</span><br><span class="line">  .build();</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><strong>System Prompt (系统提示)</strong>：通过 <code>systemPrompt</code> 或 <code>instruction</code> 参数，塑造 Agent 的角色和行为方式。这个感觉是比较重要的</p>
+<p>比如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">flux.doOnNext(output -&gt; &#123;</span><br><span class="line">			<span class="keyword">if</span> (output <span class="keyword">instanceof</span> StreamingOutput&lt;?&gt; streamingOutput)&#123;</span><br><span class="line">				assertNotNull(streamingOutput, <span class="string">&quot;NodeOutput should not be null&quot;</span>);</span><br><span class="line">				assertNotNull(streamingOutput.tokenUsage(), <span class="string">&quot;TokenUsage should not be null&quot;</span>);</span><br><span class="line">				assertNotNull(streamingOutput.agent(), <span class="string">&quot;Agent should not be null&quot;</span>);</span><br><span class="line">				assertEquals(<span class="string">&quot;test_agent&quot;</span>, streamingOutput.agent(), <span class="string">&quot;Agent name should match&quot;</span>);</span><br><span class="line"></span><br><span class="line">				System.out.println(<span class="string">&quot;=== NodeOutput ===&quot;</span>);</span><br><span class="line">				System.out.println(<span class="string">&quot;Agent: &quot;</span> + streamingOutput.agent());</span><br><span class="line">				System.out.println(<span class="string">&quot;TokenUsage: &quot;</span> + streamingOutput.tokenUsage());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;).blockLast();</span><br></pre></td></tr></table></figure>
+<h2 id="Graph">Graph</h2>
+</li>
+</ul>
+<p>Graph 是 Agent Framework 的底层运行时基座，是一个低级工作流和多智能体编排框架。它通过 <strong>State（状态）</strong>、<strong>Node（节点）</strong> 和 <strong>Edge（边）</strong> 三个核心概念，使开发者能够实现复杂的应用程序编排。</p>
+<p>类似与图数据库里面的设计，这个是之前SAA开发的重点，偏底层一点。是一个工作流编排的实现。然后里面的上下文是通过OverAllState实现的，我们通过map的put/get进行上下文的获取</p>
+<p>内置多个流程agent：</p>
+<p><strong>SequentialAgent（顺序执行）</strong>：按预定义顺序依次执行多个 Agent (A -&gt; B -&gt; C)。每个 Agent 的输出（通过 <code>outputKey</code> 指定）会传递给下一个 Agent，适用于需要按步骤顺序处理的任务，如&quot;写作 -&gt; 评审 -&gt; 发布&quot;的流程。</p>
+<p>• <strong>ParallelAgent（并行执行）</strong>：将相同的输入同时发送给所有子 Agent 并行处理，然后使用 <code>MergeStrategy</code> 合并结果。适用于需要同时执行多个独立任务的场景，如同时生成散文、诗歌和总结等。</p>
+<p>• <strong>LlmRoutingAgent（智能路由）</strong>：使用 LLM 根据用户输入和子 Agent 的 <code>description</code>，智能地选择一个最合适的子 Agent 来处理请求。适用于需要根据上下文动态选择专家 Agent 的场景，如根据问题类型自动路由到编程专家或写作专家。</p>
+<h2 id="Context-Engineering">Context Engineering</h2>
+<p>构建 Agent 最大的难点是使其可靠。Agent 失败通常不是因为 LLM 能力不足，而是因为<strong>没有向 LLM 传递“正确”的上下文</strong>。</p>
+<p>然后AI无法知道我门具体是干了什么？然后导致输出的结果不理想</p>
+<p>但是Ai的上下文又是有限的，我们不可能将所有的消息都发送给他，所以上下文工程就是很必须的</p>
+<p>Spring AI Alibaba 将上下文分为三类，并提供了精细化的控制机制：</p>
+<table>
+<thead>
+<tr>
+<th><strong>上下文类型</strong></th>
+<th><strong>你控制的内容</strong></th>
+<th><strong>拦截与处理机制</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>模型上下文</strong></td>
+<td>指令、消息历史、可用工具、响应格式等</td>
+<td>Interceptor, Hook</td>
+</tr>
+<tr>
+<td><strong>工具上下文</strong></td>
+<td>在工具中可以访问和修改的状态（如短期记忆、长期）</td>
+<td>Interceptor</td>
+</tr>
+<tr>
+<td><strong>生命周期上下文</strong></td>
+<td>模型和工具调用之间发生的事（如摘要、护栏）</td>
+<td>Hook</td>
+</tr>
+</tbody>
+</table>
+<p>Spring AI Alibaba 1.1 版本提供了一些常用的默认 Hook 和 Interceptor 实现：</p>
+<ol>
+<li>人工介入 (Human-in-the-Loop)</li>
+<li>Planning（规划）</li>
+<li>模型调用限制（Model Call Limit）</li>
+<li>工具重试（Tool Retry）</li>
+<li>LLM Tool Selector（LLM 工具选择器）</li>
+<li>LLM Tool Emulator（LLM 工具模拟器）</li>
+<li>Context Editing（上下文编辑）</li>
+</ol>
+<h3 id="人工介入">人工介入</h3>
+<p>在生产环境中，高风险操作（如删除数据库、发送邮件）需要人工监督。<code>HumanInTheLoopHook</code> (HITL) 完美解决了这个问题。</p>
+<p>它允许 Agent 暂停执行，等待人工决策（批准、编辑或拒绝）后再继续。</p>
+<p><strong>配置 Hook</strong>：在 Agent 上配置 <code>HumanInTheLoopHook</code>，指定需要审批的工具（如 <code>execute_sql</code>）。<strong>此功能必须配置 *<em><code>saver</code>*</em> (检查点)</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">HumanInTheLoopHook humanReviewHook = HumanInTheLoopHook.builder()</span><br><span class="line">    .approvalOn(&quot;execute_sql&quot;, ToolConfig.builder().description(&quot;SQL执行需要审批&quot;).build())</span><br><span class="line">    .build();</span><br><span class="line"></span><br><span class="line">ReactAgent agent = ReactAgent.builder()</span><br><span class="line">    .hooks(humanReviewHook)</span><br><span class="line">    .saver(new MemorySaver()) // 必须配置 Saver</span><br><span class="line">    .tools(executeSqlTool)</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
+<p><strong>触发中断</strong>：当 Agent 尝试调用 <code>execute_sql</code> 时，执行会暂停。第一次 <code>invokeAndGetOutput</code> 调用会返回一个 <code>InterruptionMetadata</code> (中断元数据)。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String threadId = &quot;user-123&quot;;</span><br><span class="line">RunnableConfig config = RunnableConfig.builder().threadId(threadId).build();</span><br><span class="line">Optional&lt;NodeOutput&gt; result = agent.invokeAndGetOutput(&quot;删除旧记录&quot;, config);</span><br><span class="line">// 此时 result.get() 是 InterruptionMetadata</span><br></pre></td></tr></table></figure>
+<p><strong>人工决策与恢复</strong>：您的应用程序向用户展示中断信息。用户做出决策（例如“批准”）后，您构建一个包含该决策的反馈，并再次调用 Agent 以恢复执行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 假设用户批准了</span><br><span class="line">InterruptionMetadata approvalMetadata = buildApprovalFeedback(interruptionMetadata);</span><br><span class="line"></span><br><span class="line">RunnableConfig resumeConfig = RunnableConfig.builder()</span><br><span class="line">    .threadId(threadId) // 必须使用相同的 threadId</span><br><span class="line">    .addMetadata(RunnableConfig.HUMAN_FEEDBACK_METADATA_KEY, approvalMetadata)</span><br><span class="line">    .build();</span><br><span class="line"></span><br><span class="line">// 第二次调用以恢复执行</span><br><span class="line">Optional&lt;NodeOutput&gt; finalResult = agent.invokeAndGetOutput(&quot;&quot;, resumeConfig);</span><br></pre></td></tr></table></figure>
+<h3 id="消息压缩">消息压缩</h3>
+<p>当对话历史接近 Token 限制时，自动调用 LLM 压缩（总结）旧消息，防止上下文溢出。这是处理长期对话和多轮交互的关键能力，可以确保 Agent 在保持对话上下文的同时，不会因为消息历史过长而超出模型的上下文窗口限制。</p>
+<p>使用于：</p>
+<ul>
+<li>超出上下文窗口的长期对话</li>
+<li>需要大量历史记录的会话</li>
+<li>需要保留完整对话实现的上下文的应用程序</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 创建消息压缩 Hook</span><br><span class="line">SummarizationHook summarizationHook = SummarizationHook.builder()</span><br><span class="line">    .model(chatModel)  // 用于生成摘要的 ChatModel（可以使用更便宜的模型）</span><br><span class="line">    .maxTokensBeforeSummary(4000)  // 触发摘要之前的最大 token 数</span><br><span class="line">    .messagesToKeep(20)  // 摘要后保留的最新消息数</span><br><span class="line">    .build();</span><br><span class="line"></span><br><span class="line">// 使用</span><br><span class="line">ReactAgent agent = ReactAgent.builder()</span><br><span class="line">    .name(&quot;my_agent&quot;)</span><br><span class="line">    .model(chatModel)</span><br><span class="line">    .hooks(summarizationHook)</span><br><span class="line">    .saver(new MemorySaver())  // 需要配置 Saver 来持久化状态</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
+<p>参数选项：</p>
+<p><code>model</code>：用于生成摘要的 ChatModel（可以使用更便宜的模型来降低成本）</p>
+<p><code>maxTokensBeforeSummary</code>：触发摘要之前的最大 token 数，当消息历史达到此阈值时自动触发压缩</p>
+<p><code>messagesToKeep</code>：摘要后保留的最新消息数，确保最近的对话内容完整保留</p>
+<h3 id="规划">规划</h3>
+<p>在执行工具之前强制执行一个规划步骤，以概述 Agent 将要采取的步骤。这对于需要执行复杂、多步骤任务的 Agent 特别有用，可以提高执行透明度，并便于调试错误。</p>
+<p>就是这个一般都是使用思考模型来的，或者是我们去调用思考的迭代的mcp去执行，然后去写入Todolist里面</p>
+<p>需要执行复杂、多步骤任务的 Agent</p>
+<p>通过在执行前显示 Agent 的计划来提高透明度</p>
+<p>通过检查建议的计划来调试错误</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ReactAgent agent = ReactAgent.builder()</span><br><span class="line">    .name(&quot;planning_agent&quot;)</span><br><span class="line">    .model(chatModel)</span><br><span class="line">    .tools(myTool)</span><br><span class="line">    .interceptors(TodoListInterceptor.builder().build())</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
+<h3 id="模型调用限制">模型调用限制</h3>
+<p>限制模型调用次数以防止无限循环或过度成本。这是生产环境中成本控制的重要手段。</p>
+<p><strong>适用场景</strong>：</p>
+<ul>
+<li>防止失控的 Agent 进行太多 API 调用</li>
+<li>在生产部署中强制执行成本控制</li>
+<li>在特定调用预算内测试 Agent 行为</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ReactAgent agent = ReactAgent.builder()</span><br><span class="line">    .name(&quot;my_agent&quot;)</span><br><span class="line">    .model(chatModel)</span><br><span class="line">    .hooks(ModelCallLimitHook.builder().runLimit(5).build())  // 限制模型调用次数为5次</span><br><span class="line">    .saver(new MemorySaver())</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
+<h3 id="工具重试">工具重试</h3>
+<p>自动重试失败的工具调用，具有可配置的指数退避策略。这对于处理外部 API 调用中的瞬态故障特别有用，可以提高依赖网络的工具的可靠性。</p>
+<p><strong>适用场景</strong>：</p>
+<ul>
+<li>处理外部 API 调用中的瞬态故障</li>
+<li>提高依赖网络的工具的可靠性</li>
+<li>构建优雅处理临时错误的弹性 Agent</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ReactAgent agent = ReactAgent.builder()</span><br><span class="line">    .name(&quot;resilient_agent&quot;)</span><br><span class="line">    .model(chatModel)</span><br><span class="line">    .tools(searchTool, databaseTool)</span><br><span class="line">    .interceptors(ToolRetryInterceptor.builder()</span><br><span class="line">        .maxRetries(2)</span><br><span class="line">        .onFailure(ToolRetryInterceptor.OnFailureBehavior.RETURN_MESSAGE)</span><br><span class="line">        .build())</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
+<h3 id="工具选择器">工具选择器</h3>
+<p>使用一个 LLM 来决定在多个可用工具之间选择哪个工具。当多个工具可以实现相似目标时，可以根据细微的上下文差异进行智能选择。</p>
+<p><strong>适用场景</strong>：</p>
+<ul>
+<li>当多个工具可以实现相似目标时</li>
+<li>需要根据细微的上下文差异进行工具选择</li>
+<li>动态选择最适合特定输入的工具</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ReactAgent agent = ReactAgent.builder()</span><br><span class="line">    .name(&quot;smart_selector_agent&quot;)</span><br><span class="line">    .model(chatModel)</span><br><span class="line">    .tools(tool1, tool2)</span><br><span class="line">    .interceptors(ToolSelectionInterceptor.builder().build())</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
+<h3 id="上下文编辑">上下文编辑</h3>
+<p>在将上下文发送给 LLM 之前对其进行修改，以注入、删除或修改信息。这是上下文工程的核心能力之一，可以动态调整传递给模型的信息。</p>
+<p><strong>适用场景</strong>：</p>
+<ul>
+<li>向 LLM 提供额外的上下文或指令</li>
+<li>从对话历史中删除不相关或冗余的信息</li>
+<li>动态修改上下文以引导 Agent 的行为</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ReactAgent agent = ReactAgent.builder()</span><br><span class="line">    .name(&quot;context_aware_agent&quot;)</span><br><span class="line">    .model(chatModel)</span><br><span class="line">    .interceptors(ContextEditingInterceptor.builder()</span><br><span class="line">        .trigger(120000)      // 当上下文超过120000 tokens时触发</span><br><span class="line">        .clearAtLeast(60000)  // 至少清理60000 tokens</span><br><span class="line">        .build())</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
+<h2 id="hook-Interceptors">hook&amp;&amp;Interceptors</h2>
+<p>Hooks (钩子) 和 Interceptors (拦截器) 是实现“上下文工程”的核心机制。它们允许您在 Agent 执行的每一步进行监控、修改、控制和强制执行。</p>
+<p>比如</p>
+<ul>
+<li><strong>监控</strong>: 通过日志、分析和调试跟踪 Agent 行为</li>
+<li><strong>修改</strong>: 转换提示、工具选择和输出格式</li>
+<li><strong>控制</strong>: 添加重试、回退和提前终止逻辑</li>
+<li><strong>强制执行</strong>: 应用速率限制、护栏和 PII 检测</li>
+</ul>
+<p>我们的好多功能都是基于Hooks和Interceptors实现的</p>
+<ul>
+<li>• <strong>Hooks (</strong><code>AgentHook</code><strong>, *<em><code>ModelHook</code>*</em>)</strong>：在 Agent 或模型生命周期的特定节点（如 <code>beforeModel</code>, <code>afterModel</code>）_插入_自定义逻辑，如日志记录或消息修剪。</li>
+<li>• <strong>Interceptors (</strong><code>ModelInterceptor</code><strong>, *<em><code>ToolInterceptor</code>*</em>)</strong>：_包裹_模型或工具的调用，允许您拦截和_修改_请求/响应，或实现重试、缓存、安全护栏等。</li>
+</ul>
+<p>比如内容审核的拦截器：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ContentModerationInterceptor</span> <span class="keyword">extends</span> <span class="title class_">ModelInterceptor</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> List&lt;String&gt; BLOCKED_WORDS =</span><br><span class="line">        List.of(<span class="string">&quot;敏感词1&quot;</span>, <span class="string">&quot;敏感词2&quot;</span>, <span class="string">&quot;敏感词3&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> ModelResponse <span class="title function_">interceptModel</span><span class="params">(ModelRequest request, ModelCallHandler handler)</span> &#123;</span><br><span class="line">        <span class="comment">// 检查输入</span></span><br><span class="line">        <span class="keyword">for</span> (Message msg : request.getMessages()) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">content</span> <span class="operator">=</span> msg.getText().toLowerCase();</span><br><span class="line">            <span class="keyword">for</span> (String blocked : BLOCKED_WORDS) &#123;</span><br><span class="line">                <span class="keyword">if</span> (content.contains(blocked)) &#123;</span><br><span class="line">                    <span class="keyword">return</span> ModelResponse.blocked(</span><br><span class="line">                        <span class="string">&quot;检测到不适当的内容，请修改您的输入&quot;</span></span><br><span class="line">                    );</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 执行模型调用</span></span><br><span class="line">        <span class="type">ModelResponse</span> <span class="variable">response</span> <span class="operator">=</span> handler.call(request);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 检查输出</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">output</span> <span class="operator">=</span> response.getContent();</span><br><span class="line">        <span class="keyword">for</span> (String blocked : BLOCKED_WORDS) &#123;</span><br><span class="line">            <span class="keyword">if</span> (output.contains(blocked)) &#123;</span><br><span class="line">                <span class="comment">// 清理输出</span></span><br><span class="line">                output = output.replaceAll(blocked, <span class="string">&quot;[已过滤]&quot;</span>);</span><br><span class="line">                <span class="keyword">return</span> response.withContent(output);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> response;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;ContentModerationInterceptor&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Tool">Tool</h2>
+<p>Tools 是 <a target="_blank" rel="noopener" href="https://java2ai.com/docs/frameworks/agent-framework/tutorials/agents">agents</a> 调用来执行操作的组件。它们通过定义良好的输入和输出让模型与外部世界交互，从而扩展模型的能力。Tools 封装了一个可调用的函数及其输入模式。我们可以把工具定义传递给兼容的 <a target="_blank" rel="noopener" href="https://java2ai.com/docs/frameworks/agent-framework/tutorials/models">models</a>，允许模型决定是否调用工具以及使用什么参数。在这些场景中，工具调用使模型能够生成符合指定输入模式的请求。</p>
+<p>工具定义：</p>
+<p>你可以通过编程方式构建 <code>FunctionToolCallback</code>，将函数类型（<code>Function</code>、<code>Supplier</code>、<code>Consumer</code> 或 <code>BiFunction</code>）转换为工具。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class WeatherService implements Function&lt;WeatherRequest, WeatherResponse&gt; &#123;</span><br><span class="line">  public WeatherResponse apply(WeatherRequest request) &#123;</span><br><span class="line">      return new WeatherResponse(30.0, Unit.C);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public enum Unit &#123; C, F &#125;</span><br><span class="line">public record WeatherRequest(String location, Unit unit) &#123;&#125;</span><br><span class="line">public record WeatherResponse(double temp, Unit unit) &#123;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>name</strong>: 工具的名称。AI 模型使用此名称在调用时识别工具。因此，在同一上下文中不允许有两个同名的工具。对于特定的聊天请求，名称在模型可用的所有工具中必须是唯一的。<strong>必需</strong>。</li>
+<li><strong>toolFunction</strong>: 表示工具方法的函数对象（<code>Function</code>、<code>Supplier</code>、<code>Consumer</code> 或 <code>BiFunction</code>）。<strong>必需</strong>。</li>
+<li><strong>description</strong>: 工具的描述，模型可以使用它来了解何时以及如何调用工具。如果未提供，将使用方法名称作为工具描述。但是，强烈建议提供详细描述，因为这对于模型理解工具的目的和使用方式至关重要。如果未提供良好的描述，可能导致模型在应该使用工具时不使用，或者使用不正确。</li>
+<li><strong>inputType</strong>: 函数输入的类型。<strong>必需</strong>。</li>
+<li><strong>inputSchema</strong>: 工具输入参数的 JSON schema。如果未提供，将根据 <code>inputType</code> 自动生成 schema。你可以使用 <code>@ToolParam</code> 注解提供有关输入参数的附加信息，例如描述或参数是必需还是可选。默认情况下，所有输入参数都被视为必需。</li>
+<li><strong>toolMetadata</strong>: 定义附加设置的 <code>ToolMetadata</code> 实例，例如是否应将结果直接返回给客户端，以及要使用的结果转换器。你可以使用 <code>ToolMetadata.Builder</code> 类构建它。</li>
+<li><strong>toolCallResultConverter</strong>: 用于将工具调用结果转换为字符串对象以发送回 AI 模型的 <code>ToolCallResultConverter</code> 实例。如果未提供，将使用默认转换器（<code>DefaultToolCallResultConverter</code>）。</li>
+</ul>
+<p>FunctionToolCallback</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.ai.tool.ToolCallback;</span><br><span class="line"><span class="keyword">import</span> org.springframework.ai.tool.function.FunctionToolCallback;</span><br><span class="line"></span><br><span class="line"><span class="type">ToolCallback</span> <span class="variable">toolCallback</span> <span class="operator">=</span> FunctionToolCallback</span><br><span class="line">  .builder(<span class="string">&quot;currentWeather&quot;</span>, <span class="keyword">new</span> <span class="title class_">WeatherService</span>())</span><br><span class="line">  .description(<span class="string">&quot;Get the weather in location&quot;</span>)</span><br><span class="line">  .inputType(WeatherRequest.class)</span><br><span class="line">  .build();</span><br></pre></td></tr></table></figure>
+<p>函数的输入和输出可以是 <code>Void</code> 或 POJO。输入和输出 POJO 必须是可序列化的，因为结果将被序列化并发送回模型。函数以及输入和输出类型必须是公共的。</p>
+<p><strong>重要提示</strong>：某些类型不受支持。有关更多详细信息，请参阅函数工具限制。</p>
+<p>然后工具调用的时候直接使用toolCallbacks即可</p>
+<h2 id="Memory">Memory</h2>
+<p>Spring AI Alibaba 将短期记忆作为 Agent 状态的一部分进行管理。</p>
+<p>通过将这些存储在 Graph 的状态中，Agent 可以访问给定对话的完整上下文，同时保持不同对话之间的分离。状态使用 checkpointer 持久化到数据库（或内存），以便可以随时恢复线程。短期记忆在调用 Agent 或完成步骤（如工具调用）时更新，并在每个步骤开始时读取状态。</p>
+<p>其实就是我们的OverAllState用它的Map来存储我们的一部分短期记忆</p>
+<p>保留所有对话历史是实现短期记忆最常见的形式。但较长的对话对历史可能会导致大模型 LLM 上下文窗口超限，导致上下文丢失或报错。</p>
+<p>即使你在使用的大模型上下文长度足够大，大多数模型在处理较长上下文时的表现仍然很差。因为很多模型会被过时或偏离主题的内容&quot;分散注意力&quot;。同时，过长的上下文，还会带来响应时间变长、Token 成本增加等问题。</p>
+<p>在 Spring AI ALibaba 中，ReactAgent 使用 <code>messages</code> 记录和传递上下文，其中包括指令（SystemMessage）和输入（UserMessage）。在 ReactAgent 中，消息（Message）在用户输入和模型响应之间交替，导致消息列表随着时间的推移变得越来越长。由于上下文窗口有限，许多应用程序可以从使用技术来移除或&quot;忘记&quot;过时信息中受益，即 “上下文工程”。</p>
+<p>启用记忆：</p>
+<p>要启用会话级持久化，您只需在创建 Agent 时指定一个 <code>checkpointer</code> (保存器)。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 1. 配置内存存储</span><br><span class="line">ReactAgent agent = ReactAgent.builder()</span><br><span class="line">    .name(&quot;chat_agent&quot;)</span><br><span class="line">    .model(chatModel)</span><br><span class="line">    .saver(new MemorySaver()) //</span><br><span class="line">    .build();</span><br><span class="line"></span><br><span class="line">// 2. 使用 thread_id 维护对话上下文</span><br><span class="line">RunnableConfig config = RunnableConfig.builder()</span><br><span class="line">    .threadId(&quot;user_123&quot;) //</span><br><span class="line">    .build();</span><br><span class="line"></span><br><span class="line">agent.call(&quot;我叫张三&quot;, config);</span><br><span class="line">agent.call(&quot;我叫什么名字？&quot;, config);  // Agent 会回答: &quot;你叫张三&quot;在生产环境中，您可以轻松换成 RedisSaver 或 MongoSaver 等持久化存储。</span><br></pre></td></tr></table></figure>
+<h2 id="多智能体协作">多智能体协作</h2>
+<p>当单个 Agent 难以处理复杂任务时，多智能体架构允许您将任务分解为多个协同工作的专业化 Agent。Spring AI Alibaba 支持两种核心模式：</p>
+<p>模式一：工具调用 (Agent as a Tool)</p>
+<p>这是一种<strong>集中式</strong>控制流，一个“控制器” (Controller) Agent 将其他“子 Agent” (Sub-agent) 作为工具来调用。</p>
+<p>子 Agent 独立执行任务并返回结果，但不直接与用户对话。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 1. 创建子 Agent (作家)</span><br><span class="line">ReactAgent writerAgent = ReactAgent.builder()</span><br><span class="line">    .name(&quot;writer_agent&quot;)</span><br><span class="line">    .model(chatModel)</span><br><span class="line">    .description(&quot;擅长写作，可以写文章&quot;)</span><br><span class="line">    .build();</span><br><span class="line"></span><br><span class="line">// 2. 创建主 Agent (控制器)</span><br><span class="line">ReactAgent blogAgent = ReactAgent.builder()</span><br><span class="line">    .name(&quot;blog_agent&quot;)</span><br><span class="line">    .model(chatModel)</span><br><span class="line">    .instruction(&quot;使用写作工具来完成用户的文章创作请求。&quot;)</span><br><span class="line">    // 将子 Agent 封装为工具</span><br><span class="line">    .tools(AgentTool.getFunctionToolCallback(writerAgent)) //</span><br><span class="line">    .build();</span><br><span class="line"></span><br><span class="line">blogAgent.invoke(&quot;帮我写一篇关于西湖的散文&quot;);</span><br></pre></td></tr></table></figure>
+<p>工作流编排 (Handoffs / Flow)：</p>
+<p>这是一种<strong>去中心化</strong>控制流，控制权从一个 Agent “交接”给下一个 Agent。框架内置了多种流程型 Agent：</p>
+<ul>
+<li><code>SequentialAgent</code>：按预定义顺序依次执行 Agent (A -&gt; B -&gt; C)。每个 Agent 的输出（通过 <code>outputKey</code> 指定）会传递给下一个。</li>
+<li><code>ParallelAgent</code>：将相同的输入同时发送给所有子 Agent 并行处理，然后使用 <code>MergeStrategy</code> 合并结果。</li>
+<li><code>LlmRoutingAgent</code>：使用 LLM 根据用户输入和子 Agent 的 <code>description</code>，_智能_地选择一个最合适的子 Agent 来处理请求。</li>
+</ul>
+<p>在路由模式中，使用大语言模型（LLM）动态决定将请求路由到哪个子 Agent。这种模式非常适合需要智能选择不同专家 Agent 的场景。LLM 会根据用户输入和子 Agent 的 <code>description</code>，智能地选择最合适的 Agent 来处理请求。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">// 创建多个专家 Agent</span><br><span class="line">ReactAgent writerAgent = ReactAgent.builder()</span><br><span class="line">    .name(&quot;writer_agent&quot;)</span><br><span class="line">    .model(chatModel)</span><br><span class="line">    .description(&quot;擅长创作各类文章，包括散文、诗歌等文学作品&quot;)</span><br><span class="line">    .instruction(&quot;你是一个知名的作家，擅长写作和创作。请根据用户的提问进行回答。&quot;)</span><br><span class="line">    .outputKey(&quot;writer_output&quot;)</span><br><span class="line">    .build();</span><br><span class="line"></span><br><span class="line">ReactAgent codeAgent = ReactAgent.builder()</span><br><span class="line">    .name(&quot;code_agent&quot;)</span><br><span class="line">    .model(chatModel)</span><br><span class="line">    .description(&quot;专门处理编程相关问题，包括代码编写和调试&quot;)</span><br><span class="line">    .instruction(&quot;你是一个资深的软件工程师，擅长编写和调试代码。&quot;)</span><br><span class="line">    .outputKey(&quot;code_output&quot;)</span><br><span class="line">    .build();</span><br><span class="line"></span><br><span class="line">// 创建路由 Agent</span><br><span class="line">LlmRoutingAgent routingAgent = LlmRoutingAgent.builder()</span><br><span class="line">    .name(&quot;content_routing_agent&quot;)</span><br><span class="line">    .description(&quot;根据用户需求智能路由到合适的专家Agent&quot;)</span><br><span class="line">    .model(chatModel)  // 路由需要一个 LLM 来进行智能选择</span><br><span class="line">    .subAgents(List.of(writerAgent, codeAgent))</span><br><span class="line">    .build();</span><br><span class="line"></span><br><span class="line">// 使用 - LLM 会自动选择最合适的 Agent</span><br><span class="line">// LLM 会路由到 writerAgent</span><br><span class="line">Optional&lt;OverAllState&gt; result1 = routingAgent.invoke(&quot;帮我写一篇关于春天的散文&quot;);</span><br><span class="line"></span><br><span class="line">// LLM 会路由到 codeAgent</span><br><span class="line">Optional&lt;OverAllState&gt; result2 = routingAgent.invoke(&quot;帮我写一个 Java 排序算法&quot;);</span><br></pre></td></tr></table></figure>
+<p>Agent as Workflow Node</p>
+<p>在复杂的工作流场景中，可以将 <code>ReactAgent</code> 作为 Node 集成到 StateGraph 中，实现更强大的组合能力。Agent 作为 Node 可以利用其推理和工具调用能力，处理需要多步骤推理的任务。</p>
+<p><code>ReactAgent</code> 可以通过 <code>asNode()</code> 方法转换为可以嵌入到父 Graph 中的 Node：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">public class AgentWorkflowExample &#123;</span><br><span class="line"></span><br><span class="line">    public StateGraph buildWorkflowWithAgent(ChatModel chatModel) &#123;</span><br><span class="line">        // 创建专门的数据分析 Agent</span><br><span class="line">        ReactAgent analysisAgent = ReactAgent.builder()</span><br><span class="line">            .name(&quot;data_analyzer&quot;)</span><br><span class="line">            .model(chatModel)</span><br><span class="line">            .instruction(&quot;你是一个数据分析专家，负责分析数据并提供洞察&quot;)</span><br><span class="line">            .tools(dataAnalysisTool, statisticsTool)</span><br><span class="line">            .build();</span><br><span class="line"></span><br><span class="line">        // 创建报告生成 Agent</span><br><span class="line">        ReactAgent reportAgent = ReactAgent.builder()</span><br><span class="line">            .name(&quot;report_generator&quot;)</span><br><span class="line">            .model(chatModel)</span><br><span class="line">            .instruction(&quot;你是一个报告生成专家，负责将分析结果转化为专业报告&quot;)</span><br><span class="line">            .tools(formatTool, chartTool)</span><br><span class="line">            .build();</span><br><span class="line"></span><br><span class="line">        // 构建包含 Agent 的工作流</span><br><span class="line">        StateGraph workflow = new StateGraph(&quot;multi_agent_workflow&quot;, keyStrategyFactory);</span><br><span class="line"></span><br><span class="line">        // 将 Agent 作为 SubGraph Node 添加</span><br><span class="line">        workflow.addNode(&quot;analysis&quot;, analysisAgent.asNode(</span><br><span class="line">            true,                     // includeContents: 是否传递父图的消息历史</span><br><span class="line">            false,                    // returnReasoningContents: 是否返回推理过程</span><br><span class="line">            &quot;analysis_result&quot;         // outputKeyToParent: 输出键名</span><br><span class="line">        ));</span><br><span class="line"></span><br><span class="line">        workflow.addNode(&quot;reporting&quot;, reportAgent.asNode(</span><br><span class="line">            true,</span><br><span class="line">            false,</span><br><span class="line">            &quot;final_report&quot;</span><br><span class="line">        ));</span><br><span class="line"></span><br><span class="line">        // 定义流程</span><br><span class="line">        workflow.addEdge(StateGraph.START, &quot;analysis&quot;);</span><br><span class="line">        workflow.addEdge(&quot;analysis&quot;, &quot;reporting&quot;);</span><br><span class="line">        workflow.addEdge(&quot;reporting&quot;, StateGraph.END);</span><br><span class="line"></span><br><span class="line">        return workflow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">mengnankkzhou</div><div class="post-copyright__author_desc">不要走捏</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://blog.tokenlen.top/2025/11/18/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/github/saa1.1/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://blog.tokenlen.top/2025/11/18/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/github/saa1.1/')">SAA1.1迭代</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://blog.tokenlen.top/2025/11/18/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/github/saa1.1/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=SAA1.1迭代&amp;url=https://blog.tokenlen.top/2025/11/18/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/github/saa1.1/&amp;pic=https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712178.jpg?_r_=715104a8-a971-d710-ae1c-249531261b59" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.tokenlen.top" target="_blank">mengnankkのblog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__category-list"><a class="post-meta__box__categoryes" href="/categories/github/"><span class="categoryes-punctuation"> <i class="anzhiyufont anzhiyu-icon-inbox"></i></span>github<span class="categoryesPageCount">1</span></a></div><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E9%A1%B9%E7%9B%AE/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>项目<span class="tagsPageCount">2</span></a></div></div><div class="post_share"><div class="social-share" data-image="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202408081510550.jpg?_r_=cb3caca4-75e3-154d-991c-aab27431eb80" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/10/09/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/konw/log/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712175.jpg?_r_=d7ea192d-7fd5-5475-da83-b5c234e920c4" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">日志系统设计</div></div></a></div><div class="next-post pull-right"><a href="/2025/11/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/408/OS1/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202408081510550.jpg?_r_=cb3caca4-75e3-154d-991c-aab27431eb80" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">操作系统-1</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/09/09/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/project/2025.10/" title="2025.1"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221811725.jpeg?_r_=2f1951dc-2f66-9c28-2780-c8a713e7a9f2" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-09-09</div><div class="title">2025.1</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-switch"><span class="first-comment">Twikoo</span><span id="switch-btn"></span><span class="second-comment">Valine</span></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">清风拂柳影，碧水映花香。</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">mengnankkzhou</h1><div class="author-info__desc">不要走捏</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/mengnankkkk" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/440831872" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来看我的博客鸭~</div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410021212939.jpg) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">架构设计</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">设计理念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ReactAgent"><span class="toc-number">2.1.</span> <span class="toc-text">ReactAgent</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Graph"><span class="toc-number">2.2.</span> <span class="toc-text">Graph</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Context-Engineering"><span class="toc-number">2.3.</span> <span class="toc-text">Context Engineering</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%BA%E5%B7%A5%E4%BB%8B%E5%85%A5"><span class="toc-number">2.3.1.</span> <span class="toc-text">人工介入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E5%8E%8B%E7%BC%A9"><span class="toc-number">2.3.2.</span> <span class="toc-text">消息压缩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%84%E5%88%92"><span class="toc-number">2.3.3.</span> <span class="toc-text">规划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E8%B0%83%E7%94%A8%E9%99%90%E5%88%B6"><span class="toc-number">2.3.4.</span> <span class="toc-text">模型调用限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E9%87%8D%E8%AF%95"><span class="toc-number">2.3.5.</span> <span class="toc-text">工具重试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">2.3.6.</span> <span class="toc-text">工具选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E7%BC%96%E8%BE%91"><span class="toc-number">2.3.7.</span> <span class="toc-text">上下文编辑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hook-Interceptors"><span class="toc-number">2.4.</span> <span class="toc-text">hook&amp;&amp;Interceptors</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tool"><span class="toc-number">2.5.</span> <span class="toc-text">Tool</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Memory"><span class="toc-number">2.6.</span> <span class="toc-text">Memory</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C"><span class="toc-number">2.7.</span> <span class="toc-text">多智能体协作</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/11/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/408/OS1/" title="操作系统-1"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202408081510550.jpg?_r_=cb3caca4-75e3-154d-991c-aab27431eb80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统-1"/></a><div class="content"><a class="title" href="/2025/11/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/408/OS1/" title="操作系统-1">操作系统-1</a><time datetime="2025-11-23T16:00:00.000Z" title="发表于 2025-11-24 00:00:00">2025-11-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/18/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/github/saa1.1/" title="SAA1.1迭代"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712178.jpg?_r_=715104a8-a971-d710-ae1c-249531261b59" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SAA1.1迭代"/></a><div class="content"><a class="title" href="/2025/11/18/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/github/saa1.1/" title="SAA1.1迭代">SAA1.1迭代</a><time datetime="2025-11-17T16:00:00.000Z" title="发表于 2025-11-18 00:00:00">2025-11-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/09/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/konw/log/" title="日志系统设计"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712175.jpg?_r_=d7ea192d-7fd5-5475-da83-b5c234e920c4" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="日志系统设计"/></a><div class="content"><a class="title" href="/2025/10/09/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/konw/log/" title="日志系统设计">日志系统设计</a><time datetime="2025-10-08T16:00:00.000Z" title="发表于 2025-10-09 00:00:00">2025-10-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/25/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/k8s/" title="k8s八股分析"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712175.jpg?_r_=1e517155-a139-5775-722f-da10e6776f2c" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="k8s八股分析"/></a><div class="content"><a class="title" href="/2025/09/25/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/k8s/" title="k8s八股分析">k8s八股分析</a><time datetime="2025-09-24T16:00:00.000Z" title="发表于 2025-09-25 00:00:00">2025-09-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/25/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/new-stack/k8s1/" title="K8S"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg?_r_=56e02a7f-33fc-4fe7-9942-56d99c361ba9" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="K8S"/></a><div class="content"><a class="title" href="/2025/09/25/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/new-stack/k8s1/" title="K8S">K8S</a><time datetime="2025-09-24T16:00:00.000Z" title="发表于 2025-09-25 00:00:00">2025-09-25</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="footer_custom_text"><p><a style="margin-inline:5px" target="_blank" href="https://hexo.io/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Framework-Hexo-4e88f8?style=flat&logo=hexo" 
+       title="博客框架为 Hexo" alt="Hexo">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://github.com/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Source-Github-24292f?style=flat&logo=github" 
+       title="本站项目由 GitHub 托管" alt="GitHub">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://vercel.com/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Cloud-Vercel-000000?style=flat&logo=vercel" 
+       title="使用 Vercel 部署" alt="Vercel">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://www.qlu.edu.cn/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/University-齐鲁工业大学-0056a2?style=flat&logo=university" 
+       title="齐鲁工业大学" alt="齐鲁工业大学">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://www.aliyun.com/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Cloud-阿里云-ff6a00?style=flat&logo=aliyun" 
+       title="使用阿里云服务" alt="阿里云">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://cloud.tencent.com/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Cloud-腾讯云-0a73b8?style=flat&logo=tencent-cloud" 
+       title="使用腾讯云服务" alt="腾讯云">
+</a></p>
+</div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2023 - 2025 By <a class="footer-bar-link" href="/" title="mengnankkzhou" target="_blank">mengnankkzhou</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/" title="鲁ICP备2024110758号">鲁ICP备2024110758号</a><a class="footer-bar-link" href="https://blog.tokenlen.top/rss2.xml" title="Rss">Rss</a><a class="footer-bar-link cc" href="/pravite" title="cc协议"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-by-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nc-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nd-line"></i></a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">195</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">57</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">28</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://blog.tokenlen.top/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="http://img.mengnankk.top:9001/" title="图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="图床"/><span class="back-menu-item-text">图床</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="http://img.mengnankk.top:9001/" title="mengnankk图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/13/64d8c2653332e.ico" alt="mengnankk图床"/><span class="back-menu-item-text">mengnankk图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 生活</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/Message/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 其他</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://home.tokenlen.top/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> home</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://status.mengnankk.asia/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 站点检测</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://home.tokenlen.top/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 心里话</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BF/" style="font-size: 0.88rem;">BF<sup>1</sup></a><a href="/tags/BUG/" style="font-size: 0.88rem;">BUG<sup>1</sup></a><a href="/tags/BigData/" style="font-size: 0.88rem;">BigData<sup>1</sup></a><a href="/tags/C/" style="font-size: 0.88rem;">C<sup>4</sup></a><a href="/tags/CE/" style="font-size: 0.88rem;">CE<sup>1</sup></a><a href="/tags/CSRF/" style="font-size: 0.88rem;">CSRF<sup>1</sup></a><a href="/tags/English/" style="font-size: 0.88rem;">English<sup>9</sup></a><a href="/tags/FI/" style="font-size: 0.88rem;">FI<sup>1</sup></a><a href="/tags/Github/" style="font-size: 0.88rem;">Github<sup>1</sup></a><a href="/tags/Go/" style="font-size: 0.88rem;">Go<sup>1</sup></a><a href="/tags/Hadoop/" style="font-size: 0.88rem;">Hadoop<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 0.88rem;">Linux<sup>12</sup></a><a href="/tags/XSS/" style="font-size: 0.88rem;">XSS<sup>1</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>2</sup></a><a href="/tags/football/" style="font-size: 0.88rem;">football<sup>1</sup></a><a href="/tags/html/" style="font-size: 0.88rem;">html<sup>1</sup></a><a href="/tags/java/" style="font-size: 0.88rem;">java<sup>61</sup></a><a href="/tags/juc/" style="font-size: 0.88rem;">juc<sup>2</sup></a><a href="/tags/markdown/" style="font-size: 0.88rem;">markdown<sup>1</sup></a><a href="/tags/mysql/" style="font-size: 0.88rem;">mysql<sup>17</sup></a><a href="/tags/net/" style="font-size: 0.88rem;">net<sup>7</sup></a><a href="/tags/paper/" style="font-size: 0.88rem;">paper<sup>1</sup></a><a href="/tags/php/" style="font-size: 0.88rem;">php<sup>5</sup></a><a href="/tags/pip/" style="font-size: 0.88rem;">pip<sup>1</sup></a><a href="/tags/python/" style="font-size: 0.88rem;">python<sup>3</sup></a><a href="/tags/redis/" style="font-size: 0.88rem;">redis<sup>4</sup></a><a href="/tags/shell/" style="font-size: 0.88rem;">shell<sup>4</sup></a><a href="/tags/spring-boot/" style="font-size: 0.88rem;">spring boot<sup>14</sup></a><a href="/tags/sql/" style="font-size: 0.88rem;">sql<sup>5</sup></a><a href="/tags/web/" style="font-size: 0.88rem;">web<sup>3</sup></a><a href="/tags/%E5%8E%8B%E6%B5%8B/" style="font-size: 0.88rem;">压测<sup>1</sup></a><a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 0.88rem;">操作系统<sup>2</sup></a><a href="/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91/" style="font-size: 0.88rem;">数字逻辑<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86/" style="font-size: 0.88rem;">数据库原理<sup>3</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 0.88rem;">数据结构<sup>20</sup></a><a href="/tags/%E6%AF%9B%E9%80%89/" style="font-size: 0.88rem;">毛选<sup>1</sup></a><a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" style="font-size: 0.88rem;">汇编语言<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>9</sup></a><a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 0.88rem;">面试<sup>46</sup></a><a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 0.88rem;">项目<sup>2</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><a id="switch-commentBarrage" href="javascript:anzhiyu.switchCommentBarrage();" title="开关弹幕"><i class="anzhiyufont anzhiyu-icon-danmu"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.cbd.int/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2023 By 安知鱼 V1.6.12",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 mengnankkzhou 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.cbd.int/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://comment.tokenlen.top/',
+      region: '',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, "siu~~~~~"))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.25/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://comment.tokenlen.top/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '3ZpuzQHHKWfFH59QFYmcuCvr-gzGzoHsz',
+      appKey: '8DIvljObQp853ueQMZzpb9Gx',
+      avatar: 'mp',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Twikoo' === 'Valine' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://comment.tokenlen.top/',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.25/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
