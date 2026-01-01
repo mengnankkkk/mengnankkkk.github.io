@@ -15,13 +15,46 @@
     <atom:link href="https://blog.tokenlen.top/rss2.xml" rel="self" type="application/rss+xml"/>
     <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
     <description>清风拂柳影，碧水映花香。</description>
-    <pubDate>Mon, 29 Dec 2025 11:09:53 GMT</pubDate>
+    <pubDate>Thu, 01 Jan 2026 13:06:03 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
+      <title>操作系统</title>
+      <link>https://blog.tokenlen.top/2026/01/01/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BF%87%E7%A8%8B/lastteam/os/</link>
+      <guid>https://blog.tokenlen.top/2026/01/01/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BF%87%E7%A8%8B/lastteam/os/</guid>
+      <pubDate>Wed, 31 Dec 2025 16:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;基础知识&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;对比分析系统调用与一般用户程序及库函数的区别。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;系统调用 (System</description>
+          
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h1>基础知识</h1><ol><li>对比分析系统调用与一般用户程序及库函数的区别。</li></ol><p><strong>系统调用 (System Call)</strong>：运行在<strong>内核态</strong>，通过类似硬件中断的“陷入机制（Trap）”向操作系统内核请求服务。目的是让用户程序能安全、受控地使用硬件资源。</p><p><strong>用户程序 (User Program)</strong>：运行在<strong>用户态</strong>，执行普通指令，不能直接访问硬件。</p><p><strong>库函数 (Library Function)</strong>：是将常用功能封装好的代码集合（如 <code>printf</code>），在编译阶段链接到程序中。库函数内部可能会调用系统调用，也可能不调用。</p><ol start="2"><li>简述引导程序（Bootloader）两个阶段的主要任务。</li></ol><p><strong>第一阶段</strong>：主要负责硬件初始化（如关闭中断、初始化CPU），设置堆栈，并将第二阶段的代码从存储介质复制到 RAM 中。</p><p><strong>第二阶段</strong>：负责检测系统内存映像，将内核映像和根文件系统映像读入 RAM，设置内核启动参数，最后调用内核。</p><ol start="3"><li>论述进程与程序的区别与联系。</li></ol><p><strong>区别</strong>：</p><ul><li><strong>进程</strong>是动态的，强调执行过程，是资源分配和独立运行的基本单位。</li><li><strong>程序</strong>是静态的，是一组指令的集合，存储在磁盘上。</li></ul><p><strong>联系</strong>：进程是程序的执行实例，一个程序可以对应多个进程（例如打开了三个浏览器窗口）。</p><ol start="4"><li>深入分析引入线程的原因及其与进程的区别。</li></ol><p><strong>引入原因</strong>：为了减少并发执行时的时空开销（如进程间切换的上下文开销），提高系统的并发性和 CPU 利用率。</p><p><strong>区别</strong>：</p><ul><li><strong>进程</strong>：是<strong>资源分配</strong>的基本单位，拥有独立的地址空间。</li><li><strong>线程</strong>：是<strong>处理机调度</strong>（CPU执行）的基本单位。线程与同属一个进程的其他线程共享资源（如内存、文件），自身只拥有极少的资源（如栈、寄存器）。</li></ul><ol start="5"><li>死锁产生的必要条件有哪些？并说明如何通过途径“预防”死锁。</li></ol><p><strong>4个必要条件</strong>：</p><ol><li><strong>互斥</strong>（资源独占）。</li><li><strong>不剥夺</strong>（已获资源不能被强行抢占）。</li><li><strong>请求和保持</strong>（吃着碗里的，看着锅里的）。</li><li><strong>环路等待</strong>（A等B，B等C，C等A）。</li></ol><p><strong>预防途径</strong>：</p><ul><li><strong>破坏“请求和保持”</strong>：实行资源一次性分配。</li><li><strong>破坏“不剥夺”</strong>：当新请求未满足时，释放已占有的资源。</li><li><strong>破坏“环路等待”</strong>：对资源进行编号，必须按顺序申请。</li></ul><ol start="6"><li>简述死锁避免（Avoidance）与死锁预防（Prevention）的区别。</li></ol><p><strong>死锁预防</strong>：是<strong>静态</strong>策略。通过严格限制进程请求资源的规则，确保存储的必要条件永远不满足。</p><p><strong>死锁避免</strong>：是<strong>动态</strong>策略。在分配资源前，系统根据当前情况预测未来是否安全（如<strong>银行家算法</strong>），确保系统始终处于“安全状态”。</p><ol start="7"><li>对比分页（Paging）与分段（Segmentation）存储管理方式。</li></ol><p><strong>分页</strong>：是<strong>物理</strong>单位。目的是提高内存利用率（减少碎片），页大小固定由系统决定，地址空间是一维的。</p><p><strong>分段</strong>：是<strong>逻辑</strong>单位。包含完整的逻辑信息（如代码段、数据段），段长度不固定由用户/编译器决定，地址空间是二维的（段号+段内偏移）。</p><ol start="8"><li>解释“抖动”现象及其产生原因</li></ol><p><strong>现象</strong>：系统花费大量时间在页面置换（换入换出）上，而不是执行程序指令。</p><p><strong>原因</strong>：在请求页式存储管理中，页面淘汰算法选择不当，或者进程分配的物理块太少，导致刚换出的页面马上又要被访问（换入）。</p><ol start="9"><li>比较中断控制方式、DMA方式与通道方式的区别。</li></ol><p><strong>中断控制</strong>：以<strong>字节</strong>为单位传输，数据传输需要 CPU 频繁干预（每传一个字节都要打断 CPU）。</p><p><strong>DMA方式 (直接存储器访问)</strong>：以<strong>数据块</strong>为单位传输，仅在传输开始和结束时需要 CPU 干预，中间过程由 DMA 控制器完成，效率较高。</p><p><strong>通道方式</strong>：拥有独立的通道指令（类似一个小 CPU），能控制<strong>一组</strong>数据块的传输，最大程度减轻了 CPU 的负担，但硬件成本最高。</p><ol start="10"><li>请从<strong>交互性、及时性以及可靠性</strong>三个维度，深入比较分析分时系统与实时系统的差异。</li></ol><ul><li><p><strong>及时性：</strong> 分时系统以人能接受的等待时间为准；而实时系统则严格受限于控制对象所要求的开始或完成截止时间，通常在秒级、毫秒级甚至微秒级。</p></li><li><p><strong>交互性：</strong> 分时系统提供通用的资源共享和多用户交互；实时系统的交互通常仅限于访问特定的专用服务程序。</p></li><li><p><strong>可靠性：</strong> 实时系统要求极高的可靠性，通常采取多级容错和冗余措施，因为任何差错都可能导致灾难性后果，而分时系统的要求相对较低</p></li></ul><ol start="11"><li>PCB的作用与状态转换</li></ol><p><strong>PCB 的作用</strong>：</p><ul><li>PCB (Process Control Block) 是进程存在的<strong>唯一标志</strong>。</li><li>它记录了进程的描述信息、控制信息及资源信息，是操作系统感知和管理进程的实体数据结构。</li></ul><p><strong>“就绪 $\rightarrow$ 运行”的处理过程</strong>：</p><ol><li><p><strong>状态修改</strong>：操作系统将该进程 PCB 中的状态字段从“就绪态”修改为“运行态”。</p></li><li><p><strong>队列操作</strong>：将该 PCB 从就绪队列中摘除。</p></li><li><p><strong>恢复现场</strong>：利用 PCB 中保存的 CPU 现场信息（如通用寄存器、<strong>程序计数器 PC</strong>、栈指针等）来装配硬件环境，将 CPU 的控制权正式移交给该进程。</p></li><li><p>HRN算法的综合平衡逻辑</p></li></ol><p>对比分析高响应比优先（HRN）调度算法是如何平衡先来先服务（FCFS）与短作业优先（SJF）算法缺点的？</p><ul><li><p><strong>平衡原理</strong>：</p><ul><li><strong>FCFS 的缺点</strong>：只看等待时间，对短作业不公平。</li><li><strong>SJF 的缺点</strong>：只看执行时间，可能导致长作业“饥饿”（永远得不到调度）。</li></ul></li><li><p>响应比公式：</p><p>$$R = \frac{W + T}{T} = 1 + \frac{W}{T}$$</p><ul><li>其中：$W$ 为等待时间，$T$ 为要求服务时间（执行时间）。</li></ul></li><li><p><strong>逻辑优势</strong>：</p><ul><li><strong>体现 SJF</strong>：当等待时间 $W$ 相同时，要求服务时间 $T$ 越短，响应比 $R$ 越大（短作业优先）。</li><li><strong>体现 FCFS</strong>：当要求服务时间 $T$ 相同时，等待时间 $W$ 越久，响应比 $R$ 越大（先来先服务）。</li><li><strong>避免饥饿</strong>：对于长作业，虽然 $T$ 很大，但随着等待时间 $W$ 的不断增加，其响应比 $R$ 也会逐渐升高，最终获得 CPU 执行权。</li></ul></li></ul><ol start="13"><li>解释设备独立性（Device Independence）的基本含义，并说明操作系统是如何实现这一特性的。</li></ol><p><strong>基本含义</strong>：</p><ul><li>应用程序独立于具体使用的物理设备。</li><li>用户在编程时使用<strong>逻辑设备名</strong>（如 <code>/dev/printer</code>）来请求使用设备，而不需要关注具体的<strong>物理设备名</strong>（如具体的端口地址或硬件 ID）。</li></ul><p><strong>实现方式</strong>：</p><ul><li><strong>逻辑映射</strong>：操作系统通过引入“逻辑设备表（LUT）”来进行两层映射。</li><li><strong>统一接口</strong>：系统在设备驱动程序之上设置了一层与硬件无关的软件接口。当用户发出 I/O 请求时，系统查表将逻辑设备名转换为对应的物理设备驱动程序入口地址，从而完成实际操作。</li></ul><h1>真题</h1><ol><li>操作系统具有哪些功能？并说明各功能对应的计算机系统部件分别是什么？</li></ol><p><strong>处理机管理</strong>（对应部件：<strong>CPU</strong>）：负责进程控制、进程同步、进程通信、死锁处理及处理机调度。</p><p><strong>存储器管理</strong>（对应部件：<strong>内存</strong>）：负责内存分配、内存保护、地址映射及内存扩充（虚拟内存）。</p><p><strong>设备管理</strong>（对应部件：<strong>I/O设备</strong>）：负责缓冲管理、设备分配、设备处理及虚拟设备实现。</p><p><strong>文件管理</strong>（对应部件：<strong>文件/数据/磁盘</strong>）：负责文件存储空间管理、目录管理、文件的读写管理及存取控制。</p><p><strong>用户接口</strong>（对应部件：<strong>用户/硬件</strong>）：提供用户与计算机系统之间的交互界面。</p><ol><li>操作系统包括哪几种类型的用户接口？它们分别适用于哪种情况？</li></ol><p><strong>命令接口</strong>：</p><ul><li><em>联机命令接口（交互式）</em>：适用于用户在终端上<strong>直接、交互</strong>地使用计算机（如命令行、Shell）。</li><li><em>脱机命令接口（批处理）</em>：适用于<strong>作业控制</strong>，用户编写作业说明书，由系统自动处理。</li></ul><p><strong>图形用户接口 (GUI)</strong>：采用图形化操作，适用于<strong>普通用户</strong>，操作简单直观（如 Windows, macOS 桌面）。</p><p><strong>程序接口 (系统调用)</strong>：由一组系统调用组成，适用于<strong>程序员</strong>在编程时请求操作系统服务。</p><ol><li>请说明线程与进程的区别。</li></ol><p><strong>调度方面</strong>：<strong>线程</strong>是独立调度和分派的基本单位；<strong>进程</strong>是资源分配的基本单位。</p><p><strong>资源方面</strong>：进程拥有独立的系统资源（内存、文件等）；线程几乎不拥有资源，但共享所属进程的全部资源。</p><p><strong>开销方面</strong>：线程的创建、切换和终止的<strong>时空开销</strong>远小于进程，并发性更高。</p><p><strong>通信方面</strong>：进程间通信需要通过IPC机制（如管道、消息队列）；线程间可以直接读写同一进程的数据段进行通信，更加方便。</p><ol><li>什么是死锁？产生死锁的原因和必要条件是什么？</li></ol><p><strong>定义</strong>：多个进程因竞争资源而造成的一种<strong>互相等待</strong>的僵局，若无外力作用，这些进程都将无法向前推进。</p><p><strong>产生原因</strong>：</p><ol><li>系统<strong>资源竞争</strong>（资源不足）。</li><li>进程推进<strong>顺序非法</strong>。</li></ol><p><strong>四个必要条件</strong>（缺一不可）：</p><ol><li><p><strong>互斥条件</strong>（资源独占）。</p></li><li><p><strong>不剥夺条件</strong>（已获资源不能被抢占）。</p></li><li><p><strong>请求和保持条件</strong>（占有资源并申请新资源）。</p></li><li><p><strong>环路等待条件</strong>（存在一个进程-资源的环形链）。</p></li><li><p>什么是逻辑文件？什么是物理文件？</p></li></ol><p><strong>逻辑文件</strong>：</p><ul><li>这是<strong>用户视角</strong>下的文件组织形式。</li><li>用户将数据看作是一组有序的字符流（流式文件）或记录的集合（记录式文件），<strong>独立于物理存储介质</strong>。</li></ul><p><strong>物理文件</strong>：</p><ul><li>这是<strong>系统视角</strong>（存储视角）下的文件组织形式。</li><li>指文件在<strong>存储介质（如磁盘）上的存放方式</strong>。常见的形式有顺序文件（连续分配）、链接文件（链式分配）和索引文件（索引分配）。</li></ul><p>1、某计算机系统有三个进程 A、B、C，进程 A 依次使用 CPU 计 6s，使用打印机计 10s，使用 CPU 计 5s，读写硬盘计 10s，使用 CPU 计 2s；进程 B 依次读写硬盘计 10s，使用 CPU 计 7s，使用打印机计 10s，使用 CPU 计 2s，使用打印机计 10s；进程 C 依次使用 CPU 计 2s，读写硬盘计 15s，使用打印机计 6s。在单道程序环境下先执行 A 再执行 B，最后执行 C，</p><p>进程 C 的周转时间是（1）<strong>s，</strong></p><p><strong>CPU 的利用率是（2）</strong>%；</p><p>在多道程序环境下，进程 A 的周转时间是（3）______s，</p><p>平均周转时间是（4）<strong>s，</strong></p><p><strong>CPU 的利用率是（5）</strong>%。</p><p>2.某国产著名品牌手机专卖店进行新品发售活动，有多个店员进行销售。每个顾客排队进店后取一个号，并且等待叫号进店，当一个店员空闲下来时，就叫下一个号。以下为使用 PV 操作设计的店员和顾客同步算法，请补充算法中缺少的部分。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">int i=0, j=0;</span><br><span class="line">semaphore mutex_i=1, mutex_j=1;    //i 和 j 分别记录当前的取号值和叫号值</span><br><span class="line"></span><br><span class="line">Consumer()&#123;                        //顾客算法</span><br><span class="line">    进入手机店;</span><br><span class="line">    (6)//进入临界区准备操作共享变量i 答案应该是P(mutex_i);</span><br><span class="line">    取号 i;</span><br><span class="line">    i++;</span><br><span class="line">    (7)//退出临界区，操作完成 答案应该是V(mutex_i);</span><br><span class="line">    等待叫号 i 并购买手机;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Seller()&#123;                          //店员算法</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        (8)//准备访问共享变量J，准备加锁   P(mutex_j);</span><br><span class="line">        if(j&lt;i)&#123;</span><br><span class="line">            叫号 j;</span><br><span class="line">            (9)//更新J j++;</span><br><span class="line">            (10)//释放锁 V(mutex_j);</span><br><span class="line">            销售手机;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            V(mutex_j);</span><br><span class="line">            休息片刻;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>所以加锁是P，解锁是V</strong></p><ol start="3"><li></li></ol><p>请回答下列问题</p><p>（1）页的大小为多少字节？系统的逻辑地址空间大小为多少页？（4 分）</p><p>64kb 64kb</p><p>（2）假定页表项占 8 个字节，则页表共占多少页？要求写出计算过程。（3 分）</p><p><strong>页表总大小（字节）</strong> = 页表项总数 $\times$ 每个页表项的大小=$$= 2^{16} \times 8 \text{ Byte} = 65536 \times 8 \text{ Byte} = 524,288 \text{ Byte}$$</p><p><strong>页表占用的页数</strong> = 页表总大小 / 每页的大小 = $$= \frac{2^{16} \times 8 \text{ Byte}}{2^{16} \text{ Byte}} = 8 \text{ 页}$$</p><p>（3）如有一用户程序有 10 页长，且某一时刻该用户程序页表如下所示。如果分别遇到以下两个逻辑地址：0B11AC76H、110B19CFH 处的操作，说明存储管理系统如何处理，并写出具体物理地址（用 16 进制表示）。（8 分）</p><p><strong>某时刻页表状态</strong></p><table><thead><tr><th><strong>逻辑页号</strong></th><th><strong>物理块号</strong></th></tr></thead><tbody><tr><td>0000 1010 0001 0001B</td><td>0001 0110B</td></tr><tr><td>0000 1011 1111 1111B</td><td>0100 1101B</td></tr><tr><td>0001 0001 0000 1010B</td><td>1011 1110B</td></tr><tr><td>0000 1010 1111 1111B</td><td>1000 1111B</td></tr><tr><td>1111 1111 0000 1011B</td><td>1111 0000B</td></tr><tr><td>0000 1011 0001 0001B</td><td>0001 1000B</td></tr></tbody></table><p>AI 未给出答案-----</p><p>2、若干等待访问磁盘者依次要访问的磁道为 31、60、12、25、68、18、109，假设每移动一个磁道需要 1 毫秒时间，移动臂当前位于 40 号柱面，请按下述算法分别写出访问序列并计算为完成上述各次访问总共花费的寻道时间。</p><p>（1）先来先服务算法；（5 分）</p><p>先来先服务算法 (FCFS)，严格按照请求队列的先后顺序进行访问，不考虑磁头移动的优化。</p><p>$$40 \rightarrow 31 \rightarrow 60 \rightarrow 12 \rightarrow 25 \rightarrow 68 \rightarrow 18 \rightarrow 109$$</p><p><strong>总寻道磁道数</strong>：$9 + 29 + 48 + 13 + 43 + 50 + 91 = \mathbf{283}$，<strong>总花费时间</strong>：$283 \times 1\text{ms} = \mathbf{283\text{ms}}$</p><p>（2）最短寻道时间优先算法；（5 分）</p><p>每次选择距离当前磁头位置<strong>最近</strong>的那个磁道进行访问（贪心策略）</p><p>当前 <strong>40</strong>：最近的是 <strong>31</strong> (距9) vs 60 (距20) $\rightarrow$ 去 <strong>31</strong>。</p><p>当前 <strong>31</strong>：最近的是 <strong>25</strong> (距6) vs 60 (距29) $\rightarrow$ 去 <strong>25</strong>。</p><p>当前 <strong>25</strong>：最近的是 <strong>18</strong> (距7) $\rightarrow$ 去 <strong>18</strong>。</p><p>当前 <strong>18</strong>：最近的是 <strong>12</strong> (距6) $\rightarrow$ 去 <strong>12</strong>。</p><p>当前 <strong>12</strong>：此时小号磁道全部访问完，回头找最近的大号 <strong>60</strong> (距48) $\rightarrow$ 去 <strong>60</strong>。</p><p>当前 <strong>60</strong>：最近的是 <strong>68</strong> (距8) $\rightarrow$ 去 <strong>68</strong>。</p><p>当前 <strong>68</strong>：最后剩下 <strong>109</strong> (距41) $\rightarrow$ 去 <strong>109</strong>。</p><p>$$40 \rightarrow 31 \rightarrow 25 \rightarrow 18 \rightarrow 12 \rightarrow 60 \rightarrow 68 \rightarrow 109$$</p><p><strong>总寻道磁道数</strong>：$9 + 6 + 7 + 6 + 48 + 8 + 41 = \mathbf{125}$</p><p><strong>总花费时间</strong>：$125 \times 1\text{ms} = \mathbf{125\text{ms}}$</p><p>（3）扫描算法（当前磁头移动的方向为磁道递增）。（5 分）</p><p>磁头象电梯一样，先向一个方向移动（题目指定<strong>磁道递增</strong>），访问所有途经请求，直到该方向无请求后再反向。 <em>注意：题目未给出磁盘边界（如0-200），通常按 LOOK 算法处理，即“到了该方向最远的请求就掉头”，不需要走到磁盘尽头。</em></p><p><strong>阶段1（向递增方向/向右）</strong>：从 40 开始，依次访问比 40 大的磁道。</p><ul><li>顺序：$60 \rightarrow 68 \rightarrow 109$</li></ul><p><strong>阶段2（掉头向递减方向/向左）</strong>：从 109 掉头，依次访问比 40 小的磁道（从大到小）。</p><ul><li>顺序：$31 \rightarrow 25 \rightarrow 18 \rightarrow 12$</li></ul><p><strong>寻道距离计算（简化算法）</strong>：</p><ul><li><strong>向右行程</strong>：$109 - 40 = 69$</li><li><strong>向左行程</strong>：$109 - 12 = 97$</li><li><strong>总距离</strong>：$69 + 97 = 166$</li></ul>]]></content:encoded>
+      
+      
+      <category domain="https://blog.tokenlen.top/categories/%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/">期末考试</category>
+      
+      
+      <category domain="https://blog.tokenlen.top/tags/OS/">OS</category>
+      
+      
+      <comments>https://blog.tokenlen.top/2026/01/01/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BF%87%E7%A8%8B/lastteam/os/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
       <title>SpringAi工具搜索工具</title>
-      <link>https://blog.tokenlen.top/2025/12/30/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/github/sa-searchtool/</link>
-      <guid>https://blog.tokenlen.top/2025/12/30/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/github/sa-searchtool/</guid>
+      <link>https://blog.tokenlen.top/2025/12/30/message/book/sa-searchtool/</link>
+      <guid>https://blog.tokenlen.top/2025/12/30/message/book/sa-searchtool/</guid>
       <pubDate>Mon, 29 Dec 2025 16:00:00 GMT</pubDate>
       
         
@@ -45,7 +78,68 @@
       <category domain="https://blog.tokenlen.top/tags/%E9%A1%B9%E7%9B%AE/">项目</category>
       
       
-      <comments>https://blog.tokenlen.top/2025/12/30/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/github/sa-searchtool/#disqus_thread</comments>
+      <comments>https://blog.tokenlen.top/2025/12/30/message/book/sa-searchtool/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Spring AI Alibaba 深度解析：动态工具搜索（Tool Search）的设计与实现</title>
+      <link>https://blog.tokenlen.top/2025/12/30/message/PR/saa/add_toolsearch/</link>
+      <guid>https://blog.tokenlen.top/2025/12/30/message/PR/saa/add_toolsearch/</guid>
+      <pubDate>Mon, 29 Dec 2025 16:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;1-背景与痛点&quot;&gt;1. 背景与痛点&lt;/h2&gt;
+&lt;p&gt;随着 AI Agent 接入的业务系统越来越复杂，一个 Agent 往往挂载了数十甚至上百个工具（Tools）。在传统的实现中，我们需要将所有工具的定义（Schema）一次性注入到 Prompt</description>
+          
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h2 id="1-背景与痛点">1. 背景与痛点</h2><p>随着 AI Agent 接入的业务系统越来越复杂，一个 Agent 往往挂载了数十甚至上百个工具（Tools）。在传统的实现中，我们需要将所有工具的定义（Schema）一次性注入到 Prompt 上下文中。这带来了两个严重问题：</p><ol><li><strong>Token 消耗巨大</strong>：海量的工具描述占用了宝贵的 Context Window，增加了推理成本。</li><li><strong>模型注意力分散</strong>：面对大量无关工具，模型容易产生幻觉或选择错误的工具。</li></ol><p>Spring AI 社区提出了 <strong>Tool Search</strong> 模式来解决此问题。作为 Spring AI Alibaba（SAA）社区向核心标准对齐的重要一步，我们结合 SAA 自身的 <strong>Graph Agent（图计算 Agent）</strong> 架构，重新设计并实现了这一特性。与 Spring AI 原生基于 <code>ChatClient</code> 的实现不同，SAA 版本将逻辑封装在 Graph 节点与拦截器中，使其更适应复杂的 Agent 工作流。</p><h2 id="2-设计思路：Lazy-Loading-与-动态注入">2. 设计思路：Lazy Loading 与 动态注入</h2><p>核心思想是**“按需加载”（Lazy Loading）**：</p><ol><li><strong>初始阶段</strong>：不向 LLM 暴露任何具体的业务工具，仅注入一个特殊的元工具——<code>ToolSearchTool</code>。</li><li><strong>动态发现</strong>：当 LLM 发现无法回答用户问题时，会尝试调用 <code>ToolSearchTool</code> 进行搜索。</li><li><strong>拦截与增强</strong>：系统拦截该请求，执行本地搜索（如 Lucene 或 向量检索），找到最相关的工具（如 <code>get_weather</code>）。</li><li><strong>递归执行</strong>：将搜索到的工具动态注入到当前的 Prompt 上下文中，并让 LLM 重新进行推理。此时 LLM 看到了真正的工具，即可发起调用。</li></ol><p>这种设计将原本 O(N) 的上下文复杂度降低到了 O(K)（K为实际所需工具数）。</p><h2 id="3-核心组件架构">3. 核心组件架构</h2><p>为了实现上述逻辑，我们设计了以下核心组件：</p><p>3.1 核心接口：ToolSearcher</p><p>定义了工具检索的标准行为，支持多种检索策略的扩展。</p><ul><li><strong><code>indexTools(List&lt;Tool&gt; tools)</code></strong>：构建工具索引。</li><li><strong><code>search(String query)</code></strong>：根据自然语言或关键词搜索匹配的工具。</li><li><strong><code>getToolSchema(String toolName)</code></strong>：获取指定工具的 JSON Schema 定义。</li></ul><p>3.2 默认实现：LuceneToolSearcher</p><p>基于 <strong>Apache Lucene</strong> 实现的高性能内存检索引擎。</p><ul><li><strong>倒排索引</strong>：将工具的 <code>name</code>、<code>description</code> 和 <code>parameters</code> 建立索引。</li><li><strong>权重控制</strong>：通过 Boost 机制优化搜索相关性（例如工具名称的匹配权重高于描述）。</li><li><strong>回调缓存</strong>：内部缓存 <code>ToolCallback</code>，确保搜到工具后能快速映射到具体的执行实例。</li></ul><p>3.3 元工具：ToolSearchTool</p><p>这是暴露给 LLM 的唯一初始工具。</p><ul><li><strong>Input</strong>：<code>query</code> 字符串（例如 “check weather”）。</li><li><strong>Output</strong>：搜索到的工具列表摘要及状态消息。</li><li><strong>作用</strong>：它是 LLM 探知外部世界的“潜望镜”。</li></ul><p>3.4 大脑：ToolSearchModelInterceptor</p><p>这是整个机制的控制中枢，作为一个拦截器嵌入在 Agent 的执行链路中。</p><ul><li><strong>拦截逻辑</strong>：监听 LLM 的响应。如果检测到 <code>tool_search</code> 函数调用，则接管控制权。</li><li><strong>动态注入</strong>：调用 <code>ToolSearcher</code> 获取工具定义，并将其追加到下一轮的 Request Context 中。</li><li><strong>递归控制</strong>：控制递归深度，防止 Agent 陷入死循环。</li><li><strong>多任务支持</strong>：支持 LLM 一次性发出多个搜索意图（如同时搜“天气”和“邮件”），并在一次拦截中合并处理。</li></ul><h2 id="4-执行流程-Workflow">4.执行流程 (Workflow)</h2><p>整个调用链路是一个闭环的递归过程：</p><ol><li><strong>初始化</strong>：用户注册所有业务工具，系统调用 <code>LuceneToolSearcher</code> 建立内存索引。</li><li><strong>用户提问</strong>：用户发送 “帮我查下北京天气”。</li><li><strong>Round 0 推理</strong>：LLM 此时只看得到 <code>ToolSearchTool</code>。它分析意图后决定调用 <code>tool_search(&quot;weather&quot;)</code>。</li><li><strong>拦截器介入</strong>：<code>ToolSearchModelInterceptor</code> 捕获该调用，阻止其直接发往后端，而是转而在本地 Lucene 搜索。</li><li><strong>上下文更新</strong>：拦截器找到 <code>get_weather</code> 工具，将其 Schema 注入到 Prompt 中。</li><li><strong>Round 1 推理</strong>：Agent 带着（<code>ToolSearchTool</code> + <code>get_weather</code>）再次请求 LLM。</li><li><strong>工具调用</strong>：LLM 这次看到了 <code>get_weather</code>，于是发起真正的天气查询。</li><li><strong>结果返回</strong>：执行工具，返回 “北京晴，25度”。</li></ol><h2 id="5-示例与验证">5.示例与验证</h2><p>在 <code>ToolSearchExample.java</code> 中，我们覆盖了多种典型场景：</p><ul><li><strong>基础用法</strong>：单一工具的搜索与调用。</li><li><strong>多步发现</strong>：复杂任务拆解（如“先查天气，再发邮件”），验证了拦截器处理并发搜索意图的能力。</li><li><strong>模糊搜索</strong>：验证 Lucene 对非精确匹配（Fuzzy Query）的支持。</li><li><strong>异常处理</strong>：当搜不到工具时，Agent 如何优雅地回复用户。</li></ul><h2 id="6-局限性与未来规划">6.局限性与未来规划</h2><p>尽管当前的实现已经能够大幅节省 Token 并提升准确率，但仍有优化空间：</p><ol><li><p><strong>索引持久化</strong>：</p><ul><li><em>当前</em>：基于内存的 Lucene 索引，重启即丢失。</li><li><em>未来</em>：支持索引持久化到磁盘，或对接 Elasticsearch、Milvus、PGvector 等外部向量数据库，以支持海量工具库。</li></ul></li><li><p><strong>缓存淘汰策略 (Eviction Policy)</strong>：</p><ul><li><em>当前</em>：将搜索到的工具简单的追加到历史记录中进行转发。长对话下可能导致上下文再次膨胀。</li><li><em>未来</em>：引入 LRU (Least Recently Used) 或 LFU 策略，在上下文窗口有限时，动态移除那些“搜出来但很久没用”的工具。</li></ul></li><li><p><strong>语义检索增强</strong>：</p><ul><li><em>当前</em>：主要依赖关键词匹配。</li><li><em>未来</em>：引入 Embedding 模型，实现基于语义的工具搜索（例如用户说“我想看下时间”，能匹配到 <code>get_clock</code> 工具）。</li></ul></li></ol><hr><blockquote><p><strong>总结</strong>：Tool Search 是 Spring AI Alibaba 迈向大规模 Agent 系统的重要基石。它不仅优化了性能，更赋予了 Agent “主动查阅手册”的智能行为。</p></blockquote>]]></content:encoded>
+      
+      
+      <category domain="https://blog.tokenlen.top/categories/github/">github</category>
+      
+      
+      <category domain="https://blog.tokenlen.top/tags/PR/">PR</category>
+      
+      
+      <comments>https://blog.tokenlen.top/2025/12/30/message/PR/saa/add_toolsearch/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Fastjson2--fix</title>
+      <link>https://blog.tokenlen.top/2025/12/30/message/PR/fastjson2/issue1/</link>
+      <guid>https://blog.tokenlen.top/2025/12/30/message/PR/fastjson2/issue1/</guid>
+      <pubDate>Mon, 29 Dec 2025 16:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;当 JSON 字符串中包含无引号的数字 key 时，fastjson2 的反序列化行为不一致&lt;/h1&gt;
+&lt;h2 id=&quot;BUG描述-原因&quot;&gt;BUG描述&amp;amp;&amp;amp;原因&lt;/h2&gt;
+&lt;p&gt;当 JSON 字符串中包含无引号的数字 key 时，fastjson2</description>
+          
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h1>当 JSON 字符串中包含无引号的数字 key 时，fastjson2 的反序列化行为不一致</h1><h2 id="BUG描述-原因">BUG描述&amp;&amp;原因</h2><p>当 JSON 字符串中包含无引号的数字 key 时，fastjson2 的反序列化行为不一致<br>字段存在的时候可以正确处理无引号数字 key 的逻辑<br>字段不存在的时候无法处理</p><h2 id="具体改动">具体改动</h2><p>在 skipObject 方法中添加对无引号数字 key 的处理逻辑 在utf16/utf-8中</p><ul><li>新增了一个重载方法 <code>skipNumber(..., boolean allowColon)</code>，允许在跳过数字后紧跟着冒号（<code>:</code>），这在处理未加引号的数字作为键的 JSON 结构时是必需的。</li><li>在判断数字结束字符时，新增了 <code>!(allowColon &amp;&amp; ch == ':')</code> 条件，即如果允许冒号且当前字符是冒号，则不抛出错误。</li><li>在解析对象键值对时，增加了对未加引号的数字作为键的处理逻辑。</li><li>如果当前字符是数字或 <code>'-'</code> <code>'+'</code>，则认为这是一个未加引号的数字键，调用 <code>skipNumber(..., true)</code> 来跳过数字，并手动跳过紧随其后的冒号和空白字符。</li><li>否则，退回到原有的 <code>skipName</code> 方法来处理字符串类型的键。</li></ul>]]></content:encoded>
+      
+      
+      <category domain="https://blog.tokenlen.top/categories/github/">github</category>
+      
+      
+      <category domain="https://blog.tokenlen.top/tags/PR/">PR</category>
+      
+      
+      <comments>https://blog.tokenlen.top/2025/12/30/message/PR/fastjson2/issue1/#disqus_thread</comments>
       
     </item>
     
@@ -184,8 +278,8 @@
     
     <item>
       <title>SAA1.1迭代</title>
-      <link>https://blog.tokenlen.top/2025/11/18/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/github/saa1.1/</link>
-      <guid>https://blog.tokenlen.top/2025/11/18/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/github/saa1.1/</guid>
+      <link>https://blog.tokenlen.top/2025/11/18/message/book/saa1.1/</link>
+      <guid>https://blog.tokenlen.top/2025/11/18/message/book/saa1.1/</guid>
       <pubDate>Mon, 17 Nov 2025 16:00:00 GMT</pubDate>
       
         
@@ -210,7 +304,7 @@
       <category domain="https://blog.tokenlen.top/tags/%E9%A1%B9%E7%9B%AE/">项目</category>
       
       
-      <comments>https://blog.tokenlen.top/2025/11/18/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/github/saa1.1/#disqus_thread</comments>
+      <comments>https://blog.tokenlen.top/2025/11/18/message/book/saa1.1/#disqus_thread</comments>
       
     </item>
     
@@ -339,6 +433,36 @@
     </item>
     
     <item>
+      <title>场景八股分析</title>
+      <link>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/changjing/</link>
+      <guid>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/changjing/</guid>
+      <pubDate>Tue, 23 Sep 2025 16:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;异常解决&lt;/h1&gt;
+&lt;h2</description>
+          
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h1>异常解决</h1><h2 id="1-就比如说你这个部署到线上了，然后他抛了一个异常，然后那你这个应该怎么排查呢">1.就比如说你这个部署到线上了，然后他抛了一个异常，然后那你这个应该怎么排查呢</h2><p>线上出现异常，我会遵循一套<strong>从宏观到微观、由表及里</strong>的排查SOP（标准作业程序）来定位和解决问题。</p><p><strong>第一步：信息收集与初步判断</strong></p><ol><li><p><strong>确认影响范围</strong>：首先，快速判断这个异常的影响面有多大。是影响了所有用户，还是部分用户？是核心功能还是边缘功能？这决定了问题的紧急程度。</p></li><li><p>查看监控告警：立即查看监控系统（如Prometheus/Grafana, Zabbix）的告警信息。检查应用的</p><p>关键指标，如：</p><ul><li><strong>应用层面</strong>：QPS、响应时间（RT）、错误率（Error Rate）是否突增？</li><li><strong>JVM层面</strong>：CPU使用率、内存占用、GC活动是否异常？</li><li><strong>主机层面</strong>：服务器的CPU、内存、磁盘I/O、网络流量是否正常？</li><li><strong>依赖服务</strong>：数据库、Redis、MQ等中间件的健康状况如何？</li><li>这一步的目标是快速定位问题是出在<strong>应用本身</strong>，还是<strong>外部依赖</strong>。</li></ul></li></ol><p><strong>第二步：日志分析与精准定位</strong></p><ol><li><strong>聚合日志平台检索</strong>：登录ELK（Elasticsearch, Logstash, Kibana）或类似日志平台，根据告警信息中的时间点、错误信息关键字（如<code>RuntimeException</code>）进行检索。</li><li><strong>利用Trace ID进行链路追踪</strong>：如果系统接入了分布式追踪系统（如SkyWalking, Zipkin），这是最强大的工具。我会根据报错信息找到一个<strong>Trace ID</strong>，然后用这个ID查询完整的请求调用链。这可以清晰地看到请求经过了哪些服务，在哪一个环节耗时最长，又是在哪个服务的具体代码行抛出了异常。</li><li>Linux服务器手动排查（作为补充）：如果日志平台不完善，我会登录到具体的服务器上进行排查。<ul><li>使用<code>grep</code>命令根据关键字快速过滤日志：<code>grep -C 10 'ExceptionNameToFind' /path/to/app.log</code>。<code>-C 10</code>可以显示异常上下文的10行，帮助理解问题背景。</li><li>如果需要根据Trace ID查，我会用：<code>grep 'your-trace-id' /path/to/app.log</code>。</li><li>对于实时滚动的日志，我会用<code>tail -f /path/to/app.log | grep 'ERROR'</code>来实时监控错误输出。</li></ul></li></ol><p>第三步：<strong>根因分析与问题复现</strong></p><ol><li><strong>代码分析</strong>：定位到具体的异常代码后，分析代码逻辑，判断是业务逻辑错误、空指针、并发问题还是资源未释放等。</li><li><strong>环境复现</strong>：如果可能，尝试在测试环境或预发环境，构造相同的参数和条件，复现这个问题，以便于调试和验证修复方案。</li></ol><p>第四步：<strong>问题解决与复盘</strong></p><ol><li><strong>紧急修复</strong>：如果是严重Bug，立即进行Hotfix修复并上线。如果是资源问题，进行扩容或配置调整。</li><li><strong>复盘总结</strong>：问题解决后，必须进行复盘。分析问题发生的根本原因，是代码缺陷、设计不合理、还是容量预估不足？并制定改进措施，例如增加单元测试、完善监控告警、优化架构等，防止同类问题再次发生。</li></ol><h2 id="2-考察线上问题排查">2.考察线上问题排查</h2><ul><li><p><strong>第一步：紧急止血（恢复服务优先）。</strong></p></li><li><p><strong>第二步：定位根因（Root Cause）。</strong></p></li><li><p><strong>第三步：复盘总结（避免再犯）。</strong></p></li><li><p>\1. 看监控，定范围：</p><ul><li><strong>看应用自身监控：</strong> 接口的 QPS、P99 响应时间、JVM（GC次数/时间、线程数）、线程池监控（队列长度、活跃线程数）。首先确认是自身应用的问题还是外部问题。</li><li><strong>看主机监控：</strong> CPU 使用率、内存占用、网络 I/O、磁盘 I/O。确认是不是机器资源被打满了。</li></ul></li><li><p>\2. 分析线程，找瓶颈：</p><ul><li>使用 <code>jstack</code> 命令 dump 线程堆栈。分析是否有大量线程处于 <code>BLOCKED</code> 状态（锁竞争）、<code>WAITING</code> 状态（等待外部资源，如 HTTP 调用、数据库连接）。这是定位问题的<strong>最核心手段</strong>。</li></ul></li><li><p>\3. 查GC，判影响：</p><ul><li>使用 <code>jstat -gcutil</code> 查看 GC 情况。确认是否发生了频繁的 Full GC，导致 STW（Stop-The-World），从而影响接口响应。</li></ul></li><li><p>\4. 查依赖，判外部：</p><ul><li>检查所有**下游服务（RPC 调用）**的响应时间。是不是某个下游服务变慢，拖垮了你。</li><li>检查**数据库和缓存（Redis）**的慢查询日志和响应时间。是不是因为慢 SQL 或 Redis 大 Key 导致的阻塞。</li></ul></li><li><p>\5. 看网络，做补充：</p><ul><li>如果以上都正常，再考虑网络问题，比如丢包、重传等。</li></ul></li></ul><p>恢复手段：</p><ul><li><strong>重启大法：</strong> 最简单粗暴但有效。</li><li><strong>服务降级：</strong> 通过配置中心，暂时关闭一些非核心功能。</li><li><strong>服务限流：</strong> 立即调低接口的 QPS 阈值，避免被流量打垮。</li><li><strong>扩容：</strong> 如果是资源不足，立即进行水平扩容。</li></ul><h2 id="3-线上问题卡顿">3.线上问题卡顿</h2><p>提出了一个“自顶向下”的排查思路：先通过监控工具（宝塔）看服务器资源（CPU、内存），定位到具体程序，再通过程序的日志（Docker日志）定位到具体组件和代码异常。</p><p>Linux 命令行工具（如 <code>top</code>, <code>jstack</code>, <code>jmap</code>）的提及。对于一个硬核的技术面试，面试官更希望听到你如何使用这些底层工具进行排查。此外，排查的维度不够全面，没有考虑到<strong>网络问题、数据库慢查询、下游服务拖累</strong>等常见原因。</p><h2 id="AI">AI</h2><h2 id="1-设计一个可扩展的架构，并说明如何实现-1-2-秒-P95-的延迟指标。">1.设计一个可扩展的架构，并说明如何实现 <strong>1-2 秒 P95 的延迟指标</strong>。</h2><p><strong>召回、重排、向量库更新、上下文窗口管理、长对话状态持久化</strong>，以及<strong>延迟预算分配</strong>几个维度，</p><p>RAG 的核心流程：文档切分 -&gt; 向量化入库 -&gt; 用户问题向量化 -&gt; Top K 相似度检索 -&gt; 结果送入 LLM 生成答案。RAG 是为了解决 LLM 没有“记忆”和无法利用私有知识的问题。</p><ul><li><strong>召回（Recall）：</strong> 你只提到了向量相似度检索。但一个生产级的 RAG 系统，召回层通常是<strong>混合检索</strong>，比如 <strong>向量检索 + 关键词检索（如 BM25）</strong>，以应对不同类型的问题。</li><li><strong>重排（Rerank）：</strong> 你提到了重排模型，但没有说明它的作用。Rerank 模型（如 Cohere Rerank）通常是一个轻量级的交叉编码器模型，它会对召回的 Top N（比如 N=50）个文档，进行更精细化的相关性打分，再选出最终的 Top K（比如 K=5）送给 LLM，能<strong>显著提升最终答案的质量</strong>。</li><li><strong>向量库更新：</strong> 这是一个工程难题，你完全没有提及。如何处理知识的<strong>增量更新、修改和删除</strong>？是定期全量重建索引，还是采用支持实时更新的向量数据库？</li></ul><p>时间分配：</p><ul><li>用户问题预处理：50ms</li><li>向量化（Embedding）: 100ms</li><li>向量检索（Recall）: 150ms</li><li>重排（Rerank）: 200ms</li><li>LLM 生成（Generation）: 1000ms (这是大头)</li><li>网络开销等：500ms 然后你需要思考如何优化每个环节。比如，Embedding 模型和 Rerank 模型需要<strong>选择轻量级、高性能</strong>的版本；向量检索需要对索引进行<strong>优化</strong>（如 HNSW 索引的参数调优）；LLM 需要采用<strong>流式输出（Streaming）</strong>，让用户能更快地看到第一个 Token。</li></ul>]]></content:encoded>
+      
+      
+      <category domain="https://blog.tokenlen.top/categories/%E9%9D%A2%E7%BB%8F/">面经</category>
+      
+      
+      <category domain="https://blog.tokenlen.top/tags/%E9%9D%A2%E8%AF%95/">面试</category>
+      
+      
+      <comments>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/changjing/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
       <title>分布式八股分析</title>
       <link>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/cap/</link>
       <guid>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/cap/</guid>
@@ -395,36 +519,6 @@
       
       
       <comments>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/javase/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>场景八股分析</title>
-      <link>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/changjing/</link>
-      <guid>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/changjing/</guid>
-      <pubDate>Tue, 23 Sep 2025 16:00:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h1&gt;异常解决&lt;/h1&gt;
-&lt;h2</description>
-          
-        
-      
-      
-      
-      <content:encoded><![CDATA[<h1>异常解决</h1><h2 id="1-就比如说你这个部署到线上了，然后他抛了一个异常，然后那你这个应该怎么排查呢">1.就比如说你这个部署到线上了，然后他抛了一个异常，然后那你这个应该怎么排查呢</h2><p>线上出现异常，我会遵循一套<strong>从宏观到微观、由表及里</strong>的排查SOP（标准作业程序）来定位和解决问题。</p><p><strong>第一步：信息收集与初步判断</strong></p><ol><li><p><strong>确认影响范围</strong>：首先，快速判断这个异常的影响面有多大。是影响了所有用户，还是部分用户？是核心功能还是边缘功能？这决定了问题的紧急程度。</p></li><li><p>查看监控告警：立即查看监控系统（如Prometheus/Grafana, Zabbix）的告警信息。检查应用的</p><p>关键指标，如：</p><ul><li><strong>应用层面</strong>：QPS、响应时间（RT）、错误率（Error Rate）是否突增？</li><li><strong>JVM层面</strong>：CPU使用率、内存占用、GC活动是否异常？</li><li><strong>主机层面</strong>：服务器的CPU、内存、磁盘I/O、网络流量是否正常？</li><li><strong>依赖服务</strong>：数据库、Redis、MQ等中间件的健康状况如何？</li><li>这一步的目标是快速定位问题是出在<strong>应用本身</strong>，还是<strong>外部依赖</strong>。</li></ul></li></ol><p><strong>第二步：日志分析与精准定位</strong></p><ol><li><strong>聚合日志平台检索</strong>：登录ELK（Elasticsearch, Logstash, Kibana）或类似日志平台，根据告警信息中的时间点、错误信息关键字（如<code>RuntimeException</code>）进行检索。</li><li><strong>利用Trace ID进行链路追踪</strong>：如果系统接入了分布式追踪系统（如SkyWalking, Zipkin），这是最强大的工具。我会根据报错信息找到一个<strong>Trace ID</strong>，然后用这个ID查询完整的请求调用链。这可以清晰地看到请求经过了哪些服务，在哪一个环节耗时最长，又是在哪个服务的具体代码行抛出了异常。</li><li>Linux服务器手动排查（作为补充）：如果日志平台不完善，我会登录到具体的服务器上进行排查。<ul><li>使用<code>grep</code>命令根据关键字快速过滤日志：<code>grep -C 10 'ExceptionNameToFind' /path/to/app.log</code>。<code>-C 10</code>可以显示异常上下文的10行，帮助理解问题背景。</li><li>如果需要根据Trace ID查，我会用：<code>grep 'your-trace-id' /path/to/app.log</code>。</li><li>对于实时滚动的日志，我会用<code>tail -f /path/to/app.log | grep 'ERROR'</code>来实时监控错误输出。</li></ul></li></ol><p>第三步：<strong>根因分析与问题复现</strong></p><ol><li><strong>代码分析</strong>：定位到具体的异常代码后，分析代码逻辑，判断是业务逻辑错误、空指针、并发问题还是资源未释放等。</li><li><strong>环境复现</strong>：如果可能，尝试在测试环境或预发环境，构造相同的参数和条件，复现这个问题，以便于调试和验证修复方案。</li></ol><p>第四步：<strong>问题解决与复盘</strong></p><ol><li><strong>紧急修复</strong>：如果是严重Bug，立即进行Hotfix修复并上线。如果是资源问题，进行扩容或配置调整。</li><li><strong>复盘总结</strong>：问题解决后，必须进行复盘。分析问题发生的根本原因，是代码缺陷、设计不合理、还是容量预估不足？并制定改进措施，例如增加单元测试、完善监控告警、优化架构等，防止同类问题再次发生。</li></ol><h2 id="2-考察线上问题排查">2.考察线上问题排查</h2><ul><li><p><strong>第一步：紧急止血（恢复服务优先）。</strong></p></li><li><p><strong>第二步：定位根因（Root Cause）。</strong></p></li><li><p><strong>第三步：复盘总结（避免再犯）。</strong></p></li><li><p>\1. 看监控，定范围：</p><ul><li><strong>看应用自身监控：</strong> 接口的 QPS、P99 响应时间、JVM（GC次数/时间、线程数）、线程池监控（队列长度、活跃线程数）。首先确认是自身应用的问题还是外部问题。</li><li><strong>看主机监控：</strong> CPU 使用率、内存占用、网络 I/O、磁盘 I/O。确认是不是机器资源被打满了。</li></ul></li><li><p>\2. 分析线程，找瓶颈：</p><ul><li>使用 <code>jstack</code> 命令 dump 线程堆栈。分析是否有大量线程处于 <code>BLOCKED</code> 状态（锁竞争）、<code>WAITING</code> 状态（等待外部资源，如 HTTP 调用、数据库连接）。这是定位问题的<strong>最核心手段</strong>。</li></ul></li><li><p>\3. 查GC，判影响：</p><ul><li>使用 <code>jstat -gcutil</code> 查看 GC 情况。确认是否发生了频繁的 Full GC，导致 STW（Stop-The-World），从而影响接口响应。</li></ul></li><li><p>\4. 查依赖，判外部：</p><ul><li>检查所有**下游服务（RPC 调用）**的响应时间。是不是某个下游服务变慢，拖垮了你。</li><li>检查**数据库和缓存（Redis）**的慢查询日志和响应时间。是不是因为慢 SQL 或 Redis 大 Key 导致的阻塞。</li></ul></li><li><p>\5. 看网络，做补充：</p><ul><li>如果以上都正常，再考虑网络问题，比如丢包、重传等。</li></ul></li></ul><p>恢复手段：</p><ul><li><strong>重启大法：</strong> 最简单粗暴但有效。</li><li><strong>服务降级：</strong> 通过配置中心，暂时关闭一些非核心功能。</li><li><strong>服务限流：</strong> 立即调低接口的 QPS 阈值，避免被流量打垮。</li><li><strong>扩容：</strong> 如果是资源不足，立即进行水平扩容。</li></ul><h2 id="3-线上问题卡顿">3.线上问题卡顿</h2><p>提出了一个“自顶向下”的排查思路：先通过监控工具（宝塔）看服务器资源（CPU、内存），定位到具体程序，再通过程序的日志（Docker日志）定位到具体组件和代码异常。</p><p>Linux 命令行工具（如 <code>top</code>, <code>jstack</code>, <code>jmap</code>）的提及。对于一个硬核的技术面试，面试官更希望听到你如何使用这些底层工具进行排查。此外，排查的维度不够全面，没有考虑到<strong>网络问题、数据库慢查询、下游服务拖累</strong>等常见原因。</p><h2 id="AI">AI</h2><h2 id="1-设计一个可扩展的架构，并说明如何实现-1-2-秒-P95-的延迟指标。">1.设计一个可扩展的架构，并说明如何实现 <strong>1-2 秒 P95 的延迟指标</strong>。</h2><p><strong>召回、重排、向量库更新、上下文窗口管理、长对话状态持久化</strong>，以及<strong>延迟预算分配</strong>几个维度，</p><p>RAG 的核心流程：文档切分 -&gt; 向量化入库 -&gt; 用户问题向量化 -&gt; Top K 相似度检索 -&gt; 结果送入 LLM 生成答案。RAG 是为了解决 LLM 没有“记忆”和无法利用私有知识的问题。</p><ul><li><strong>召回（Recall）：</strong> 你只提到了向量相似度检索。但一个生产级的 RAG 系统，召回层通常是<strong>混合检索</strong>，比如 <strong>向量检索 + 关键词检索（如 BM25）</strong>，以应对不同类型的问题。</li><li><strong>重排（Rerank）：</strong> 你提到了重排模型，但没有说明它的作用。Rerank 模型（如 Cohere Rerank）通常是一个轻量级的交叉编码器模型，它会对召回的 Top N（比如 N=50）个文档，进行更精细化的相关性打分，再选出最终的 Top K（比如 K=5）送给 LLM，能<strong>显著提升最终答案的质量</strong>。</li><li><strong>向量库更新：</strong> 这是一个工程难题，你完全没有提及。如何处理知识的<strong>增量更新、修改和删除</strong>？是定期全量重建索引，还是采用支持实时更新的向量数据库？</li></ul><p>时间分配：</p><ul><li>用户问题预处理：50ms</li><li>向量化（Embedding）: 100ms</li><li>向量检索（Recall）: 150ms</li><li>重排（Rerank）: 200ms</li><li>LLM 生成（Generation）: 1000ms (这是大头)</li><li>网络开销等：500ms 然后你需要思考如何优化每个环节。比如，Embedding 模型和 Rerank 模型需要<strong>选择轻量级、高性能</strong>的版本；向量检索需要对索引进行<strong>优化</strong>（如 HNSW 索引的参数调优）；LLM 需要采用<strong>流式输出（Streaming）</strong>，让用户能更快地看到第一个 Token。</li></ul>]]></content:encoded>
-      
-      
-      <category domain="https://blog.tokenlen.top/categories/%E9%9D%A2%E7%BB%8F/">面经</category>
-      
-      
-      <category domain="https://blog.tokenlen.top/tags/%E9%9D%A2%E8%AF%95/">面试</category>
-      
-      
-      <comments>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/changjing/#disqus_thread</comments>
       
     </item>
     
@@ -489,36 +583,6 @@
     </item>
     
     <item>
-      <title>计网八股分析</title>
-      <link>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/network/</link>
-      <guid>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/network/</guid>
-      <pubDate>Tue, 23 Sep 2025 16:00:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h1&gt;计网&lt;/h1&gt;
-&lt;h2 id=&quot;1-对比一下-HTTP-1-0-HTTP-1-1-和-HTTP-2-0-这三个版本的主要区别。&quot;&gt;1.对比一下 &lt;strong&gt;HTTP/1.0, HTTP/1.1, 和 HTTP/2.0&lt;/strong&gt;</description>
-          
-        
-      
-      
-      
-      <content:encoded><![CDATA[<h1>计网</h1><h2 id="1-对比一下-HTTP-1-0-HTTP-1-1-和-HTTP-2-0-这三个版本的主要区别。">1.对比一下 <strong>HTTP/1.0, HTTP/1.1, 和 HTTP/2.0</strong> 这三个版本的主要区别。</h2><p>请从<strong>连接管理、性能优化、头部处理</strong>等角度展开，并说明每一个版本的演进分别解决了上一代的什么核心痛点？</p><p>1.0-&gt;1.1</p><ul><li><strong>长链接 (Keep-Alive):</strong> 是 <strong>HTTP/1.1</strong> 相对于 HTTP/1.0 最核心的改进之一。HTTP/1.0 默认是短连接，每个请求/响应对都需要一次 TCP 连接。而 HTTP/1.1 默认开启了长链接，允许在一个 TCP 连接上发送多个 HTTP 请求，<strong>极大地减少了 TCP 连接建立和关闭的开销</strong>。</li><li>HTTP/1.1 还引入了<strong>管道机制 (Pipelining)</strong>，允许客户端在收到上一个响应之前就发送下一个请求。但这只是部分解决了队头阻塞（Head-of-Line Blocking）问题，因为服务端的响应仍然必须按顺序返回。</li></ul><p>2.0</p><ul><li><p><strong>多路复用 (Multiplexing):</strong> 这是 HTTP/2.0 <strong>最核心</strong>的优势。它允许在一个 TCP 连接上，<strong>同时、并行地</strong>收发多个请求和响应，并且不按顺序。这彻底解决了 HTTP/1.1 的队头阻塞问题。</p></li><li><p><strong>头部压缩 (Header Compression):</strong> HTTP/2.0 使用 HPACK 算法来压缩请求和响应的头部。对于多个请求，很多头部字段是重复的，HPACK 可以极大地减少这部分的数据传输量。</p></li><li><p><strong>服务器推送 (Server Push):</strong> 服务器可以主动地将客户端未来可能会用到的资源（如 CSS, JS 文件）提前推送到客户端缓存中，减少了请求的 RTT（往返时间）。</p></li><li><p><strong>二进制分帧 (Binary Framing):</strong> 这是 <strong>HTTP/2.0</strong> 的革命性变化。HTTP/1.0 和 1.1 都是基于文本的协议，而 HTTP/2.0 将所有传输的信息分割为更小的消息和帧，并对它们采用二进制格式的编码。这解决了 1.x 时代基于文本的协议解析效率低的问题。</p></li><li><p><strong>HTTP/1.0 -&gt; HTTP/1.1:</strong> 解决了什么？<strong>连接无法复用的问题</strong>。通过什么解决？<strong>默认开启长链接 (Keep-Alive)</strong>。</p></li><li><p><strong>HTTP/1.1 -&gt; HTTP/2.0:</strong> 解决了什么？<strong>队头阻塞和头部冗余的问题</strong>。通过什么解决？<strong>二进制分帧、多路复用、头部压缩</strong>。</p></li></ul><h2 id="2-从用户在浏览器输入-URL-到页面渲染完成，请按网络与系统角度分层讲解关键路径。">2.从用户在浏览器输入 URL 到页面渲染完成，请按<strong>网络与系统角度</strong>分层讲解关键路径。</h2><p>我将其分为<strong>请求准备阶段</strong>、<strong>网络通信阶段</strong>、和<strong>浏览器渲染阶段</strong></p><p>当我在URL栏输入地址的话，首先要知道这个域名对应的IP地址是啥</p><p>请求准备：</p><ol><li>浏览器首先会解析URL，判断协议（HTTPS）、<a href="http://xn--www-q33er8o.google.com">域名www.google.com</a>）、端口（默认为443）等信息。接着，它会查询自己的<strong>浏览器缓存</strong>，看之前是否已经解析过这个域名并且缓存还未过期。如果命中，就直接使用缓存的IP地址，跳过后续的DNS查询。</li><li>如果浏览器缓存未命中，操作系统会启动一个DNS查询流程，这是一个从近到远、层层递归的查询过程，核心目标是将域名转换为IP地址。先是操作系统&amp;host文件，然后是本地DNS服务器，再是根域名服务器，顶级域名服务器，权威域名服务器。依次类推</li><li>LDNS拿到IP地址后，会将其缓存起来，并返回给操作系统，操作系统再返回给浏览器。至此，DNS解析完成。</li></ol><p>网络通信：</p><p>这个过程涉及到TCP、TLS和HTTP三个核心协议</p><p>TCP三次握手</p><ol><li><strong>第一次握手 (SYN)</strong>：客户端随机选择一个初始序列号<code>client_isn</code>，将TCP报文段的<code>SYN</code>标志位置为1，然后发送给服务器。此时客户端进入<code>SYN_SENT</code>状态。</li><li><strong>第二次握手 (SYN+ACK)</strong>：服务器收到SYN包后，必须确认客户端的<code>SYN</code>。它将报文段的<code>SYN</code>和<code>ACK</code>标志位都置为1，确认号<code>ack</code>设为<code>client_isn + 1</code>，同时自己也选择一个初始序列号<code>server_isn</code>，然后发送给客户端。此时服务器进入<code>SYN_RCVD</code>状态。</li><li><strong>第三次握手 (ACK)</strong>：客户端收到服务器的SYN+ACK包后，检查确认号是否正确。如果正确，它会将<code>ACK</code>标志位置为1，确认号<code>ack</code>设为<code>server_isn + 1</code>，然后发送给服务器。这个ACK包可以携带数据。发送后，客户端和服务器都进入<code>ESTABLISHED</code>状态，连接建立成功。</li></ol><p>TLS四次挥手：</p><ol><li><strong>Client Hello</strong>：客户端发送支持的TLS版本、加密套件列表、以及一个随机数<code>client_random</code>。</li><li><strong>Server Hello &amp; Certificate</strong>：服务器选择一个加密套件，返回自己的数字证书、以及一个随机数<code>server_random</code>。</li><li><strong>客户端验证与密钥交换</strong>：客户端验证服务器证书的有效性。验证通过后，生成一个预主密钥<code>pre-master secret</code>，用服务器证书中的公钥加密后发送给服务器。</li><li><strong>服务器解密与会话密钥生成</strong>：服务器用自己的私钥解密，得到<code>pre-master secret</code>。至此，<strong>客户端和服务器双方都拥有了<code>client_random</code>、<code>server_random</code>和<code>pre-master secret</code></strong>，它们使用相同的算法，各自独立地生成一个<strong>对称的会话密钥</strong>。</li><li><strong>Finished</strong>：双方互发<code>Finished</code>消息，用生成的会话密钥加密，验证握手过程是否成功。握手结束后，后续所有的HTTP数据都将使用这个对称的会话密钥进行加密传输。</li></ol><p>Http请求和相应：</p><ol><li><strong>发送HTTP请求</strong>：浏览器构建一个HTTP请求报文，包含请求行（<code>GET / HTTP/1.1</code>）、请求头（<code>Host</code>, <code>User-Agent</code>, <code>Cookie</code>等）和请求体（GET请求通常为空），然后通过建立好的TCP/TLS通道发送给服务器。</li><li>请求到达服务器后，可能会先经过<strong>负载均衡器（如Nginx/SLB）</strong>，它会将请求转发到后端的某一台应用服务器。</li><li>应用服务器（如Tomcat）接收到请求后，Web容器会解析HTTP报文，将其封装成<code>HttpServletRequest</code>对象。</li><li>业务代码（如Spring MVC的Controller）被调用，它可能会查询<strong>缓存（Redis）</strong>、<strong>数据库（MySQL）</strong>，执行业务逻辑，最终生成数据。</li><li>服务器将数据渲染进HTML模板，构建一个HTTP响应报文，包含状态行（<code>HTTP/1.1 200 OK</code>）、响应头（<code>Content-Type</code>, <code>Set-Cookie</code>等）和响应体（HTML内容）。</li><li><strong>接收HTTP响应</strong>：浏览器接收到服务器的响应报文。</li></ol><p>浏览器渲染：</p><ul><li>浏览器自上而下解析HTML文档，生成<strong>DOM树（Document Object Model）</strong>。</li><li>在解析过程中，如果遇到<code>&lt;link&gt;</code>标签引用的CSS文件，会异步下载并解析，生成<strong>CSSOM树（CSS Object Model）</strong>。</li><li>如果遇到<code>&lt;script&gt;</code>标签，会阻塞DOM的解析，立即下载并执行JavaScript代码（除非<code>script</code>标签有<code>async</code>或<code>defer</code>属性）。</li><li><strong>构建渲染树（Render Tree）</strong>：将DOM树和CSSOM树结合起来，生成渲染树。渲染树只包含需要被显示的节点及其样式信息（例如，<code>display:none</code>的节点就不会在渲染树中）。</li><li><strong>布局（Layout/Reflow）</strong>：浏览器根据渲染树，计算出每个节点在屏幕上的精确位置和大小。</li><li><strong>绘制（Paint/Rasterizing）</strong>：浏览器调用GPU，根据布局信息，将每个节点绘制成屏幕上的实际像素。</li><li><strong>合成（Composite）</strong>：对于复杂的页面（如使用了<code>transform</code>或<code>opacity</code>），浏览器会将页面分层，独立绘制，最后再合成到一起，以提升性能。</li></ul><p>所有资源加载完成，或者是空闲超时了之后，就会开始断开请求TCP的四次挥手</p><ul><li><strong>第一次挥手 (FIN)</strong>：主动关闭方（如客户端）发送一个<code>FIN</code>报文，表示自己的数据已发送完毕。进入<code>FIN_WAIT_1</code>状态。</li><li><strong>第二次挥手 (ACK)</strong>：被动关闭方（服务器）收到<code>FIN</code>后，回复一个<code>ACK</code>报文。此时，连接处于<strong>半关闭</strong>状态，服务器仍然可以向客户端发送数据。</li><li><strong>第三次挥手 (FIN)</strong>：服务器也准备好关闭连接时，发送一个<code>FIN</code>报文给客户端。进入<code>LAST_ACK</code>状态。</li><li><strong>第四次挥手 (ACK)</strong>：客户端收到服务器的<code>FIN</code>后，回复一个<code>ACK</code>报文。发送后，客户端进入**<code>TIME_WAIT</code>**状态。服务器收到这个ACK后，立即关闭连接。</li></ul><p><code>TIME_WAIT</code>状态？</p><ol><li><strong>可靠地终止TCP连接</strong>：这是最主要的原因。四次挥手中的<strong>最后一个ACK报文是由主动关闭方（客户端）发出的</strong>。这个ACK报文有可能会在网络中丢失。如果丢失，被动关闭方（服务器）就收不到确认，它会<strong>超时重传它的FIN报文</strong>。如果此时客户端已经彻底关闭连接，它将无法响应这个重传的FIN，导致服务器永远无法正常关闭。而处于<code>TIME_WAIT</code>状态的客户端，仍然能接收到这个重传的FIN，并<strong>重新发送一次ACK</strong>，从而确保服务器能够正常关闭。</li><li><strong>防止已失效的报文段被新连接误接收</strong>：考虑一个场景：一个TCP连接（由<code>源IP:源端口, 目的IP:目的端口</code>这个四元组唯一标识）关闭后，马上又用<strong>完全相同的四元组</strong>建立了一个新的连接。此时，网络中可能还存在上一个旧连接中延迟到达的报文段。如果没有<code>TIME_WAIT</code>状态，这些“迷路”的旧报文段就可能会被这个新连接误认为是合法数据并接收，造成数据错乱。</li></ol><p><strong>为什么等待时间是 <code>2MSL</code>？</strong></p><ul><li>**MSL（Maximum Segment Lifetime）*<em>是指一个TCP报文段在网络中可能存活的*<em>最长时间</em></em>。任何报文在超过MSL后，都会被网络丢弃。</li></ul><p><strong><code>2MSL</code>的时间足以保证在一个连接的一去一回两个方向上，所有的报文段都能在网络中自然消失</strong>。当<code>TIME_WAIT</code>状态结束后，可以保证网络中不再有任何与旧连接相关的“幽灵”报文段，此时再建立新的连接就是完全安全的。</p><h2 id="3-在-TCP-三次握手过程中，如果第三次握手的-ACK-报文丢失了，会发生什么？">3.在 TCP 三次握手过程中，如果<strong>第三次握手的 ACK 报文丢失</strong>了，会发生什么？</h2><p>三次握手分别是：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SYN` -&gt; `SYN+ACK` -&gt; `ACK</span><br></pre></td></tr></table></figure><ul><li><strong>服务端状态：</strong> 当服务端发送完 <code>SYN+ACK</code> 之后，它会进入 <strong><code>SYN_RCVD</code></strong> 状态，并<strong>启动一个定时器</strong>，等待客户端的第三次 <code>ACK</code>。</li><li><strong>客户端状态：</strong> 当客户端发送完第三次 <code>ACK</code> 之后，它<strong>单方面认为连接已经建立</strong>，状态会变为 <strong><code>ESTABLISHED</code></strong>。</li></ul><p>因为是<strong>服务端</strong>在 <code>SYN_RCVD</code> 状态下等待第三次 <code>ACK</code> 超时了。当定时器超时后，服务端会<strong>重新发送 <code>SYN+ACK</code> 包</strong>给客户端。重传的次数由系统参数（如 <code>net.ipv4.tcp_synack_retries</code>）控制。</p><p>在 <code>SYN_RCVD</code> 状态下，连接并未完全建立。对于服务端应用层来说，它通过 <code>accept()</code> 拿到的连接还处于一个“半连接队列”中，<strong>应用层是无法使用这个连接的</strong>，所以服务端应用层<strong>无感知</strong>。</p><p>因为客户端在发送完第三次 <code>ACK</code> 后，其内核协议栈就认为连接已建立（<code>ESTABLISHED</code> 状态），所以对于客户端应用层来说，<code>connect()</code> 系统调用<strong>会立即返回成功</strong>。此时，客户端应用层<strong>会认为连接已经建立成功，并开始发送数据</strong>。</p><p>处理：</p><ul><li>客户端应用层发送的数据，会和因为第三次 ACK 丢失而重传的 <code>SYN+ACK</code> 在网络中交汇。</li><li>当客户端收到服务端重传的 <code>SYN+ACK</code> 后，它的内核会意识到自己之前发送的 <code>ACK</code> 可能丢失了，于是会<strong>再次发送一个 <code>ACK</code></strong> 给服务端。</li><li>当服务端收到了这个新的 <code>ACK</code> 后（无论是客户端重发的，还是伴随着数据包一起过来的），服务端状态才会变为 <code>ESTABLISHED</code>，连接才真正建立，之前客户端发送的数据才会被服务端应用层接收。</li></ul><p>TCP状态机转变：CLOSED<code>-&gt;</code>SYN_SENT<code>-&gt;</code>SYN_RCVD<code>-&gt;</code>ESTABLISHE</p>]]></content:encoded>
-      
-      
-      <category domain="https://blog.tokenlen.top/categories/%E9%9D%A2%E7%BB%8F/">面经</category>
-      
-      
-      <category domain="https://blog.tokenlen.top/tags/%E9%9D%A2%E8%AF%95/">面试</category>
-      
-      
-      <comments>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/network/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
       <title>MQ八股分析</title>
       <link>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/mq/</link>
       <guid>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/mq/</guid>
@@ -575,55 +639,6 @@
       
       
       <comments>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/mybatis/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>OS八股分析</title>
-      <link>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/os/</link>
-      <guid>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/os/</guid>
-      <pubDate>Tue, 23 Sep 2025 16:00:00 GMT</pubDate>
-      
-      
-      
-      
-      <category domain="https://blog.tokenlen.top/categories/%E9%9D%A2%E7%BB%8F/">面经</category>
-      
-      
-      <category domain="https://blog.tokenlen.top/tags/%E9%9D%A2%E8%AF%95/">面试</category>
-      
-      
-      <comments>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/os/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>Redis八股分析</title>
-      <link>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/redis/</link>
-      <guid>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/redis/</guid>
-      <pubDate>Tue, 23 Sep 2025 16:00:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h1&gt;Redis&lt;/h1&gt;
-&lt;h2</description>
-          
-        
-      
-      
-      
-      <content:encoded><![CDATA[<h1>Redis</h1><h2 id="1-多级缓存数据一致性与失败回滚">1.<strong>多级缓存数据一致性与失败回滚</strong></h2><p>当被问及如何保证Redis和本地缓存更新的原子性，以及在更新失败时如何回滚，你的回答提到了不甚准确的“编程式事务”，并最终倾向于人工处理。</p><p>方案1：<strong>引入消息队列（MQ）进行可靠的异步处理</strong></p><ol><li>修改架构：Canal不再直接调用消费逻辑，而是将解析后的binlog事件作为消息发送到MQ的一个Topic中。</li><li>消费者逻辑：消费者服务从MQ拉取消息。其处理逻辑是：先失效Redis缓存，再发布一个广播消息（如通过Redis Pub/Sub）通知所有应用实例失效本地Caffeine缓存。</li><li>失败处理：只有当所有步骤成功后，消费者才向MQ发送ACK。如果处理过程中任何一步失败（如Redis连接超时），消费者不发送ACK。MQ会在超时后将该消息重新投递给其他消费者，实现自动重试。</li></ol><p>方案2 死信队列</p><ol><li>在Canal的消费者逻辑中，使用<code>Spring Retry</code>等框架对缓存失效操作进行封装。</li><li>配置重试策略，例如重试3次，每次间隔采用指数退避（如1s, 2s, 4s），避免在故障期间频繁冲击下游服务。</li><li>配置一个<code>RecoveryCallback</code>。当所有重试都失败后，将这条失败的binlog事件（包含表名、主键、操作类型等信息）发送到一个专门的**死信队列（Dead Letter Queue）**或记录到数据库的失败任务表中。</li><li>部署一个独立的监控程序或定时任务，消费DLQ中的消息，并发送告警（邮件、短信、钉钉）。</li></ol><p>如果重试逻辑设计不当，可能会在短时间内放大故障。死信队列需要有完善的监控，否则会成为被遗忘的角落。</p><p>方案3 <strong>先更新缓存，再更新数据库”的策略</strong></p><ol><li>写请求：先更新（或失效）Redis缓存，然后更新数据库。</li><li>为了解决并发更新导致的不一致问题，可以引入“延时双删”：先删缓存 -&gt; 更新数据库 -&gt; 延迟一段时间（如500ms）后再次删除缓存。</li><li>本地Caffeine缓存仍然可以通过监听Redis的key失效事件（Keyspace Notifications）或消息广播来同步失效。</li></ol><p><strong>非常不推荐</strong>。延时双删的延迟时间很难确定，无法100%保证一致性。代码侵入性强，业务逻辑与缓存逻辑耦合严重，维护困难。</p><h2 id="2-什么情况下，就是两个线程会持有同一把锁">2.什么情况下，就是两个线程会持有同一把锁</h2><p><strong>两个不同的线程在同一时刻是不可能持有同一把锁的</strong>，这是锁的<strong>互斥性</strong>基本原则所保证的。如果出现了这种情况，那一定是锁的实现出了严重的问题。</p><p>您这个问题可能是在考察一个非常重要的特性——<strong>锁的可重入性</strong>。可重入性指的是<strong>同一个线程</strong>可以多次成功获取同一把锁，而不会自己把自己锁死。在释放锁时，也需要释放相应次数后，锁才会被真正释放。”</p><p>比如：在一个复杂的业务方法A中，它获取了锁。然后它又调用了另一个方法B，而方法B也需要获取同一个锁。如果没有可重入性，那么在方法B中，当前线程会因为无法获取一个已经被自己持有的锁而陷入死锁。</p><p>实现：Redisson巧妙地使用了Redis的<strong>Hash数据结构</strong>来实现。</p><ul><li>当一个线程第一次获取锁时，它会在Redis中创建一个Hash。这个Hash的Key是锁的名称（例如<code>myLock</code>）。</li><li>这个Hash结构内部会存储两个关键信息：<ul><li>一个field存储<strong>持有锁的线程标识</strong>（例如，UUID + ThreadId）。</li><li>另一个field存储一个<strong>计数器</strong>，表示该线程重入的次数，初始值为1。</li></ul></li><li>当同一个线程<strong>再次</strong>尝试获取这把锁时，Redisson会检查Hash中存储的线程标识。如果与当前线程标识匹配，它就不会阻塞，而是直接将计数器的值加1，表示又重入了一次。</li><li>当线程<strong>释放锁</strong>时，它会去将计数器减1。只有当计数器的值减到0时，Redisson才会真正地从Redis中删除这个Hash（即释放锁），这样其他线程才有机会获取。</li></ul><h2 id="3-如果Canal挂了怎么办？或者Canal到消费端的链路出现长时间中断，会发生什么？有什么容灾方案吗？">3.<strong>如果Canal挂了怎么办？或者Canal到消费端的链路出现长时间中断，会发生什么？有什么容灾方案吗？</strong></h2><p>您提的这个问题非常关键，它涉及到整个数据同步链路的<strong>高可用性</strong>。</p><ol><li><strong>Canal自身的高可用</strong>：首先，Canal自身是可以部署成<strong>高可用集群</strong>的。通过Zookeeper进行集群管理和主备选举，当主节点宕机时，备用节点可以自动接管，从而保证了数据订阅服务的连续性。</li><li><strong>链路中断的影响</strong>：如果Canal到消费端的链路中断，确实会导致缓存与数据库在中断期间的<strong>数据不一致窗口期变长</strong>。新写入的数据无法触发缓存失效，用户可能会在一段时间内读到旧的缓存数据。</li><li><strong>我们的容灾与补偿策略</strong>：<ul><li><strong>监控与告警</strong>：我们必须对Canal的消费位点（Position）与MySQL主库的最新binlog位点之间的<strong>延迟</strong>做严格的监控。一旦延迟超过阈值（比如1分钟），就立即触发高级别告警，通知SRE和开发团队介入。</li><li><strong>设置合理的缓存TTL</strong>：即使同步链路中断，我们缓存中的数据也不是永久有效的。通过为所有缓存设置一个合理的<strong>兜底过期时间（TTL）</strong>，比如1小时，可以保证即使在最坏的情况下，数据不一致的时间也不会无限延长。这是一种<strong>自愈机制</strong>。</li><li><strong>手动全量/增量校准</strong>：对于极端重要的数据，我们会准备一个<strong>手动触发的数据校准脚本</strong>。当链路长时间中断并恢复后，可以运行这个脚本，根据时间戳或版本号，主动查询数据库，强制刷新Redis中的核心数据，确保最终一致性。”</li></ul></li></ol><h2 id="4-你提到用Redis的Pub-Sub来广播失效Caffeine本地缓存。">4.<strong>你提到用Redis的Pub/Sub来广播失效Caffeine本地缓存。</strong></h2><p><strong>Pub/Sub是‘fire-and-forget’（即发即忘）模式，不保证消息必达。如果某个应用实例因为网络抖动没收到失效消息，怎么办？</strong></p><p>您观察得非常仔细，Pub/Sub确实存在消息丢失的风险。对于这个问题，我们有分层级的解决方案</p><ol><li><strong>接受短暂不一致</strong>：对于大部分业务场景，单台服务器上短暂的本地缓存不一致是可以接受的。因为流量通常会通过负载均衡打到多台服务器上，只有一小部分用户请求会命中这台机器的旧缓存，且Caffeine本身也有过期机制，影响是可控的。</li><li><strong>引入更可靠的消息总线</strong>：如果业务对一致性要求极高，我们会放弃轻量级的Pub/Sub，转而使用<strong>更可靠的消息中间件（如RocketMQ）的广播消费模式</strong>。每个应用实例都作为一个消费者组内的广播消费者，订阅失效通知。MQ的ACK机制可以保证每个实例都可靠地收到失效消息。</li><li><strong>版本号机制</strong>：我们可以在缓存的对象中增加一个<strong>版本号或时间戳字段</strong>。当应用从缓存中获取到数据后，可以（在某些关键操作前）与数据库中的版本号进行一次快速比对。如果发现缓存版本落后，就主动失效本地缓存并重新加载。这是一种<strong>主动校验</strong>的补偿机制。”</li></ol><h2 id="5-缓存三问题">5.缓存三问题</h2><p><strong>布隆过滤器和缓存空值，这两种方案在你的项目中，你会如何选择？它们各自有什么优缺点和需要注意的地方？</strong></p><p><strong>方案一：缓存空值（Cache Null Values）</strong></p><ul><li><p>优点：</p><ul><li><strong>实现简单</strong>：逻辑清晰，开发和维护成本极低。</li><li><strong>效果直接</strong>：能100%拦截住对同一个不存在的key的重复攻击。</li></ul></li><li><p>缺点与注意事项：</p><ul><li><strong>消耗额外的缓存空间</strong>：如果被恶意攻击，攻击者不断变换不存在的key来查询，会导致Redis中存储大量的空值key，造成内存浪费。</li><li><strong>数据一致性问题</strong>：如果这个之前不存在的数据，后来又在数据库中被创建了（例如，一个新用户注册了），缓存中的空值需要有一种机制被及时地更新或失效，否则会导致用户刚注册完却查不到自己的信息。</li></ul><p>适用于<strong>不存在的key的集合相对固定，或者重复查询率高</strong>的场景。例如，查询一个已经下架的商品</p></li></ul><p><strong>方案二：布隆过滤器（Bloom Filter）</strong></p><ul><li>优点：<ul><li><strong>空间效率极高</strong>：它使用位图（bitmap）来存储数据，占用的内存空间远小于缓存空值方案，非常适合处理海量数据。</li></ul></li><li>缺点与注意事项：<ul><li><strong>存在误判率（False Positive）</strong>：布隆过滤器判断“不存在”是100%准确的，但判断“存在”时，有一定概率会把一个不存在的key误判为存在。这意味着它无法完全拦截所有穿透请求，会有一小部分漏网之鱼打到数据库。</li><li><strong>无法删除元素</strong>：标准的布隆过滤器不支持删除操作。如果数据需要频繁地增删，就需要使用Counting Bloom Filter等变种，实现更复杂。</li><li><strong>初始化和重建成本</strong>：需要在系统启动时，将全量数据加载到布隆过滤器中，这个过程可能比较耗时。当数据发生变化时，也需要有机制来同步更新过滤器。</li></ul></li><li><strong>适用场景</strong>：适用于<strong>数据量巨大，但数据相对稳定，且对误判率有一定容忍度</strong>的场景。例如，防止恶意用户用随机生成的ID来攻击用户查询接口。</li></ul><h2 id="6-用户在10分钟之内连续输错三次密码，就禁止其登录”。如果使用-Redis，你会选择哪种数据结构来实现">6.用户在10分钟之内连续输错三次密码，就禁止其登录”。如果使用 Redis，你会选择哪种数据结构来实现</h2><p>方案1：使用String</p><p>Redis的<code>INCR</code>命令是原子性的，可以保证在并发环境下计数的准确性。<code>EXPIRE</code>命令可以为一个key设置生存时间（TTL），完美地契合了“10分钟之内”这个时间窗口的需求。</p><ol><li><strong>定义Key</strong>：为每个用户的登录失败计数定义一个清晰的Key，例如：<code>login:fail:count:&#123;userId&#125;</code>。</li><li>登录失败逻辑：当用户登录失败时，执行以下操作：<ul><li>对该用户的Key执行<code>INCR</code>命令，获取增长后的计数值：<code>count = redis.incr(&quot;login:fail:count:&#123;userId&#125;&quot;)</code>。</li><li><strong>判断是否是第一次失败</strong>：如果<code>count</code>等于1，说明这是10分钟窗口内的第一次失败。此时，必须为这个Key设置过期时间：<code>redis.expire(&quot;login:fail:count:&#123;userId&#125;&quot;, 600)</code> (600秒 = 10分钟)。</li><li><strong>检查是否达到阈值</strong>：判断<code>count</code>是否大于等于3。如果是，则触发锁定用户的逻辑（例如，在数据库中更新用户状态，或在另一个Redis Key中设置一个锁定标记）。</li></ul></li><li><strong>登录成功逻辑</strong>：当用户登录成功时，应该<strong>立即删除</strong>这个计数Key：<code>redis.del(&quot;login:fail:count:&#123;userId&#125;&quot;)</code>，以清除之前的失败记录。</li></ol><p>问题：</p><ul><li>存在一个微小的<strong>竞态条件（Race Condition）</strong>：在<code>INCR</code>和<code>EXPIRE</code>两个命令之间，如果服务器恰好宕机或重启，可能会导致一个计数Key被创建但<strong>没有设置过期时间</strong>，从而变成一个永久的计数器。虽然概率极低，但在高并发系统中仍需考虑。</li><li><strong>解决方案</strong>：可以使用<strong>Lua脚本</strong>将<code>INCR</code>和<code>EXPIRE</code>两个操作打包成一个原子操作，或者使用一条Redis命令完成</li></ul><p>方案2：<strong>灵活精确 - List 作为失败记录队列</strong></p><p>Redis的<code>List</code>是一个双向链表，可以作为队列使用。通过<code>LPUSH</code>在队头插入元素，<code>LTRIM</code>修剪队列长度，可以非常高效地维护一个固定大小的事件窗口。</p><ol><li><strong>定义Key</strong>：<code>login:fail:log:&#123;userId&#125;</code>。</li><li>登录失败逻辑：<ul><li>获取当前时间戳（秒或毫秒），并将其作为元素<code>LPUSH</code>到List的头部：<code>redis.lpush(&quot;login:fail:log:&#123;userId&#125;&quot;, System.currentTimeMillis())</code>。</li><li><strong>检查当前失败次数</strong>：获取List的长度<code>llen</code>。</li><li>如果<code>llen</code>大于等于3，说明已经发生了至少3次失败。此时，获取List中<strong>第3个元素</strong>（即最早的那次失败记录，索引为2）：<code>third_attempt_time = redis.lindex(&quot;login:fail:log:&#123;userId&#125;&quot;, 2)</code>。</li><li><strong>判断时间窗口</strong>：计算当前时间与<code>third_attempt_time</code>的时间差。如果差值小于10分钟，则说明在10分钟内发生了3次失败，触发锁定逻辑。</li></ul></li><li><strong>队列维护</strong>：为了防止List无限增长，可以在每次<code>LPUSH</code>后，使用<code>LTRIM</code>命令只保留最近的3条记录：<code>redis.ltrim(&quot;login:fail:log:&#123;userId&#125;&quot;, 0, 2)</code>。同时，为整个Key设置一个比10分钟稍长的过期时间，如11分钟，用于自动清理冷数据。</li><li><strong>登录成功逻辑</strong>：同方案一，<code>DEL</code>掉对应的Key。</li></ol><ul><li>实现了精确的时间窗口判断。</li><li>内存占用非常小，因为每个用户的Key最多只存储3个时间戳。</li></ul><p><strong>方案三：功能强大 - ZSET (Sorted Set) 实现滑动时间窗口</strong></p><p>Redis的<code>ZSET</code>是一个有序集合，每个成员都关联一个<code>score</code>。我们可以用<code>score</code>来存储事件发生的时间戳，利用<code>ZSET</code>按分数范围查询和删除的特性，完美地实现<strong>滑动时间窗口</strong>。</p><ol><li><strong>定义Key</strong>：<code>login:fail:zset:&#123;userId&#125;</code>。</li><li>登录失败逻辑：<ul><li>获取当前时间戳<code>now</code>。</li><li>为了防止成员重复，可以给每个成员一个唯一的值，例如<code>now + &quot;:&quot; + Math.random()</code>。</li><li>将新的失败记录添加到ZSET中，<code>score</code>和<code>member</code>都使用时间戳（或<code>score</code>是时间戳，<code>member</code>是唯一ID）：<code>redis.zadd(&quot;login:fail:zset:&#123;userId&#125;&quot;, now, now)</code>。</li><li><strong>清理过期记录</strong>：移除所有10分钟之前的记录，这是一个非常关键的步骤，保证了窗口的滑动：<code>redis.zremrangebyscore(&quot;login:fail:zset:&#123;userId&#125;&quot;, 0, now - 600000)</code> (假设<code>now</code>是毫秒)。</li><li><strong>统计窗口内次数</strong>：获取当前ZSET中的成员数量：<code>count = redis.zcard(&quot;login:fail:zset:&#123;userId&#125;&quot;)</code>。</li><li><strong>检查阈值</strong>：如果<code>count</code>大于等于3，触发锁定逻辑。</li></ul></li><li><strong>登录成功逻辑</strong>：同方案一，<code>DEL</code>掉对应的Key。</li></ol><h2 id="7-Redis持久化">7.Redis持久化</h2><p>RDB 是“快照”模式，AOF 是“指令日志”模式，并理解了它们都是为了解决 Redis 宕机后的数据恢复问题。</p><p>你提到了 RDB 文件小、恢复快，但可能丢失数据；AOF 文件大、恢复慢，但数据更完整。</p><p>这是一个非常关键的知识点。当 RDB 和 AOF 文件<strong>同时存在</strong>时，Redis <strong>会优先选择 AOF 文件</strong>来恢复数据。</p><ul><li><strong>为什么？</strong> 因为 AOF 文件通常记录的数据比 RDB 文件<strong>更完整、更新</strong>。AOF 的默认策略是每秒写一次盘，而 RDB 默认是几分钟甚至更久才生成一次快照。为了尽可能少地丢失数据，Redis 的设计者选择了优先使用数据更全的 AOF。</li></ul><p><strong>AOF 重写（AOF Rewrite）：</strong> 你提到了 AOF 文件会很大，这是一个很重要的缺点。但你没有提到解决这个问题的关键机制——<strong>AOF 重写</strong>。Redis 会在后台定期地对 AOF 文件进行重写，将多条冗余的命令（比如对一个 key 多次 <code>set</code>）合并成一条最终的命令，从而大大压缩 AOF 文件的大小。这个机制是 AOF 能够被长期使用的重要保障。</p><p>RDB 的触发方式： RDB 是“一段时间触发一次”，可以更具体地说明其触发方式，主要有：</p><ul><li><strong><code>save</code> 命令：</strong> 同步阻塞式保存，会阻塞主线程，生产环境禁用。</li><li><strong><code>bgsave</code> 命令：</strong> 异步非阻塞式保存，Redis 会 <code>fork</code> 一个子进程来执行快照，这是我们手动执行或配置自动执行的主要方式。</li><li><strong>配置文件自动触发：</strong> 比如 <code>save 900 1</code> (900秒内有1次写入)、<code>save 300 10</code> (300秒内有10次写入)等。</li></ul><p>“RDB-AOF 模式”，这个概念是对的，它叫<strong>混合持久化 (Mixed Persistence)</strong>。但它的工作方式可以描述得更清晰：当触发 AOF 重写时，Redis 不再简单地写入指令，而是将<strong>重写那一刻的内存数据，以 RDB 的格式写入到新的 AOF 文件的开头</strong>，然后再将重写期间产生的增量命令，以 AOF 格式追加到文件末尾。这样做的好处是，重启恢复时，可以先像 RDB 一样快速加载内存快照，然后再重放增量命令，<strong>兼顾了 RDB 的恢复速度和 AOF 的数据完整性</strong>。</p><h2 id="8-Redis底层数据结构">8.Redis底层数据结构</h2><p>ziplist:</p><p>它不是一个真正的列表，而是一块<strong>连续的内存区域</strong>。这块内存中，将多个数据项（entry）紧凑地排列在一起，从而极大地节省内存。每个entry包含三个部分：<code>previous_entry_length</code>（前一个节点的长度）、<code>encoding</code>（当前节点内容的编码方式和长度）、<code>content</code>（实际内容）。</p><ul><li><strong>极致的内存效率</strong>：由于是连续内存，没有指针开销，内存利用率极高。</li><li>但是有连锁更新的问题，由于每个节点都记录了<strong>前一个节点</strong>的长度，当我们在一个<code>ziplist</code>的<strong>中间</strong>插入或删除了一个元素，如果这个元素的<strong>大小发生了变化</strong>（比如从一个小整数变成一个长字符串），就可能导致<strong>其后所有节点</strong>的<code>previous_entry_length</code>字段都需要被级联修改。</li></ul><p>listpack：</p><p>与<code>ziplist</code>类似，也是一块<strong>连续的内存区域</strong>，用于紧凑地存储数据项。<code>listpack</code>的每个entry<strong>不再记录前一个节点的长度</strong>。取而代之的是，它记录了<strong>当前节点的总长度</strong>（<code>encoding</code>字段中包含了长度信息）。当需要从后向前遍历时，它会先读取当前节点的<strong>前一个节点</strong>的<strong>尾部</strong>，那里记录了那个节点的总长度，然后再跳到那个节点的起始位置。</p><p>依然是连续内存，内存利用率很高，但解决了连锁更新的问题。成为小数据量<code>Hash</code>和<code>Zset</code>的底层实现。</p><p>skiplist:</p><p><code>Zset</code>（有序集合）需要一种既能高效查找又能高效增删的数据结构。平衡树（如红黑树）实现复杂，而<code>skiplist</code>是一种概率性的、实现相对简单且性能媲美平衡树的数据结构。</p><p>从最高层的链表开始，向右查找，直到找到一个大于等于目标值的节点的前驱。然后从这个前驱节点<strong>下降一层</strong>，继续向右查找。重复此过程，直到到达最底层的链表，最终找到目标元素。</p><p>底层是链表，可以方便地进行范围遍历。增删改查效率都是O(log N)。</p><h2 id="9-渐进式hash">9.渐进式hash</h2><p>“渐进式哈希”（Incremental Hashing），也常被称为“渐进式 Rehash”，它是一种<strong>优化哈希表（Hash Table）在扩容或缩容时数据迁移过程的技术</strong>。</p><p><strong>它解决了传统哈希表在扩容时，因需要一次性迁移所有数据而导致的“服务阻塞”或“卡顿”（Stop-the-World）问题。</strong></p><p>渐进式哈希巧妙地将这个集中的、一次性的迁移任务<strong>分摊</strong>到多次操作中去完成。Redis的Rehash机制是渐进式哈希最经典的实现：</p><ol><li><strong>准备阶段</strong>: 当触发扩容时，Redis会为字典（dict）分配一个新的、更大的哈希表（内部称为<code>ht[1]</code>），而旧的哈希表（<code>ht[0]</code>）仍然保留。此时，字典同时持有新旧两个哈希表。</li><li><strong>迁移阶段（“渐进式”的体现）</strong>: 数据迁移不是一次性完成的，而是通过两种方式<strong>分批、逐步</strong>进行：<ul><li><strong>被动迁移 (Passive Rehash)</strong>: 在Rehash期间，每当有客户端对字典进行<strong>增、删、改、查</strong>操作时，除了完成指定的操作外，Redis还会<strong>顺带</strong>将被操作的键所在的整个哈希桶（bucket）中的所有键值对，从旧表（<code>ht[0]</code>）迁移到新表（<code>ht[1]</code>）。这相当于把迁移的成本分摊到了每一次客户端请求中。</li><li><strong>主动迁移 (Active Rehash)</strong>: 为了防止字典在长期没有被访问的情况下Rehash过程一直无法完成，Redis有一个后台定时任务（每秒执行10次）。这个任务会<strong>主动地、每次只花费1毫秒</strong>的时间，从旧表（<code>ht[0]</code>）中迁移一部分数据到新表（<code>ht[1]</code>），确保即使在空闲时期，Rehash过程也能稳步推进。</li></ul></li><li><strong>服务期间的访问</strong>: 在整个Rehash过程中，字典的读写操作会同时兼顾新旧两个哈希表：<ul><li><strong>查询/删除/更新</strong>: 会先在旧表（<code>ht[0]</code>）中查找，如果找不到，再去新表（<code>ht[1]</code>）中查找。</li><li><strong>新增</strong>: 只会添加到新表（<code>ht[1]</code>）中。这保证了旧表的数据只会减少，不会增加，最终一定能迁移完毕。</li></ul></li><li><strong>完成阶段</strong>: 当旧表（<code>ht[0]</code>）中的所有数据都迁移到新表（<code>ht[1]</code>）后，Rehash过程结束。此时会释放旧表的内存，并将新表设置为字典的默认哈希表（<code>ht[0] = ht[1]</code>），为下一次Rehash做准备。</li></ol><p><strong>渐进式哈希通过将庞大的数据迁移任务“化整为零”，均摊到每一次的日常操作和后台的少量定时任务中，从而避免了集中的、长时间的计算。它以一种平滑、对用户几乎无感知的方式完成了哈希表的扩容，极大地保证了系统（如Redis）的</strong>高可用性<strong>和</strong>响应速度**。**</p>]]></content:encoded>
-      
-      
-      <category domain="https://blog.tokenlen.top/categories/%E9%9D%A2%E7%BB%8F/">面经</category>
-      
-      
-      <category domain="https://blog.tokenlen.top/tags/%E9%9D%A2%E8%AF%95/">面试</category>
-      
-      
-      <comments>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/redis/#disqus_thread</comments>
       
     </item>
     
