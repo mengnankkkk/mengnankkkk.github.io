@@ -15,8 +15,75 @@
     <atom:link href="https://blog.tokenlen.top/rss2.xml" rel="self" type="application/rss+xml"/>
     <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
     <description>清风拂柳影，碧水映花香。</description>
-    <pubDate>Thu, 26 Feb 2026 15:10:12 GMT</pubDate>
+    <pubDate>Sat, 07 Mar 2026 13:13:41 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>RAG 知识收集</title>
+      <link>https://blog.tokenlen.top/2026/03/07/message/agent/rag1/</link>
+      <guid>https://blog.tokenlen.top/2026/03/07/message/agent/rag1/</guid>
+      <pubDate>Fri, 06 Mar 2026 16:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;核心设计&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;标准 RAG 系统核心模块&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我们将 RAG 系统分为&lt;strong&gt;数据准备流 (Offline)&lt;/strong&gt; 和 &lt;strong&gt;查询处理流 (Online)&lt;/strong&gt;</description>
+          
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h1>核心设计</h1><ol><li>标准 RAG 系统核心模块</li></ol><p>我们将 RAG 系统分为<strong>数据准备流 (Offline)</strong> 和 <strong>查询处理流 (Online)</strong> 两大支柱模块：</p><p>A. 数据准备模块 (Data Ingestion Pipeline)</p><p>这是系统的“知识预处理厂”，负责将非结构化数据转化为机器可理解的格式。</p><ul><li><strong>加载器 (Document Loaders)</strong>：对接多种数据源（PDF, Notion, Confluence, SQL）。</li><li><strong>清洗与转换 (Clean &amp; Transform)</strong>：去除噪声（如 HTML 标签）、处理特殊字符。</li><li><strong>分块策略 (Chunking Strategy)</strong>：将长文拆分为固定长度或语义段落，通常带有重叠部分（Overlap）以保持上下文连贯性。</li><li><strong>向量化 (Embedding)</strong>：利用 $BGE$、$text-embedding-3$ 等模型将文本块转化为高维向量。</li><li><strong>存储 (Vector Storage)</strong>：存入向量数据库（如 Milvus, Pinecone, ElasticSearch），并附带元数据（Metadata）以便后续过滤。</li></ul><p>B. 核心功能组件</p><ul><li><strong>检索器 (Retriever)</strong>：负责从海量向量中召回最相关的 Top-K 个分块。</li><li><strong>重排器 (Reranker)</strong>：召回往往追求召回率，而重排（使用交叉熵模型）则追求精确度，对初步筛选出的结果进行精细打分。</li><li><strong>提示词引擎 (Prompt Engine)</strong>：动态组装包含 System Prompt、Retrieved Context 和 User Query 的最终提示词。</li><li><strong>生成器 (Generator)</strong>：调用 LLM（GPT-4o, Claude 3, DeepSeek 等）生成最终答案。</li></ul><ol start="2"><li>用户查询处理流程 (User Query Workflow)</li></ol><p>当一个用户发起提问时，系统会经历以下精密流程：</p><ol><li><strong>查询意图解析 (Query Rewriting)</strong>：<ul><li><strong>问题重写</strong>：如果用户问“它多少钱？”，系统会结合上下文将其补全为“某型号手机的价格是多少？”。</li><li><strong>查询路由</strong>：判断该问题是需要查知识库、查实时天气 API，还是直接闲聊。</li></ul></li><li><strong>向量化查询 (Query Embedding)</strong>：<ul><li>将用户的 Query 转化为与数据库相同的向量表示。</li></ul></li><li><strong>多路召回 (Multi-way Retrieval)</strong>：<ul><li><strong>向量检索</strong>：基于语义相似度。</li><li><strong>全文检索</strong>：基于关键字（BM25），防止专有名词因向量化丢失精度。</li></ul></li><li><strong>精排与过滤 (Rerank &amp; Filter)</strong>：<ul><li>过滤掉低分或权限不足的分块。</li><li><strong>重排器</strong>对召回的上下文进行排序，确保最相关的知识排在最前面（LLM 对 Prompt 头部和尾部的信息更敏感）。</li></ul></li><li><strong>增强生成 (Augmentation)</strong>：<ul><li>将检索到的“标准事实”填充进模板，作为 LLM 的“开卷参考资料”。</li></ul></li><li><strong>结果输出与溯源 (Citations)</strong>：<ul><li>输出答案，并标注：“参考自文件 A 的第 3 段”。</li></ul></li></ol><p>3.RAG 系统的核心能力提供</p><table><thead><tr><th><strong>能力维度</strong></th><th><strong>核心价值</strong></th></tr></thead><tbody><tr><td><strong>消除幻觉 (Anti-hallucination)</strong></td><td>强迫模型基于给定的“检索事实”回答，无根据则回答“不知道”。</td></tr><tr><td><strong>知识实时性 (Freshness)</strong></td><td>只要更新数据库（无需训练模型），AI 就能立刻掌握公司昨天发布的政策。</td></tr><tr><td><strong>私域安全 (Privacy)</strong></td><td>数据留在本地向量库，不用于模型训练，配合权限校验实现“千人千面”。</td></tr><tr><td><strong>可追溯性 (Explainability)</strong></td><td>每个答案都带原文链接，方便人工审计。</td></tr></tbody></table>]]></content:encoded>
+      
+      
+      <category domain="https://blog.tokenlen.top/categories/Agent/">Agent</category>
+      
+      
+      <category domain="https://blog.tokenlen.top/tags/AI/">AI</category>
+      
+      <category domain="https://blog.tokenlen.top/tags/RAG/">RAG</category>
+      
+      
+      <comments>https://blog.tokenlen.top/2026/03/07/message/agent/rag1/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Agent 基础知识</title>
+      <link>https://blog.tokenlen.top/2026/03/04/message/agent/top1/</link>
+      <guid>https://blog.tokenlen.top/2026/03/04/message/agent/top1/</guid>
+      <pubDate>Tue, 03 Mar 2026 16:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;基本概念&lt;/h1&gt;
+&lt;h3 id=&quot;1-工作流-Workflow-与-Agent-的异同&quot;&gt;1.工作流 (Workflow) 与 Agent 的异同&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Workflow（工作流）&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;在 Java</description>
+          
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h1>基本概念</h1><h3 id="1-工作流-Workflow-与-Agent-的异同">1.工作流 (Workflow) 与 Agent 的异同</h3><p><strong>Workflow（工作流）</strong>：</p><p>在 Java 生态中，Workflow 的本质是<strong>有限状态机 (FSM)</strong> 的高级抽象。无论是传统的 Activiti/Flowable，还是现代的分布式工作流引擎 Temporal，其核心逻辑都是预定义的。</p><ul><li><strong>技术本质</strong>：它是 <strong>Graph-based</strong> 的。开发者在编码阶段就定义好了 $Next = f(State, Input)$。</li><li><strong>工程优势</strong>：<ul><li><strong>幂等性与重试机制</strong>：由于路径确定，我们可以轻松实现节点级别的事务回滚（Saga 模式）或断点续传。</li><li><strong>可观测性</strong>：每一个 State 的流转都在数据库中有明确记录，审计和排障极其简单。</li></ul></li><li><strong>Java 类比</strong>：就像是一个严谨的 <code>Switch-Case</code> 逻辑或 <code>Chain of Responsibility</code>（责任链模式），虽然复杂，但永远在控制之中。</li></ul><p>然后比如我们常用的langgraph，Spring AI alibaba graph这些都是基于工作流的。是智能体早期的一个实现。就是相当于把AI作为我们平常链路的一个部分，去调用了下API做推理的任务</p><p>然后在工作流框架里面，最重要的就是建立一套有向无环图 DAG，然后就是记录节点之间的State，然后在我们的不同的节点作为input输入，记录他的output是什么。缺点是比较确定，不够智能。优点是更加工程化，调控的粒度更加细。</p><p><strong>Agent（智能体）</strong>：</p><p>Agent 的核心在于 <strong>ReAct (Reason + Act)</strong> 模型。它不再是单纯的 $A \to B$，而是一个 <strong>Loop</strong>。</p><ul><li><strong>技术本质</strong>：它是 <strong>Model-driven</strong> 的。公式变为 $Action, Thought = LLM(Context, Goal, Tools)$。</li><li><strong>工程挑战</strong>：<ul><li><strong>非确定性</strong>：同样的输入，LLM 可能会给出不同的执行路径，这对习惯了单元测试（Unit Test）的 Java 工程师来说是巨大的挑战。</li><li><strong>幻觉控制</strong>：如果 Agent 误解了 Tool 的 API 定义（类似 Java 中的反射调用失败），会导致整个链路崩溃。</li></ul></li><li><strong>Java 类比</strong>：它更像是带有<strong>自省（Introspection）能力</strong>和**策略模式（Strategy Pattern）**的动态对象，根据运行时环境自行决定调用哪个方法。</li></ul><p>Agent主要是基于部分Agent范式，将决策规划的权力交给AI，让AI自己去规划。不让人去打断借入，所以他是流程不是那么确定的。优点是自助规划，更加智能。缺点是是不确定的，结果不够确定。</p><h3 id="2-Function-Calling-与-MCP-的对比">2.Function Calling 与 MCP 的对比</h3><p><strong>Function Calling</strong>：是模型的一种能力。模型根据描述判断需要调用哪个函数，并提取参数。它是 <strong>“模型寻找工具”</strong>。</p><ul><li><strong>技术本质</strong>：它是 Model 的原生能力。LLM 充当了“决策层”，它并不直接运行代码，而是输出一份符合特定 JSON Schema 的参数列表。</li><li><strong>Java 工程师的痛点</strong>：<ul><li><strong>适配成本高</strong>：如果你要对接 OpenAI、Claude、Gemini，每个模型的 Tool 定义格式略有不同。</li><li><strong>紧耦合</strong>：业务逻辑（函数实现）通常与 AI 应用层混在一起。如果我有 100 个微服务提供的能力，AI 应用需要手写 100 个 <code>ToolSpec</code>。</li></ul></li></ul><p><strong>MCP</strong>：是 Anthropic 推出的开放标准。它解决了“工具如何接入模型”的生态问题。以前每个 AI 都要对接不同的 API，现在通过 MCP，数据源（Google Drive、本地文件、数据库）可以标准地暴露给任何模型。它是 <strong>“工具接入模型的通用插头”</strong>。</p><p>MCP 的出现，标志着 AI 交互从“点对点定制”进入了**“标准化插件”**时代。它更像是一个 <strong>适配器模式（Adapter Pattern）</strong> 的大规模应用。</p><ul><li><strong>技术本质</strong>：它定义了一套 <strong>Client-Server 架构</strong>。<ul><li><strong>MCP Host</strong>：AI 应用（如 Claude Desktop, IDE）。</li><li><strong>MCP Server</strong>：数据源或工具提供方（Google Drive, MySQL, GitHub）。</li><li><strong>传输协议</strong>：基于 JSON-RPC 的标准化通信。</li></ul></li><li><strong>Java 工程师的视角</strong>：MCP 就是 AI 界的 <strong>JDBC</strong>。<ul><li>以前：每个数据库厂商都要写一套逻辑给应用调。</li><li>现在：数据库厂商提供 JDBC Driver（MCP Server），应用层通过统一的 JDBC 接口（MCP Client）连接一切。</li></ul></li></ul><h3 id="3-Multi-Agent">3.Multi-Agent</h3><p><strong>Multi-Agent System (MAS)</strong> 是指由多个能够自主决策的智能体（Agent）组成的集合，它们通过<strong>通信、协作、竞争或谈判</strong>来共同完成复杂的任务。</p><ul><li><strong>核心逻辑</strong>：将复杂问题拆解（Decomposition），由不同角色的 Agent 专项处理。</li><li><strong>对比单 Agent</strong>：单 Agent 容易陷入“逻辑死循环”或“上下文爆炸”；Multi-Agent 则通过<strong>角色隔离</strong>，让每个 Agent 保持极高的专业度和较小的上下文窗口（Context Window）。</li></ul><p>常见的范式：</p><p>A. 协作式 (Collaborative/Sequential)</p><p>Agent 们像流水线一样工作。</p><ul><li><strong>例子</strong>：<code>Coder Agent</code> 写代码 -&gt; <code>Reviewer Agent</code> 找 Bug -&gt; <code>Tester Agent</code> 写单测。</li><li><strong>Java 类比</strong>：<strong>责任链模式 (Chain of Responsibility)</strong>。</li></ul><p>这种类似多个Agent协作，然后重点基本就是上一个Agent的output作为我们新的Agent的output。然后这个范式的重点是put的转移。</p><p>B. 代理/分发式 (Hub-and-Spoke / Manager-Worker)</p><p>存在一个 <strong>Leader/Orchestrator Agent</strong>，它负责理解需求、拆解任务并分发给 Worker。</p><ul><li><strong>例子</strong>：用户说“帮我做一个电商网站”，Manager 拆分给前端 Agent、后端 Agent、DB Agent。</li><li><strong>Java 类比</strong>：<strong>任务调度中心 (Job Scheduler)</strong>。</li></ul><p>这个就是主子agent协作，然后我们的子Agent相当于一个大号的tools。然后这个范式的重点是上下文如何处理，隔离/不隔离。</p><p>C. 辩论/对弈式 (Debate/Peer-Review)</p><p>多个 Agent 针对同一个问题给出方案，相互质疑，最终总结出最优解。</p><ul><li><strong>优势</strong>：显著降低幻觉（Hallucination），提高逻辑准确性。</li></ul><p>这个相当于swam范式，多个Agent进行互相讨论。然后这个的重点是最后我们如何处理多个Agent产生的内容，如果出现了冲突怎么解决。</p><h3 id="4-Skills和MCP的区别">4.Skills和MCP的区别</h3><p><strong>Skill (技能/插件) 像是“条件反射”或“专项手艺”</strong>：</p><ul><li>它是为特定任务定制的。比如一个“查询天气”的 Skill，它包含了特定的 API 调用逻辑、参数校验以及如何把返回的 JSON 格式化给模型。</li><li><strong>耦合度高</strong>：通常绑定在某个特定的框架（如早期 OpenAI Plugins 或自定义 Agent 框架）内。</li></ul><p><strong>MCP (Model Context Protocol) 像是“标准感知神经”或“通用接口”</strong>：</p><ul><li>它是由 Anthropic 推出的开放标准。它不关心具体的业务逻辑，而是定义了模型如何连接到外部数据源（如 Google Drive、本地文件系统、数据库）。</li><li><strong>解耦度高</strong>：一个 MCP Server 写好后，任何支持 MCP 协议的客户端（如 Claude、Cursor、IDE）都可以直接“插拔式”使用，无需重新编写集成代码。</li></ul><p><strong>Skill (自下而上)</strong>：开发者定义 <code>sum(a, b)</code>，模型只是调用者。这是一种<strong>功能驱动（Action-oriented）</strong>。</p><p><strong>MCP (自上而下)</strong>：开发者定义一个 <code>FileSystem Server</code>，模型自己去发现里面有哪些文件、怎么读、怎么改。这是一种<strong>资源驱动（Resource-oriented）</strong>。</p><table><thead><tr><th><strong>维度</strong></th><th><strong>Skill (技能/插件)</strong></th><th><strong>MCP (标准协议)</strong></th><th><strong>Java 类比</strong></th></tr></thead><tbody><tr><td><strong>自发现机制</strong></td><td>硬编码在 Prompt 中</td><td>动态 <code>list_resources</code> 接口</td><td><strong>Reflection vs. Service Discovery</strong></td></tr><tr><td><strong>数据形态</strong></td><td>结构化参数 (JSON)</td><td>原始资源 (Content/Blob)</td><td><strong>Diver Instance vs. Connection Pool</strong></td></tr><tr><td><strong>状态保持</strong></td><td>通常无状态</td><td>支持资源订阅与实时更新</td><td><strong>Stateless API vs. WebSocket/Stream</strong></td></tr></tbody></table><p>二者谁占用上下文窗口 (Context Window) 较大？</p><p><strong>在初始化阶段，MCP 通常占用的上下文窗口更大。</strong></p><p>为什么 MCP 消耗更多 Token？</p><ol><li><strong>自描述开销 (Discovery Overhead)</strong>： MCP 为了实现“即插即用”，需要向模型发送大量的<strong>元数据 (Metadata)</strong>。当模型连接到一个 MCP Server 时，Server 会把所有的 <code>Resources</code>（可读取的文件、数据）、<code>Tools</code>（可执行的函数）及其详细的 JSON Schema 描述全部塞进 System Prompt。</li><li><strong>Schema 的详尽性</strong>： 为了让模型在没有硬编码的情况下理解如何操作数据库或文件系统，MCP 的描述通常比简单的 Skill 函数定义要冗长得多。</li><li><strong>多轮交互的上下文堆积</strong>： MCP 鼓励模型频繁读取外部资源（Resources）。每一轮读取回来的原始数据都会作为 Context 持续堆积在对话历史中。</li></ol><p>Skill 的优势（在 Token 节省方面）：</p><ul><li><strong>按需加载</strong>：开发者通常会对 Skill 进行精简，只在 Prompt 中描述核心功能，模型只有在触发特定的 Tool Call 时才会产生额外的 Token 消耗。</li><li><strong>硬编码优化</strong>：很多逻辑（如参数预处理）在后端代码里就处理了，不需要在上下文里教模型“怎么做”。</li></ul><p>比如：</p><p><strong>Skill</strong>：可能只需要告诉模型 <code>queryOrder(id)</code>。</p><p><strong>MCP</strong>：需要告诉模型 <code>Database_Server</code> 有哪些 Table，每个 Table 的 Schema 是什么，支持哪些 Prompt 模板。这些元数据在模型初始化连接（Sampling）时就会占据大量 <strong>KV Cache</strong>。</p><h1>场景优化</h1><h3 id="1-重复问题">1.重复问题</h3><p>1.对于系统中大量重复或相似的用户问题，有哪些优化方式可以节约资源?若要实现该优化，具体如何拆解流程图，如何抽取共性问题并汇总答案?</p><p>看到这种问题，我们在工程上第一个想到的就是缓存？传统的缓存（如 Redis）是基于 <strong>Key 的精确匹配</strong>，但在 AI 场景下，用户问“如何重置密码？”和“密码忘了怎么找回？”虽然字面不同，但<strong>语义一致</strong>。</p><ul><li><strong>优化方案</strong>：引入**向量数据库（Vector DB）**作为语义缓存层。</li><li><strong>收益</strong>：<ul><li><strong>节约资源</strong>：命中缓存直接返回结果，Token 消耗降为 0（仅需极小的 Embedding 消耗）。</li><li><strong>降低延迟</strong>：从毫秒级的向量检索代替秒级的 LLM 生成。</li><li><strong>一致性</strong>：确保相似问题得到经过人工校验过的、高质量的标准答案。</li></ul></li></ul><p>然后我们的基本流程可能就是</p><p>首先用户进行输入-&gt;进行向量库的相似性匹配-&gt;然后是否召会的结果-&gt;没有就去再使用AI进行回复</p><p>但是这样还并不是完全的完善的，我们可以模仿Java的缓存系统也设计上多级缓存比如</p><ul><li>精确缓存-使用HASH针对完成一样的重复问题</li><li>语义缓存-使用向量库针对完成相似的问题</li><li>AI回复-使用AI进行恢复</li><li>兜底-静态的恢复，比如AI正在忙碌</li></ul><p>但是那么我们这些共性的答案是从哪里去获得呢？肯定不是人一个一个去写的，需要自动化获取。</p><p>而这个就是我们知识库的一个搭建，这当然是最好的方式。</p><ol><li>问题提取：</li></ol><p><strong>算法选型</strong>：使用 <strong>HDBSCAN</strong> 或 <strong>K-Means</strong> 对历史日志中的 Query 向量进行聚类。</p><p><strong>密度分析</strong>：识别出簇（Cluster）最大的部分，这些就是“共性问题”。</p><ol start="2"><li>共性询问提取：</li></ol><p>对于每一个聚类簇，随机抽取 5-10 个代表性问题，发送给一个轻量级模型（如 GPT-4o-mini 或 Claude Haiku）：</p><blockquote><p>“以下是用户问的 10 个相似问题，请总结出一个最标准、最通用的提问标题。”</p></blockquote><ol start="3"><li>答案合成与精修</li></ol><p><strong>合成</strong>：将该簇下 LLM 之前的多个回答交给模型进行“合并同类项”，消除矛盾点，保留最全的逻辑。</p><p><strong>人工校验 (Rerank/Human-in-the-loop)</strong>：资深工程师或运营对生成的“标准答案”进行最后审核，确保技术准确性。</p><p><strong>索引固化</strong>：将该标准标题和答案存入 FAQ 库，并赋予极高的搜索权重。</p>]]></content:encoded>
+      
+      
+      <category domain="https://blog.tokenlen.top/categories/Agent/">Agent</category>
+      
+      
+      <category domain="https://blog.tokenlen.top/tags/AI/">AI</category>
+      
+      
+      <comments>https://blog.tokenlen.top/2026/03/04/message/agent/top1/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>Skills解析</title>
@@ -581,67 +648,6 @@
       
       
       <comments>https://blog.tokenlen.top/2025/09/25/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/k8s/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>aicode八股分析</title>
-      <link>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/aicode/</link>
-      <guid>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/aicode/</guid>
-      <pubDate>Tue, 23 Sep 2025 16:00:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h1&gt;RAG&lt;/h1&gt;
-&lt;h2 id=&quot;1-什么是RAG&quot;&gt;1.什么是RAG&lt;/h2&gt;
-&lt;p&gt;RAG，全称是 &lt;strong&gt;Retrieval-Augmented Generation&lt;/strong&gt;，中文可以理解为</description>
-          
-        
-      
-      
-      
-      <content:encoded><![CDATA[<h1>RAG</h1><h2 id="1-什么是RAG">1.什么是RAG</h2><p>RAG，全称是 <strong>Retrieval-Augmented Generation</strong>，中文可以理解为 <strong>“检索增强生成”</strong>。</p><p>而是一种将**信息检索（Information Retrieval）<strong>系统与</strong>大语言模型（LLM）<strong>的</strong>生成（Generation）**能力相结合的技术框架。</p><p>解决了LLM的:</p><p><strong>知识局限性 (Knowledge Cutoff)</strong>：LLM 的知识都来自于其训练数据，这些数据有明确的截止日期。对于截止日期之后的新知识，模型是无法感知的。</p><p><strong>事实幻觉 (Hallucination)</strong>：LLM 在回答它不确定的问题时，有时会“编造”听起来合理但实际上是错误的答案，这在需要高度事实准确性的场景中是致命的。</p><p><strong>缺乏领域专有知识 (Lack of Domain-Specific Knowledge)</strong>：对于一些非常专业或企业内部的私有领域，通用的大模型由于没有接触过相关数据，无法提供精准的回答。</p><p>当模型需要回答问题时，不直接让它依赖内部知识进行生成，而是先从一个外部的、可信的知识库中检索出与问题最相关的信息，然后将这些信息作为上下文（Context）和原始问题一起提供给大语言模型，让它基于这些“新鲜的”、“准确的”信息来组织和生成最终的答案。</p><p>RAG可以分为两个阶段：</p><ol><li>数据准备/索引阶段 (Data Preparation / Indexing - Offline)</li></ol><p>这个阶段是预处理工作，目标是建立一个可供快速检索的知识库。</p><ul><li><strong>数据加载 (Load)</strong>：首先，我们需要加载原始的知识文档，来源可以是 PDF、HTML、数据库记录、Notion/Confluence 页面等等。</li><li><strong>文档切分 (Chunking/Splitting)</strong>：由于 LLM 的上下文窗口长度有限，我们不能将整篇长文档直接作为输入。因此，需要将文档切分成大小适中的、有意义的文本块（Chunks）。切分策略很关键，可以按段落、句子，或者固定长度来切，好的切分能保证语义的完整性。</li><li><strong>向量化 (Embedding)</strong>：这是 RAG 的核心步骤之一。我们需要将每个文本块通过一个 <strong>Embedding Model</strong>（例如 aall-mpnet-base-v2, bge-large-zh 等）转换成一个高维的数字向量（Vector）。这个向量可以被认为是该文本块在语义空间中的“坐标”。语义上相近的文本块，其向量在空间中的距离也更近。</li><li><strong>数据索引与存储 (Index &amp; Store)</strong>：最后，我们将生成的文本块原文和其对应的向量存储到一个专门的数据库中，这个数据库通常被称为 <strong>向量数据库（Vector Database）</strong>，例如 Milvus、Pinecone、Chroma，或者像 Elasticsearch、PostgreSQL 加上相应的向量检索插件。</li></ul><ol start="2"><li>检索生成阶段 (Retrieval &amp; Generation - Online)</li></ol><p>这个阶段是用户与系统交互、实时生成答案的过程。</p><ul><li><p><strong>用户提问 (User Query)</strong>：用户输入一个问题。</p></li><li><p><strong>查询向量化 (Query Embedding)</strong>：使用与数据准备阶段<strong>相同的 Embedding Model</strong>，将用户的查询也转换成一个向量。</p></li><li><p><strong>向量检索 (Vector Retrieval)</strong>：用查询向量，去向量数据库中执行一个相似性搜索（通常是余弦相似度或欧氏距离计算）。目标是找出与查询向量“距离”最近的 K 个文本块向量，这些文本块就是与用户问题最相关的信息。</p></li><li><p><strong>构建提示词 (Prompt Construction)</strong>：将检索到的这 K 个相关的文本块（即上下文 Context）与用户的原始问题（Query）组合成一个新的、更丰富的提示词（Prompt）。这个 Prompt 的模板通常类似于：</p><blockquote><p>&quot;请根据以下提供的上下文信息来回答用户的问题。如果上下文中没有足够信息，请回答你不知道。</p><p><strong>上下文:</strong> [这里是检索到的文本块 1] [这里是检索到的文本块 2] …</p><p><strong>问题:</strong> [用户的原始问题]&quot;</p></blockquote></li><li><p><strong>生成答案 (Answer Generation)</strong>：将这个增强后的 Prompt 发送给大语言模型（如 GPT-4, Llama3 等）。LLM 会基于我们提供的上下文来生成一个更加准确、可靠的答案。</p></li><li><p><strong>返回结果 (Return Response)</strong>：将 LLM 生成的答案返回给用户。有时为了增加答案的可信度，还会附上检索到的原文出处链接。</p></li></ul>]]></content:encoded>
-      
-      
-      <category domain="https://blog.tokenlen.top/categories/%E9%9D%A2%E7%BB%8F/">面经</category>
-      
-      
-      <category domain="https://blog.tokenlen.top/tags/%E9%9D%A2%E8%AF%95/">面试</category>
-      
-      
-      <comments>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/aicode/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>场景八股分析</title>
-      <link>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/changjing/</link>
-      <guid>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/changjing/</guid>
-      <pubDate>Tue, 23 Sep 2025 16:00:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h1&gt;异常解决&lt;/h1&gt;
-&lt;h2</description>
-          
-        
-      
-      
-      
-      <content:encoded><![CDATA[<h1>异常解决</h1><h2 id="1-就比如说你这个部署到线上了，然后他抛了一个异常，然后那你这个应该怎么排查呢">1.就比如说你这个部署到线上了，然后他抛了一个异常，然后那你这个应该怎么排查呢</h2><p>线上出现异常，我会遵循一套<strong>从宏观到微观、由表及里</strong>的排查SOP（标准作业程序）来定位和解决问题。</p><p><strong>第一步：信息收集与初步判断</strong></p><ol><li><p><strong>确认影响范围</strong>：首先，快速判断这个异常的影响面有多大。是影响了所有用户，还是部分用户？是核心功能还是边缘功能？这决定了问题的紧急程度。</p></li><li><p>查看监控告警：立即查看监控系统（如Prometheus/Grafana, Zabbix）的告警信息。检查应用的</p><p>关键指标，如：</p><ul><li><strong>应用层面</strong>：QPS、响应时间（RT）、错误率（Error Rate）是否突增？</li><li><strong>JVM层面</strong>：CPU使用率、内存占用、GC活动是否异常？</li><li><strong>主机层面</strong>：服务器的CPU、内存、磁盘I/O、网络流量是否正常？</li><li><strong>依赖服务</strong>：数据库、Redis、MQ等中间件的健康状况如何？</li><li>这一步的目标是快速定位问题是出在<strong>应用本身</strong>，还是<strong>外部依赖</strong>。</li></ul></li></ol><p><strong>第二步：日志分析与精准定位</strong></p><ol><li><strong>聚合日志平台检索</strong>：登录ELK（Elasticsearch, Logstash, Kibana）或类似日志平台，根据告警信息中的时间点、错误信息关键字（如<code>RuntimeException</code>）进行检索。</li><li><strong>利用Trace ID进行链路追踪</strong>：如果系统接入了分布式追踪系统（如SkyWalking, Zipkin），这是最强大的工具。我会根据报错信息找到一个<strong>Trace ID</strong>，然后用这个ID查询完整的请求调用链。这可以清晰地看到请求经过了哪些服务，在哪一个环节耗时最长，又是在哪个服务的具体代码行抛出了异常。</li><li>Linux服务器手动排查（作为补充）：如果日志平台不完善，我会登录到具体的服务器上进行排查。<ul><li>使用<code>grep</code>命令根据关键字快速过滤日志：<code>grep -C 10 'ExceptionNameToFind' /path/to/app.log</code>。<code>-C 10</code>可以显示异常上下文的10行，帮助理解问题背景。</li><li>如果需要根据Trace ID查，我会用：<code>grep 'your-trace-id' /path/to/app.log</code>。</li><li>对于实时滚动的日志，我会用<code>tail -f /path/to/app.log | grep 'ERROR'</code>来实时监控错误输出。</li></ul></li></ol><p>第三步：<strong>根因分析与问题复现</strong></p><ol><li><strong>代码分析</strong>：定位到具体的异常代码后，分析代码逻辑，判断是业务逻辑错误、空指针、并发问题还是资源未释放等。</li><li><strong>环境复现</strong>：如果可能，尝试在测试环境或预发环境，构造相同的参数和条件，复现这个问题，以便于调试和验证修复方案。</li></ol><p>第四步：<strong>问题解决与复盘</strong></p><ol><li><strong>紧急修复</strong>：如果是严重Bug，立即进行Hotfix修复并上线。如果是资源问题，进行扩容或配置调整。</li><li><strong>复盘总结</strong>：问题解决后，必须进行复盘。分析问题发生的根本原因，是代码缺陷、设计不合理、还是容量预估不足？并制定改进措施，例如增加单元测试、完善监控告警、优化架构等，防止同类问题再次发生。</li></ol><h2 id="2-考察线上问题排查">2.考察线上问题排查</h2><ul><li><p><strong>第一步：紧急止血（恢复服务优先）。</strong></p></li><li><p><strong>第二步：定位根因（Root Cause）。</strong></p></li><li><p><strong>第三步：复盘总结（避免再犯）。</strong></p></li><li><p>\1. 看监控，定范围：</p><ul><li><strong>看应用自身监控：</strong> 接口的 QPS、P99 响应时间、JVM（GC次数/时间、线程数）、线程池监控（队列长度、活跃线程数）。首先确认是自身应用的问题还是外部问题。</li><li><strong>看主机监控：</strong> CPU 使用率、内存占用、网络 I/O、磁盘 I/O。确认是不是机器资源被打满了。</li></ul></li><li><p>\2. 分析线程，找瓶颈：</p><ul><li>使用 <code>jstack</code> 命令 dump 线程堆栈。分析是否有大量线程处于 <code>BLOCKED</code> 状态（锁竞争）、<code>WAITING</code> 状态（等待外部资源，如 HTTP 调用、数据库连接）。这是定位问题的<strong>最核心手段</strong>。</li></ul></li><li><p>\3. 查GC，判影响：</p><ul><li>使用 <code>jstat -gcutil</code> 查看 GC 情况。确认是否发生了频繁的 Full GC，导致 STW（Stop-The-World），从而影响接口响应。</li></ul></li><li><p>\4. 查依赖，判外部：</p><ul><li>检查所有**下游服务（RPC 调用）**的响应时间。是不是某个下游服务变慢，拖垮了你。</li><li>检查**数据库和缓存（Redis）**的慢查询日志和响应时间。是不是因为慢 SQL 或 Redis 大 Key 导致的阻塞。</li></ul></li><li><p>\5. 看网络，做补充：</p><ul><li>如果以上都正常，再考虑网络问题，比如丢包、重传等。</li></ul></li></ul><p>恢复手段：</p><ul><li><strong>重启大法：</strong> 最简单粗暴但有效。</li><li><strong>服务降级：</strong> 通过配置中心，暂时关闭一些非核心功能。</li><li><strong>服务限流：</strong> 立即调低接口的 QPS 阈值，避免被流量打垮。</li><li><strong>扩容：</strong> 如果是资源不足，立即进行水平扩容。</li></ul><h2 id="3-线上问题卡顿">3.线上问题卡顿</h2><p>提出了一个“自顶向下”的排查思路：先通过监控工具（宝塔）看服务器资源（CPU、内存），定位到具体程序，再通过程序的日志（Docker日志）定位到具体组件和代码异常。</p><p>Linux 命令行工具（如 <code>top</code>, <code>jstack</code>, <code>jmap</code>）的提及。对于一个硬核的技术面试，面试官更希望听到你如何使用这些底层工具进行排查。此外，排查的维度不够全面，没有考虑到<strong>网络问题、数据库慢查询、下游服务拖累</strong>等常见原因。</p><h2 id="AI">AI</h2><h2 id="1-设计一个可扩展的架构，并说明如何实现-1-2-秒-P95-的延迟指标。">1.设计一个可扩展的架构，并说明如何实现 <strong>1-2 秒 P95 的延迟指标</strong>。</h2><p><strong>召回、重排、向量库更新、上下文窗口管理、长对话状态持久化</strong>，以及<strong>延迟预算分配</strong>几个维度，</p><p>RAG 的核心流程：文档切分 -&gt; 向量化入库 -&gt; 用户问题向量化 -&gt; Top K 相似度检索 -&gt; 结果送入 LLM 生成答案。RAG 是为了解决 LLM 没有“记忆”和无法利用私有知识的问题。</p><ul><li><strong>召回（Recall）：</strong> 你只提到了向量相似度检索。但一个生产级的 RAG 系统，召回层通常是<strong>混合检索</strong>，比如 <strong>向量检索 + 关键词检索（如 BM25）</strong>，以应对不同类型的问题。</li><li><strong>重排（Rerank）：</strong> 你提到了重排模型，但没有说明它的作用。Rerank 模型（如 Cohere Rerank）通常是一个轻量级的交叉编码器模型，它会对召回的 Top N（比如 N=50）个文档，进行更精细化的相关性打分，再选出最终的 Top K（比如 K=5）送给 LLM，能<strong>显著提升最终答案的质量</strong>。</li><li><strong>向量库更新：</strong> 这是一个工程难题，你完全没有提及。如何处理知识的<strong>增量更新、修改和删除</strong>？是定期全量重建索引，还是采用支持实时更新的向量数据库？</li></ul><p>时间分配：</p><ul><li>用户问题预处理：50ms</li><li>向量化（Embedding）: 100ms</li><li>向量检索（Recall）: 150ms</li><li>重排（Rerank）: 200ms</li><li>LLM 生成（Generation）: 1000ms (这是大头)</li><li>网络开销等：500ms 然后你需要思考如何优化每个环节。比如，Embedding 模型和 Rerank 模型需要<strong>选择轻量级、高性能</strong>的版本；向量检索需要对索引进行<strong>优化</strong>（如 HNSW 索引的参数调优）；LLM 需要采用<strong>流式输出（Streaming）</strong>，让用户能更快地看到第一个 Token。</li></ul>]]></content:encoded>
-      
-      
-      <category domain="https://blog.tokenlen.top/categories/%E9%9D%A2%E7%BB%8F/">面经</category>
-      
-      
-      <category domain="https://blog.tokenlen.top/tags/%E9%9D%A2%E8%AF%95/">面试</category>
-      
-      
-      <comments>https://blog.tokenlen.top/2025/09/24/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/pro/changjing/#disqus_thread</comments>
       
     </item>
     

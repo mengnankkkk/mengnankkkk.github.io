@@ -1,0 +1,799 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>Agent 基础知识 | mengnankkのblog</title><meta name="keywords" content="AI"><meta name="author" content="mengnankkzhou"><meta name="copyright" content="mengnankkzhou"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Agent 基础知识"><meta name="application-name" content="Agent 基础知识"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="Agent 基础知识"><meta property="og:url" content="https://blog.tokenlen.top/2026/03/04/message/agent/top1/index.html"><meta property="og:site_name" content="mengnankkのblog"><meta property="og:description" content="基本概念 1.工作流 (Workflow) 与 Agent 的异同 Workflow（工作流）： 在 Java 生态中，Workflow 的本质是有限状态机 (FSM) 的高级抽象。无论是传统的 Activiti&amp;#x2F;Flowable，还是现代的分布式工作流引擎 Temporal，其核心逻辑都是预定义的"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221837601.jpeg?_r_=6b6b2244-2afc-09ae-8b7b-b030ae33f17d"><meta property="article:author" content="mengnankkzhou"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221837601.jpeg?_r_=6b6b2244-2afc-09ae-8b7b-b030ae33f17d"><meta name="description" content="基本概念 1.工作流 (Workflow) 与 Agent 的异同 Workflow（工作流）： 在 Java 生态中，Workflow 的本质是有限状态机 (FSM) 的高级抽象。无论是传统的 Activiti&amp;#x2F;Flowable，还是现代的分布式工作流引擎 Temporal，其核心逻辑都是预定义的"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://blog.tokenlen.top/2026/03/04/message/agent/top1/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走啊，那种事情不要啊","backTitle":"♪(^∇^*)欢迎回家！！！！"},
+  LA51: undefined,
+  greetingBox: {"enable":"ture","default":"晚上好👋","list":[{"greeting":"晚安😴","startTime":0,"endTime":5},{"greeting":"早上好鸭👋, 祝你一天好心情！","startTime":6,"endTime":9},{"greeting":"上午好👋, 状态很好，鼓励一下～","startTime":10,"endTime":10},{"greeting":"11点多啦, 在坚持一下就吃饭啦～","startTime":11,"endTime":11},{"greeting":"午安👋, 宝贝","startTime":12,"endTime":14},{"greeting":"🌈充实的一天辛苦啦！","startTime":14,"endTime":18},{"greeting":"19点喽, 奖励一顿丰盛的大餐吧🍔。","startTime":19,"endTime":19},{"greeting":"晚上好👋, 在属于自己的时间好好放松😌~","startTime":20,"endTime":24}]},
+  twikooEnvId: 'https://comment.tokenlen.top/',
+  commentBarrageConfig:{"enable":true,"maxBarrage":1,"barrageTime":4000,"accessToken":"\tbd9428de12b54b96b2f1b4e69aeee81f","mailMd5":"F37442226DA71492"},
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    simplehomepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: mengnankkzhou","link":"链接: ","source":"来源: mengnankkのblog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'mengnankkのblog',
+  title: 'Agent 基础知识',
+  postAI: '',
+  pageFillDescription: '基本概念, 1.工作流 (Workflow) 与 Agent 的异同, 2.Function Calling 与 MCP 的对比, 3.Multi-Agent, 4.Skills和MCP的区别, 场景优化, 1.重复问题基本概念工作流与的异同工作流在生态中的本质是有限状态机的高级抽象无论是传统的还是现代的分布式工作流引擎其核心逻辑都是预定义的技术本质它是的开发者在编码阶段就定义好了工程优势幂等性与重试机制由于路径确定我们可以轻松实现节点级别的事务回滚模式或断点续传可观测性每一个的流转都在数据库中有明确记录审计和排障极其简单类比就像是一个严谨的逻辑或责任链模式虽然复杂但永远在控制之中然后比如我们常用的这些都是基于工作流的是智能体早期的一个实现就是相当于把作为我们平常链路的一个部分去调用了下做推理的任务然后在工作流框架里面最重要的就是建立一套有向无环图然后就是记录节点之间的然后在我们的不同的节点作为输入记录他的是什么缺点是比较确定不够智能优点是更加工程化调控的粒度更加细智能体的核心在于模型它不再是单纯的而是一个技术本质它是的公式变为工程挑战非确定性同样的输入可能会给出不同的执行路径这对习惯了单元测试的工程师来说是巨大的挑战幻觉控制如果误解了的定义类似中的反射调用失败会导致整个链路崩溃类比它更像是带有自省能力和策略模式的动态对象根据运行时环境自行决定调用哪个方法主要是基于部分范式将决策规划的权力交给让自己去规划不让人去打断借入所以他是流程不是那么确定的优点是自助规划更加智能缺点是是不确定的结果不够确定与的对比是模型的一种能力模型根据描述判断需要调用哪个函数并提取参数它是模型寻找工具技术本质它是的原生能力充当了决策层它并不直接运行代码而是输出一份符合特定的参数列表工程师的痛点适配成本高如果你要对接每个模型的定义格式略有不同紧耦合业务逻辑函数实现通常与应用层混在一起如果我有个微服务提供的能力应用需要手写个是推出的开放标准它解决了工具如何接入模型的生态问题以前每个都要对接不同的现在通过数据源本地文件数据库可以标准地暴露给任何模型它是工具接入模型的通用插头的出现标志着交互从点对点定制进入了标准化插件时代它更像是一个适配器模式的大规模应用技术本质它定义了一套架构应用如数据源或工具提供方传输协议基于的标准化通信工程师的视角就是界的以前每个数据库厂商都要写一套逻辑给应用调现在数据库厂商提供应用层通过统一的接口连接一切是指由多个能够自主决策的智能体组成的集合它们通过通信协作竞争或谈判来共同完成复杂的任务核心逻辑将复杂问题拆解由不同角色的专项处理对比单单容易陷入逻辑死循环或上下文爆炸则通过角色隔离让每个保持极高的专业度和较小的上下文窗口常见的范式协作式们像流水线一样工作例子写代码找写单测类比责任链模式这种类似多个协作然后重点基本就是上一个的作为我们新的的然后这个范式的重点是的转移代理分发式存在一个它负责理解需求拆解任务并分发给例子用户说帮我做一个电商网站拆分给前端后端类比任务调度中心这个就是主子协作然后我们的子相当于一个大号的然后这个范式的重点是上下文如何处理隔离不隔离辩论对弈式多个针对同一个问题给出方案相互质疑最终总结出最优解优势显著降低幻觉提高逻辑准确性这个相当于范式多个进行互相讨论然后这个的重点是最后我们如何处理多个产生的内容如果出现了冲突怎么解决和的区别技能插件像是条件反射或专项手艺它是为特定任务定制的比如一个查询天气的它包含了特定的调用逻辑参数校验以及如何把返回的格式化给模型耦合度高通常绑定在某个特定的框架如早期或自定义框架内像是标准感知神经或通用接口它是由推出的开放标准它不关心具体的业务逻辑而是定义了模型如何连接到外部数据源如本地文件系统数据库解耦度高一个写好后任何支持协议的客户端如都可以直接插拔式使用无需重新编写集成代码自下而上开发者定义模型只是调用者这是一种功能驱动自上而下开发者定义一个模型自己去发现里面有哪些文件怎么读怎么改这是一种资源驱动维度技能插件标准协议类比自发现机制硬编码在中动态接口数据形态结构化参数原始资源状态保持通常无状态支持资源订阅与实时更新二者谁占用上下文窗口较大在初始化阶段通常占用的上下文窗口更大为什么消耗更多自描述开销为了实现即插即用需要向模型发送大量的元数据当模型连接到一个时会把所有的可读取的文件数据可执行的函数及其详细的描述全部塞进的详尽性为了让模型在没有硬编码的情况下理解如何操作数据库或文件系统的描述通常比简单的函数定义要冗长得多多轮交互的上下文堆积鼓励模型频繁读取外部资源每一轮读取回来的原始数据都会作为持续堆积在对话历史中的优势在节省方面按需加载开发者通常会对进行精简只在中描述核心功能模型只有在触发特定的时才会产生额外的消耗硬编码优化很多逻辑如参数预处理在后端代码里就处理了不需要在上下文里教模型怎么做比如可能只需要告诉模型需要告诉模型有哪些每个的是什么支持哪些模板这些元数据在模型初始化连接时就会占据大量场景优化重复问题对于系统中大量重复或相似的用户问题有哪些优化方式可以节约资源若要实现该优化具体如何拆解流程图如何抽取共性问题并汇总答案看到这种问题我们在工程上第一个想到的就是缓存传统的缓存如是基于的精确匹配但在场景下用户问如何重置密码和密码忘了怎么找回虽然字面不同但语义一致优化方案引入向量数据库作为语义缓存层收益节约资源命中缓存直接返回结果消耗降为仅需极小的消耗降低延迟从毫秒级的向量检索代替秒级的生成一致性确保相似问题得到经过人工校验过的高质量的标准答案然后我们的基本流程可能就是首先用户进行输入进行向量库的相似性匹配然后是否召会的结果没有就去再使用进行回复但是这样还并不是完全的完善的我们可以模仿的缓存系统也设计上多级缓存比如精确缓存使用针对完成一样的重复问题语义缓存使用向量库针对完成相似的问题回复使用进行恢复兜底静态的恢复比如正在忙碌但是那么我们这些共性的答案是从哪里去获得呢肯定不是人一个一个去写的需要自动化获取而这个就是我们知识库的一个搭建这当然是最好的方式问题提取算法选型使用或对历史日志中的向量进行聚类密度分析识别出簇最大的部分这些就是共性问题共性询问提取对于每一个聚类簇随机抽取个代表性问题发送给一个轻量级模型如或以下是用户问的个相似问题请总结出一个最标准最通用的提问标题答案合成与精修合成将该簇下之前的多个回答交给模型进行合并同类项消除矛盾点保留最全的逻辑人工校验资深工程师或运营对生成的标准答案进行最后审核确保技术准确性索引固化将该标准标题和答案存入库并赋予极高的搜索权重',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-03-07 20:32:05',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/rss2.xml" title="mengnankkのblog" type="application/rss+xml">
+</head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://blog.tokenlen.top/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="http://img.mengnankk.top:9001/" title="图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="图床"/><span class="back-menu-item-text">图床</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="http://img.mengnankk.top:9001/" title="mengnankk图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/13/64d8c2653332e.ico" alt="mengnankk图床"/><span class="back-menu-item-text">mengnankk图床</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">mengnankkのblog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 生活</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/Message/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 其他</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://home.tokenlen.top/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> home</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://status.mengnankk.asia/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 站点检测</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://home.tokenlen.top/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 心里话</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://imgbed.mengnankk.asia/202407021650088.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://imgbed.mengnankk.asia/202407021650088.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/AI/" style="font-size: 1.05rem;">AI<sup>4</sup></a><a href="/tags/BF/" style="font-size: 1.05rem;">BF<sup>1</sup></a><a href="/tags/BUG/" style="font-size: 1.05rem;">BUG<sup>1</sup></a><a href="/tags/BigData/" style="font-size: 1.05rem;">BigData<sup>1</sup></a><a href="/tags/C/" style="font-size: 1.05rem;">C<sup>4</sup></a><a href="/tags/CE/" style="font-size: 1.05rem;">CE<sup>1</sup></a><a href="/tags/CSRF/" style="font-size: 1.05rem;">CSRF<sup>1</sup></a><a href="/tags/English/" style="font-size: 1.05rem;">English<sup>9</sup></a><a href="/tags/FI/" style="font-size: 1.05rem;">FI<sup>1</sup></a><a href="/tags/Github/" style="font-size: 1.05rem;">Github<sup>1</sup></a><a href="/tags/Go/" style="font-size: 1.05rem;">Go<sup>1</sup></a><a href="/tags/Hadoop/" style="font-size: 1.05rem;">Hadoop<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 1.05rem;">Linux<sup>12</sup></a><a href="/tags/OS/" style="font-size: 1.05rem;">OS<sup>1</sup></a><a href="/tags/RAG/" style="font-size: 1.05rem;">RAG<sup>1</sup></a><a href="/tags/WEB/" style="font-size: 1.05rem;">WEB<sup>1</sup></a><a href="/tags/XSS/" style="font-size: 1.05rem;">XSS<sup>1</sup></a><a href="/tags/css/" style="font-size: 1.05rem;">css<sup>2</sup></a><a href="/tags/football/" style="font-size: 1.05rem;">football<sup>1</sup></a><a href="/tags/html/" style="font-size: 1.05rem;">html<sup>1</sup></a><a href="/tags/java/" style="font-size: 1.05rem;">java<sup>61</sup></a><a href="/tags/mysql/" style="font-size: 1.05rem;">mysql<sup>17</sup></a><a href="/tags/net/" style="font-size: 1.05rem;">net<sup>7</sup></a><a href="/tags/php/" style="font-size: 1.05rem;">php<sup>5</sup></a><a href="/tags/python/" style="font-size: 1.05rem;">python<sup>3</sup></a><a href="/tags/redis/" style="font-size: 1.05rem;">redis<sup>4</sup></a><a href="/tags/shell/" style="font-size: 1.05rem;">shell<sup>4</sup></a><a href="/tags/spring-boot/" style="font-size: 1.05rem;">spring boot<sup>14</sup></a><a href="/tags/sql/" style="font-size: 1.05rem;">sql<sup>5</sup></a><a href="/tags/web/" style="font-size: 1.05rem;">web<sup>3</sup></a><a href="/tags/%E5%8E%8B%E6%B5%8B/" style="font-size: 1.05rem;">压测<sup>1</sup></a><a href="/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91/" style="font-size: 1.05rem;">数字逻辑<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86/" style="font-size: 1.05rem;">数据库原理<sup>3</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.05rem;">数据结构<sup>20</sup></a><a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" style="font-size: 1.05rem;">汇编语言<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>9</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 1.05rem;">软件工程<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 1.05rem;">软件项目管理<sup>1</sup></a><a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 1.05rem;">面试<sup>46</sup></a><a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 1.05rem;">项目<sup>6</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/03/"><span class="card-archive-list-date">三月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/02/"><span class="card-archive-list-date">二月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/01/"><span class="card-archive-list-date">一月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/12/"><span class="card-archive-list-date">十二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">25</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">9</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/Agent/" itemprop="url">Agent</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/AI/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>AI</span></a></span></div></div><h1 class="post-title" itemprop="name headline">Agent 基础知识</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-03-03T16:00:00.000Z" title="发表于 2026-03-04 00:00:00">2026-03-04</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-03-07T12:32:05.367Z" title="更新于 2026-03-07 20:32:05">2026-03-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">2.9k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator"></span><span id="" data-flag-title="Agent 基础知识"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="twikoo_visitors" title="访问量"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为济南"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>济南</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221837601.jpeg?_r_=6b6b2244-2afc-09ae-8b7b-b030ae33f17d"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://blog.tokenlen.top/2026/03/04/message/agent/top1/"><header><a class="post-meta-categories" href="/categories/Agent/" itemprop="url">Agent</a><a href="/tags/AI/" tabindex="-1" itemprop="url">AI</a><h1 id="CrawlerTitle" itemprop="name headline">Agent 基础知识</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">mengnankkzhou</span><time itemprop="dateCreated datePublished" datetime="2026-03-03T16:00:00.000Z" title="发表于 2026-03-04 00:00:00">2026-03-04</time><time itemprop="dateCreated datePublished" datetime="2026-03-07T12:32:05.367Z" title="更新于 2026-03-07 20:32:05">2026-03-07</time></header><h1>基本概念</h1>
+<h3 id="1-工作流-Workflow-与-Agent-的异同">1.工作流 (Workflow) 与 Agent 的异同</h3>
+<p><strong>Workflow（工作流）</strong>：</p>
+<p>在 Java 生态中，Workflow 的本质是<strong>有限状态机 (FSM)</strong> 的高级抽象。无论是传统的 Activiti/Flowable，还是现代的分布式工作流引擎 Temporal，其核心逻辑都是预定义的。</p>
+<ul>
+<li><strong>技术本质</strong>：它是 <strong>Graph-based</strong> 的。开发者在编码阶段就定义好了 $Next = f(State, Input)$。</li>
+<li><strong>工程优势</strong>：
+<ul>
+<li><strong>幂等性与重试机制</strong>：由于路径确定，我们可以轻松实现节点级别的事务回滚（Saga 模式）或断点续传。</li>
+<li><strong>可观测性</strong>：每一个 State 的流转都在数据库中有明确记录，审计和排障极其简单。</li>
+</ul>
+</li>
+<li><strong>Java 类比</strong>：就像是一个严谨的 <code>Switch-Case</code> 逻辑或 <code>Chain of Responsibility</code>（责任链模式），虽然复杂，但永远在控制之中。</li>
+</ul>
+<p>然后比如我们常用的langgraph，Spring AI alibaba graph这些都是基于工作流的。是智能体早期的一个实现。就是相当于把AI作为我们平常链路的一个部分，去调用了下API做推理的任务</p>
+<p>然后在工作流框架里面，最重要的就是建立一套有向无环图 DAG，然后就是记录节点之间的State，然后在我们的不同的节点作为input输入，记录他的output是什么。缺点是比较确定，不够智能。优点是更加工程化，调控的粒度更加细。</p>
+<p><strong>Agent（智能体）</strong>：</p>
+<p>Agent 的核心在于 <strong>ReAct (Reason + Act)</strong> 模型。它不再是单纯的 $A \to B$，而是一个 <strong>Loop</strong>。</p>
+<ul>
+<li><strong>技术本质</strong>：它是 <strong>Model-driven</strong> 的。公式变为 $Action, Thought = LLM(Context, Goal, Tools)$。</li>
+<li><strong>工程挑战</strong>：
+<ul>
+<li><strong>非确定性</strong>：同样的输入，LLM 可能会给出不同的执行路径，这对习惯了单元测试（Unit Test）的 Java 工程师来说是巨大的挑战。</li>
+<li><strong>幻觉控制</strong>：如果 Agent 误解了 Tool 的 API 定义（类似 Java 中的反射调用失败），会导致整个链路崩溃。</li>
+</ul>
+</li>
+<li><strong>Java 类比</strong>：它更像是带有<strong>自省（Introspection）能力</strong>和**策略模式（Strategy Pattern）**的动态对象，根据运行时环境自行决定调用哪个方法。</li>
+</ul>
+<p>Agent主要是基于部分Agent范式，将决策规划的权力交给AI，让AI自己去规划。不让人去打断借入，所以他是流程不是那么确定的。优点是自助规划，更加智能。缺点是是不确定的，结果不够确定。</p>
+<h3 id="2-Function-Calling-与-MCP-的对比">2.Function Calling 与 MCP 的对比</h3>
+<p><strong>Function Calling</strong>：是模型的一种能力。模型根据描述判断需要调用哪个函数，并提取参数。它是 <strong>“模型寻找工具”</strong>。</p>
+<ul>
+<li><strong>技术本质</strong>：它是 Model 的原生能力。LLM 充当了“决策层”，它并不直接运行代码，而是输出一份符合特定 JSON Schema 的参数列表。</li>
+<li><strong>Java 工程师的痛点</strong>：
+<ul>
+<li><strong>适配成本高</strong>：如果你要对接 OpenAI、Claude、Gemini，每个模型的 Tool 定义格式略有不同。</li>
+<li><strong>紧耦合</strong>：业务逻辑（函数实现）通常与 AI 应用层混在一起。如果我有 100 个微服务提供的能力，AI 应用需要手写 100 个 <code>ToolSpec</code>。</li>
+</ul>
+</li>
+</ul>
+<p><strong>MCP</strong>：是 Anthropic 推出的开放标准。它解决了“工具如何接入模型”的生态问题。以前每个 AI 都要对接不同的 API，现在通过 MCP，数据源（Google Drive、本地文件、数据库）可以标准地暴露给任何模型。它是 <strong>“工具接入模型的通用插头”</strong>。</p>
+<p>MCP 的出现，标志着 AI 交互从“点对点定制”进入了**“标准化插件”**时代。它更像是一个 <strong>适配器模式（Adapter Pattern）</strong> 的大规模应用。</p>
+<ul>
+<li><strong>技术本质</strong>：它定义了一套 <strong>Client-Server 架构</strong>。
+<ul>
+<li><strong>MCP Host</strong>：AI 应用（如 Claude Desktop, IDE）。</li>
+<li><strong>MCP Server</strong>：数据源或工具提供方（Google Drive, MySQL, GitHub）。</li>
+<li><strong>传输协议</strong>：基于 JSON-RPC 的标准化通信。</li>
+</ul>
+</li>
+<li><strong>Java 工程师的视角</strong>：MCP 就是 AI 界的 <strong>JDBC</strong>。
+<ul>
+<li>以前：每个数据库厂商都要写一套逻辑给应用调。</li>
+<li>现在：数据库厂商提供 JDBC Driver（MCP Server），应用层通过统一的 JDBC 接口（MCP Client）连接一切。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-Multi-Agent">3.Multi-Agent</h3>
+<p><strong>Multi-Agent System (MAS)</strong> 是指由多个能够自主决策的智能体（Agent）组成的集合，它们通过<strong>通信、协作、竞争或谈判</strong>来共同完成复杂的任务。</p>
+<ul>
+<li><strong>核心逻辑</strong>：将复杂问题拆解（Decomposition），由不同角色的 Agent 专项处理。</li>
+<li><strong>对比单 Agent</strong>：单 Agent 容易陷入“逻辑死循环”或“上下文爆炸”；Multi-Agent 则通过<strong>角色隔离</strong>，让每个 Agent 保持极高的专业度和较小的上下文窗口（Context Window）。</li>
+</ul>
+<p>常见的范式：</p>
+<p>A. 协作式 (Collaborative/Sequential)</p>
+<p>Agent 们像流水线一样工作。</p>
+<ul>
+<li><strong>例子</strong>：<code>Coder Agent</code> 写代码 -&gt; <code>Reviewer Agent</code> 找 Bug -&gt; <code>Tester Agent</code> 写单测。</li>
+<li><strong>Java 类比</strong>：<strong>责任链模式 (Chain of Responsibility)</strong>。</li>
+</ul>
+<p>这种类似多个Agent协作，然后重点基本就是上一个Agent的output作为我们新的Agent的output。然后这个范式的重点是put的转移。</p>
+<p>B. 代理/分发式 (Hub-and-Spoke / Manager-Worker)</p>
+<p>存在一个 <strong>Leader/Orchestrator Agent</strong>，它负责理解需求、拆解任务并分发给 Worker。</p>
+<ul>
+<li><strong>例子</strong>：用户说“帮我做一个电商网站”，Manager 拆分给前端 Agent、后端 Agent、DB Agent。</li>
+<li><strong>Java 类比</strong>：<strong>任务调度中心 (Job Scheduler)</strong>。</li>
+</ul>
+<p>这个就是主子agent协作，然后我们的子Agent相当于一个大号的tools。然后这个范式的重点是上下文如何处理，隔离/不隔离。</p>
+<p>C. 辩论/对弈式 (Debate/Peer-Review)</p>
+<p>多个 Agent 针对同一个问题给出方案，相互质疑，最终总结出最优解。</p>
+<ul>
+<li><strong>优势</strong>：显著降低幻觉（Hallucination），提高逻辑准确性。</li>
+</ul>
+<p>这个相当于swam范式，多个Agent进行互相讨论。然后这个的重点是最后我们如何处理多个Agent产生的内容，如果出现了冲突怎么解决。</p>
+<h3 id="4-Skills和MCP的区别">4.Skills和MCP的区别</h3>
+<p><strong>Skill (技能/插件) 像是“条件反射”或“专项手艺”</strong>：</p>
+<ul>
+<li>它是为特定任务定制的。比如一个“查询天气”的 Skill，它包含了特定的 API 调用逻辑、参数校验以及如何把返回的 JSON 格式化给模型。</li>
+<li><strong>耦合度高</strong>：通常绑定在某个特定的框架（如早期 OpenAI Plugins 或自定义 Agent 框架）内。</li>
+</ul>
+<p><strong>MCP (Model Context Protocol) 像是“标准感知神经”或“通用接口”</strong>：</p>
+<ul>
+<li>它是由 Anthropic 推出的开放标准。它不关心具体的业务逻辑，而是定义了模型如何连接到外部数据源（如 Google Drive、本地文件系统、数据库）。</li>
+<li><strong>解耦度高</strong>：一个 MCP Server 写好后，任何支持 MCP 协议的客户端（如 Claude、Cursor、IDE）都可以直接“插拔式”使用，无需重新编写集成代码。</li>
+</ul>
+<p><strong>Skill (自下而上)</strong>：开发者定义 <code>sum(a, b)</code>，模型只是调用者。这是一种<strong>功能驱动（Action-oriented）</strong>。</p>
+<p><strong>MCP (自上而下)</strong>：开发者定义一个 <code>FileSystem Server</code>，模型自己去发现里面有哪些文件、怎么读、怎么改。这是一种<strong>资源驱动（Resource-oriented）</strong>。</p>
+<table>
+<thead>
+<tr>
+<th><strong>维度</strong></th>
+<th><strong>Skill (技能/插件)</strong></th>
+<th><strong>MCP (标准协议)</strong></th>
+<th><strong>Java 类比</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>自发现机制</strong></td>
+<td>硬编码在 Prompt 中</td>
+<td>动态 <code>list_resources</code> 接口</td>
+<td><strong>Reflection vs. Service Discovery</strong></td>
+</tr>
+<tr>
+<td><strong>数据形态</strong></td>
+<td>结构化参数 (JSON)</td>
+<td>原始资源 (Content/Blob)</td>
+<td><strong>Diver Instance vs. Connection Pool</strong></td>
+</tr>
+<tr>
+<td><strong>状态保持</strong></td>
+<td>通常无状态</td>
+<td>支持资源订阅与实时更新</td>
+<td><strong>Stateless API vs. WebSocket/Stream</strong></td>
+</tr>
+</tbody>
+</table>
+<p>二者谁占用上下文窗口 (Context Window) 较大？</p>
+<p><strong>在初始化阶段，MCP 通常占用的上下文窗口更大。</strong></p>
+<p>为什么 MCP 消耗更多 Token？</p>
+<ol>
+<li><strong>自描述开销 (Discovery Overhead)</strong>： MCP 为了实现“即插即用”，需要向模型发送大量的<strong>元数据 (Metadata)</strong>。当模型连接到一个 MCP Server 时，Server 会把所有的 <code>Resources</code>（可读取的文件、数据）、<code>Tools</code>（可执行的函数）及其详细的 JSON Schema 描述全部塞进 System Prompt。</li>
+<li><strong>Schema 的详尽性</strong>： 为了让模型在没有硬编码的情况下理解如何操作数据库或文件系统，MCP 的描述通常比简单的 Skill 函数定义要冗长得多。</li>
+<li><strong>多轮交互的上下文堆积</strong>： MCP 鼓励模型频繁读取外部资源（Resources）。每一轮读取回来的原始数据都会作为 Context 持续堆积在对话历史中。</li>
+</ol>
+<p>Skill 的优势（在 Token 节省方面）：</p>
+<ul>
+<li><strong>按需加载</strong>：开发者通常会对 Skill 进行精简，只在 Prompt 中描述核心功能，模型只有在触发特定的 Tool Call 时才会产生额外的 Token 消耗。</li>
+<li><strong>硬编码优化</strong>：很多逻辑（如参数预处理）在后端代码里就处理了，不需要在上下文里教模型“怎么做”。</li>
+</ul>
+<p>比如：</p>
+<p><strong>Skill</strong>：可能只需要告诉模型 <code>queryOrder(id)</code>。</p>
+<p><strong>MCP</strong>：需要告诉模型 <code>Database_Server</code> 有哪些 Table，每个 Table 的 Schema 是什么，支持哪些 Prompt 模板。这些元数据在模型初始化连接（Sampling）时就会占据大量 <strong>KV Cache</strong>。</p>
+<h1>场景优化</h1>
+<h3 id="1-重复问题">1.重复问题</h3>
+<p>1.对于系统中大量重复或相似的用户问题，有哪些优化方式可以节约资源?若要实现该优化，具体如何拆解流程图，如何抽取共性问题并汇总答案?</p>
+<p>看到这种问题，我们在工程上第一个想到的就是缓存？传统的缓存（如 Redis）是基于 <strong>Key 的精确匹配</strong>，但在 AI 场景下，用户问“如何重置密码？”和“密码忘了怎么找回？”虽然字面不同，但<strong>语义一致</strong>。</p>
+<ul>
+<li><strong>优化方案</strong>：引入**向量数据库（Vector DB）**作为语义缓存层。</li>
+<li><strong>收益</strong>：
+<ul>
+<li><strong>节约资源</strong>：命中缓存直接返回结果，Token 消耗降为 0（仅需极小的 Embedding 消耗）。</li>
+<li><strong>降低延迟</strong>：从毫秒级的向量检索代替秒级的 LLM 生成。</li>
+<li><strong>一致性</strong>：确保相似问题得到经过人工校验过的、高质量的标准答案。</li>
+</ul>
+</li>
+</ul>
+<p>然后我们的基本流程可能就是</p>
+<p>首先用户进行输入-&gt;进行向量库的相似性匹配-&gt;然后是否召会的结果-&gt;没有就去再使用AI进行回复</p>
+<p>但是这样还并不是完全的完善的，我们可以模仿Java的缓存系统也设计上多级缓存比如</p>
+<ul>
+<li>精确缓存-使用HASH针对完成一样的重复问题</li>
+<li>语义缓存-使用向量库针对完成相似的问题</li>
+<li>AI回复-使用AI进行恢复</li>
+<li>兜底-静态的恢复，比如AI正在忙碌</li>
+</ul>
+<p>但是那么我们这些共性的答案是从哪里去获得呢？肯定不是人一个一个去写的，需要自动化获取。</p>
+<p>而这个就是我们知识库的一个搭建，这当然是最好的方式。</p>
+<ol>
+<li>问题提取：</li>
+</ol>
+<p><strong>算法选型</strong>：使用 <strong>HDBSCAN</strong> 或 <strong>K-Means</strong> 对历史日志中的 Query 向量进行聚类。</p>
+<p><strong>密度分析</strong>：识别出簇（Cluster）最大的部分，这些就是“共性问题”。</p>
+<ol start="2">
+<li>共性询问提取：</li>
+</ol>
+<p>对于每一个聚类簇，随机抽取 5-10 个代表性问题，发送给一个轻量级模型（如 GPT-4o-mini 或 Claude Haiku）：</p>
+<blockquote>
+<p>“以下是用户问的 10 个相似问题，请总结出一个最标准、最通用的提问标题。”</p>
+</blockquote>
+<ol start="3">
+<li>答案合成与精修</li>
+</ol>
+<p><strong>合成</strong>：将该簇下 LLM 之前的多个回答交给模型进行“合并同类项”，消除矛盾点，保留最全的逻辑。</p>
+<p><strong>人工校验 (Rerank/Human-in-the-loop)</strong>：资深工程师或运营对生成的“标准答案”进行最后审核，确保技术准确性。</p>
+<p><strong>索引固化</strong>：将该标准标题和答案存入 FAQ 库，并赋予极高的搜索权重。</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">mengnankkzhou</div><div class="post-copyright__author_desc">不要走捏</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://blog.tokenlen.top/2026/03/04/message/agent/top1/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://blog.tokenlen.top/2026/03/04/message/agent/top1/')">Agent 基础知识</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://blog.tokenlen.top/2026/03/04/message/agent/top1/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=Agent 基础知识&amp;url=https://blog.tokenlen.top/2026/03/04/message/agent/top1/&amp;pic=https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221837601.jpeg?_r_=6b6b2244-2afc-09ae-8b7b-b030ae33f17d" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.tokenlen.top" target="_blank">mengnankkのblog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__category-list"><a class="post-meta__box__categoryes" href="/categories/Agent/"><span class="categoryes-punctuation"> <i class="anzhiyufont anzhiyu-icon-inbox"></i></span>Agent<span class="categoryesPageCount">4</span></a></div><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/AI/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>AI<span class="tagsPageCount">4</span></a></div></div><div class="post_share"><div class="social-share" data-image="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712178.jpg?_r_=2389337d-177e-a52d-c3e4-a23dd01ea72d" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/02/25/message/new/skills/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722381.jpg?_r_=4391c5d6-13e3-dc0d-9456-7983a53cc66b" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Skills解析</div></div></a></div><div class="next-post pull-right"><a href="/2026/03/07/message/agent/rag1/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712178.jpg?_r_=2389337d-177e-a52d-c3e4-a23dd01ea72d" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">RAG 知识收集</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2026/03/07/message/agent/rag1/" title="RAG 知识收集"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712178.jpg?_r_=2389337d-177e-a52d-c3e4-a23dd01ea72d" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-03-07</div><div class="title">RAG 知识收集</div></div></a></div><div><a href="/2026/02/25/message/new/skills/" title="Skills解析"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722381.jpg?_r_=4391c5d6-13e3-dc0d-9456-7983a53cc66b" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-02-25</div><div class="title">Skills解析</div></div></a></div><div><a href="/2026/02/25/message/new/prompt/" title="提示词工程解析"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221837709.jpg?_r_=20e66ee5-7324-f838-f230-d15111eea767" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-02-25</div><div class="title">提示词工程解析</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-switch"><span class="first-comment">Twikoo</span><span id="switch-btn"></span><span class="second-comment">Valine</span></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407230955363.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">清风拂柳影，碧水映花香。</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">mengnankkzhou</h1><div class="author-info__desc">不要走捏</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/mengnankkkk" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/440831872" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来看我的博客鸭~</div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410021212939.jpg) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%B7%A5%E4%BD%9C%E6%B5%81-Workflow-%E4%B8%8E-Agent-%E7%9A%84%E5%BC%82%E5%90%8C"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.工作流 (Workflow) 与 Agent 的异同</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Function-Calling-%E4%B8%8E-MCP-%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-number">1.0.2.</span> <span class="toc-text">2.Function Calling 与 MCP 的对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Multi-Agent"><span class="toc-number">1.0.3.</span> <span class="toc-text">3.Multi-Agent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Skills%E5%92%8CMCP%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.0.4.</span> <span class="toc-text">4.Skills和MCP的区别</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">场景优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%87%8D%E5%A4%8D%E9%97%AE%E9%A2%98"><span class="toc-number">2.0.1.</span> <span class="toc-text">1.重复问题</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/03/07/message/agent/rag1/" title="RAG 知识收集"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/20250126175712178.jpg?_r_=2389337d-177e-a52d-c3e4-a23dd01ea72d" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RAG 知识收集"/></a><div class="content"><a class="title" href="/2026/03/07/message/agent/rag1/" title="RAG 知识收集">RAG 知识收集</a><time datetime="2026-03-06T16:00:00.000Z" title="发表于 2026-03-07 00:00:00">2026-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/04/message/agent/top1/" title="Agent 基础知识"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221837601.jpeg?_r_=6b6b2244-2afc-09ae-8b7b-b030ae33f17d" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Agent 基础知识"/></a><div class="content"><a class="title" href="/2026/03/04/message/agent/top1/" title="Agent 基础知识">Agent 基础知识</a><time datetime="2026-03-03T16:00:00.000Z" title="发表于 2026-03-04 00:00:00">2026-03-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/25/message/new/skills/" title="Skills解析"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722381.jpg?_r_=4391c5d6-13e3-dc0d-9456-7983a53cc66b" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Skills解析"/></a><div class="content"><a class="title" href="/2026/02/25/message/new/skills/" title="Skills解析">Skills解析</a><time datetime="2026-02-24T16:00:00.000Z" title="发表于 2026-02-25 00:00:00">2026-02-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/25/message/new/prompt/" title="提示词工程解析"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202407221837709.jpg?_r_=20e66ee5-7324-f838-f230-d15111eea767" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="提示词工程解析"/></a><div class="content"><a class="title" href="/2026/02/25/message/new/prompt/" title="提示词工程解析">提示词工程解析</a><time datetime="2026-02-24T16:00:00.000Z" title="发表于 2026-02-25 00:00:00">2026-02-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/17/message/project/dataagent/" title="DataAgent解析"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/202410051722382.jpg?_r_=500620e2-fb33-0040-5565-844b14e875f0" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DataAgent解析"/></a><div class="content"><a class="title" href="/2026/02/17/message/project/dataagent/" title="DataAgent解析">DataAgent解析</a><time datetime="2026-02-16T16:00:00.000Z" title="发表于 2026-02-17 00:00:00">2026-02-17</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="footer_custom_text"><p><a style="margin-inline:5px" target="_blank" href="https://hexo.io/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Framework-Hexo-4e88f8?style=flat&logo=hexo" 
+       title="博客框架为 Hexo" alt="Hexo">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://github.com/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Source-Github-24292f?style=flat&logo=github" 
+       title="本站项目由 GitHub 托管" alt="GitHub">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://vercel.com/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Cloud-Vercel-000000?style=flat&logo=vercel" 
+       title="使用 Vercel 部署" alt="Vercel">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://www.qlu.edu.cn/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/University-齐鲁工业大学-0056a2?style=flat&logo=university" 
+       title="齐鲁工业大学" alt="齐鲁工业大学">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://www.aliyun.com/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Cloud-阿里云-ff6a00?style=flat&logo=aliyun" 
+       title="使用阿里云服务" alt="阿里云">
+</a>
+<a style="margin-inline:5px" target="_blank" href="https://cloud.tencent.com/">
+  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img.shields.io/badge/Cloud-腾讯云-0a73b8?style=flat&logo=tencent-cloud" 
+       title="使用腾讯云服务" alt="腾讯云">
+</a></p>
+</div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2023 - 2026 By <a class="footer-bar-link" href="/" title="mengnankkzhou" target="_blank">mengnankkzhou</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/" title="鲁ICP备2024110758号">鲁ICP备2024110758号</a><a class="footer-bar-link" href="https://blog.tokenlen.top/rss2.xml" title="Rss">Rss</a><a class="footer-bar-link cc" href="/pravite" title="cc协议"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-by-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nc-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nd-line"></i></a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">209</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">64</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">28</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://blog.tokenlen.top/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="http://img.mengnankk.top:9001/" title="图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="图床"/><span class="back-menu-item-text">图床</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="http://img.mengnankk.top:9001/" title="mengnankk图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/13/64d8c2653332e.ico" alt="mengnankk图床"/><span class="back-menu-item-text">mengnankk图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 生活</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/Message/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 其他</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://home.tokenlen.top/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> home</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://status.mengnankk.asia/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 站点检测</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://home.tokenlen.top/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 心里话</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/AI/" style="font-size: 0.88rem;">AI<sup>4</sup></a><a href="/tags/BF/" style="font-size: 0.88rem;">BF<sup>1</sup></a><a href="/tags/BUG/" style="font-size: 0.88rem;">BUG<sup>1</sup></a><a href="/tags/BigData/" style="font-size: 0.88rem;">BigData<sup>1</sup></a><a href="/tags/C/" style="font-size: 0.88rem;">C<sup>4</sup></a><a href="/tags/CE/" style="font-size: 0.88rem;">CE<sup>1</sup></a><a href="/tags/CSRF/" style="font-size: 0.88rem;">CSRF<sup>1</sup></a><a href="/tags/English/" style="font-size: 0.88rem;">English<sup>9</sup></a><a href="/tags/FI/" style="font-size: 0.88rem;">FI<sup>1</sup></a><a href="/tags/Github/" style="font-size: 0.88rem;">Github<sup>1</sup></a><a href="/tags/Go/" style="font-size: 0.88rem;">Go<sup>1</sup></a><a href="/tags/Hadoop/" style="font-size: 0.88rem;">Hadoop<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 0.88rem;">Linux<sup>12</sup></a><a href="/tags/OS/" style="font-size: 0.88rem;">OS<sup>1</sup></a><a href="/tags/RAG/" style="font-size: 0.88rem;">RAG<sup>1</sup></a><a href="/tags/WEB/" style="font-size: 0.88rem;">WEB<sup>1</sup></a><a href="/tags/XSS/" style="font-size: 0.88rem;">XSS<sup>1</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>2</sup></a><a href="/tags/football/" style="font-size: 0.88rem;">football<sup>1</sup></a><a href="/tags/html/" style="font-size: 0.88rem;">html<sup>1</sup></a><a href="/tags/java/" style="font-size: 0.88rem;">java<sup>61</sup></a><a href="/tags/mysql/" style="font-size: 0.88rem;">mysql<sup>17</sup></a><a href="/tags/net/" style="font-size: 0.88rem;">net<sup>7</sup></a><a href="/tags/php/" style="font-size: 0.88rem;">php<sup>5</sup></a><a href="/tags/python/" style="font-size: 0.88rem;">python<sup>3</sup></a><a href="/tags/redis/" style="font-size: 0.88rem;">redis<sup>4</sup></a><a href="/tags/shell/" style="font-size: 0.88rem;">shell<sup>4</sup></a><a href="/tags/spring-boot/" style="font-size: 0.88rem;">spring boot<sup>14</sup></a><a href="/tags/sql/" style="font-size: 0.88rem;">sql<sup>5</sup></a><a href="/tags/web/" style="font-size: 0.88rem;">web<sup>3</sup></a><a href="/tags/%E5%8E%8B%E6%B5%8B/" style="font-size: 0.88rem;">压测<sup>1</sup></a><a href="/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91/" style="font-size: 0.88rem;">数字逻辑<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86/" style="font-size: 0.88rem;">数据库原理<sup>3</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 0.88rem;">数据结构<sup>20</sup></a><a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" style="font-size: 0.88rem;">汇编语言<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>9</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 0.88rem;">软件工程<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 0.88rem;">软件项目管理<sup>1</sup></a><a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 0.88rem;">面试<sup>46</sup></a><a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 0.88rem;">项目<sup>6</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><a id="switch-commentBarrage" href="javascript:anzhiyu.switchCommentBarrage();" title="开关弹幕"><i class="anzhiyufont anzhiyu-icon-danmu"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.cbd.int/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2023 By 安知鱼 V1.6.12",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 mengnankkzhou 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.cbd.int/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://comment.tokenlen.top/',
+      region: '',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, "siu~~~~~"))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.25/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://comment.tokenlen.top/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '3ZpuzQHHKWfFH59QFYmcuCvr-gzGzoHsz',
+      appKey: '8DIvljObQp853ueQMZzpb9Gx',
+      avatar: 'mp',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Twikoo' === 'Valine' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://comment.tokenlen.top/',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.25/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
