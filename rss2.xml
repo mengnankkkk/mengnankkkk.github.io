@@ -86,6 +86,35 @@
     </item>
     
     <item>
+      <title>提示词工程解析</title>
+      <link>https://blog.tokenlen.top/2026/02/25/message/new/prompt/</link>
+      <guid>https://blog.tokenlen.top/2026/02/25/message/new/prompt/</guid>
+      <pubDate>Tue, 24 Feb 2026 16:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;1-引言：理解大模型交互的本质&quot;&gt;1.</description>
+          
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h2 id="1-引言：理解大模型交互的本质">1. 引言：理解大模型交互的本质</h2><p>在实际业务场景中，与大语言模型（LLM）的交互，本质上是<strong>基于无状态API调用的概率推断过程</strong>。由于模型具有发散性思维，如果我们仅提供简单的指令，往往会得到非结构化的长文本、低质量的发散性内容，甚至是“模型幻觉”（Hallucination）。</p><p>为了让AI在逻辑推理、内容生产和信息提取等业务流中稳定发挥作用，我们必须通过工程化的手段来约束其输出。<strong>提示词（Prompt）就是我们控制大模型输出格式、规范业务逻辑、处理异常边界的核心工具。</strong></p><h2 id="2-提示词的二元结构解析">2. 提示词的二元结构解析</h2><p>为了让AI准确理解并执行任务，我们在工程上通常将提示词划分为两个核心层级，它们在模型的注意力权重和功能定位上截然不同：</p><ul><li><strong>系统提示词（System Prompt）：定规矩（高权重）</strong> 这是智能体的“底层操作系统”。它具有全局最高权重，负责定义AI的角色设定、思维链路（CoT）、可用工具集、硬性规则约束以及异常处理的兜底机制。</li><li><strong>用户提示词（User Prompt）：派任务（动态权重）</strong> 这是具体的“业务工单”。它结合历史上下文（Memory），告诉AI当前具体的业务诉求是什么、执行任务所需的背景数据在哪里、以及单次任务的特殊约束。</li></ul><p>优秀的提示词设计，不是堆砌文字，而是构建清晰的逻辑契约。</p><h2 id="3-核心框架：如何设计高鲁棒性的系统提示词（System-Prompt）">3. 核心框架：如何设计高鲁棒性的系统提示词（System Prompt）</h2><p>在构建系统提示词时，绝不能依赖单一模板，而应采用结构化的模块设计。一个专业级智能体的System Prompt通常包含以下六大组件：</p><ul><li><strong>角色与目标（Role &amp; Objective）：</strong> 明确AI的专业身份、目标受众以及最终交付价值。例如：“你是一名资深财务合规审计员，负责核查报销单据的合规性，受众为财务经理。”</li><li><strong>边界与护栏（Constraints &amp; Guardrails）：</strong> 明确“不能做什么”。例如严禁捏造数据、禁止输出带有主观情绪的评价、或在缺乏上下文时强制触发默认后备响应（Fallback Response，如回复“缺少前置数据，无法判断”）。</li><li><strong>工作流与思维链（Workflow &amp; CoT）：</strong> 规定AI处理问题的标准化步骤（SOP）。“第一步提取关键实体；第二步比对业务规则库；第三步输出差异报告。”这能大幅降低逻辑断层。</li><li><strong>能力与工具（Tools &amp; Data Sources）：</strong> 明确AI可以调用的外部工具（如联网检索、数据库查询）以及构建事实基础的数据源依赖。</li><li><strong>输入输出规范（I/O Specifications）：</strong> 强约束数据交互格式。对于业务系统对接，需强制要求AI以严格的JSON或XML格式输出，并定义好字段名及数据类型，以便下游代码解析。</li><li><strong>少样本示例（Few-Shot Examples）：</strong> 提供正向（最佳实践）和反向（错误纠正）的示例边界，让模型通过模式匹配“秒懂”预期结果。</li></ul><h2 id="4-实战策略：如何编写精准的用户提示词（User-Prompt）">4. 实战策略：如何编写精准的用户提示词（User Prompt）</h2><p>用户提示词是触发单次业务逻辑的钥匙。编写时，字数的多少并不决定质量，<strong>信息的信噪比</strong>才是关键。高质量的User Prompt必须包含：</p><ol><li><strong>明确的业务意图：</strong> 我当前的目标是什么？</li><li><strong>纯净的上下文（Context）：</strong> 解决这个问题，你需要参考哪些具体的外部数据或文档片段？（避免将无关信息塞入，干扰模型注意力）。</li><li><strong>单次执行的特殊约束：</strong> 本次输出是否有字数限制？是否需要重点关注某个特定字段？</li></ol><p>*业务洞察：对于长流程的复杂业务，建议采用**任务拆解（Task Decomposition）*<em>策略，将长User Prompt拆分为多个连续的子任务流，通过多轮对话引导AI完成，这比一次性抛出巨量需求的效果好得多。</em></p><h2 id="5-结语：提示词是持续迭代的工程">5. 结语：提示词是持续迭代的工程</h2><p>提示词不是一次性写就的文学作品，而是需要持续维护的工程代码。在实际业务落地中，我们需要遵循生命周期管理：<strong>需求分析 -&gt; 草稿设计 -&gt; 边界用例测试（Test Cases） -&gt; 效果评估 -&gt; 版本迭代</strong>。</p><p>不同基座模型对同一套提示词的敏感度存在差异。只有建立在清晰业务逻辑之上的提示词架构，才能真正做到“以不变应万变”，让AI真正成为可靠的业务生产力。</p><h2 id="6-简单介绍">6.简单介绍</h2><p>提示词的作用:</p><p>首先回答一下AI，也就是一次API调用罢了，我们就把他当成一次结果大致相似，但是内容不同的一些返回，这个主要用在什么地方呢？比如逻辑推理/内容生产/信息提取这类里面。但是经常大模型返回的要么就是很多的文本或者是一些乱七八糟的数据，我们怎么去规定数据的格式化返回？如果让Ai返回的内容尽可能地符合我们的需求？如果返回的数据错乱了，我们该怎么处理？这些很多都是可以在提示词的部分完成的！或者是使用代码工程化的去解决。</p><p>然后我们再去分析一下提示词是什么，对于AI来说提示词分为两类，一种算系统提示词，可以说是我们整个智能体都通用的提示词，里面主要是写了这个智能体的功能角色的设计，他的运行方式（思维链路），可调用的工具，他的规则，输入输出的示例，兜底的一个回答等等。然后另一个是我们的用户提示词，就是我们需要我们的Agent具体去做的一个任务。然后他们两个的给模型的权重是不同的，系统提示词的权重要大，一般只有一个，而用户提示词的权重要小一点，可以有很多条，一般会加上我们的历史消息。</p><p>在我的理解上，提示词是什么呢？提示词就是一个让我们的AI输出我们自己想要的内容的一段提示语。</p><p>所以那么我们该怎么去设计提示词呢？</p><p>提示词的设计:</p><p>首先先去说一说我们提示词可以怎么去设计，一个是可以套用别人的模板，然后我们自己修改修改。或者是在使用自己的经验去总结。提示词只是一个让输出我们理想的一段话而且，所以我们只追求最后的效果就行。但是我们一定要有条理，让Ai可以读懂我们的提示词。</p><p>对我来说的话，肯定是要去区分系统提示词和用户提示词的，他们两个的作用不同，所以他们的设计肯定是不同的，不能使用一个统一的模板。系统提示词相对来说更加结构化，有很多的组成部分，在里面描述我们的具体对AI的一个抽象的要求，我们想要的结果是什么。而我们的用户提示词更多的是告诉具体的任务是什么，这个任务的执行流程，逻辑，相关的知识要清晰。</p><p>所以对于我的系统提示词我一般会包含下面几个方面：</p><ol><li>首先我们这个Agent的任务的目标是什么？然后我们怎么样才算完成任务？然后什么样子叫做的好，什么做的不好。然后什么不是我们的目标</li><li>然后就是我们在执行任务的过程中，我们的约束是什么？我们需要做什么？不能去做什么。比如我们必须确定这个真的存在，我们不能去编数据，如果发现不确定我们该去怎么做</li><li>接着就是我们的工作流程是什么？我们首先要干什么，然后要干什么？最后要干什么？我们拿到一个问题该怎么去思考</li><li>然后就是我们在执行工作的过程中，我们的工具有哪些？我们需要的数据的来源是什么？就是构造我们基本的可信事实。</li><li>然后就是我们的输入/输出是什么，需要什么格式，遇到错误的格式我们该怎么处理。我们的正确/错误的示例是什么，边界是什么？这里需要给出具体的例子</li></ol><p>大体上设计就是这样的。具体的业务场景下可以进行变化。</p><p>而对于用户提示词来说，他肯定设计不是一样的。对我来说，就是我需要跟我的AI 描述好我的具体的需求是什么！这个需求包括：</p><ol><li>我的目标是什么？</li><li>我的上下文的数据去哪里找？</li><li>我的具体的业务流程是什么？</li></ol><p>提示词的好坏不是根据长度来确定的，是看写的清晰不清晰，模型的理解能力怎么样的。不同模型对一样的提示词的效果也是不相同的。</p><h1></h1>]]></content:encoded>
+      
+      
+      <category domain="https://blog.tokenlen.top/categories/Agent/">Agent</category>
+      
+      
+      <category domain="https://blog.tokenlen.top/tags/AI/">AI</category>
+      
+      
+      <comments>https://blog.tokenlen.top/2026/02/25/message/new/prompt/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
       <title>Skills解析</title>
       <link>https://blog.tokenlen.top/2026/02/25/message/new/skills/</link>
       <guid>https://blog.tokenlen.top/2026/02/25/message/new/skills/</guid>
@@ -116,35 +145,6 @@
       
       
       <comments>https://blog.tokenlen.top/2026/02/25/message/new/skills/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>提示词工程解析</title>
-      <link>https://blog.tokenlen.top/2026/02/25/message/new/prompt/</link>
-      <guid>https://blog.tokenlen.top/2026/02/25/message/new/prompt/</guid>
-      <pubDate>Tue, 24 Feb 2026 16:00:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;1-引言：理解大模型交互的本质&quot;&gt;1.</description>
-          
-        
-      
-      
-      
-      <content:encoded><![CDATA[<h2 id="1-引言：理解大模型交互的本质">1. 引言：理解大模型交互的本质</h2><p>在实际业务场景中，与大语言模型（LLM）的交互，本质上是<strong>基于无状态API调用的概率推断过程</strong>。由于模型具有发散性思维，如果我们仅提供简单的指令，往往会得到非结构化的长文本、低质量的发散性内容，甚至是“模型幻觉”（Hallucination）。</p><p>为了让AI在逻辑推理、内容生产和信息提取等业务流中稳定发挥作用，我们必须通过工程化的手段来约束其输出。<strong>提示词（Prompt）就是我们控制大模型输出格式、规范业务逻辑、处理异常边界的核心工具。</strong></p><h2 id="2-提示词的二元结构解析">2. 提示词的二元结构解析</h2><p>为了让AI准确理解并执行任务，我们在工程上通常将提示词划分为两个核心层级，它们在模型的注意力权重和功能定位上截然不同：</p><ul><li><strong>系统提示词（System Prompt）：定规矩（高权重）</strong> 这是智能体的“底层操作系统”。它具有全局最高权重，负责定义AI的角色设定、思维链路（CoT）、可用工具集、硬性规则约束以及异常处理的兜底机制。</li><li><strong>用户提示词（User Prompt）：派任务（动态权重）</strong> 这是具体的“业务工单”。它结合历史上下文（Memory），告诉AI当前具体的业务诉求是什么、执行任务所需的背景数据在哪里、以及单次任务的特殊约束。</li></ul><p>优秀的提示词设计，不是堆砌文字，而是构建清晰的逻辑契约。</p><h2 id="3-核心框架：如何设计高鲁棒性的系统提示词（System-Prompt）">3. 核心框架：如何设计高鲁棒性的系统提示词（System Prompt）</h2><p>在构建系统提示词时，绝不能依赖单一模板，而应采用结构化的模块设计。一个专业级智能体的System Prompt通常包含以下六大组件：</p><ul><li><strong>角色与目标（Role &amp; Objective）：</strong> 明确AI的专业身份、目标受众以及最终交付价值。例如：“你是一名资深财务合规审计员，负责核查报销单据的合规性，受众为财务经理。”</li><li><strong>边界与护栏（Constraints &amp; Guardrails）：</strong> 明确“不能做什么”。例如严禁捏造数据、禁止输出带有主观情绪的评价、或在缺乏上下文时强制触发默认后备响应（Fallback Response，如回复“缺少前置数据，无法判断”）。</li><li><strong>工作流与思维链（Workflow &amp; CoT）：</strong> 规定AI处理问题的标准化步骤（SOP）。“第一步提取关键实体；第二步比对业务规则库；第三步输出差异报告。”这能大幅降低逻辑断层。</li><li><strong>能力与工具（Tools &amp; Data Sources）：</strong> 明确AI可以调用的外部工具（如联网检索、数据库查询）以及构建事实基础的数据源依赖。</li><li><strong>输入输出规范（I/O Specifications）：</strong> 强约束数据交互格式。对于业务系统对接，需强制要求AI以严格的JSON或XML格式输出，并定义好字段名及数据类型，以便下游代码解析。</li><li><strong>少样本示例（Few-Shot Examples）：</strong> 提供正向（最佳实践）和反向（错误纠正）的示例边界，让模型通过模式匹配“秒懂”预期结果。</li></ul><h2 id="4-实战策略：如何编写精准的用户提示词（User-Prompt）">4. 实战策略：如何编写精准的用户提示词（User Prompt）</h2><p>用户提示词是触发单次业务逻辑的钥匙。编写时，字数的多少并不决定质量，<strong>信息的信噪比</strong>才是关键。高质量的User Prompt必须包含：</p><ol><li><strong>明确的业务意图：</strong> 我当前的目标是什么？</li><li><strong>纯净的上下文（Context）：</strong> 解决这个问题，你需要参考哪些具体的外部数据或文档片段？（避免将无关信息塞入，干扰模型注意力）。</li><li><strong>单次执行的特殊约束：</strong> 本次输出是否有字数限制？是否需要重点关注某个特定字段？</li></ol><p>*业务洞察：对于长流程的复杂业务，建议采用**任务拆解（Task Decomposition）*<em>策略，将长User Prompt拆分为多个连续的子任务流，通过多轮对话引导AI完成，这比一次性抛出巨量需求的效果好得多。</em></p><h2 id="5-结语：提示词是持续迭代的工程">5. 结语：提示词是持续迭代的工程</h2><p>提示词不是一次性写就的文学作品，而是需要持续维护的工程代码。在实际业务落地中，我们需要遵循生命周期管理：<strong>需求分析 -&gt; 草稿设计 -&gt; 边界用例测试（Test Cases） -&gt; 效果评估 -&gt; 版本迭代</strong>。</p><p>不同基座模型对同一套提示词的敏感度存在差异。只有建立在清晰业务逻辑之上的提示词架构，才能真正做到“以不变应万变”，让AI真正成为可靠的业务生产力。</p><h2 id="6-简单介绍">6.简单介绍</h2><p>提示词的作用:</p><p>首先回答一下AI，也就是一次API调用罢了，我们就把他当成一次结果大致相似，但是内容不同的一些返回，这个主要用在什么地方呢？比如逻辑推理/内容生产/信息提取这类里面。但是经常大模型返回的要么就是很多的文本或者是一些乱七八糟的数据，我们怎么去规定数据的格式化返回？如果让Ai返回的内容尽可能地符合我们的需求？如果返回的数据错乱了，我们该怎么处理？这些很多都是可以在提示词的部分完成的！或者是使用代码工程化的去解决。</p><p>然后我们再去分析一下提示词是什么，对于AI来说提示词分为两类，一种算系统提示词，可以说是我们整个智能体都通用的提示词，里面主要是写了这个智能体的功能角色的设计，他的运行方式（思维链路），可调用的工具，他的规则，输入输出的示例，兜底的一个回答等等。然后另一个是我们的用户提示词，就是我们需要我们的Agent具体去做的一个任务。然后他们两个的给模型的权重是不同的，系统提示词的权重要大，一般只有一个，而用户提示词的权重要小一点，可以有很多条，一般会加上我们的历史消息。</p><p>在我的理解上，提示词是什么呢？提示词就是一个让我们的AI输出我们自己想要的内容的一段提示语。</p><p>所以那么我们该怎么去设计提示词呢？</p><p>提示词的设计:</p><p>首先先去说一说我们提示词可以怎么去设计，一个是可以套用别人的模板，然后我们自己修改修改。或者是在使用自己的经验去总结。提示词只是一个让输出我们理想的一段话而且，所以我们只追求最后的效果就行。但是我们一定要有条理，让Ai可以读懂我们的提示词。</p><p>对我来说的话，肯定是要去区分系统提示词和用户提示词的，他们两个的作用不同，所以他们的设计肯定是不同的，不能使用一个统一的模板。系统提示词相对来说更加结构化，有很多的组成部分，在里面描述我们的具体对AI的一个抽象的要求，我们想要的结果是什么。而我们的用户提示词更多的是告诉具体的任务是什么，这个任务的执行流程，逻辑，相关的知识要清晰。</p><p>所以对于我的系统提示词我一般会包含下面几个方面：</p><ol><li>首先我们这个Agent的任务的目标是什么？然后我们怎么样才算完成任务？然后什么样子叫做的好，什么做的不好。然后什么不是我们的目标</li><li>然后就是我们在执行任务的过程中，我们的约束是什么？我们需要做什么？不能去做什么。比如我们必须确定这个真的存在，我们不能去编数据，如果发现不确定我们该去怎么做</li><li>接着就是我们的工作流程是什么？我们首先要干什么，然后要干什么？最后要干什么？我们拿到一个问题该怎么去思考</li><li>然后就是我们在执行工作的过程中，我们的工具有哪些？我们需要的数据的来源是什么？就是构造我们基本的可信事实。</li><li>然后就是我们的输入/输出是什么，需要什么格式，遇到错误的格式我们该怎么处理。我们的正确/错误的示例是什么，边界是什么？这里需要给出具体的例子</li></ol><p>大体上设计就是这样的。具体的业务场景下可以进行变化。</p><p>而对于用户提示词来说，他肯定设计不是一样的。对我来说，就是我需要跟我的AI 描述好我的具体的需求是什么！这个需求包括：</p><ol><li>我的目标是什么？</li><li>我的上下文的数据去哪里找？</li><li>我的具体的业务流程是什么？</li></ol><p>提示词的好坏不是根据长度来确定的，是看写的清晰不清晰，模型的理解能力怎么样的。不同模型对一样的提示词的效果也是不相同的。</p><h1></h1>]]></content:encoded>
-      
-      
-      <category domain="https://blog.tokenlen.top/categories/Agent/">Agent</category>
-      
-      
-      <category domain="https://blog.tokenlen.top/tags/AI/">AI</category>
-      
-      
-      <comments>https://blog.tokenlen.top/2026/02/25/message/new/prompt/#disqus_thread</comments>
       
     </item>
     
@@ -333,6 +333,36 @@
     </item>
     
     <item>
+      <title>Spring AI Alibaba 深度解析：动态工具搜索（Tool Search）的设计与实现</title>
+      <link>https://blog.tokenlen.top/2025/12/30/message/PR/saa/add_toolsearch/</link>
+      <guid>https://blog.tokenlen.top/2025/12/30/message/PR/saa/add_toolsearch/</guid>
+      <pubDate>Mon, 29 Dec 2025 16:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;1-背景与痛点&quot;&gt;1. 背景与痛点&lt;/h2&gt;
+&lt;p&gt;随着 AI Agent 接入的业务系统越来越复杂，一个 Agent 往往挂载了数十甚至上百个工具（Tools）。在传统的实现中，我们需要将所有工具的定义（Schema）一次性注入到 Prompt</description>
+          
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h2 id="1-背景与痛点">1. 背景与痛点</h2><p>随着 AI Agent 接入的业务系统越来越复杂，一个 Agent 往往挂载了数十甚至上百个工具（Tools）。在传统的实现中，我们需要将所有工具的定义（Schema）一次性注入到 Prompt 上下文中。这带来了两个严重问题：</p><ol><li><strong>Token 消耗巨大</strong>：海量的工具描述占用了宝贵的 Context Window，增加了推理成本。</li><li><strong>模型注意力分散</strong>：面对大量无关工具，模型容易产生幻觉或选择错误的工具。</li></ol><p>Spring AI 社区提出了 <strong>Tool Search</strong> 模式来解决此问题。作为 Spring AI Alibaba（SAA）社区向核心标准对齐的重要一步，我们结合 SAA 自身的 <strong>Graph Agent（图计算 Agent）</strong> 架构，重新设计并实现了这一特性。与 Spring AI 原生基于 <code>ChatClient</code> 的实现不同，SAA 版本将逻辑封装在 Graph 节点与拦截器中，使其更适应复杂的 Agent 工作流。</p><h2 id="2-设计思路：Lazy-Loading-与-动态注入">2. 设计思路：Lazy Loading 与 动态注入</h2><p>核心思想是**“按需加载”（Lazy Loading）**：</p><ol><li><strong>初始阶段</strong>：不向 LLM 暴露任何具体的业务工具，仅注入一个特殊的元工具——<code>ToolSearchTool</code>。</li><li><strong>动态发现</strong>：当 LLM 发现无法回答用户问题时，会尝试调用 <code>ToolSearchTool</code> 进行搜索。</li><li><strong>拦截与增强</strong>：系统拦截该请求，执行本地搜索（如 Lucene 或 向量检索），找到最相关的工具（如 <code>get_weather</code>）。</li><li><strong>递归执行</strong>：将搜索到的工具动态注入到当前的 Prompt 上下文中，并让 LLM 重新进行推理。此时 LLM 看到了真正的工具，即可发起调用。</li></ol><p>这种设计将原本 O(N) 的上下文复杂度降低到了 O(K)（K为实际所需工具数）。</p><h2 id="3-核心组件架构">3. 核心组件架构</h2><p>为了实现上述逻辑，我们设计了以下核心组件：</p><p>3.1 核心接口：ToolSearcher</p><p>定义了工具检索的标准行为，支持多种检索策略的扩展。</p><ul><li><strong><code>indexTools(List&lt;Tool&gt; tools)</code></strong>：构建工具索引。</li><li><strong><code>search(String query)</code></strong>：根据自然语言或关键词搜索匹配的工具。</li><li><strong><code>getToolSchema(String toolName)</code></strong>：获取指定工具的 JSON Schema 定义。</li></ul><p>3.2 默认实现：LuceneToolSearcher</p><p>基于 <strong>Apache Lucene</strong> 实现的高性能内存检索引擎。</p><ul><li><strong>倒排索引</strong>：将工具的 <code>name</code>、<code>description</code> 和 <code>parameters</code> 建立索引。</li><li><strong>权重控制</strong>：通过 Boost 机制优化搜索相关性（例如工具名称的匹配权重高于描述）。</li><li><strong>回调缓存</strong>：内部缓存 <code>ToolCallback</code>，确保搜到工具后能快速映射到具体的执行实例。</li></ul><p>3.3 元工具：ToolSearchTool</p><p>这是暴露给 LLM 的唯一初始工具。</p><ul><li><strong>Input</strong>：<code>query</code> 字符串（例如 “check weather”）。</li><li><strong>Output</strong>：搜索到的工具列表摘要及状态消息。</li><li><strong>作用</strong>：它是 LLM 探知外部世界的“潜望镜”。</li></ul><p>3.4 大脑：ToolSearchModelInterceptor</p><p>这是整个机制的控制中枢，作为一个拦截器嵌入在 Agent 的执行链路中。</p><ul><li><strong>拦截逻辑</strong>：监听 LLM 的响应。如果检测到 <code>tool_search</code> 函数调用，则接管控制权。</li><li><strong>动态注入</strong>：调用 <code>ToolSearcher</code> 获取工具定义，并将其追加到下一轮的 Request Context 中。</li><li><strong>递归控制</strong>：控制递归深度，防止 Agent 陷入死循环。</li><li><strong>多任务支持</strong>：支持 LLM 一次性发出多个搜索意图（如同时搜“天气”和“邮件”），并在一次拦截中合并处理。</li></ul><h2 id="4-执行流程-Workflow">4.执行流程 (Workflow)</h2><p>整个调用链路是一个闭环的递归过程：</p><ol><li><strong>初始化</strong>：用户注册所有业务工具，系统调用 <code>LuceneToolSearcher</code> 建立内存索引。</li><li><strong>用户提问</strong>：用户发送 “帮我查下北京天气”。</li><li><strong>Round 0 推理</strong>：LLM 此时只看得到 <code>ToolSearchTool</code>。它分析意图后决定调用 <code>tool_search(&quot;weather&quot;)</code>。</li><li><strong>拦截器介入</strong>：<code>ToolSearchModelInterceptor</code> 捕获该调用，阻止其直接发往后端，而是转而在本地 Lucene 搜索。</li><li><strong>上下文更新</strong>：拦截器找到 <code>get_weather</code> 工具，将其 Schema 注入到 Prompt 中。</li><li><strong>Round 1 推理</strong>：Agent 带着（<code>ToolSearchTool</code> + <code>get_weather</code>）再次请求 LLM。</li><li><strong>工具调用</strong>：LLM 这次看到了 <code>get_weather</code>，于是发起真正的天气查询。</li><li><strong>结果返回</strong>：执行工具，返回 “北京晴，25度”。</li></ol><h2 id="5-示例与验证">5.示例与验证</h2><p>在 <code>ToolSearchExample.java</code> 中，我们覆盖了多种典型场景：</p><ul><li><strong>基础用法</strong>：单一工具的搜索与调用。</li><li><strong>多步发现</strong>：复杂任务拆解（如“先查天气，再发邮件”），验证了拦截器处理并发搜索意图的能力。</li><li><strong>模糊搜索</strong>：验证 Lucene 对非精确匹配（Fuzzy Query）的支持。</li><li><strong>异常处理</strong>：当搜不到工具时，Agent 如何优雅地回复用户。</li></ul><h2 id="6-局限性与未来规划">6.局限性与未来规划</h2><p>尽管当前的实现已经能够大幅节省 Token 并提升准确率，但仍有优化空间：</p><ol><li><p><strong>索引持久化</strong>：</p><ul><li><em>当前</em>：基于内存的 Lucene 索引，重启即丢失。</li><li><em>未来</em>：支持索引持久化到磁盘，或对接 Elasticsearch、Milvus、PGvector 等外部向量数据库，以支持海量工具库。</li></ul></li><li><p><strong>缓存淘汰策略 (Eviction Policy)</strong>：</p><ul><li><em>当前</em>：将搜索到的工具简单的追加到历史记录中进行转发。长对话下可能导致上下文再次膨胀。</li><li><em>未来</em>：引入 LRU (Least Recently Used) 或 LFU 策略，在上下文窗口有限时，动态移除那些“搜出来但很久没用”的工具。</li></ul></li><li><p><strong>语义检索增强</strong>：</p><ul><li><em>当前</em>：主要依赖关键词匹配。</li><li><em>未来</em>：引入 Embedding 模型，实现基于语义的工具搜索（例如用户说“我想看下时间”，能匹配到 <code>get_clock</code> 工具）。</li></ul></li></ol><hr><blockquote><p><strong>总结</strong>：Tool Search 是 Spring AI Alibaba 迈向大规模 Agent 系统的重要基石。它不仅优化了性能，更赋予了 Agent “主动查阅手册”的智能行为。</p></blockquote>]]></content:encoded>
+      
+      
+      <category domain="https://blog.tokenlen.top/categories/github/">github</category>
+      
+      
+      <category domain="https://blog.tokenlen.top/tags/PR/">PR</category>
+      
+      
+      <comments>https://blog.tokenlen.top/2025/12/30/message/PR/saa/add_toolsearch/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
       <title>Fastjson2--fix</title>
       <link>https://blog.tokenlen.top/2025/12/30/message/PR/fastjson2/issue1/</link>
       <guid>https://blog.tokenlen.top/2025/12/30/message/PR/fastjson2/issue1/</guid>
@@ -360,36 +390,6 @@
       
       
       <comments>https://blog.tokenlen.top/2025/12/30/message/PR/fastjson2/issue1/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>Spring AI Alibaba 深度解析：动态工具搜索（Tool Search）的设计与实现</title>
-      <link>https://blog.tokenlen.top/2025/12/30/message/PR/saa/add_toolsearch/</link>
-      <guid>https://blog.tokenlen.top/2025/12/30/message/PR/saa/add_toolsearch/</guid>
-      <pubDate>Mon, 29 Dec 2025 16:00:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;1-背景与痛点&quot;&gt;1. 背景与痛点&lt;/h2&gt;
-&lt;p&gt;随着 AI Agent 接入的业务系统越来越复杂，一个 Agent 往往挂载了数十甚至上百个工具（Tools）。在传统的实现中，我们需要将所有工具的定义（Schema）一次性注入到 Prompt</description>
-          
-        
-      
-      
-      
-      <content:encoded><![CDATA[<h2 id="1-背景与痛点">1. 背景与痛点</h2><p>随着 AI Agent 接入的业务系统越来越复杂，一个 Agent 往往挂载了数十甚至上百个工具（Tools）。在传统的实现中，我们需要将所有工具的定义（Schema）一次性注入到 Prompt 上下文中。这带来了两个严重问题：</p><ol><li><strong>Token 消耗巨大</strong>：海量的工具描述占用了宝贵的 Context Window，增加了推理成本。</li><li><strong>模型注意力分散</strong>：面对大量无关工具，模型容易产生幻觉或选择错误的工具。</li></ol><p>Spring AI 社区提出了 <strong>Tool Search</strong> 模式来解决此问题。作为 Spring AI Alibaba（SAA）社区向核心标准对齐的重要一步，我们结合 SAA 自身的 <strong>Graph Agent（图计算 Agent）</strong> 架构，重新设计并实现了这一特性。与 Spring AI 原生基于 <code>ChatClient</code> 的实现不同，SAA 版本将逻辑封装在 Graph 节点与拦截器中，使其更适应复杂的 Agent 工作流。</p><h2 id="2-设计思路：Lazy-Loading-与-动态注入">2. 设计思路：Lazy Loading 与 动态注入</h2><p>核心思想是**“按需加载”（Lazy Loading）**：</p><ol><li><strong>初始阶段</strong>：不向 LLM 暴露任何具体的业务工具，仅注入一个特殊的元工具——<code>ToolSearchTool</code>。</li><li><strong>动态发现</strong>：当 LLM 发现无法回答用户问题时，会尝试调用 <code>ToolSearchTool</code> 进行搜索。</li><li><strong>拦截与增强</strong>：系统拦截该请求，执行本地搜索（如 Lucene 或 向量检索），找到最相关的工具（如 <code>get_weather</code>）。</li><li><strong>递归执行</strong>：将搜索到的工具动态注入到当前的 Prompt 上下文中，并让 LLM 重新进行推理。此时 LLM 看到了真正的工具，即可发起调用。</li></ol><p>这种设计将原本 O(N) 的上下文复杂度降低到了 O(K)（K为实际所需工具数）。</p><h2 id="3-核心组件架构">3. 核心组件架构</h2><p>为了实现上述逻辑，我们设计了以下核心组件：</p><p>3.1 核心接口：ToolSearcher</p><p>定义了工具检索的标准行为，支持多种检索策略的扩展。</p><ul><li><strong><code>indexTools(List&lt;Tool&gt; tools)</code></strong>：构建工具索引。</li><li><strong><code>search(String query)</code></strong>：根据自然语言或关键词搜索匹配的工具。</li><li><strong><code>getToolSchema(String toolName)</code></strong>：获取指定工具的 JSON Schema 定义。</li></ul><p>3.2 默认实现：LuceneToolSearcher</p><p>基于 <strong>Apache Lucene</strong> 实现的高性能内存检索引擎。</p><ul><li><strong>倒排索引</strong>：将工具的 <code>name</code>、<code>description</code> 和 <code>parameters</code> 建立索引。</li><li><strong>权重控制</strong>：通过 Boost 机制优化搜索相关性（例如工具名称的匹配权重高于描述）。</li><li><strong>回调缓存</strong>：内部缓存 <code>ToolCallback</code>，确保搜到工具后能快速映射到具体的执行实例。</li></ul><p>3.3 元工具：ToolSearchTool</p><p>这是暴露给 LLM 的唯一初始工具。</p><ul><li><strong>Input</strong>：<code>query</code> 字符串（例如 “check weather”）。</li><li><strong>Output</strong>：搜索到的工具列表摘要及状态消息。</li><li><strong>作用</strong>：它是 LLM 探知外部世界的“潜望镜”。</li></ul><p>3.4 大脑：ToolSearchModelInterceptor</p><p>这是整个机制的控制中枢，作为一个拦截器嵌入在 Agent 的执行链路中。</p><ul><li><strong>拦截逻辑</strong>：监听 LLM 的响应。如果检测到 <code>tool_search</code> 函数调用，则接管控制权。</li><li><strong>动态注入</strong>：调用 <code>ToolSearcher</code> 获取工具定义，并将其追加到下一轮的 Request Context 中。</li><li><strong>递归控制</strong>：控制递归深度，防止 Agent 陷入死循环。</li><li><strong>多任务支持</strong>：支持 LLM 一次性发出多个搜索意图（如同时搜“天气”和“邮件”），并在一次拦截中合并处理。</li></ul><h2 id="4-执行流程-Workflow">4.执行流程 (Workflow)</h2><p>整个调用链路是一个闭环的递归过程：</p><ol><li><strong>初始化</strong>：用户注册所有业务工具，系统调用 <code>LuceneToolSearcher</code> 建立内存索引。</li><li><strong>用户提问</strong>：用户发送 “帮我查下北京天气”。</li><li><strong>Round 0 推理</strong>：LLM 此时只看得到 <code>ToolSearchTool</code>。它分析意图后决定调用 <code>tool_search(&quot;weather&quot;)</code>。</li><li><strong>拦截器介入</strong>：<code>ToolSearchModelInterceptor</code> 捕获该调用，阻止其直接发往后端，而是转而在本地 Lucene 搜索。</li><li><strong>上下文更新</strong>：拦截器找到 <code>get_weather</code> 工具，将其 Schema 注入到 Prompt 中。</li><li><strong>Round 1 推理</strong>：Agent 带着（<code>ToolSearchTool</code> + <code>get_weather</code>）再次请求 LLM。</li><li><strong>工具调用</strong>：LLM 这次看到了 <code>get_weather</code>，于是发起真正的天气查询。</li><li><strong>结果返回</strong>：执行工具，返回 “北京晴，25度”。</li></ol><h2 id="5-示例与验证">5.示例与验证</h2><p>在 <code>ToolSearchExample.java</code> 中，我们覆盖了多种典型场景：</p><ul><li><strong>基础用法</strong>：单一工具的搜索与调用。</li><li><strong>多步发现</strong>：复杂任务拆解（如“先查天气，再发邮件”），验证了拦截器处理并发搜索意图的能力。</li><li><strong>模糊搜索</strong>：验证 Lucene 对非精确匹配（Fuzzy Query）的支持。</li><li><strong>异常处理</strong>：当搜不到工具时，Agent 如何优雅地回复用户。</li></ul><h2 id="6-局限性与未来规划">6.局限性与未来规划</h2><p>尽管当前的实现已经能够大幅节省 Token 并提升准确率，但仍有优化空间：</p><ol><li><p><strong>索引持久化</strong>：</p><ul><li><em>当前</em>：基于内存的 Lucene 索引，重启即丢失。</li><li><em>未来</em>：支持索引持久化到磁盘，或对接 Elasticsearch、Milvus、PGvector 等外部向量数据库，以支持海量工具库。</li></ul></li><li><p><strong>缓存淘汰策略 (Eviction Policy)</strong>：</p><ul><li><em>当前</em>：将搜索到的工具简单的追加到历史记录中进行转发。长对话下可能导致上下文再次膨胀。</li><li><em>未来</em>：引入 LRU (Least Recently Used) 或 LFU 策略，在上下文窗口有限时，动态移除那些“搜出来但很久没用”的工具。</li></ul></li><li><p><strong>语义检索增强</strong>：</p><ul><li><em>当前</em>：主要依赖关键词匹配。</li><li><em>未来</em>：引入 Embedding 模型，实现基于语义的工具搜索（例如用户说“我想看下时间”，能匹配到 <code>get_clock</code> 工具）。</li></ul></li></ol><hr><blockquote><p><strong>总结</strong>：Tool Search 是 Spring AI Alibaba 迈向大规模 Agent 系统的重要基石。它不仅优化了性能，更赋予了 Agent “主动查阅手册”的智能行为。</p></blockquote>]]></content:encoded>
-      
-      
-      <category domain="https://blog.tokenlen.top/categories/github/">github</category>
-      
-      
-      <category domain="https://blog.tokenlen.top/tags/PR/">PR</category>
-      
-      
-      <comments>https://blog.tokenlen.top/2025/12/30/message/PR/saa/add_toolsearch/#disqus_thread</comments>
       
     </item>
     
