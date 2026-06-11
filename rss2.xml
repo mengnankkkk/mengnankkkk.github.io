@@ -15,8 +15,42 @@
     <atom:link href="https://blog.tokenlen.top/rss2.xml" rel="self" type="application/rss+xml"/>
     <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
     <description>清风拂柳影，碧水映花香。</description>
-    <pubDate>Mon, 08 Jun 2026 14:08:22 GMT</pubDate>
+    <pubDate>Tue, 09 Jun 2026 12:37:39 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>软件体系结构</title>
+      <link>https://blog.tokenlen.top/2026/06/09/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BF%87%E7%A8%8B/lastteam/sheji/</link>
+      <guid>https://blog.tokenlen.top/2026/06/09/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BF%87%E7%A8%8B/lastteam/sheji/</guid>
+      <pubDate>Mon, 08 Jun 2026 16:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;概念&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;什么是软件设计？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;软件设计是从软件需求到软件实现的活动，它把各种软件需求转换为能直接实现的软件结构。&lt;/p&gt;
+&lt;ol</description>
+          
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h1>概念</h1><ol><li>什么是软件设计？</li></ol><p>软件设计是从软件需求到软件实现的活动，它把各种软件需求转换为能直接实现的软件结构。</p><ol start="2"><li>软件体系结构的主要特征：</li></ol><ul><li><p>一种对复杂系统的抽象表示</p></li><li><p>复杂系统的一种结构化模型，描述其组成部件及部件之间的关系</p></li><li><p>具有特定工程目标的模型</p></li></ul><ol start="3"><li>软件体系结构的定义：</li></ol><ul><li><p>软件体系结构是软件系统的<strong>结构</strong>，包含软件<strong>元素</strong>、软件元素<strong>外部可见的属性</strong>以及这些软件<strong>元素之间的关系</strong>；</p></li><li><p>软件体系结构是软件系统的<strong>基本组织</strong>、包含<strong>构件、构件之间</strong>、<strong>构件与环境之间的关系</strong>，以及相关的<strong>设计与演化原则</strong>；</p></li></ul><ol start="4"><li><p>六大关系：依赖，关联，聚集，构成，继承，实现</p></li><li><p>什么是构件图：用来<strong>描述系统中存在的构件、构件具有的接口、以及各个构件怎样通过接口连接起来形成一个完整的系统</strong>。</p></li><li><p>泳道：水平泳道： 通常用于表示不同的角色或组织。垂直泳道： 通常用于表示不同的阶段或时间顺序。</p></li><li><p>顶层架构设计需要涵盖的方面：</p><ol><li><p>子系统划分:将系统划分为多个子系统，每个子系统负责一个明确的功能领域。</p></li><li><p>关键构件设计:定义系统中的关键构件（如模块、组件），并明确其职责。</p></li><li><p>关键类设计:定义系统中的关键类，并明确其属性和方法。</p></li><li><p>协作关系:描述子系统、构件和类之间的交互方式。</p></li><li><p>部署模型:描绘系统在物理运行环境下的部署方式。</p></li></ol></li><li><p>评价软件体系结构：</p><ol><li>深度（Depth）：软件控制的层数</li><li>宽度(Width)：软件的跨度</li><li>扇出率：一个模块的扇出率指该模块直接控制的其他模块数。</li><li>扇入率：一个模块的扇入率指直接控制该模块的模块数。</li><li>可见域：该模块可直接或间接引用的一组模块。</li><li>连通域：模块可直接引用的模块。</li></ol></li><li><p>用例的形成：从业务需求描述出发获取参与者（Actor）和场景，对场景进行汇总、分类、抽象，形成用例。</p></li></ol><p>确定参与者和场景的关键在于理解业务领域和初步需求描述文档。在场景确定之后，通过对场景的汇总、分类归并、抽象即可形成用例。</p><ol start="10"><li><p>什么是参与者：与用例发生交互的系统外部角色，并不只限于人员，其它与目标软件发生交互的外部实体或系统也是参与者；</p></li><li><p>用例的特征：</p><ol><li>对参与者可见</li><li>描述系统功能</li></ol></li><li><p>用例图细化：</p></li></ol><ul><li>定义用例之间关</li><li>定义新的用</li><li>参与者与用例之间关系：触发执行与信息交换</li></ul><ol start="13"><li>CS风格：</li></ol><ul><li>特征：<strong>从向外提供服务的构件出发，沿着连接关系递次搜索各构件和连接子，形成的拓扑结构是一棵倒置的树</strong>**。**</li><li>优点：使得服务功能的实现很集中，便于系统实现，使用广泛。</li><li>典型应用：<strong>电子邮件系统、<strong><strong>WWW</strong></strong>系统、<strong><strong>TELNET</strong></strong>系统、<strong><strong>CVS</strong></strong>版本控制系统</strong></li></ul><ol start="14"><li>发布-订阅模式的使用场合：</li></ol><p>如果对象之间存在一对多的数据依赖关系，且当被依赖对象的数据改变时所有依赖于它的对象都应得到通知并自动更新</p>]]></content:encoded>
+      
+      
+      <category domain="https://blog.tokenlen.top/categories/%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/">期末考试</category>
+      
+      
+      <category domain="https://blog.tokenlen.top/tags/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">软件体系结构</category>
+      
+      
+      <comments>https://blog.tokenlen.top/2026/06/09/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BF%87%E7%A8%8B/lastteam/sheji/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>检索工具解析</title>
@@ -116,37 +150,6 @@
     </item>
     
     <item>
-      <title>数据库知识收集</title>
-      <link>https://blog.tokenlen.top/2026/04/16/message/base/sql/</link>
-      <guid>https://blog.tokenlen.top/2026/04/16/message/base/sql/</guid>
-      <pubDate>Wed, 15 Apr 2026 16:00:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h1&gt;基础问题&lt;/h1&gt;
-&lt;h1&gt;1.一条sql语句中各个关键字的执行顺序&lt;/h1&gt;
-&lt;p&gt;但 MySQL/Oracle</description>
-          
-        
-      
-      
-      
-      <content:encoded><![CDATA[<h1>基础问题</h1><h1>1.一条sql语句中各个关键字的执行顺序</h1><p>但 MySQL/Oracle 等引擎的<strong>真实执行顺序</strong>如下：</p><ol><li><strong><code>FROM</code></strong>：选择主表</li><li><strong><code>JOIN</code></strong>：连接其他表</li><li><strong><code>ON</code></strong>：连接条件过滤</li><li><strong><code>WHERE</code></strong>：行级别过滤</li><li><strong><code>GROUP BY</code></strong>：分组</li><li><strong><code>HAVING</code></strong>：分组级别过滤</li><li><strong><code>SELECT</code></strong>：提取目标列 / 计算表达式</li><li><strong><code>DISTINCT</code></strong>：去重</li><li><strong><code>ORDER BY</code></strong>：排序</li><li><strong><code>LIMIT</code> / <code>OFFSET</code></strong>：分页限制</li></ol><h2 id="2-where-和-group-by走索引的过程">2.where 和 group by走索引的过程</h2><p><code>WHERE</code> 子句的主要目的是<strong>过滤数据</strong>。它利用 B+ 树的查找过程分为以下两种典型情况：</p><ol><li><strong>等值查询（Point Query）：</strong> 例如 <code>WHERE a = 1 AND b = 2</code>。<ul><li><strong>过程：</strong> MySQL 引擎会从 B+ 树的根节点开始，利用二分查找法，沿着多级索引页向下遍历。因为 <code>a</code> 和 <code>b</code> 都是等值，B+ 树保证了这两列是绝对有序的，引擎能够以 $O(\log N)$ 的时间复杂度，精确定位到叶子节点中满足条件的数据边界。</li></ul></li><li><strong>范围查询（Range Query）：</strong> 例如 <code>WHERE a &gt; 1 AND a &lt; 10 AND b = 2</code>。<ul><li><strong>过程：</strong> 引擎首先按 <code>a &gt; 1</code> 找到左边界，然后沿着叶子节点的双向链表向右顺序扫描（Range Scan），直到遇到 <code>a &gt;= 10</code> 的数据停止。</li><li><strong>断点陷阱：</strong> 因为在 <code>a</code> 是一个范围的前提下，<code>b</code> 的值是<strong>全局无序但局部有序</strong>的。所以对于 <code>b = 2</code> 这个条件，无法再利用二分查找去树中快速跳跃，只能在扫描 <code>a</code> 范围的过程中，逐行比对 <code>b</code> 的值（这部分在 MySQL 5.6 引入了 <strong>ICP 索引下推</strong> 优化，减少了回表次数）。</li></ul></li></ol><p><code>GROUP BY</code> 的本质是<strong>先排序，后聚合</strong>。 如果数据本身不是有序的，MySQL 就不得不创建一个内部临时表（Using temporary），把数据放进去，然后再通过外部排序算法（Using filesort）把相同组的数据排在一起进行聚合。<strong>这是极度消耗 CPU 和内存的。</strong></p><p>索引对 <code>GROUP BY</code> 最大的贡献就是：<strong>天然排好序了，直接拿来用。</strong></p><p>MySQL 利用索引处理 <code>GROUP BY</code> 有两种高级扫描方式：</p><ol><li><strong>松散索引扫描（Loose Index Scan）：</strong><ul><li><strong>条件：</strong> 查询只涉及索引的最左前缀，且通常配合 <code>MIN()</code> 或 <code>MAX()</code>。</li><li><strong>过程：</strong> 引擎<strong>不需要扫描满足条件的所有记录</strong>。比如 <code>GROUP BY a</code>，它会在 B+ 树中直接跳跃着读取每个 <code>a</code> 组的第一条（或最后一条）记录。效率极高，相当于只扫描组的数量，而不是数据行的数量。</li></ul></li><li><strong>紧凑索引扫描（Tight Index Scan）：</strong><ul><li><strong>条件：</strong> 无法使用松散扫描，但依然符合最左前缀。比如 <code>WHERE a = 1 GROUP BY b</code>。</li><li><strong>过程：</strong> 引擎会利用 <code>a = 1</code> 定位到数据后，因为在 <code>a</code> 相等的情况下 <code>b</code> 是严格有序的，所以引擎只需要顺着叶子节点一直往后读。遇到相同的 <code>b</code> 就聚合，遇到不同的 <code>b</code> 就开启下一个组。全程不需要额外的排序操作（无 filesort）。</li></ul></li></ol><h2 id="3-主从同步">3.主从同步</h2><p>MySQL 的主从同步是一个<strong>异步</strong>的逻辑复制过程，主要涉及三个线程：</p><ol><li><strong>Master - Binlog Dump Thread</strong>: 当 Slave 连接到 Master 时，Master 会创建一个线程，负责读取 <code>binlog</code> 内容并发送给 Slave。</li><li><strong>Slave - I/O Thread</strong>: 负责连接 Master，请求指定位置（position）之后的 <code>binlog</code> 内容，并将其写入到本地的 <strong>Relay Log（中继日志）</strong> 中。</li><li><strong>Slave - SQL Thread</strong>: 负责读取 <code>Relay Log</code> 中的事件，并在本地重新执行一遍（Redo），从而保证数据的一致性。</li></ol><p>同步的效率和准确性很大程度上取决于 <code>binlog_format</code> 的选择：</p><ul><li><strong>Statement</strong>: 记录的是 SQL 原文。<ul><li><em>优点</em>：日志量小。</li><li><em>缺点</em>：会导致数据不一致（如使用了 <code>UUID()</code>, <code>NOW()</code> 等非确定性函数）。</li></ul></li><li><strong>Row</strong>: 记录每一行数据的变更。<ul><li><em>优点</em>：最安全，能保证数据的绝对一致。</li><li><em>缺点</em>：日志量巨大（比如一个 <code>UPDATE</code> 影响万行，就会记录万行数据）。</li></ul></li><li><strong>Mixed</strong>: 折中方案。普通操作用 Statement，遇到非确定性函数自动切为 Row。<ul><li><strong>资深建议</strong>：在互联网高并发场景下，为了保证数据订阅（如 Canal 抽数）和一致性，通常<strong>强制建议使用 Row 格式</strong>。</li></ul></li></ul><p>同步的形式：</p><p>A. 异步复制 (Asynchronous)</p><p>Master 只要写完自己的 <code>binlog</code> 就返回成功，不关心 Slave 是否收到。</p><ul><li><strong>风险</strong>：如果 Master 宕机且 <code>binlog</code> 还没传到 Slave，会<strong>丢失数据</strong>。</li></ul><p>B. 半同步复制 (Semi-Synchronous)</p><p>Master 写入 <code>binlog</code> 后，必须等待<strong>至少一个</strong> Slave 确认收到并写入 <code>Relay Log</code> 后才返回成功。</p><ul><li><strong>权衡</strong>：提升了安全性，但增加了一个网络 RTT 的延迟，影响吞吐量。</li></ul><p>C. 组复制 (MGR - MySQL Group Replication)</p><p>基于 Paxos 协议的多主或主从模式，提供强一致性保障。</p><p>问题：</p><p>这是生产环境中无法回避的问题。常见原因及对策：</p><ul><li><strong>原因 1：Slave 的 SQL 线程单线程瓶颈</strong><ul><li><em>方案</em>：开启 <strong>并行复制 (MTS, Multi-Threaded Slave)</strong>。在 MySQL 5.7+ 中可以基于组提交 (Group Commit) 实现并行回放。</li></ul></li><li><strong>原因 2：大事务</strong><ul><li><em>方案</em>：避免在一个事务中更新大量数据。将大任务拆分为小批次处理。</li></ul></li><li><strong>原因 3：Slave 读压力过大</strong><ul><li><em>方案</em>：增加 Slave 节点，或者将非实时性要求的读业务切到 Slave。</li></ul></li></ul><h2 id="4-查询太慢怎么办？">4.查询太慢怎么办？</h2><p>Step 1: 发现与定位（找准靶心）</p><ul><li><strong>慢查询日志 (Slow Query Log)</strong>：看是否开启了慢查日志，利用 <code>mysqldumpslow</code> 工具找出发生频率最高、耗时最长的 SQL。</li><li><strong>监控链路</strong>：结合 APM 工具（如 SkyWalking、Pinpoint）或者查 <code>show processlist</code> 看看有没有正在卡住的查询。</li></ul><p>Step 2: 执行计划分析（解剖 SQL）</p><p>拿到慢 SQL 后，第一步永远是在前面加上 <strong><code>EXPLAIN</code></strong> 关键字。我会重点看这几个字段：</p><ul><li><strong><code>type</code></strong>：这是核心。如果是 <code>ALL</code>（全表扫描）或者 <code>index</code>（全索引扫描），那必须要优化。我们的目标是至少达到 <code>range</code>（范围扫描），最好是 <code>ref</code> 甚至 <code>eq_ref</code>。</li></ul><blockquote><p>ALL<br>→ index<br>→ range<br>→ index_merge<br>→ ref<br>→ eq_ref<br>→ const<br>→ system<br>→ NULL</p></blockquote><ul><li><strong><code>key</code></strong>：看 MySQL 实际有没有走我们期望的索引，有没有发生索引失效。</li><li><strong><code>Extra</code></strong>：这是关键警告区。如果出现 <code>Using filesort</code>（说明在内存或磁盘发生了外部排序）或者 <code>Using temporary</code>（使用了临时表），这往往是性能杀手。</li></ul><p>Step 3: 对症下药（常见优化手段）</p><ul><li><strong>索引失效救援</strong>：排查是不是对索引列做了运算、用了函数、发生了隐式类型转换，或者 <code>LIKE '%abc'</code> 左侧加了百分号，或者是联合索引违背了“最左前缀法则”。</li><li><strong>避免回表</strong>：如果 <code>SELECT</code> 捞的字段不多，尽量利用<strong>覆盖索引 (Covering Index)</strong>，让查询直接在辅助索引树上拿到结果，避免回聚簇索引查数据。</li><li><strong>分页优化</strong>：对于 <code>LIMIT 1000000, 10</code> 的深度分页，采用<strong>延迟关联</strong>（先走索引查出主键，再去 <code>JOIN</code> 原表捞数据）或者记录上一页最后一条的主键来进行范围查询。</li></ul>]]></content:encoded>
-      
-      
-      <category domain="https://blog.tokenlen.top/categories/408/">408</category>
-      
-      
-      <category domain="https://blog.tokenlen.top/tags/sql/">sql</category>
-      
-      
-      <comments>https://blog.tokenlen.top/2026/04/16/message/base/sql/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
       <title>基础知识收集</title>
       <link>https://blog.tokenlen.top/2026/04/16/message/base/base/</link>
       <guid>https://blog.tokenlen.top/2026/04/16/message/base/base/</guid>
@@ -174,6 +177,37 @@
       
       
       <comments>https://blog.tokenlen.top/2026/04/16/message/base/base/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>数据库知识收集</title>
+      <link>https://blog.tokenlen.top/2026/04/16/message/base/sql/</link>
+      <guid>https://blog.tokenlen.top/2026/04/16/message/base/sql/</guid>
+      <pubDate>Wed, 15 Apr 2026 16:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1&gt;基础问题&lt;/h1&gt;
+&lt;h1&gt;1.一条sql语句中各个关键字的执行顺序&lt;/h1&gt;
+&lt;p&gt;但 MySQL/Oracle</description>
+          
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h1>基础问题</h1><h1>1.一条sql语句中各个关键字的执行顺序</h1><p>但 MySQL/Oracle 等引擎的<strong>真实执行顺序</strong>如下：</p><ol><li><strong><code>FROM</code></strong>：选择主表</li><li><strong><code>JOIN</code></strong>：连接其他表</li><li><strong><code>ON</code></strong>：连接条件过滤</li><li><strong><code>WHERE</code></strong>：行级别过滤</li><li><strong><code>GROUP BY</code></strong>：分组</li><li><strong><code>HAVING</code></strong>：分组级别过滤</li><li><strong><code>SELECT</code></strong>：提取目标列 / 计算表达式</li><li><strong><code>DISTINCT</code></strong>：去重</li><li><strong><code>ORDER BY</code></strong>：排序</li><li><strong><code>LIMIT</code> / <code>OFFSET</code></strong>：分页限制</li></ol><h2 id="2-where-和-group-by走索引的过程">2.where 和 group by走索引的过程</h2><p><code>WHERE</code> 子句的主要目的是<strong>过滤数据</strong>。它利用 B+ 树的查找过程分为以下两种典型情况：</p><ol><li><strong>等值查询（Point Query）：</strong> 例如 <code>WHERE a = 1 AND b = 2</code>。<ul><li><strong>过程：</strong> MySQL 引擎会从 B+ 树的根节点开始，利用二分查找法，沿着多级索引页向下遍历。因为 <code>a</code> 和 <code>b</code> 都是等值，B+ 树保证了这两列是绝对有序的，引擎能够以 $O(\log N)$ 的时间复杂度，精确定位到叶子节点中满足条件的数据边界。</li></ul></li><li><strong>范围查询（Range Query）：</strong> 例如 <code>WHERE a &gt; 1 AND a &lt; 10 AND b = 2</code>。<ul><li><strong>过程：</strong> 引擎首先按 <code>a &gt; 1</code> 找到左边界，然后沿着叶子节点的双向链表向右顺序扫描（Range Scan），直到遇到 <code>a &gt;= 10</code> 的数据停止。</li><li><strong>断点陷阱：</strong> 因为在 <code>a</code> 是一个范围的前提下，<code>b</code> 的值是<strong>全局无序但局部有序</strong>的。所以对于 <code>b = 2</code> 这个条件，无法再利用二分查找去树中快速跳跃，只能在扫描 <code>a</code> 范围的过程中，逐行比对 <code>b</code> 的值（这部分在 MySQL 5.6 引入了 <strong>ICP 索引下推</strong> 优化，减少了回表次数）。</li></ul></li></ol><p><code>GROUP BY</code> 的本质是<strong>先排序，后聚合</strong>。 如果数据本身不是有序的，MySQL 就不得不创建一个内部临时表（Using temporary），把数据放进去，然后再通过外部排序算法（Using filesort）把相同组的数据排在一起进行聚合。<strong>这是极度消耗 CPU 和内存的。</strong></p><p>索引对 <code>GROUP BY</code> 最大的贡献就是：<strong>天然排好序了，直接拿来用。</strong></p><p>MySQL 利用索引处理 <code>GROUP BY</code> 有两种高级扫描方式：</p><ol><li><strong>松散索引扫描（Loose Index Scan）：</strong><ul><li><strong>条件：</strong> 查询只涉及索引的最左前缀，且通常配合 <code>MIN()</code> 或 <code>MAX()</code>。</li><li><strong>过程：</strong> 引擎<strong>不需要扫描满足条件的所有记录</strong>。比如 <code>GROUP BY a</code>，它会在 B+ 树中直接跳跃着读取每个 <code>a</code> 组的第一条（或最后一条）记录。效率极高，相当于只扫描组的数量，而不是数据行的数量。</li></ul></li><li><strong>紧凑索引扫描（Tight Index Scan）：</strong><ul><li><strong>条件：</strong> 无法使用松散扫描，但依然符合最左前缀。比如 <code>WHERE a = 1 GROUP BY b</code>。</li><li><strong>过程：</strong> 引擎会利用 <code>a = 1</code> 定位到数据后，因为在 <code>a</code> 相等的情况下 <code>b</code> 是严格有序的，所以引擎只需要顺着叶子节点一直往后读。遇到相同的 <code>b</code> 就聚合，遇到不同的 <code>b</code> 就开启下一个组。全程不需要额外的排序操作（无 filesort）。</li></ul></li></ol><h2 id="3-主从同步">3.主从同步</h2><p>MySQL 的主从同步是一个<strong>异步</strong>的逻辑复制过程，主要涉及三个线程：</p><ol><li><strong>Master - Binlog Dump Thread</strong>: 当 Slave 连接到 Master 时，Master 会创建一个线程，负责读取 <code>binlog</code> 内容并发送给 Slave。</li><li><strong>Slave - I/O Thread</strong>: 负责连接 Master，请求指定位置（position）之后的 <code>binlog</code> 内容，并将其写入到本地的 <strong>Relay Log（中继日志）</strong> 中。</li><li><strong>Slave - SQL Thread</strong>: 负责读取 <code>Relay Log</code> 中的事件，并在本地重新执行一遍（Redo），从而保证数据的一致性。</li></ol><p>同步的效率和准确性很大程度上取决于 <code>binlog_format</code> 的选择：</p><ul><li><strong>Statement</strong>: 记录的是 SQL 原文。<ul><li><em>优点</em>：日志量小。</li><li><em>缺点</em>：会导致数据不一致（如使用了 <code>UUID()</code>, <code>NOW()</code> 等非确定性函数）。</li></ul></li><li><strong>Row</strong>: 记录每一行数据的变更。<ul><li><em>优点</em>：最安全，能保证数据的绝对一致。</li><li><em>缺点</em>：日志量巨大（比如一个 <code>UPDATE</code> 影响万行，就会记录万行数据）。</li></ul></li><li><strong>Mixed</strong>: 折中方案。普通操作用 Statement，遇到非确定性函数自动切为 Row。<ul><li><strong>资深建议</strong>：在互联网高并发场景下，为了保证数据订阅（如 Canal 抽数）和一致性，通常<strong>强制建议使用 Row 格式</strong>。</li></ul></li></ul><p>同步的形式：</p><p>A. 异步复制 (Asynchronous)</p><p>Master 只要写完自己的 <code>binlog</code> 就返回成功，不关心 Slave 是否收到。</p><ul><li><strong>风险</strong>：如果 Master 宕机且 <code>binlog</code> 还没传到 Slave，会<strong>丢失数据</strong>。</li></ul><p>B. 半同步复制 (Semi-Synchronous)</p><p>Master 写入 <code>binlog</code> 后，必须等待<strong>至少一个</strong> Slave 确认收到并写入 <code>Relay Log</code> 后才返回成功。</p><ul><li><strong>权衡</strong>：提升了安全性，但增加了一个网络 RTT 的延迟，影响吞吐量。</li></ul><p>C. 组复制 (MGR - MySQL Group Replication)</p><p>基于 Paxos 协议的多主或主从模式，提供强一致性保障。</p><p>问题：</p><p>这是生产环境中无法回避的问题。常见原因及对策：</p><ul><li><strong>原因 1：Slave 的 SQL 线程单线程瓶颈</strong><ul><li><em>方案</em>：开启 <strong>并行复制 (MTS, Multi-Threaded Slave)</strong>。在 MySQL 5.7+ 中可以基于组提交 (Group Commit) 实现并行回放。</li></ul></li><li><strong>原因 2：大事务</strong><ul><li><em>方案</em>：避免在一个事务中更新大量数据。将大任务拆分为小批次处理。</li></ul></li><li><strong>原因 3：Slave 读压力过大</strong><ul><li><em>方案</em>：增加 Slave 节点，或者将非实时性要求的读业务切到 Slave。</li></ul></li></ul><h2 id="4-查询太慢怎么办？">4.查询太慢怎么办？</h2><p>Step 1: 发现与定位（找准靶心）</p><ul><li><strong>慢查询日志 (Slow Query Log)</strong>：看是否开启了慢查日志，利用 <code>mysqldumpslow</code> 工具找出发生频率最高、耗时最长的 SQL。</li><li><strong>监控链路</strong>：结合 APM 工具（如 SkyWalking、Pinpoint）或者查 <code>show processlist</code> 看看有没有正在卡住的查询。</li></ul><p>Step 2: 执行计划分析（解剖 SQL）</p><p>拿到慢 SQL 后，第一步永远是在前面加上 <strong><code>EXPLAIN</code></strong> 关键字。我会重点看这几个字段：</p><ul><li><strong><code>type</code></strong>：这是核心。如果是 <code>ALL</code>（全表扫描）或者 <code>index</code>（全索引扫描），那必须要优化。我们的目标是至少达到 <code>range</code>（范围扫描），最好是 <code>ref</code> 甚至 <code>eq_ref</code>。</li></ul><blockquote><p>ALL<br>→ index<br>→ range<br>→ index_merge<br>→ ref<br>→ eq_ref<br>→ const<br>→ system<br>→ NULL</p></blockquote><ul><li><strong><code>key</code></strong>：看 MySQL 实际有没有走我们期望的索引，有没有发生索引失效。</li><li><strong><code>Extra</code></strong>：这是关键警告区。如果出现 <code>Using filesort</code>（说明在内存或磁盘发生了外部排序）或者 <code>Using temporary</code>（使用了临时表），这往往是性能杀手。</li></ul><p>Step 3: 对症下药（常见优化手段）</p><ul><li><strong>索引失效救援</strong>：排查是不是对索引列做了运算、用了函数、发生了隐式类型转换，或者 <code>LIKE '%abc'</code> 左侧加了百分号，或者是联合索引违背了“最左前缀法则”。</li><li><strong>避免回表</strong>：如果 <code>SELECT</code> 捞的字段不多，尽量利用<strong>覆盖索引 (Covering Index)</strong>，让查询直接在辅助索引树上拿到结果，避免回聚簇索引查数据。</li><li><strong>分页优化</strong>：对于 <code>LIMIT 1000000, 10</code> 的深度分页，采用<strong>延迟关联</strong>（先走索引查出主键，再去 <code>JOIN</code> 原表捞数据）或者记录上一页最后一条的主键来进行范围查询。</li></ul>]]></content:encoded>
+      
+      
+      <category domain="https://blog.tokenlen.top/categories/408/">408</category>
+      
+      
+      <category domain="https://blog.tokenlen.top/tags/sql/">sql</category>
+      
+      
+      <comments>https://blog.tokenlen.top/2026/04/16/message/base/sql/#disqus_thread</comments>
       
     </item>
     
@@ -597,36 +631,6 @@
       
       
       <comments>https://blog.tokenlen.top/2026/01/03/message/project/sa2.0/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>SpringBoot 4.0升级</title>
-      <link>https://blog.tokenlen.top/2026/01/02/message/project/springboot4.0/</link>
-      <guid>https://blog.tokenlen.top/2026/01/02/message/project/springboot4.0/</guid>
-      <pubDate>Thu, 01 Jan 2026 16:00:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h1&gt;背景&lt;/h1&gt;
-&lt;p&gt;最近Spring AI 发布了2.0.0的测试版本，标志着SrpingAi社区开始维护1.x版本和2.x版本。然后发现里面最大的一个区别就是Spring</description>
-          
-        
-      
-      
-      
-      <content:encoded><![CDATA[<h1>背景</h1><p>最近Spring AI 发布了2.0.0的测试版本，标志着SrpingAi社区开始维护1.x版本和2.x版本。然后发现里面最大的一个区别就是Spring boot版本的升级，由之前的3.x版本升级到了4.x版本</p><p>我们首先来看下Spring boot的版本升级，为什么会再去开一个版本分支去维护呢？</p><h1>Springboot4.0</h1><p>Spring Boot 4.0.0 的发布，不仅仅是一个版本号的简单的递增，它标志着 Spring 生态系统正式迈入了基于 <strong>Spring Framework 7.0</strong>、<strong>Java 17/25</strong> 以及 <strong>Jakarta EE 11</strong> 的全新纪元。对于当前运行在 Spring Boot 3.5.8 的企业级应用而言，向 4.0.0 的迁移不仅是一次技术栈的升级，更是一次对底层基础设施、开发范式以及运维观测体系的全面现代化重构 。</p><p>新旧版本的对比：</p><table><thead><tr><th>核心组件</th><th>Spring Boot 3.5.8 (当前状态)</th><th>Spring Boot 4.0.0 (目标状态)</th><th>架构影响分析</th></tr></thead><tbody><tr><td><strong>Spring Framework</strong></td><td>6.2.x</td><td><strong>7.0.x</strong></td><td>引入了全新的 Bean 注册机制、API 版本控制及观测性增强 。</td></tr><tr><td><strong>Java Baseline</strong></td><td>Java 17</td><td><strong>Java 17 (推荐 Java 25)</strong></td><td>深度集成虚拟线程、ZGC 优化及语言新特性（如 Records, Pattern Matching） 。</td></tr><tr><td><strong>Jakarta EE</strong></td><td>EE 10</td><td><strong>EE 11</strong></td><td>Servlet 6.1 带来了 I/O 模型的变革，直接导致了 Undertow 支持的暂时移除 。</td></tr><tr><td><strong>Kotlin</strong></td><td>1.9 / 2.0</td><td><strong>2.2</strong></td><td>K2 编译器的原生支持，编译速度与空安全互操作性的显著提升 。</td></tr><tr><td><strong>Observability</strong></td><td>Micrometer Tracing (Brave/Otel)</td><td><strong>OpenTelemetry (OTLP)</strong></td><td>从库优先转向协议优先，原生集成 OTLP Exporter，简化云原生监控栈 。</td></tr><tr><td><strong>Build Tool</strong></td><td>Gradle 8.x</td><td><strong>Gradle 9.x</strong></td><td>构建性能优化与配置缓存的深度集成 。</td></tr></tbody></table><p>那为什么升级？</p><h2 id="升级原因">升级原因</h2><h3 id="2-1-Java-版本的战略选择：为何是-25？">2.1 Java 版本的战略选择：为何是 25？</h3><p>虽然 Spring Boot 4.0 保持了 <strong>Java 17</strong> 作为最低支持版本，以兼顾企业现有的 LTS 策略，但其设计核心显然是围绕 <strong>Java 25</strong> 展开的 。Java 25 预计将于 2025 年 9 月发布，Spring Boot 4.0 对其进行了前瞻性的适配。</p><h4 id="2-1-1-虚拟线程的全面释放">2.1.1 虚拟线程的全面释放</h4><p>在 Spring Boot 3.x 中，虚拟线程（Project Loom）的支持尚处于孵化和适配阶段。而在 4.0 版本中，虚拟线程已成为一等公民。当配置 <code>spring.threads.virtual.enabled=true</code> 时，Spring Boot 不仅仅是简单地将 Tomcat 的线程池替换为虚拟线程执行器，而是对整个调用链进行了深度的非阻塞改造 。</p><ul><li><strong>Web 容器层</strong>：Tomcat 11 和 Jetty 12 的集成完全适配了虚拟线程模型，这意味着单个应用实例可以轻松处理数万甚至数十万的并发连接，而无需像 Reactive 栈那样编写复杂的异步回调代码。</li><li><strong>数据访问层</strong>：Spring Data 2025.1 对 JDBC 驱动进行了适配，使得传统的阻塞式数据库调用在虚拟线程中运行时，能够自动挂起（unmount）虚拟线程，释放载体线程（Carrier Thread）去处理其他任务。这使得 “Thread-per-request” 模型在 I/O 密集型场景下重新焕发了生机，性能直逼 WebFlux 。</li></ul><h4 id="2-1-2-语言特性的深度利用">2.1.2 语言特性的深度利用</h4><p>Spring Framework 7.0 内部大量采用了 Java 17+ 的新特性。例如，利用 <strong>Records</strong> 来优化配置属性类的定义，利用 <strong>Sealed Classes</strong> 来增强框架内部类型体系的严谨性。对于开发者而言，这意味着在编写业务代码时，可以毫无顾虑地使用 Switch Expressions、Text Blocks 以及 Pattern Matching，因为框架层已经完全消除了对旧版字节码的兼容包袱。</p><h3 id="2-2-Jakarta-EE-11：标准化的代价与收益">2.2 Jakarta EE 11：标准化的代价与收益</h3><p>Spring Boot 4.0 是首个基于 <strong>Jakarta EE 11</strong> 构建的主流框架版本。这一升级带来的最大震动在于 <strong>Servlet 6.1</strong> 规范的实施 。</p><h4 id="2-2-1-Servlet-6-1-与-I-O-模型变革">2.2.1 Servlet 6.1 与 I/O 模型变革</h4><p>Servlet 6.1 引入了更加现代化的 I/O 处理机制，旨在更好地支持 HTTP/2 和未来的 HTTP/3 协议。它强制要求容器实现更高效的缓冲区管理和非阻塞 I/O。</p><ul><li><strong>Undertow 的移除</strong>：这一规范的升级直接导致了一个重大的生态变动——<strong>Undertow</strong> 支持被移除 。由于 Undertow 社区在 Spring Boot 4.0 发布时尚未完成对 Servlet 6.1 的完整兼容，Spring 团队做出了艰难的决定，暂时在 4.0 版本中剔除 Undertow。对于习惯使用 Undertow 作为高性能 Web 容器的用户，升级到 4.0 意味着必须迁移回 <strong>Tomcat</strong>（默认）或 <strong>Jetty</strong>。这是一项需要谨慎评估性能影响的变更。</li></ul><h4 id="2-2-2-JPA-3-2-与-Hibernate-7">2.2.2 JPA 3.2 与 Hibernate 7</h4><p>Jakarta Persistence 3.2 带来了更强的查询表达能力。Spring Boot 4.0 默认集成了 <strong>Hibernate 7.1</strong> 。Hibernate 7 在性能上进行了大幅优化，特别是在复杂关联查询的 SQL 生成策略上。此外，Hibernate 7 对 Jakarta Validation 3.1 的支持也更加完善，特别是在校验 Java Records 类型时，能够直接读取构造函数参数上的注解进行校验，减少了样板代码</p><h2 id="新的升级">新的升级</h2><ol><li>新的 <code>@RequestMapping</code> 注解增加了一个 <code>version</code> 属性。</li></ol><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/api/orders&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OrderController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理 v1 版本请求</span></span><br><span class="line">    <span class="meta">@GetMapping(version = &quot;1&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;OrderV1&gt; <span class="title function_">listOrdersV1</span><span class="params">()</span> &#123;... &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理 v2 版本请求，返回结构更丰富的数据</span></span><br><span class="line">    <span class="meta">@GetMapping(version = &quot;2&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> OrderV2Response <span class="title function_">listOrdersV2</span><span class="params">()</span> &#123;... &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>框架支持多种版本解析策略，且均可通过 <code>application.properties</code> 进行全局配置：</p><ul><li><strong>Path Variable</strong>: 解析 URL 中的版本段。</li><li><strong>Header</strong>: 如 <code>X-API-Version: 1</code>。</li><li><strong>Parameter</strong>: 如 <code>?version=1</code>。</li><li><strong>Media Type</strong>: 如 <code>Accept: application/vnd.mycompany.v1+json</code>。</li></ul><p>这种原生支持不仅减少了样板代码，还使得 Swagger/OpenAPI 的文档生成能够自动识别多版本接口，极大地提升了 API 治理的规范性。</p><ol start="2"><li>声明式 HTTP 客户端：终结繁琐的 RestTemplate</li></ol><p>开发者只需定义一个 Java 接口，并使用 <code>@HttpExchange</code> 系列注解描述请求：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@HttpExchange(&quot;/users&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserClient</span> &#123;</span><br><span class="line">    <span class="meta">@GetExchange(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line">    User <span class="title function_">getUser</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Long id)</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@PostExchange</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">createUser</span><span class="params">(<span class="meta">@RequestBody</span> User user)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>通过 <code>@ImportHttpServices</code> 注解，Spring Boot 会在启动时自动为这些接口生成代理 Bean。更强大的是其 <strong>分组配置（Configuration Groups）</strong> 能力 。 开发者可以在配置文件中为不同的客户端组指定不同的底层参数（如超时、Base URL）：</p><p>Properties</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spring.http.client.service.group.user-service.base-url=https://user.svc.local</span><br><span class="line">spring.http.client.service.group.user-service.read-timeout=5s</span><br><span class="line">spring.http.client.service.group.inventory-service.base-url=https://inventory.svc.local</span><br></pre></td></tr></table></figure><p>这消除了以往为了配置不同超时时间而不得不手动创建多个 <code>WebClient.Builder</code> 的繁琐工作。</p><p>3.空指针的处理</p><p>Spring Boot 4.0 全面采用了 <strong>JSpecify</strong> 规范（JSR-305 的现代继任者）来标注 API 的空安全性 。</p><ul><li><strong><code>@NullMarked</code></strong>：这是一个包级注解。Spring 团队已经将几乎所有的核心包都标记为 <code>@NullMarked</code>。这意味着，除非特别标注，否则所有方法的参数和返回值都默认视为 <strong>非空（Non-null）</strong>。</li><li><strong><code>@Nullable</code></strong>：对于确实允许为 null 的场景，框架会显式使用 JSpecify 的 <code>@Nullable</code> 进行标注。</li></ul><p>4.JmsClient的处理</p><p>长期以来，<code>JmsTemplate</code> 的 API 设计显得过于古老和繁琐。受到 <code>JdbcClient</code> 和 <code>RestClient</code> 成功的启发，Spring Boot 4.0 推出了 <strong><code>JmsClient</code></strong> 。 <code>JmsClient</code> 提供了一套流式的（Fluent）、基于 Lambda 的 API，使得发送消息变得异常简洁：</p><p>Java</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">jmsClient.send()</span><br><span class="line">   .destination(<span class="string">&quot;order-queue&quot;</span>)</span><br><span class="line">   .message(<span class="string">&quot;Order Created&quot;</span>)</span><br><span class="line">   .property(<span class="string">&quot;priority&quot;</span>, <span class="string">&quot;high&quot;</span>)</span><br><span class="line">   .execute();</span><br></pre></td></tr></table></figure><p>这种设计不仅提高了代码的可读性，还更好地适配了 Java 的函数式编程风格。</p>]]></content:encoded>
-      
-      
-      <category domain="https://blog.tokenlen.top/categories/github/">github</category>
-      
-      
-      <category domain="https://blog.tokenlen.top/tags/%E9%A1%B9%E7%9B%AE/">项目</category>
-      
-      
-      <comments>https://blog.tokenlen.top/2026/01/02/message/project/springboot4.0/#disqus_thread</comments>
       
     </item>
     
